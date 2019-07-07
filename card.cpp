@@ -5,7 +5,6 @@ using namespace std;
 //implement the default card constructor
 Card::Card()
 {
-
 }
 
 //implement the card (cColor) constructor

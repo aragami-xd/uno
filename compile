@@ -1,0 +1,2 @@
+echo compile
+g++ card.h card.cpp wildcard.h wildcard.cpp action.h action.cpp drawfour.h drawfour.cpp colorcard.h colorcard.cpp drawtwo.h drawtwo.cpp main.cpp function.cpp

@@ -9,11 +9,6 @@ Colorcard::Colorcard()
 //implement the colorcard (cColor) constructor
 Colorcard::Colorcard(int cColor) : Wildcard(cColor)
 {
-}
-
-//implement the colorcard setName function
-void Colorcard::setName()
-{
 	name = "Wildcard";
 }
 

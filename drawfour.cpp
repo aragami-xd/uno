@@ -9,12 +9,7 @@ Drawfour::Drawfour()
 //implement the drawfour (cColor) constructor
 Drawfour::Drawfour(int cColor) : Wildcard(cColor)
 {
-}
-
-//implement the drawfour setName function
-void Drawfour::setName() 
-{
-    name = "Draw 4 Wildcard";
+	name = "Draw 4 Wildcard";
 }
 
 //implement the drawfour effect function

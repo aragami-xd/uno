@@ -2,17 +2,19 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <chrono>
+#include <thread>
 
 //card library 
-#include "card.h"
-#include "wildcard.h"
 #include "drawfour.h"
 #include "colorcard.h"
-#include "action.h"
 #include "drawtwo.h"
 #include "reverse.h"
 #include "skip.h"
 #include "number.h"
+
+//deck library 
+#include "hand.h"
 
 //test
 #include "test.h"
@@ -27,8 +29,10 @@ extern int startMenu();
 int main()
 {
 	//int menuOption = startMenu();
+	//this_thread::sleep_for(chrono::seconds(1));
 
-	//create the deck
+
+	//create the deck (create card vector and assign cards into it) 
 	vector<Card*> cardList;
 	int cardQty = 4;		//how many of each card will have 
 
@@ -75,9 +79,16 @@ int main()
 
 	//test function 
 	Test *test = new Test(cardList);
-	test->printCardList();
+	//test->printCardList();
 	cout << endl;
+
+
+
+	//hand, temp only. full game may use array of hands, array length 4 = 4 hands = 4 players 
+	Hand *hand = new Hand(cardList);
+	hand->sortHand();
 	
+
 
 
 
@@ -90,10 +101,10 @@ int main()
 		delete drawTwo[i], reverse[i], skip[i];
 	}
 	for (int i=0; i<76; i++) {
-		cout << i << ". " << number[i]->getName() << endl;
 		delete number[i];
 	}
 	delete test;
+	delete hand;
 
 	return 0;
 }

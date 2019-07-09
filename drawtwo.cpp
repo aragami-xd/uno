@@ -10,6 +10,7 @@ Drawtwo::Drawtwo()
 Drawtwo::Drawtwo(int cColor) : Action(cColor)
 {
 	name += "Draw Two";
+	cardNumber = 13;
 }
 
 //implement the drawtwo effect function

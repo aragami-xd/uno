@@ -9,6 +9,9 @@
 #include "drawfour.h"
 #include "colorcard.h"
 #include "drawtwo.h"
+#include "reverse.h"
+#include "skip.h"
+#include "number.h"
 
 class Test
 {

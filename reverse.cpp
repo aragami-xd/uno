@@ -10,6 +10,7 @@ Reverse::Reverse()
 Reverse::Reverse(int cColor) : Action(cColor)
 {
 	name += "Reverse";
+	cardNumber = 11;
 }
 
 //implement the reverse effect function

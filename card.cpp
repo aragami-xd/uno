@@ -25,6 +25,12 @@ string Card::getName()
 	return name;
 }
 
+//implement the card getNumber function
+int Card::getNumber()
+{
+	return cardNumber;
+}
+
 //implement the class destructor
 Card::~Card()
 {

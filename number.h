@@ -5,8 +5,6 @@
 
 class Number : public Card
 {
-private: 
-	int cardNumber;
 public: 
 	Number();
 	Number(int cColor, int cNumber);

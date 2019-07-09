@@ -44,11 +44,12 @@ void Hand::sortHand()
 		}
 	}
 	
-	//	currently creating segmentation fault 
+	/*currently creating segmentation fault 
 	for (int i=0; i<=initialSize; i++) {				//remove duplicates after iteration 
 		deckList.erase(deckList.begin() + i + initialSize);
 	}
-
+	*/
+	
 	for (int i=0; i<deckList.size(); i++) {			//print out for testing
 		cout << deckList[i]->getName() << endl;
 	}

@@ -16,7 +16,7 @@ Action::Action(int cColor) : Card(cColor)
 	} else if (color == 3) {
 		name = "Blue ";
 	} else if (color == 4) {
-		name = "Green ";
+		name = "Yellow ";
 	}
 }
 

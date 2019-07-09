@@ -49,7 +49,7 @@ void Test::testCardColor(int cardColor, int index)
 void Test::printCardList()
 {
 	for (int i=0; i<card.size(); i++) {
-		cout << i << ". " << card[i]->getName() << " " << card[i]->getColor() << endl;
+		cout << i << ". " << card[i]->getName() << endl;
 	}
 }
 

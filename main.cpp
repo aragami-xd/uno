@@ -1,8 +1,9 @@
+//stl 
 #include <iostream>
 #include <string>
 #include <vector>
 
-//class library 
+//card library 
 #include "card.h"
 #include "wildcard.h"
 #include "drawfour.h"
@@ -11,13 +12,18 @@
 #include "drawtwo.h"
 #include "reverse.h"
 #include "skip.h"
+#include "number.h"
 
+//test
 #include "test.h"
 
 using namespace std;
 
+//extern function
 extern int startMenu();
 
+
+//main program
 int main()
 {
 	//int menuOption = startMenu();
@@ -26,42 +32,54 @@ int main()
 	vector<Card*> cardList;
 	int cardQty = 4;		//how many of each card will have 
 
-	Card *drawFour[cardQty];
-	Card *colorCard[cardQty];
-	Card *drawTwo[cardQty * 2];
+	Card *drawFour[cardQty];		//4 of each wildcard
+	Card *colorCard[cardQty];	
+	Card *drawTwo[cardQty * 2];		//8 of each action card 
 	Card *reverse[cardQty * 2];
 	Card *skip[cardQty * 2]; 
+	Card *number[cardQty *19];		//0 x 4, 1->9 x 8 == 19 * qty
 
 	for (int i=0; i<cardQty; i++) {
-		drawFour[i] = new Drawfour(5);
+		//4 cards
+		drawFour[i] = new Drawfour(5);		//draw four card
 		cardList.push_back(drawFour[i]);
 
-		colorCard[i] = new Colorcard(5);
+		colorCard[i] = new Colorcard(5);		//color change wildcard 
 		cardList.push_back(colorCard[i]);
 
-		for (int m=0; m<2; m++) {
-			drawTwo[i+m*cardQty] = new Drawtwo(i);
-			cardList.push_back(drawTwo[i+m*cardQty]);
+		number[i*19] = new Number(i+1, 0);			//number 0 card, separeted 18 iterations from each other 
+		cardList.push_back(number[i*19]);
 
-			reverse[i+m*cardQty] = new Reverse(i);
-			cardList.push_back(reverse[i+m*cardQty]);
+		for (int m=0; m<2; m++) {			//8 cards
+			drawTwo[i + m*cardQty] = new Drawtwo(i+1);	//color starts from 1, not 0
+			cardList.push_back(drawTwo[i + m*cardQty]);
 
-			skip[i+m*cardQty] = new Skip(i);
-			cardList.push_back(skip[i+m*cardQty]);
+			reverse[i + m*cardQty] = new Reverse(i+1);		//reverse card 
+			cardList.push_back(reverse[i + m*cardQty]);
+
+			skip[i + m*cardQty] = new Skip(i+1);			//skip card
+			cardList.push_back(skip[i + m*cardQty]);
+
+			for (int n=1; n<=9; n++) {			//number 1->9 cards = 72 in total 
+				number[i*19 + n + m*9] = new Number(i+1, n);		//thank god this shit is complicated AF: i loops between 19 iterations (0,1,2...1,2...9,0,1...)
+				cardList.push_back(number[i*19 + n + m*9]);			//m loops through 9 iterations (0,1.....1....0,1.....) and n loop in between m
+			}
 		}
 	}	
 	/* Loop analysis
 	loop: red -> green -> blue ->yellow
-	loop content: drawfour, colorcard, drawtwo, drawtwo, reverse, reverse, skip, skip
-	-> loop e.g. draw4.5, color.5, draw2.1, draw2.1, reverse.1,...
+	loop content: drawfour, colorcard, 0, drawtwo, reverse, skip, 1, 2....9, drawtwo, reverese, skip, drawfour, 1, 2...
+	-> loop e.g. run this line: test->printCardList();
 	*/
 
 
 	//test function 
 	Test *test = new Test(cardList);
-	test->testCardName("Draw 4 Wildcard", 0);
-	test->testCardName("Blue Reverse", 24);
-	test->testCardColor(2, 11);
+	test->printCardList();
+	cout << endl;
+	
+
+
 
 
 	//delete drawFour, colorCard, drawTwo;
@@ -70,6 +88,10 @@ int main()
 	}
 	for (int i=0; i<cardQty * 2; i++) {
 		delete drawTwo[i], reverse[i], skip[i];
+	}
+	for (int i=0; i<76; i++) {
+		cout << i << ". " << number[i]->getName() << endl;
+		delete number[i];
 	}
 	delete test;
 

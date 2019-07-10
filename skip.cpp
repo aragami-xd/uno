@@ -10,7 +10,7 @@ Skip::Skip()
 Skip::Skip(int cColor) : Action(cColor)
 {
 	name += "Skip";
-	cardNumber = 12;
+	cardNumber = 11;
 }
 
 //implement the skip effect function

@@ -10,7 +10,7 @@ Colorcard::Colorcard()
 Colorcard::Colorcard(int cColor) : Wildcard(cColor)
 {
 	name = "Wildcard";
-	cardNumber = 14;
+	cardNumber = 13;
 }
 
 //implement the colorcard effect function

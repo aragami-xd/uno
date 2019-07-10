@@ -15,6 +15,7 @@
 
 //deck library 
 #include "hand.h"
+#include "draw.h"
 
 //test
 #include "test.h"
@@ -79,18 +80,27 @@ int main()
 
 	//test function 
 	Test *test = new Test();
+	/*
 	test->setCard(cardList);
 	test->setDeck(cardList, 0);
 	test->printCardList();
 	test->printDeckList();
 	test->testCardName();
 	test->testCardColor();
+	*/
 	
 
 
 	//hand, temp only. full game may use array of hands, array length 4 = 4 hands = 4 players 
 	Hand *hand = new Hand(cardList);
 	hand->sortHand();
+
+	Draw *draw = new Draw(cardList);
+	draw->shuffle();
+	cardList = draw->getDeck();
+	for (int i=0; i<cardList.size(); i++) {
+		cout << cardList[i]->getName() << endl;
+	}
 	
 
 
@@ -109,6 +119,7 @@ int main()
 	}
 	delete test;
 	delete hand;
+	delete draw;
 
 	return 0;
 }

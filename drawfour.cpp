@@ -10,7 +10,7 @@ Drawfour::Drawfour()
 Drawfour::Drawfour(int cColor) : Wildcard(cColor)
 {
 	name = "Draw 4 Wildcard";
-	cardNumber = 15;
+	cardNumber = 14;
 }
 
 //implement the drawfour effect function

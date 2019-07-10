@@ -17,15 +17,25 @@ Test::Test()
 	*/
 }
 
-//implement the test (cardList) constructor
-Test::Test(vector<Card*> cardList) 
+
+//test the cards 
+//implement the test getCard function
+void Test::setCard(vector<Card*> cardList) 
 {
 	card = cardList;
 }
 
 //implement the test testCardName function
-void Test::testCardName(string cardName, int index)
+void Test::testCardName()
 {
+	string cardName;
+	int index;
+	cout << "Card name: ";
+	cin.ignore();
+	getline(cin, cardName);
+	cout << "Index: ";
+	cin >> index;
+
 	if (cardName == card[index]->getName())	{
 		cout << "Card name test PASSED" << endl;
 	} else {
@@ -35,8 +45,14 @@ void Test::testCardName(string cardName, int index)
 }
 
 //implement the test testCardColor function
-void Test::testCardColor(int cardColor, int index)
+void Test::testCardColor()
 {
+	int cardColor, index;
+	cout << "Card color: ";
+	cin >> cardColor;
+	cout << "Index: ";
+	cin >> index;
+
 	if (cardColor == card[index]->getColor())  {
 		cout << "Card color test PASSED" << endl;
 	} else {
@@ -45,12 +61,39 @@ void Test::testCardColor(int cardColor, int index)
 	}
 }
 
+
 //implement the test printCardList function
 void Test::printCardList()
 {
+	cout << "Print card list: " << endl;
 	for (int i=0; i<card.size(); i++) {
 		cout << i << ". " << card[i]->getName() << endl;
 	}
+	cout << endl;
+}
+
+
+
+//test the decks
+//implement the void getDeck function
+void Test::setDeck(vector<Card*> deckList, int deckNumber)
+{
+	deck[deckNumber] = deckList;
+}
+
+//implement the void printDeckList function
+void Test::printDeckList()
+{
+	cout << "Print deck list: " << endl;
+	for (int i=0; i<3; i++) {
+		cout << "Deck number " << i << endl;
+		for (int m=0; m<deck[i].size(); i++) {
+			cout << ". " << deck[i][m]->getName() << endl;
+		}
+		cout << endl;
+	}
+	cout << "3 Decks printed" << endl;
+	cout << endl;
 }
 
 //implement the test destructor

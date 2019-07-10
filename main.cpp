@@ -78,8 +78,13 @@ int main()
 
 
 	//test function 
-	Test *test = new Test(cardList);
-	//test->printCardList();
+	Test *test = new Test();
+	test->setCard(cardList);
+	test->setDeck(cardList, 0);
+	test->printCardList();
+	test->printDeckList();
+	test->testCardName();
+	test->testCardColor();
 	
 
 

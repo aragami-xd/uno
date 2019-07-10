@@ -13,7 +13,7 @@ Deck::Deck(vector<Card*> deck)
 }
 
 //implement the deck pushCard function
-void Deck::pushCard(/*argument goes here*/)
+void Deck::pushCard(int outputDeck)
 {
 	//placeholder
 }
@@ -28,6 +28,12 @@ void Deck::pullCard(Card* transferCard)
 int Deck::getDeckType()
 {
 	return deckType;
+}
+
+//implement the deck getDeck function
+vector<Card*> Deck::getDeck()
+{
+	return deckList;
 }
 
 //implement the deck destructor

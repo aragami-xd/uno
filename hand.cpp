@@ -16,6 +16,7 @@ Hand::Hand(vector<Card*> deck) : Deck(deck)
 	deckType = 1;	//1 for hand, 2 for draw, 3 for discarded
 }
 
+
 //implement the hand sortHand function
 void Hand::sortHand()
 {
@@ -43,11 +44,13 @@ void Hand::sortHand()
 		}
 	}
 	deckList = tempColorSort;
-	
-	
-	for (int i=0; i<deckList.size(); i++) {			//print out for testing
-		cout << deckList[i]->getName() << endl;
-	}
+}
+
+//implement the hand pullCard function
+void Hand::pullCard(Card * transferCard) 
+{
+	Deck::pullCard(transferCard);
+
 }
 
 //implement the hand destructor

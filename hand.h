@@ -10,6 +10,7 @@ public:
 	Hand(std::vector<Card*> deck);
 
 	void sortHand();
+	virtual void pullCard(Card * transferCard);
 
 	~Hand();
 };

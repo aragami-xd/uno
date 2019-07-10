@@ -17,13 +17,22 @@ class Test
 {
 private: 
 	std::vector<Card*> card;
+	std::vector<Card*> deck[3];			//3 decks: hand(0), draw(1) and discard(2)
+
+
 public: 
 	Test();
-	Test(std::vector<Card*> cardList);
 
-	void testCardName(std::string cardName, int index);
-	void testCardColor(int cardColor, int index);
-	void printCardList();
+	//test the card list
+	void setCard(std::vector<Card*> CardList);		//get the cards
+	void testCardName();			//test a card name 
+	void testCardColor();			//test a card color 
+	void printCardList();		//print everything out
+
+	//test specific decks
+	void setDeck(std::vector<Card*> deckList, int deckNumber);		//get a deck 
+	void printDeckList();		//print out that deck 
+	//void testDeckTransfer();		//push a specific card to other deck and test to see if it's there or not
 
 	~Test();
 };

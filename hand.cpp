@@ -32,23 +32,18 @@ void Hand::sortHand()
 		}
 	}
 
+	
 	//sort by color
-	int initialSize = deckList.size();		//using m<.size() will cause infinite for loop since loop grows bigger with each insert
-	int iteration = 0;				
+	vector<Card*> tempColorSort;			
 	for (int i=1; i<=5; i++) {				//loop through color
-		for (int m=0; m<initialSize; m++) {			//insert at the front based on their value 
+		for (int m=0; m<deckList.size(); m++) {			//insert at the front based on their value 
 			if (deckList[m]->getColor() == i) {
-				deckList.insert(deckList.begin() + iteration, deckList[m]);		//use deckList.begin() here to specifies from the start
-				iteration++;
+				tempColorSort.push_back(deckList[m]);
 			}
 		}
 	}
+	deckList = tempColorSort;
 	
-	/*currently creating segmentation fault 
-	for (int i=0; i<=initialSize; i++) {				//remove duplicates after iteration 
-		deckList.erase(deckList.begin() + i + initialSize);
-	}
-	*/
 	
 	for (int i=0; i<deckList.size(); i++) {			//print out for testing
 		cout << deckList[i]->getName() << endl;

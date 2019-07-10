@@ -80,8 +80,7 @@ int main()
 	//test function 
 	Test *test = new Test(cardList);
 	//test->printCardList();
-	cout << endl;
-
+	
 
 
 	//hand, temp only. full game may use array of hands, array length 4 = 4 hands = 4 players 

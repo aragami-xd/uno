@@ -7,8 +7,9 @@ class Discard : public Deck
 {
 private: 
 	Card* lastCard;
-	int lastCardColor;
-	int lassCardNumber;
+	int lastCardColor;			//color and number are mostly for convenient sake, doesn't really do much 
+	int lastCardNumber;			//these variables will be used quite a lot, so it's better off using variables than call functions
+	std::string lastCardName;			//multiple times 
 
 public: 
 	Discard();
@@ -17,10 +18,13 @@ public:
 	void setLastCard();
 	Card* getLastCard();
 
+	int getLastCardNumber();
+	int getLastCardColor();
+	std::string getLastCardName();
 
-	virtual void pushCard();
-	virtual void pullCard();
-	
+	//virtual void pushCard();
+	//virtual void pullCard();
+
 	~Discard();
 };
 

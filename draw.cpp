@@ -5,12 +5,12 @@ using namespace std;
 //implement the default draw constructor
 Draw::Draw()
 {
+	deckType = 2;
 }
 
 //implement the draw (deck) constructor
-Draw::Draw(vector<Card*> deck)
+Draw::Draw(vector<Card*> deck) : Deck(deck)
 {
-	deckList = deck;
 	deckType = 2;
 }
 

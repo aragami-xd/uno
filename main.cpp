@@ -16,6 +16,7 @@
 //deck library 
 #include "hand.h"
 #include "draw.h"
+#include "discard.h"
 
 //test
 #include "test.h"
@@ -101,6 +102,10 @@ int main()
 	for (int i=0; i<cardList.size(); i++) {
 		cout << cardList[i]->getName() << endl;
 	}
+
+	Discard *discard = new Discard(cardList);
+	discard->setLastCard();
+	cout << discard->getLastCardName() << endl;
 	
 
 
@@ -118,8 +123,7 @@ int main()
 		delete number[i];
 	}
 	delete test;
-	delete hand;
-	delete draw;
+	delete hand, draw, discard;
 
 	return 0;
 }

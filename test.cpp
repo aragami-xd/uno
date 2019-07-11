@@ -28,26 +28,31 @@ void Test::setCard(vector<Card*> cardList)
 //implement the test testCardName function
 void Test::testCardName()
 {
-	string cardName;
+	string cardName;	//get the name and index data
 	int index;
 	cout << "Card name: ";
-	cin.ignore();
 	getline(cin, cardName);
 	cout << "Index: ";
 	cin >> index;
 
-	if (cardName == card[index]->getName())	{
+	if (cardName == card[index]->getName())	{			
 		cout << "Card name test PASSED" << endl;
 	} else {
 		cout << ">> " << cardName << endl;
 		cout << "<< " << card[index]->getName() << endl;
 	}
+	/* 
+	I give up on this one...
+	Card name: Index: >> Blue 4
+	<< Blue 4
+	Wtf?
+*/
 }
 
 //implement the test testCardColor function
 void Test::testCardColor()
 {
-	int cardColor, index;
+	int cardColor, index;		//get the color and index data
 	cout << "Card color: ";
 	cin >> cardColor;
 	cout << "Index: ";
@@ -94,6 +99,49 @@ void Test::printDeckList()
 	}
 	cout << "3 Decks printed" << endl;
 	cout << endl;
+}
+
+//implement the test testDeckTransfer function
+void Test::testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard)
+{
+	cout << "Transfer " << transferCard->getName() << endl;
+	int deckFromTotal, deckToTotal;		//see how many transferCard each deck has 
+	int transferCardIndex;
+	vector<Card*> deckFromDeck = deckFrom->getDeck(), deckToDeck = deckTo->getDeck();		//store the decks 
+
+	for (int i=0; i<deckFromDeck.size(); i++) {		//check how many transferCard in deckFrom
+		if (transferCard->getName() == deckFromDeck[i]->getName()) {
+			deckFromTotal++;
+			transferCardIndex = i;
+		}
+	}
+	for (int i=0; i<deckToDeck.size(); i++) {		//check how many transferCard in deckTo
+		if (transferCard->getName() == deckToDeck[i]->getName()) {
+			deckToTotal++;
+		}
+	}
+
+	deckFrom->pushCard(transferCardIndex, deckTo);		//call function 
+
+	/*
+	for (int i=0; i<deckFromDeck.size(); i++) {								//check how many transferCard in deckFrom, again
+		if (transferCard->getName() == deckFromDeck[i]->getName()) {		//but this time, minus one. if there is 1 in deckFrom and -1 in deckTo
+			deckFromTotal--;						//the test passes 
+		}
+	}
+
+	for (int i=0; i<deckToDeck.size(); i++) {		//check how many transferCard in deckTo, again
+		if (transferCard->getName() == deckToDeck[i]->getName()) {
+			deckToTotal--;
+		}
+	}
+	*/
+
+	if (deckFromTotal == 1 && deckToTotal == -1) {
+		cout << "Test card transfer PASSED" << endl;
+	} else {
+		cout << "Test card transfer FAILED" << " " << deckFromTotal << " " << deckToTotal << endl;
+	}
 }
 
 //implement the test destructor

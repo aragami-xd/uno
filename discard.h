@@ -22,8 +22,8 @@ public:
 	int getLastCardColor();
 	std::string getLastCardName();
 
-	//virtual void pushCard();
-	//virtual void pullCard();
+	//no pushCard here, since you cannot push card from the discarded deck 
+	virtual void pullCard(Card* transferCard);
 
 	~Discard();
 };

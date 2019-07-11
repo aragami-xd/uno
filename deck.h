@@ -21,7 +21,7 @@ public:
 	Deck();
 	Deck(std::vector<Card*> deck);
 
-	virtual void pushCard(int outputDeck);		//push card to other deck. call pullcard at the end 
+	void pushCard(int transferCardIndex, Deck* transferDeck);		//push card to other deck. call pullcard at the end 
 	virtual void pullCard(Card* transferCard);		//on hand class, it''ll call some extra functions -> use virtual 
 
 	std::vector<Card*> getDeck();

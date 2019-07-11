@@ -6,12 +6,18 @@
 #include <vector>
 #include <string>
 
+//card library 
 #include "drawfour.h"
 #include "colorcard.h"
 #include "drawtwo.h"
 #include "reverse.h"
 #include "skip.h"
 #include "number.h"
+
+//deck library 
+#include "hand.h"
+#include "draw.h"
+#include "discard.h"
 
 class Test
 {
@@ -32,7 +38,7 @@ public:
 	//test specific decks
 	void setDeck(std::vector<Card*> deckList, int deckNumber);		//get a deck 
 	void printDeckList();		//print out that deck 
-	//void testDeckTransfer();		//push a specific card to other deck and test to see if it's there or not
+	void testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard);		//push a specific card to other deck and test to see if it's there or not
 
 	~Test();
 };

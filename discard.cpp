@@ -47,6 +47,13 @@ string Discard::getLastCardName()
 	return lastCardName;
 }
 
+//implement the discard pullCard function
+void Discard::pullCard(Card* transferCard)
+{
+	Deck::pullCard(transferCard);
+	setLastCard();
+}
+
 //implement the discard destructor
 Discard::~Discard()
 {

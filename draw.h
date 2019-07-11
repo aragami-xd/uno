@@ -10,6 +10,7 @@ public:
 	Draw(std::vector<Card*> deck);
 
 	void shuffle();
+	//draw doesn't have pullCard since it doesn't pull from anywhere at all
 
 	~Draw();
 };

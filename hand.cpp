@@ -1,4 +1,5 @@
 #include "hand.h"
+#include "discard.h"
 #include <iostream>
 using namespace std;
 
@@ -50,7 +51,8 @@ void Hand::sortHand()
 void Hand::pullCard(Card * transferCard) 
 {
 	Deck::pullCard(transferCard);
-
+	//draw phase ends?
+	//sortHand();
 }
 
 //implement the hand destructor

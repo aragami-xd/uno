@@ -77,18 +77,7 @@ int main()
 	loop content: drawfour, colorcard, 0, drawtwo, reverse, skip, 1, 2....9, drawtwo, reverese, skip, drawfour, 1, 2...
 	-> loop e.g. run this line: test->printCardList();
 	*/
-
-
-	//test function 
-	Test *test = new Test();
-	/*
-	test->setCard(cardList);
-	test->setDeck(cardList, 0);
-	test->printCardList();
-	test->printDeckList();
-	test->testCardName();
-	test->testCardColor();
-	*/
+	
 	
 
 
@@ -99,14 +88,28 @@ int main()
 	Draw *draw = new Draw(cardList);
 	draw->shuffle();
 	cardList = draw->getDeck();
+	/* 
 	for (int i=0; i<cardList.size(); i++) {
 		cout << cardList[i]->getName() << endl;
 	}
+	*/
 
 	Discard *discard = new Discard(cardList);
 	discard->setLastCard();
-	cout << discard->getLastCardName() << endl;
+	//cout << discard->getLastCardName() << endl;
 	
+
+
+	//test function 
+	Test *test = new Test();
+	
+	test->setCard(cardList);
+	test->setDeck(cardList, 0);
+	//test->printCardList();
+	//test->printDeckList();
+	//test->testCardName();
+	//test->testCardColor();
+	test->testDeckTransfer(draw, hand, cardList[26]);
 
 
 
@@ -122,6 +125,7 @@ int main()
 	for (int i=0; i<76; i++) {
 		delete number[i];
 	}
+
 	delete test;
 	delete hand, draw, discard;
 

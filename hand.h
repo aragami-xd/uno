@@ -2,6 +2,7 @@
 #define HAND_H
 
 #include "deck.h"
+//#include "discard.h"
 
 class Hand : public Deck 
 {
@@ -10,7 +11,7 @@ public:
 	Hand(std::vector<Card*> deck);
 
 	void sortHand();
-	virtual void pullCard(Card * transferCard);
+	virtual void pullCard(Card* transferCard);
 
 	~Hand();
 };

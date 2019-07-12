@@ -92,32 +92,11 @@ int main()
 	//hand, temp only. full game may use array of hands, array length 4 = 4 hands = 4 players 
 	Hand *hand = new Hand(cardList);
 	hand->sortHand();
-	cardList = hand->getDeck();
-	cout << "Hand:" << endl;
-	for (int i=0; i<cardList.size(); i++) {
-		cout << cardList[i]->getName() << endl;
-	}
-	cout << "Draw:" << endl;
+
 	Draw *draw = new Draw(cardList);
 	draw->shuffle();
-	cardList = draw->getDeck();	
-	for (int i=0; i<cardList.size(); i++) {
-		cout << cardList[i]->getName() << endl;
-	}
 
-	draw->pushCard(2, hand);
-
-	cout << "Hand:" << endl;
-	cardList = hand->getDeck();
-	for (int i=0; i<cardList.size(); i++) {
-		cout << cardList[i]->getName() << endl;
-	}
-	cout << "Draw:" << endl;
-	cardList = draw->getDeck();
-	for (int i=0; i<cardList.size(); i++) {
-		cout << cardList[i]->getName() << endl;
-	}
-	
+	//draw->pushCard(2, hand);
 
 	Discard *discard = new Discard(cardList);
 	//discard->setLastCard();

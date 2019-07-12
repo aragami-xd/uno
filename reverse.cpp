@@ -16,7 +16,8 @@ Reverse::Reverse(int cColor) : Action(cColor)
 //implement the reverse effect function
 void Reverse::effect()
 {
-	//effect
+	Core tempCore;
+	core.setDirection();
 }
 
 //implement the reverse destructor

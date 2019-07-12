@@ -38,6 +38,7 @@ int main()
 	vector<Card*> cardList;
 	int cardQty = 4;		//how many of each card will have 
 
+	/*
 	Card *drawFour[cardQty];		//4 of each wildcard
 	Card *colorCard[cardQty];	
 	Card *drawTwo[cardQty * 2];		//8 of each action card 
@@ -77,25 +78,49 @@ int main()
 	loop content: drawfour, colorcard, 0, drawtwo, reverse, skip, 1, 2....9, drawtwo, reverese, skip, drawfour, 1, 2...
 	-> loop e.g. run this line: test->printCardList();
 	*/
-	
+
+	//dummy card deck 
+	Card *drawFour = new Drawfour(5);
+	Card *skip = new Skip(2);
+	Card *number = new Number(3,6);
+	cardList.push_back(drawFour);
+	cardList.push_back(skip);
+	cardList.push_back(number);
 	
 
 
 	//hand, temp only. full game may use array of hands, array length 4 = 4 hands = 4 players 
 	Hand *hand = new Hand(cardList);
 	hand->sortHand();
-
-	Draw *draw = new Draw(cardList);
-	draw->shuffle();
-	cardList = draw->getDeck();
-	/* 
+	cardList = hand->getDeck();
+	cout << "Hand:" << endl;
 	for (int i=0; i<cardList.size(); i++) {
 		cout << cardList[i]->getName() << endl;
 	}
-	*/
+	cout << "Draw:" << endl;
+	Draw *draw = new Draw(cardList);
+	draw->shuffle();
+	cardList = draw->getDeck();	
+	for (int i=0; i<cardList.size(); i++) {
+		cout << cardList[i]->getName() << endl;
+	}
+
+	draw->pushCard(2, hand);
+
+	cout << "Hand:" << endl;
+	cardList = hand->getDeck();
+	for (int i=0; i<cardList.size(); i++) {
+		cout << cardList[i]->getName() << endl;
+	}
+	cout << "Draw:" << endl;
+	cardList = draw->getDeck();
+	for (int i=0; i<cardList.size(); i++) {
+		cout << cardList[i]->getName() << endl;
+	}
+	
 
 	Discard *discard = new Discard(cardList);
-	discard->setLastCard();
+	//discard->setLastCard();
 	//cout << discard->getLastCardName() << endl;
 	
 
@@ -103,19 +128,20 @@ int main()
 	//test function 
 	Test *test = new Test();
 	
-	test->setCard(cardList);
-	test->setDeck(cardList, 0);
+	//test->setCard(cardList);
+	//test->setDeck(cardList, 0);
 	//test->printCardList();
 	//test->printDeckList();
 	//test->testCardName();
 	//test->testCardColor();
-	test->testDeckTransfer(draw, hand, cardList[26]);
+	//test->testDeckTransfer(draw, hand, cardList[26]);
 
 
 
 
 
 	//delete drawFour, colorCard, drawTwo;
+	/*
 	for (int i=0; i<cardQty; i++) {
 		delete drawFour[i], colorCard[i];
 	}
@@ -125,7 +151,9 @@ int main()
 	for (int i=0; i<76; i++) {
 		delete number[i];
 	}
+	*/
 
+	delete drawFour, skip, number;
 	delete test;
 	delete hand, draw, discard;
 

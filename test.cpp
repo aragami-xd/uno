@@ -115,33 +115,19 @@ void Test::testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard)
 			transferCardIndex = i;
 		}
 	}
+	
 	for (int i=0; i<deckToDeck.size(); i++) {		//check how many transferCard in deckTo
 		if (transferCard->getName() == deckToDeck[i]->getName()) {
 			deckToTotal++;
 		}
 	}
 
-	deckFrom->pushCard(transferCardIndex, deckTo);		//call function 
-
-	/*
-	for (int i=0; i<deckFromDeck.size(); i++) {								//check how many transferCard in deckFrom, again
-		if (transferCard->getName() == deckFromDeck[i]->getName()) {		//but this time, minus one. if there is 1 in deckFrom and -1 in deckTo
-			deckFromTotal--;						//the test passes 
-		}
-	}
-
-	for (int i=0; i<deckToDeck.size(); i++) {		//check how many transferCard in deckTo, again
-		if (transferCard->getName() == deckToDeck[i]->getName()) {
-			deckToTotal--;
-		}
-	}
-	*/
-
-	if (deckFromTotal == 1 && deckToTotal == -1) {
+	if (deckFromTotal == 1 && deckToTotal == 1) {
 		cout << "Test card transfer PASSED" << endl;
 	} else {
 		cout << "Test card transfer FAILED" << " " << deckFromTotal << " " << deckToTotal << endl;
 	}
+
 }
 
 //implement the test destructor

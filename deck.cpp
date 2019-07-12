@@ -21,7 +21,7 @@ void Deck::pullCard(Card* transferCard)
 //implement the deck pushCard function
 void Deck::pushCard(int transferCardIndex, Deck* transferDeck)
 {
-	//transferDeck->pullCard(deckList[transferCardIndex]);
+	transferDeck->pullCard(deckList[transferCardIndex]);
 	deckList.erase(deckList.begin() + transferCardIndex);
 }
 

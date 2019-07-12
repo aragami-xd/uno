@@ -4,6 +4,8 @@ using namespace std;
 //implement the default colorcard constructor
 Colorcard::Colorcard()
 {
+	name = "Wildcard";
+	cardNumber = 13;
 }
 
 //implement the colorcard (cColor) constructor

@@ -4,6 +4,8 @@ using namespace std;
 //implement the default reverse constructor
 Reverse::Reverse()
 {
+	name += "Reverse";
+	cardNumber = 10;
 }
 
 //implement the reverse (cColor) constructor
@@ -17,7 +19,7 @@ Reverse::Reverse(int cColor) : Action(cColor)
 void Reverse::effect()
 {
 	Core tempCore;
-	core.setDirection();
+	tempCore.setDirection();
 }
 
 //implement the reverse destructor

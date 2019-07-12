@@ -22,7 +22,7 @@ public:
 	Player();
 
 	void setName(std::string pName);
-	void nameEasterEgg(string pName);	
+	void nameEasterEgg(std::string pName);	
 	std::string getName();
 
 	void setNextTurn();

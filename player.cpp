@@ -4,7 +4,7 @@ using namespace std;
 //implement the default player constructor
 Player::Player()
 {
-	nextTurn = 1;
+	nextTurn = 1;		//player can play next turn as default
 }
 
 //implement the player easterEgg function
@@ -34,7 +34,7 @@ void Player::nameEasterEgg(string pName)
 //implement the player setName function
 void Player::setName(string pName)
 {
-	easterEgg(pName);
+	nameEasterEgg(pName);
 	playerName = pName;
 }
 
@@ -44,7 +44,17 @@ string Player::getName()
 	return playerName;
 }
 
-//
+//implement the player setNextTurn function
+void Player::setNextTurn()
+{
+	nextTurn = nextTurn * (-1);
+}
+
+//implement the player getNextTurn function
+int Player::getNextTurn()
+{
+	return nextTurn;
+}
 
 //implement the player destructor
 Player::~Player()

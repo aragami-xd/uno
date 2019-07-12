@@ -16,9 +16,15 @@ public:
 	Card();
 	Card(int cColor);
 
+	
 	virtual void effect() =0;		//card effect, used for action and wildcards
+
+	void setColor(int cColor);
 	int getColor();			//only wildcards can setColor
+
 	std::string getName();
+
+	void setNumber(int cNumber);
 	int getNumber();
 
 	~Card();

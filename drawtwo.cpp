@@ -4,6 +4,8 @@ using namespace std;
 //implement the default drawtwo constructor
 Drawtwo::Drawtwo()
 {
+	name += "Draw Two";
+	cardNumber = 12;
 }
 
 //implement the drawtwo (cColor) constructor

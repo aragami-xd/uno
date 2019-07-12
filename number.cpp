@@ -5,6 +5,18 @@ using namespace std;
 //implement the default number constructor
 Number::Number()
 {
+	if (color == 1) {			//name depends on color
+		name = "Red ";
+	} else if (color == 2) {
+		name = "Green ";
+	} else if (color == 3) {
+		name = "Blue ";
+	} else if (color == 4) {
+		name = "Yellow ";
+	}
+	stringstream ss;		//convert int to string
+	ss << cardNumber;
+	name += ss.str();
 }
 
 //implement the number (cColor, cNumber) constructor

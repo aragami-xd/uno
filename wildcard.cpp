@@ -7,6 +7,7 @@ using namespace std;
 //implement the default wildcard constructor
 Wildcard::Wildcard() 
 {
+    cardType = 3;
 }
 
 //implment the wildcard color constructor

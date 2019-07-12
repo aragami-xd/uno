@@ -13,6 +13,12 @@ Card::Card(int cColor)
 	color = cColor;
 }
 
+//implement the card setColor function
+void Card::setColor(int cColor)
+{
+	color = cColor;
+}
+
 //implement the card getColor funciton
 int Card::getColor()
 {
@@ -23,6 +29,12 @@ int Card::getColor()
 string Card::getName()
 {
 	return name;
+}
+
+//implement the card setNumber function
+void Card::setNumber(int cNumber)
+{
+	cardNumber = cNumber;
 }
 
 //implement the card getNumber function

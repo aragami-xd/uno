@@ -30,11 +30,14 @@ public:
 
 	void setDirection();		//just take turnDirection * -1
 	int getDirection();
+
 	void setPlayers(std::vector<Player*> playerList);
 	std::vector<Player*> getPlayers();
 
+	int getPlayerXTurn();
+	
 	void turnCycle();		//loop between players as turns
-	~Card();
+	~Core();
 };
 
 #endif

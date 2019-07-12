@@ -4,6 +4,8 @@ using namespace std;
 //implement the default drawfour constructor
 Drawfour::Drawfour()
 {
+	name = "Draw 4 Wildcard";
+	cardNumber = 14;
 }
 
 //implement the drawfour (cColor) constructor

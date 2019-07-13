@@ -96,13 +96,15 @@ int main()
 	cardList.push_back(number);
 	*/
 
-	//cardList.push_back(drawFour);
-	//cardList.push_back(colorCard);
-	//cardList.push_back(number);
-	//cardList.push_back(drawTwo);
-	//cardList.push_back(reverse);
-	//cardList.push_back(skip);
-	//cardList.push_back(number);
+	/* 
+	cardList.push_back(drawFour);
+	cardList.push_back(colorCard);
+	cardList.push_back(number);
+	cardList.push_back(drawTwo);
+	cardList.push_back(reverse);
+	cardList.push_back(skip);
+	cardList.push_back(number);
+	*/
 
 
 	//hand, temp only. full game may use array of hands, array length 4 = 4 hands = 4 players 
@@ -121,12 +123,12 @@ int main()
 	//cout << cardList[2]->getName() << endl;
 
 	//test function 
-	//Test *test = new Test();
+	Test *test = new Test();
 	
-	//test->setCard(cardList);
-	//test->setDeck(cardList, 0);
-	//test->printCardList();
-	//test->printDeckList();
+	test->setCard(cardList);
+	test->setDeck(cardList, 0);
+	test->printCardList();
+	test->printDeckList();
 	//test->testCardName();
 	//test->testCardColor();
 	//test->testDeckTransfer(draw, hand, cardList[26]);
@@ -136,9 +138,9 @@ int main()
 
 
 	//delete cards
-	delete drawFour, colorCard, drawTwo, skip, reverse, number;
+	delete[] drawFour, colorCard, drawTwo, skip, reverse, number;
 	
-	//delete test;
+	delete test;
 	//delete hand, draw, discard;
 
 	return 0;

@@ -2,7 +2,7 @@
 #define CARD_H
 
 #include <string>
-#include "core.h"
+//#include "core.h"
 
 class Card
 {
@@ -22,6 +22,7 @@ public:
 	void setColor(int cColor);
 	int getColor();			//only wildcards can setColor
 
+	virtual void setName() =0;
 	std::string getName();
 
 	void setNumber(int cNumber);

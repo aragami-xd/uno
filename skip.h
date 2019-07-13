@@ -9,6 +9,7 @@ public:
 	Skip();
 	Skip(int cColor);
 
+	virtual void setName();
 	virtual void effect();
 
 	~Skip();

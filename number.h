@@ -9,6 +9,7 @@ public:
 	Number();
 	Number(int cColor, int cNumber);
 
+	virtual void setName();
 	virtual void effect();
 
 	~Number();

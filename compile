@@ -1,2 +1,2 @@
 echo 
-g++ core.h core.cpp card.h card.cpp wildcard.h wildcard.cpp action.h action.cpp drawfour.h drawfour.cpp colorcard.h colorcard.cpp drawtwo.h drawtwo.cpp reverse.h reverse.cpp skip.h skip.cpp number.h number.cpp deck.h deck.cpp hand.h hand.cpp draw.h draw.cpp discard.h discard.cpp player.h player.cpp test.h test.cpp main.cpp function.cpp
+g++ card.h card.cpp wildcard.h wildcard.cpp action.h action.cpp drawfour.h drawfour.cpp colorcard.h colorcard.cpp drawtwo.h drawtwo.cpp reverse.h reverse.cpp skip.h skip.cpp number.h number.cpp deck.h deck.cpp hand.h hand.cpp draw.h draw.cpp discard.h discard.cpp core.h core.cpp player.h player.cpp test.h test.cpp main.cpp function.cpp

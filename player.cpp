@@ -7,6 +7,18 @@ Player::Player()
 	nextTurn = 1;		//player can play next turn as default
 }
 
+//implement the player setPlayerDeck function
+void Player::setPlayerDeck(Deck* deck)
+{
+	playerHand = deck;
+}
+
+//implement the player getPlayerDeck function
+Deck* Player::getPlayerDeck()
+{
+	return playerHand;
+}
+
 //implement the player easterEgg function
 void Player::nameEasterEgg(string pName)
 {

@@ -9,6 +9,7 @@ public:
 	Reverse();
 	Reverse(int cColor);
 
+	virtual void setName();
 	virtual void effect();	
 
 	~Reverse();

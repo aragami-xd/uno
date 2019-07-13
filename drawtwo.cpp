@@ -15,6 +15,12 @@ Drawtwo::Drawtwo(int cColor) : Action(cColor)
 	cardNumber = 12;
 }
 
+//implement the drawtwo setName function
+void Drawtwo::setName()
+{
+	name += "Draw Two";
+}
+
 //implement the drawtwo effect function
 void Drawtwo::effect()
 {

@@ -92,8 +92,8 @@ void Test::printDeckList()
 	cout << "Print deck list: " << endl;
 	for (int i=0; i<3; i++) {
 		cout << "Deck number " << i << endl;
-		for (int m=0; m<deck[i].size(); i++) {
-			cout << ". " << deck[i][m]->getName() << endl;
+		for (int m=0; m<deck[i].size(); m++) {
+			cout << m <<". " << deck[i][m]->getName() << endl;
 		}
 		cout << endl;
 	}

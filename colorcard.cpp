@@ -15,6 +15,12 @@ Colorcard::Colorcard(int cColor) : Wildcard(cColor)
 	cardNumber = 13;
 }
 
+//implement the colorcard setName function
+void Colorcard::setName()
+{
+	name = "Wildcard";
+}
+
 //implement the colorcard effect function
 void Colorcard::effect()
 {

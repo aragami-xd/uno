@@ -9,6 +9,7 @@ public:
 	Colorcard();
 	Colorcard(int cColor);
 
+	virtual void setName();
 	void effect();
 
 	~Colorcard();

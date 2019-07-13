@@ -9,6 +9,9 @@ public:
 	Action();
 	Action(int cColor);
 
+	virtual void setName() =0;
+	virtual void effect() =0;
+
 	~Action();
 };
 

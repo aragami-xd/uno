@@ -14,9 +14,6 @@ Number::Number()
 	} else if (color == 4) {
 		name = "Yellow ";
 	}
-	stringstream ss;		//convert int to string
-	ss << cardNumber;
-	name += ss.str();
 }
 
 //implement the number (cColor, cNumber) constructor
@@ -32,6 +29,14 @@ Number::Number(int cColor, int cNumber) : Card(cColor)
 	} else if (color == 4) {
 		name = "Yellow ";
 	}
+	stringstream ss;		//convert int to string
+	ss << cardNumber;
+	name += ss.str();
+}
+
+//implement the number setName function
+void Number::setName()
+{
 	stringstream ss;		//convert int to string
 	ss << cardNumber;
 	name += ss.str();

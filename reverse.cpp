@@ -15,11 +15,17 @@ Reverse::Reverse(int cColor) : Action(cColor)
 	cardNumber = 10;
 }
 
+//implement the reverse setName function
+void Reverse::setName()
+{
+	name += "Reverse";
+}
+
 //implement the reverse effect function
 void Reverse::effect()
 {
-	Core tempCore;
-	tempCore.setDirection();
+	//Core tempCore;
+	//tempCore.setDirection();
 }
 
 //implement the reverse destructor

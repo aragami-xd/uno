@@ -15,6 +15,11 @@ Drawfour::Drawfour(int cColor) : Wildcard(cColor)
 	cardNumber = 14;
 }
 
+//implement the drawfour setName function
+void Drawfour::setName()
+{
+	name = "Draw 4 Wildcard";
+}
 //implement the drawfour effect function
 void Drawfour::effect()
 {

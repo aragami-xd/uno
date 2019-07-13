@@ -15,15 +15,23 @@ Skip::Skip(int cColor) : Action(cColor)
 	cardNumber = 11;
 }
 
+//implement the skip setName function
+void Skip::setName()
+{
+	name += "Skip";
+}
+
 //implement the skip effect function
 void Skip::effect()
 {
+	/* 
 	int playerXTurn;
 	Core tempCore;
 	playerXTurn = tempCore.getPlayerXTurn() + 1*tempCore.getDirection();		//since you skip next player as cycle
 
 	Player* skippedPlayer = tempCore.getPlayers()[playerXTurn];	//set player to that playerX
 	skippedPlayer->setNextTurn();
+	*/
 }
 
 

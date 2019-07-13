@@ -21,6 +21,9 @@ private:
 public: 
 	Player();
 
+	void setPlayerDeck(Deck* deck);
+	Deck* getPlayerDeck();
+
 	void setName(std::string pName);
 	void nameEasterEgg(std::string pName);	
 	std::string getName();

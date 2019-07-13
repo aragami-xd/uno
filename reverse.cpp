@@ -1,4 +1,5 @@
 #include "reverse.h"
+#include "core.h"
 using namespace std;
 
 //implement the default reverse constructor
@@ -24,8 +25,8 @@ void Reverse::setName()
 //implement the reverse effect function
 void Reverse::effect()
 {
-	//Core tempCore;
-	//tempCore.setDirection();
+	Core tempCore;
+	tempCore.setDirection();
 }
 
 //implement the reverse destructor

@@ -1,6 +1,7 @@
 #ifndef CORE_H
 #define CORE_H
 
+/* 
 //card library 
 #include "drawfour.h"
 #include "colorcard.h"
@@ -8,13 +9,14 @@
 #include "reverse.h"
 #include "skip.h"
 #include "number.h"
+*/
 
-//deck library 
-#include "hand.h"
-#include "draw.h"
-#include "discard.h"
+#include "deck.h"
+
 #include "player.h"
 
+#include <vector>
+#include <string>
 #include <iostream>
 
 class Core

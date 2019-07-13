@@ -7,6 +7,18 @@ Core::Core()
 	turnDirection = 1;
 }
 
+//implement the core setPlayer function
+void Core::setPlayers(vector<Player*> playerList)
+{
+	players = playerList;
+}
+
+//implement the core getPlayer function
+vector<Player*> Core::getPlayers()
+{
+	return players;
+}
+
 //implement the core setDirection function
 void Core::setDirection()
 {

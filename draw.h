@@ -9,7 +9,7 @@ public:
 	Draw();
 	Draw(std::vector<Card*> deck);
 
-	void shuffle();
+	virtual void shuffle();
 	//draw doesn't have pullCard since it doesn't pull from anywhere at all
 
 	~Draw();

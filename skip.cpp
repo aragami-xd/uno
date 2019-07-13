@@ -1,4 +1,6 @@
 #include "skip.h"
+#include "core.h"
+#include "player.h"
 using namespace std;
 
 //implement the default skip constructor
@@ -24,14 +26,14 @@ void Skip::setName()
 //implement the skip effect function
 void Skip::effect()
 {
-	/* 
+	
 	int playerXTurn;
 	Core tempCore;
 	playerXTurn = tempCore.getPlayerXTurn() + 1*tempCore.getDirection();		//since you skip next player as cycle
 
 	Player* skippedPlayer = tempCore.getPlayers()[playerXTurn];	//set player to that playerX
 	skippedPlayer->setNextTurn();
-	*/
+	
 }
 
 

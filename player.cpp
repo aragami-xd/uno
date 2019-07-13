@@ -8,13 +8,13 @@ Player::Player()
 }
 
 //implement the player setPlayerDeck function
-void Player::setPlayerDeck(Deck* deck)
+void Player::setPlayerHand(Hand* deck)
 {
 	playerHand = deck;
 }
 
 //implement the player getPlayerDeck function
-Deck* Player::getPlayerDeck()
+Deck* Player::getPlayerHand()
 {
 	return playerHand;
 }
@@ -66,6 +66,18 @@ void Player::setNextTurn()
 int Player::getNextTurn()
 {
 	return nextTurn;
+}
+
+//implement the player drawCard function
+void Player::drawCard(int noOfCard) 
+{
+	for (int i=0; i<noOfCard; i++) {					//drawing x cards
+		Draw tempDraw;
+		vector<Card*> tempDeck = tempDraw.getDeck();
+		tempDraw.pushCard(tempDeck.size() - 1, playerHand);
+		this_thread::sleep_for(chrono::milliseconds(500));			//delay the process by 500 milliseconds, mostly for animation 
+	}
+	playerHand->sortHand();				//sort it after have finished drawing cards 
 }
 
 //implement the player destructor

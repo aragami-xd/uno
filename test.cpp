@@ -1,5 +1,12 @@
 #include "test.h"
 
+#include "drawfour.h"
+#include "colorcard.h"
+#include "drawtwo.h"
+#include "reverse.h"
+#include "skip.h"
+#include "number.h"
+
 using namespace std;
 
 //implement the default test constructor

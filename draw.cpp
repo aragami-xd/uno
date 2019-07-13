@@ -14,7 +14,7 @@ Draw::Draw(vector<Card*> deck) : Deck(deck)
 	deckType = 2;
 }
 
-//implement the draw shuffle function
+//implement the draw sortDeck function
 void Draw::shuffle()
 {
 	random_shuffle(deckList.begin(), deckList.end()); 

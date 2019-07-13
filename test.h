@@ -7,17 +7,13 @@
 #include <string>
 
 //card library 
-#include "drawfour.h"
-#include "colorcard.h"
-#include "drawtwo.h"
-#include "reverse.h"
-#include "skip.h"
-#include "number.h"
+#include "card.h"
 
 //deck library 
-#include "hand.h"
-#include "draw.h"
-#include "discard.h"
+#include "deck.h"
+
+#include "core.h"
+#include "player.h"
 
 class Test
 {

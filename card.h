@@ -2,7 +2,6 @@
 #define CARD_H
 
 #include <string>
-//#include "core.h"
 
 class Card
 {

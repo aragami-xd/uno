@@ -19,7 +19,7 @@
 
 //core and player
 #include "core.h"
-//#include "player.h"
+#include "player.h"
 
 //test
 #include "test.h"

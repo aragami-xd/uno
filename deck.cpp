@@ -31,6 +31,12 @@ int Deck::getDeckType()
 	return deckType;
 }
 
+//implememt the deck setDeck function
+void Deck::setDeck(vector<Card*> deck)
+{
+	deckList = deck;
+}
+
 //implement the deck getDeck function
 vector<Card*> Deck::getDeck()
 {

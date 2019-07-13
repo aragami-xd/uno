@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+/* 
 //card library 
 #include "drawfour.h"
 #include "colorcard.h"
@@ -8,21 +9,28 @@
 #include "reverse.h"
 #include "skip.h"
 #include "number.h"
+*/
 
 #include "hand.h"
+#include "draw.h"
+#include "discard.h"
+
+
+#include <chrono>
+#include <thread>
 
 class Player
 {
 private: 
 	std::string playerName;
 	int nextTurn;		//see if player can play the next turn or not, 1 = yes
-	Deck* playerHand;
+	Hand* playerHand;
 
 public: 
 	Player();
 
-	void setPlayerDeck(Deck* deck);
-	Deck* getPlayerDeck();
+	void setPlayerHand(Hand* deck);
+	Deck* getPlayerHand();
 
 	void setName(std::string pName);
 	void nameEasterEgg(std::string pName);	
@@ -30,6 +38,8 @@ public:
 
 	void setNextTurn();
 	int getNextTurn();
+
+	void drawCard(int noOfCard);
 
 
 	~Player();

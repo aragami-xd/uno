@@ -24,6 +24,7 @@ void Colorcard::setName()
 //implement the colorcard effect function
 void Colorcard::effect()
 {
+	//this card doesn't really have any effect 
 }
 
 //implement the colorcard destructor

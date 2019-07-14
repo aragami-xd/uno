@@ -80,10 +80,7 @@ int main()
 	loop: red -> green -> blue ->yellow
 	loop content: drawfour, colorcard, 0, drawtwo, reverse, skip, 1, 2....9, drawtwo, reverese, skip, drawfour, 1, 2...
 	-> loop e.g. run this line: test->printCardList();
-	*/
-
-    
-    
+	*/ 
 	
 
 
@@ -98,6 +95,10 @@ int main()
 
 	Discard *discard = new Discard(cardList);
 	discard->setLastCard();
+
+
+	Core *core = new Core();
+	
 	
 
 
@@ -106,11 +107,13 @@ int main()
 	
 	test->setCard(cardList);
 	test->setDeck(cardList, 0);
-	test->printCardList();
-	test->printDeckList();
-	//test->testCardName();
-	//test->testCardColor();
+	//test->printCardList();
+	//test->printDeckList();
+	test->testCardName();
+	test->testCardColor();
 	//test->testDeckTransfer(draw, hand, cardList[26]);
+	test->testReverse();
+	test->testSkip();
 
 
 

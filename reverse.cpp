@@ -25,8 +25,7 @@ void Reverse::setName()
 //implement the reverse effect function
 void Reverse::effect()
 {
-	Core tempCore;
-	tempCore.setDirection();
+	//core->setDirection();
 }
 
 //implement the reverse destructor

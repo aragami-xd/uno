@@ -11,7 +11,7 @@
 #include "number.h"
 */
 
-#include "deck.h"
+//#include "deck.h"
 
 #include "player.h"
 
@@ -36,7 +36,11 @@ public:
 	void setPlayers(std::vector<Player*> playerList);
 	std::vector<Player*> getPlayers();
 
+	void setPlayerXTurn(int turn);
 	int getPlayerXTurn();
+
+	void reverse();
+	void skip();
 	
 	void turnCycle();		//loop between players as turns
 	~Core();

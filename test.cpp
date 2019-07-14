@@ -12,16 +12,6 @@ using namespace std;
 //implement the default test constructor
 Test::Test()
 {
-	/*
-	//if no deck is passed into the class, a default one will be created
-	Card *drawFour = new Drawfour(5);
-	Card *colorCard = new Colorcard(5);
-	Card *drawTwo = new Drawtwo(1);
-
-	card.push_back(drawFour);
-	card.push_back(colorCard);
-	card.push_back(drawTwo);
-	*/
 }
 
 
@@ -135,6 +125,39 @@ void Test::testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard)
 		cout << "Test card transfer FAILED" << " " << deckFromTotal << " " << deckToTotal << endl;
 	}
 
+}
+
+//implement the test testReverse function
+void Test::testReverse()
+{
+	/* 
+	Core core;
+	int direction = core.getDirection();
+	Reverse tempReverse;
+	tempReverse.effect(&core);
+	if (direction*(-1) == core.getDirection()) {
+		cout << "Reverse card test PASSED" << endl;
+	} else {
+		cout << "Reverse card test FAILED " << direction << endl;
+	}
+	*/
+}
+
+//implement the test testSkip function
+void Test::testSkip()
+{	
+	/* 
+	Player* player[2];
+	Core core;
+	core.setPlayerXTurn(0);
+	Skip tempSkip;
+	tempSkip.effect(&core);
+	if (player[1]->getNextTurn() == -1) {
+		cout << "Skip card test PASSED" << endl;
+	} else {
+		cout << "Skip card test FAILED" << player[1]->getNextTurn() << endl;
+	}
+	*/
 }
 
 //implement the test destructor

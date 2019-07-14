@@ -14,7 +14,6 @@ protected:
 public:
 	Card();
 	Card(int cColor);
-
 	
 	virtual void effect() =0;		//card effect, used for action and wildcards
 

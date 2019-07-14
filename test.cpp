@@ -130,7 +130,6 @@ void Test::testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard)
 //implement the test testReverse function
 void Test::testReverse()
 {
-	/* 
 	Core core;
 	int direction = core.getDirection();
 	Reverse tempReverse;
@@ -140,15 +139,14 @@ void Test::testReverse()
 	} else {
 		cout << "Reverse card test FAILED " << direction << endl;
 	}
-	*/
 }
 
 //implement the test testSkip function
 void Test::testSkip()
 {	
-	/* 
-	Player* player[2];
+	vector<Player*> player(2);
 	Core core;
+	core.setPlayers(player);
 	core.setPlayerXTurn(0);
 	Skip tempSkip;
 	tempSkip.effect(&core);
@@ -157,7 +155,6 @@ void Test::testSkip()
 	} else {
 		cout << "Skip card test FAILED" << player[1]->getNextTurn() << endl;
 	}
-	*/
 }
 
 //implement the test destructor

@@ -10,7 +10,7 @@ public:
 	Number(int cColor, int cNumber);
 
 	virtual void setName();
-	virtual void effect();
+	virtual void effect(Core* core);
 
 	~Number();
 };

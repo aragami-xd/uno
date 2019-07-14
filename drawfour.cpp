@@ -21,7 +21,7 @@ void Drawfour::setName()
 	name = "Draw 4 Wildcard";
 }
 //implement the drawfour effect function
-void Drawfour::effect()
+void Drawfour::effect(Core* core)
 {
     //effect
 }

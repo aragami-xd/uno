@@ -23,9 +23,9 @@ void Reverse::setName()
 }
 
 //implement the reverse effect function
-void Reverse::effect()
+void Reverse::effect(Core* core)
 {
-	//core->setDirection();
+	core->setDirection();
 }
 
 //implement the reverse destructor

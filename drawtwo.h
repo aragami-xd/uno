@@ -10,7 +10,7 @@ public:
 	Drawtwo(int cColor);
 
 	virtual void setName();
-	virtual void effect();
+	virtual void effect(Core* core);
 
 	~Drawtwo();
 };

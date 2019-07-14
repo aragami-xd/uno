@@ -22,7 +22,7 @@ void Drawtwo::setName()
 }
 
 //implement the drawtwo effect function
-void Drawtwo::effect()
+void Drawtwo::effect(Core* core)
 {
 	//effect
 }

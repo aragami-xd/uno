@@ -10,7 +10,7 @@ public:
     Drawfour(int cColor);
 
     virtual void setName();
-    void effect();
+    void effect(Core* core);
 
     ~Drawfour();
 };

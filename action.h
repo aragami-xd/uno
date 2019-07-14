@@ -10,7 +10,7 @@ public:
 	Action(int cColor);
 
 	virtual void setName() =0;
-	virtual void effect() =0;
+	virtual void effect(Core* core) =0;
 
 	~Action();
 };

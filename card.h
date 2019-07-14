@@ -3,6 +3,8 @@
 
 #include <string>
 
+class Core;
+
 class Card
 {
 protected:
@@ -15,7 +17,7 @@ public:
 	Card();
 	Card(int cColor);
 	
-	virtual void effect() =0;		//card effect, used for action and wildcards
+	virtual void effect(Core* core) =0;		//card effect, used for action and wildcards
 
 	void setColor(int cColor);
 	int getColor();			//only wildcards can setColor

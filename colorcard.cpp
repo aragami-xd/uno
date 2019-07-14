@@ -22,7 +22,7 @@ void Colorcard::setName()
 }
 
 //implement the colorcard effect function
-void Colorcard::effect()
+void Colorcard::effect(Core* core)
 {
 	//this card doesn't really have any effect 
 }

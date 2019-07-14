@@ -10,7 +10,7 @@ public:
 	Colorcard(int cColor);
 
 	virtual void setName();
-	void effect();
+	void effect(Core* core);
 
 	~Colorcard();
 };

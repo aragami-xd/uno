@@ -113,7 +113,7 @@ int main()
 	test->testCardColor();
 	//test->testDeckTransfer(draw, hand, cardList[26]);
 	test->testReverse();
-	test->testSkip();
+	//test->testSkip();
 
 
 

@@ -43,7 +43,7 @@ void Number::setName()
 }
 
 //implement the number effect function
-void Number::effect()
+void Number::effect(Core* core)
 {
 }
 

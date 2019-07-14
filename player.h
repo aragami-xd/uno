@@ -28,6 +28,7 @@ private:
 
 public: 
 	Player();
+	Player(Hand* deck);
 
 	void setPlayerHand(Hand* deck);
 	Deck* getPlayerHand();

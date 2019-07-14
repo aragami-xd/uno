@@ -7,6 +7,13 @@ Player::Player()
 	nextTurn = 1;		//player can play next turn as default
 }
 
+//implement the player (deck) cosntructor
+Player::Player(Hand *deck)
+{
+	playerHand = deck;
+	nextTurn = 1;
+}
+
 //implement the player setPlayerDeck function
 void Player::setPlayerHand(Hand* deck)
 {

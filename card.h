@@ -3,7 +3,7 @@
 
 #include <string>
 
-class Core;
+class Core;			//this single line solves everything (literally) 
 
 class Card
 {

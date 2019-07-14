@@ -85,8 +85,14 @@ int main()
 
 
 	//hand, temp only. full game may use array of hands, array length 4 = 4 hands = 4 players 
-	Hand *hand = new Hand(cardList);
-	hand->sortHand();
+	int noOfPlayer = 4;
+	vector<Hand*> hand;
+	vector<Player*> players;
+	for (int i=0; i<noOfPlayer; i++) {
+		hand[i] = new Hand(cardList);
+		players[i] = new Player(hand[i]);
+	}
+
 
 	Draw *draw = new Draw(cardList);
 	draw->shuffle();
@@ -98,22 +104,21 @@ int main()
 
 
 	Core *core = new Core();
+	//core->setPlayers(players);
 	
-	
-
 
 	//test function 
 	Test *test = new Test();
 	
-	test->setCard(cardList);
-	test->setDeck(cardList, 0);
+	//test->setCard(cardList);
+	//test->setDeck(cardList, 0);
 	//test->printCardList();
 	//test->printDeckList();
-	test->testCardName();
-	test->testCardColor();
+	//test->testCardName();
+	//test->testCardColor();
 	//test->testDeckTransfer(draw, hand, cardList[26]);
-	test->testReverse();
-	//test->testSkip();
+	//test->testReverse();
+	test->testSkip(core);
 
 
 
@@ -131,7 +136,10 @@ int main()
 	}
 
 	delete test;
-	delete hand, draw, discard;
+	delete draw, discard;
+	for (int i=0; i<noOfPlayer; i++) {
+		delete hand[i], players[i];
+	}
 
 	return 0;
 }

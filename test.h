@@ -40,7 +40,7 @@ public:
 	void testReverse();
 
 	//test skip card
-	void testSkip();
+	void testSkip(Core* core);
 
 	~Test();
 };

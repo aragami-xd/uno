@@ -86,8 +86,8 @@ int main()
 
 	//hand, temp only. full game may use array of hands, array length 4 = 4 hands = 4 players 
 	int noOfPlayer = 4;
-	vector<Hand*> hand;
-	vector<Player*> players;
+	vector<Hand*> hand(noOfPlayer);
+	vector<Player*> players(noOfPlayer);
 	for (int i=0; i<noOfPlayer; i++) {
 		hand[i] = new Hand(cardList);
 		players[i] = new Player(hand[i]);
@@ -104,7 +104,7 @@ int main()
 
 
 	Core *core = new Core();
-	//core->setPlayers(players);
+	core->setPlayers(players);
 	
 
 	//test function 
@@ -140,6 +140,7 @@ int main()
 	for (int i=0; i<noOfPlayer; i++) {
 		delete hand[i], players[i];
 	}
+	delete core;
 
 	return 0;
 }

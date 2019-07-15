@@ -148,17 +148,15 @@ void Test::testSkip(Core* core)
 {	
 	//create 2 players, add to core, set turn to player 1, call function and get the player 2
 	core->setPlayerXTurn(0);
-	//Skip tempSkip;
-	//tempSkip.effect(core);
-	//Player* player = core->getPlayers()[1];
+	Skip tempSkip;
+	tempSkip.effect(core);
+	Player* player = core->getPlayers()[1];
 	
-	/* 
 	if (player->getNextTurn() == -1) {
 		cout << "Skip card test PASSED" << endl;
 	} else {
 		cout << "Skip card test FAILED" << player->getNextTurn() << endl;
 	}
-	*/
 }
 
 //implement the test destructor

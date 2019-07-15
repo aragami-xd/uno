@@ -1,4 +1,5 @@
 #include "player.h"
+#include <iostream>
 using namespace std;
 
 //implement the default player constructor
@@ -76,13 +77,12 @@ int Player::getNextTurn()
 }
 
 //implement the player drawCard function
-void Player::drawCard(int noOfCard) 
+void Player::drawCard(int noOfCard, Draw* draw) 
 {
 	for (int i=0; i<noOfCard; i++) {					//drawing x cards
-		Draw tempDraw;
-		vector<Card*> tempDeck = tempDraw.getDeck();
-		tempDraw.pushCard(tempDeck.size() - 1, playerHand);
-		this_thread::sleep_for(chrono::milliseconds(500));			//delay the process by 500 milliseconds, mostly for animation 
+		vector<Card*> hand = draw->getDeck();			//put deck here since the program has to update the deck constantly 
+		draw->pushCard(0, playerHand);		//draw to last card to playerHand, which then delete that card in the Draw deck 
+		this_thread::sleep_for(chrono::milliseconds(150));			//delay the process by 500 milliseconds, mostly for animation 
 	}
 	playerHand->sortHand();				//sort it after have finished drawing cards 
 }

@@ -57,16 +57,20 @@ void Core::turnCycle()
 	}
 }
 
-//implement the core reverse function
-void Core::reverse()
+//implement the core beginGameDraw function
+void Core::beginGameDraw(Draw* draw)
 {
-	turnDirection = turnDirection * (-1);
-}
+	for (int i=0; i<7; i++) {			//each player gets 7 cards at the begin of the game
+		for (int m=0; m<4; m++) {
+			players[m]->drawCard(1, draw);
+			this_thread::sleep_for(chrono::milliseconds(150));
+		}
+	}
 
-//implement the core skip function
-void Core::skip()
-{
-
+	vector<Card*> hand = (players[0]->getPlayerHand())->getDeck();
+	for (int m=0; m<7; m++) {
+		cout << hand[m]->getName() << endl;
+	}
 }
 
 //implement the core destructor

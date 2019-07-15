@@ -1,14 +1,6 @@
 #ifndef DECK_H
 #define DECK_H
 
-/* 
-#include "drawfour.h"
-#include "colorcard.h"
-#include "drawtwo.h"
-#include "reverse.h"
-#include "skip.h"
-#include "number.h"
-*/
 #include "card.h"
 
 #include <string>

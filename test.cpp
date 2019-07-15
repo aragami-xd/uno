@@ -98,6 +98,7 @@ void Test::printDeckList()
 	cout << endl;
 }
 
+/* */
 //implement the test testDeckTransfer function
 void Test::testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard)
 {

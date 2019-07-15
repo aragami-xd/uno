@@ -96,7 +96,7 @@ int main()
 
 	Draw *draw = new Draw(cardList);
 	draw->shuffle();
-
+	cout << endl;
 	//draw->pushCard(2, hand);
 
 	Discard *discard = new Discard(cardList);
@@ -105,6 +105,9 @@ int main()
 
 	Core *core = new Core();
 	core->setPlayers(players);
+	//core->beginGameDraw(draw);
+	players[0]->drawCard(5, draw);
+	vector<Card*> pCard = (players[0]->getPlayerHand())->getDeck();
 	
 
 	//test function 
@@ -118,8 +121,7 @@ int main()
 	//test->testCardColor();
 	//test->testDeckTransfer(draw, hand, cardList[26]);
 	//test->testReverse();
-	test->testSkip(core);
-
+	//test->testSkip(core);
 
 
 

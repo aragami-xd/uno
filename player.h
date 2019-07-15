@@ -40,7 +40,7 @@ public:
 	void setNextTurn();
 	int getNextTurn();
 
-	void drawCard(int noOfCard);
+	void drawCard(int noOfCard, Draw* draw);
 
 
 	~Player();

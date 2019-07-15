@@ -11,13 +11,13 @@
 #include "number.h"
 */
 
-//#include "deck.h"
-
 #include "player.h"
 
 #include <vector>
 #include <string>
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 class Core
 {
@@ -32,17 +32,18 @@ public:
 
 	void setDirection();		//just take turnDirection * -1
 	int getDirection();
-
+	
+	//basic functions 
 	void setPlayers(std::vector<Player*> playerList);
 	std::vector<Player*> getPlayers();
 
 	void setPlayerXTurn(int turn);
 	int getPlayerXTurn();
-
-	void reverse();
-	void skip();
 	
+	////action sets 
 	void turnCycle();		//loop between players as turns
+	void beginGameDraw(Draw* draw);
+
 	~Core();
 };
 

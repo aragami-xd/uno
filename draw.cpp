@@ -5,7 +5,7 @@
 using namespace std;
 
 //implement the default draw constructor
-Draw::Draw()
+Draw::Draw() : Deck()
 {
 	deckType = 2;
 }

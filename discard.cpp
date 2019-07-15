@@ -2,7 +2,7 @@
 using namespace std;
 
 //implement the default discard constructor
-Discard::Discard()
+Discard::Discard() : Deck()
 {
 	deckType = 3;
 }

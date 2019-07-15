@@ -63,13 +63,13 @@ void Core::beginGameDraw(Draw* draw)
 	for (int i=0; i<7; i++) {			//each player gets 7 cards at the begin of the game
 		for (int m=0; m<4; m++) {
 			players[m]->drawCard(1, draw);
-			this_thread::sleep_for(chrono::milliseconds(150));
+			//this_thread::sleep_for(chrono::milliseconds(150));
 		}
 	}
 
-	vector<Card*> hand = (players[0]->getPlayerHand())->getDeck();
-	for (int m=0; m<7; m++) {
-		cout << hand[m]->getName() << endl;
+	vector<Card*> pCard = (players[0]->getPlayerHand())->getDeck();
+	for (int m=0; m<pCard.size(); m++) {
+		cout << pCard[m]->getName() << endl;
 	}
 }
 

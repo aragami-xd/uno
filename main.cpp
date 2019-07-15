@@ -84,12 +84,12 @@ int main()
 	
 
 
-	//hand, temp only. full game may use array of hands, array length 4 = 4 hands = 4 players 
+	//hand and players 
 	int noOfPlayer = 4;
 	vector<Hand*> hand(noOfPlayer);
 	vector<Player*> players(noOfPlayer);
 	for (int i=0; i<noOfPlayer; i++) {
-		hand[i] = new Hand(cardList);
+		hand[i] = new Hand();
 		players[i] = new Player(hand[i]);
 	}
 
@@ -105,9 +105,7 @@ int main()
 
 	Core *core = new Core();
 	core->setPlayers(players);
-	//core->beginGameDraw(draw);
-	players[0]->drawCard(5, draw);
-	vector<Card*> pCard = (players[0]->getPlayerHand())->getDeck();
+	core->beginGameDraw(draw);
 	
 
 	//test function 

@@ -4,7 +4,7 @@
 using namespace std;
 
 //implement the default hand constructor
-Hand::Hand()
+Hand::Hand() : Deck()
 {
 	deckType = 1;
 }

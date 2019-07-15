@@ -5,6 +5,8 @@ using namespace std;
 //implement the default class constructor
 Deck::Deck()
 {
+	vector<Card*> deck;
+	deckList = deck;
 }
 
 //implement the deck (deck) constructor
@@ -24,7 +26,6 @@ void Deck::pushCard(int transferCardIndex, Deck* transferDeck)
 {
 	transferDeck->pullCard(deckList[transferCardIndex]);
 	deckList.erase(deckList.begin() + transferCardIndex);
-	cout << deckList[transferCardIndex]->getName() << endl;
 }
 
 //implement the deck getDeckType function

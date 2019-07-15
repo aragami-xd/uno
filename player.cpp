@@ -6,6 +6,8 @@ using namespace std;
 Player::Player()
 {
 	nextTurn = 1;		//player can play next turn as default
+	Hand* deck;
+	playerHand = deck;
 }
 
 //implement the player (deck) cosntructor
@@ -82,7 +84,7 @@ void Player::drawCard(int noOfCard, Draw* draw)
 	for (int i=0; i<noOfCard; i++) {					//drawing x cards
 		vector<Card*> hand = draw->getDeck();			//put deck here since the program has to update the deck constantly 
 		draw->pushCard(0, playerHand);		//draw to last card to playerHand, which then delete that card in the Draw deck 
-		this_thread::sleep_for(chrono::milliseconds(150));			//delay the process by 500 milliseconds, mostly for animation 
+		//this_thread::sleep_for(chrono::milliseconds(150));			//delay the process by 500 milliseconds, mostly for animation 
 	}
 	playerHand->sortHand();				//sort it after have finished drawing cards 
 }

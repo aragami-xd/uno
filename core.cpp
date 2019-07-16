@@ -92,11 +92,11 @@ void Core::turnCycle()
 }
 
 //implement the core beginGameDraw function
-void Core::beginGameDraw(Draw* draw)
+void Core::beginGameDraw()
 {
 	for (int i=0; i<7; i++) {			//each player gets 7 cards at the begin of the game
-		for (int m=0; m<4; m++) {
-			players[m]->drawCard(1, draw);
+		for (int m=0; m<players.size(); m++) {
+			players[m]->drawCard(1);
 			//::animationDelay(400);
 		}
 	}
@@ -110,13 +110,41 @@ bool Core::canPlay()
 
 	vector<Card*> playerHand =  players[playerXTurn]->getPlayerHand()->getDeck();
 	for (int i=0; i<playerHand.size(); i++) {
-		if (playerHand[i]->getColor() == currentColor || playerHand[i]->getColor == 5) {		//5 is wildcard color, can be played any time
+		if (playerHand[i]->getColor() == currentColor || playerHand[i]->getColor() == 5) {		//5 is wildcard color, can be played any time
 			return true;
 		} else if (playerHand[i]->getNumber() == currentNumber) {			//no need to check for same wildcard number, it's checked above
 			return true;
 		}
 	}
 	return false;			//return false at the end if there is no matching color or number
+}
+
+//implement the core forceDraw function
+void Core::forceDraw()
+{
+	if (canPlay() == false) {
+		bool compatibleCard = false;
+		while (compatibleCard == false) {			//while the card is incompatible, continue to draw 
+			players[playerXTurn]->drawCard(1);
+			vector<Card*> newCard = players[playerXTurn]->getPlayerHand()->getDeck();	
+			Card* lastNewCard = newCard[newCard.size() - 1];
+
+			if (lastNewCard->getColor() == discard->getLastCardColor() || lastNewCard->getColor() == 5 || lastNewCard->getNumber() == discard->getLastCardNumber()) {		
+				//i code at 2am and don't want to think anymore. so we only talk wooden pickaxe efficiency i here, no diamond pickaxe efficiency v - unbreaking iv - mending i
+				//i.e. there are repetitive code
+				cout << "Compatible card. Play or keep?" << endl;		//ask if player wants to keep or play the card
+				cout << "1. Play" << endl;
+				cout << "2. Keep" << endl;
+				string choice;
+				cin >> choice;
+				if (choice == "1") {
+					players[playerXTurn]->playCard(newCard.size() - 1);		//play the last card
+				} else if (choice != "2" || choice != "1") {
+					cout << "Don't mess around. Card will be kept" << endl;		//if player decides to be a dickhead, show them who is a dickhead by keep the card and have 1 more card in the hand (which is not fun)
+				}
+			}
+		}
+	}
 }
 
 //implement the core destructor

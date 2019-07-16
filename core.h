@@ -49,8 +49,9 @@ public:
 	
 	////action sets 
 	void turnCycle();		//loop between players as turns
-	void beginGameDraw(Draw* draw);
-	bool canPlay();
+	void beginGameDraw();			//drawing 7 cards at the beginning of the game
+	bool canPlay();			//see if player can play any card in their hand or not
+	void forceDraw();		//if player cannot play any card, then they're forced to draw until they got a compatible card 
 
 	~Core();
 };

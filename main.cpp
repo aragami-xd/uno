@@ -98,7 +98,6 @@ int main()
 
 	Draw *draw = new Draw(cardList);
 	draw->shuffle();
-	cout << endl;
 	//draw->pushCard(2, hand);
 
 	Discard *discard = new Discard(cardList);
@@ -109,7 +108,11 @@ int main()
 	core->setPlayers(players);
 	core->setDraw(draw);
 	core->setDiscard(discard);
-	core->beginGameDraw(draw);
+	//core->beginGameDraw();
+
+	for (int i=0; i<noOfPlayer; i++) {
+		players[i]->setCore(core);
+	}
 	
 
 	//test function 

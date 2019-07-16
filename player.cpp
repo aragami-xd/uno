@@ -1,4 +1,5 @@
 #include "player.h"
+#include "core.h"
 #include <iostream>
 using namespace std;
 
@@ -78,19 +79,26 @@ int Player::getNextTurn()
 	return nextTurn;
 }
 
-//implement the player drawCard function
-void Player::drawCard(int noOfCard, Draw* draw) 
+//implement the player setCore function
+void Player::setCore(Core* gameCore)
 {
+	core = gameCore;
+}
+
+//implement the player drawCard function
+void Player::drawCard(int noOfCard) 
+{
+	Draw* draw = core->getDraw();
 	for (int i=0; i<noOfCard; i++) {					//drawing x cards
-		vector<Card*> hand = draw->getDeck();			//put deck here since the program has to update the deck constantly 
-		draw->pushCard(0, playerHand);		//draw to last card to playerHand, which then delete that card in the Draw deck 
+		vector<Card*> hand = core->getDraw()->getDeck();			//put deck here since the program has to update the deck constantly 
+		core->getDraw()->pushCard(0, playerHand);		//draw to last card to playerHand, which then delete that card in the Draw deck 
 		
 		//high cohesion, remember? if it doesn't really belong here, don't put it here
 		//cout << playerHand->getDeck()[playerHand->getDeck().size()-1]->getName() << endl;		//print out the newest card
 		
 		//::animationDelay(400);			//delay the process by 150 milliseconds, mostly for animation 
 	}
-	playerHand->sortHand();				//sort it after have finished drawing cards 
+	//playerHand->sortHand();				//sort it after have finished drawing cards 
 
 	//::clearConsole();
 
@@ -100,11 +108,11 @@ void Player::drawCard(int noOfCard, Draw* draw)
 }
 
 //implement the player playCard fuction
-void Player::playCard(int cardIndex, Discard* discard, Core* core)
+void Player::playCard(int cardIndex)
 {
 	Card* playedCard = (playerHand->getDeck()[cardIndex]);
 	playedCard->effect(core);
-	playerHand->pushCard(cardIndex, discard);
+	playerHand->pushCard(cardIndex, core->getDiscard());
 }
 
 //implement the player destructor

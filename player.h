@@ -18,12 +18,15 @@
 
 #include "interface.h"
 
+class Core;
+
 class Player
 {
 private: 
 	std::string playerName;
 	int nextTurn;		//see if player can play the next turn or not, 1 = yes
 	Hand* playerHand;
+	Core* core;
 
 public: 
 	Player();
@@ -40,9 +43,11 @@ public:
 	void setNextTurn();
 	int getNextTurn();
 
+	void setCore(Core* gameCore);
+
 	//action set
-	void drawCard(int noOfCard, Draw* draw);
-	void playCard(int cardIndex, Discard* discard, Core* core);
+	void drawCard(int noOfCard);
+	void playCard(int cardIndex);
 
 	~Player();
 };

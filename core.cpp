@@ -97,9 +97,26 @@ void Core::beginGameDraw(Draw* draw)
 	for (int i=0; i<7; i++) {			//each player gets 7 cards at the begin of the game
 		for (int m=0; m<4; m++) {
 			players[m]->drawCard(1, draw);
-			//this_thread::sleep_for(chrono::milliseconds(150));
+			//::animationDelay(400);
 		}
 	}
+}
+
+//implement the core canPlay function
+bool Core::canPlay()
+{
+	int currentColor = discard->getLastCardColor();
+	int currentNumber = discard->getLastCardNumber();
+
+	vector<Card*> playerHand =  players[playerXTurn]->getPlayerHand()->getDeck();
+	for (int i=0; i<playerHand.size(); i++) {
+		if (playerHand[i]->getColor() == currentColor || playerHand[i]->getColor == 5) {		//5 is wildcard color, can be played any time
+			return true;
+		} else if (playerHand[i]->getNumber() == currentNumber) {			//no need to check for same wildcard number, it's checked above
+			return true;
+		}
+	}
+	return false;			//return false at the end if there is no matching color or number
 }
 
 //implement the core destructor

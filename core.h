@@ -12,12 +12,11 @@
 */
 
 #include "player.h"
+#include "interface.h"
 
 #include <vector>
 #include <string>
 #include <iostream>
-#include <chrono>
-#include <thread>
 
 class Core
 {
@@ -51,6 +50,7 @@ public:
 	////action sets 
 	void turnCycle();		//loop between players as turns
 	void beginGameDraw(Draw* draw);
+	bool canPlay();
 
 	~Core();
 };

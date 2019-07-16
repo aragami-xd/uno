@@ -2,6 +2,7 @@
 #define CARD_H
 
 #include <string>
+#include "interface.h"
 
 class Core;			//this single line solves everything (literally) 
 

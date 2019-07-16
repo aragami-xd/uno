@@ -16,8 +16,7 @@
 #include "discard.h"
 
 
-#include <chrono>
-#include <thread>
+#include "interface.h"
 
 class Player
 {

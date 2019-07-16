@@ -24,6 +24,9 @@
 //test
 #include "test.h"
 
+//UI
+#include "interface.h"
+
 using namespace std;
 
 //extern function
@@ -33,9 +36,8 @@ extern int startMenu();
 //main program
 int main()
 {
-	//int menuOption = startMenu();
-	//this_thread::sleep_for(chrono::seconds(1));
 
+	//int menuOption = startMenu();
 
 	//create the deck (create card vector and assign cards into it) 
 	vector<Card*> cardList;
@@ -107,7 +109,7 @@ int main()
 	core->setPlayers(players);
 	core->setDraw(draw);
 	core->setDiscard(discard);
-	//core->beginGameDraw(draw);
+	core->beginGameDraw(draw);
 	
 
 	//test function 
@@ -125,12 +127,12 @@ int main()
 	//test->testSkip(skip[0]);
 	//test->testDrawCard(drawFour[0]);
 	
+	/*
 	core->setPlayerXTurn(0);
 	skip[0]->effect(core);
-	cout << core->getPlayers()[1]->getNextTurn() << endl;
-
 	drawFour[0]->effect(core);
-	cout << core->getPlayers()[1]->getPlayerHand()->getDeck().size() << endl;
+	*/
+
 
 
 
@@ -153,6 +155,5 @@ int main()
 		delete hand[i], players[i];
 	}
 	delete core;
-
 	return 0;
 }

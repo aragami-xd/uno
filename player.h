@@ -30,6 +30,7 @@ public:
 	Player();
 	Player(Hand* deck);
 
+	//basic functions
 	void setPlayerHand(Hand* deck);
 	Deck* getPlayerHand();
 
@@ -40,8 +41,9 @@ public:
 	void setNextTurn();
 	int getNextTurn();
 
+	//action set
 	void drawCard(int noOfCard, Draw* draw);
-
+	void playCard(int cardIndex, Discard* discard, Core* core);
 
 	~Player();
 };

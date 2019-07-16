@@ -130,14 +130,18 @@ void Test::testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard)
 
 }
 
-//implement the test testReverse function
-void Test::testReverse()
+//implement the test setCore function
+void Test::setCore(Core* gameCore)
 {
-	Core core;
-	int direction = core.getDirection();			//get the direction, call the function and get the direction 
-	Reverse tempReverse;
-	tempReverse.effect(&core);
-	if (direction*(-1) == core.getDirection()) {
+	core = gameCore;
+}
+
+//implement the test testReverse function
+void Test::testReverse(Card* reverse)
+{
+	int direction = core->getDirection();			//get the direction, call the function and get the direction again
+	reverse->effect(core);
+	if (direction*(-1) == core->getDirection()) {
 		cout << "Reverse card test PASSED" << endl;
 	} else {
 		cout << "Reverse card test FAILED " << direction << endl;
@@ -145,18 +149,34 @@ void Test::testReverse()
 }
 
 //implement the test testSkip function
-void Test::testSkip(Core* core)
+void Test::testSkip(Card* skip)
 {	
-	//create 2 players, add to core, set turn to player 1, call function and get the player 2
+	//set turn to player 1, call function and get the player 2 status
 	core->setPlayerXTurn(0);
-	Skip tempSkip;
-	tempSkip.effect(core);
-	Player* player = core->getPlayers()[1];
-	
-	if (player->getNextTurn() == -1) {
+	skip->effect(core);
+	if (core->getPlayers()[1]->getNextTurn() == -1) {
 		cout << "Skip card test PASSED" << endl;
 	} else {
-		cout << "Skip card test FAILED" << player->getNextTurn() << endl;
+		cout << "Skip card test FAILED" << core->getPlayers()[1]->getNextTurn() << endl;
+	}
+}
+
+//implement the test testDrawCard function
+void Test::testDrawCard(Card* drawFour)
+{
+	//test drawfour card only this time, since drawtwo is EXACTLY the same, just less cards
+	//set turn to player 1, call function then see how many cards player 2 has after the function is called
+	core->setPlayerXTurn(0);
+	Player* player = core->getPlayers()[1];
+	Deck* p1Hand = player->getPlayerHand();
+	int handSize = p1Hand->getDeck().size();
+	drawFour->effect(core);
+	int diff = p1Hand->getDeck().size() - handSize;
+
+	if (diff == 4) {
+		cout << "Draw card test PASSED" << endl;
+	} else if (diff != 4) {
+		cout << "Draw card test FAILED " << diff << endl;
 	}
 }
 

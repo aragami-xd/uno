@@ -26,19 +26,27 @@ private:
 	int turnDirection; 	//1 for clockwise, -1 for counter clockwise turn
 	int playerXTurn; 
 	bool endGame;		//F in the chat for iron man
+	Draw *draw;
+	Discard *discard;
 
 public: 
 	Core();
 
+	//basic functions (i.e. set and get)
 	void setDirection();		//just take turnDirection * -1
 	int getDirection();
 	
-	//basic functions 
 	void setPlayers(std::vector<Player*> playerList);
 	std::vector<Player*> getPlayers();
 
 	void setPlayerXTurn(int turn);
 	int getPlayerXTurn();
+
+	void setDraw(Draw* drawDeck);
+	Draw* getDraw();
+
+	void setDiscard(Discard* discardDeck);
+	Discard* getDiscard();
 	
 	////action sets 
 	void turnCycle();		//loop between players as turns

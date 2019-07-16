@@ -89,6 +89,14 @@ void Player::drawCard(int noOfCard, Draw* draw)
 	playerHand->sortHand();				//sort it after have finished drawing cards 
 }
 
+//implement the player playCard fuction
+void Player::playCard(int cardIndex, Discard* discard, Core* core)
+{
+	Card* playedCard = (playerHand->getDeck()[cardIndex]);
+	playedCard->effect(core);
+	playerHand->pushCard(cardIndex, discard);
+}
+
 //implement the player destructor
 Player::~Player()
 {

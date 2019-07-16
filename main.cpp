@@ -105,7 +105,9 @@ int main()
 
 	Core *core = new Core();
 	core->setPlayers(players);
-	core->beginGameDraw(draw);
+	core->setDraw(draw);
+	core->setDiscard(discard);
+	//core->beginGameDraw(draw);
 	
 
 	//test function 
@@ -113,13 +115,23 @@ int main()
 	
 	//test->setCard(cardList);
 	//test->setDeck(cardList, 0);
+	//test->setCore(core);
 	//test->printCardList();
 	//test->printDeckList();
 	//test->testCardName();
 	//test->testCardColor();
 	//test->testDeckTransfer(draw, hand, cardList[26]);
-	//test->testReverse();
-	//test->testSkip(core);
+	//test->testReverse(reverse[0]);
+	//test->testSkip(skip[0]);
+	//test->testDrawCard(drawFour[0]);
+	
+	core->setPlayerXTurn(0);
+	skip[0]->effect(core);
+	cout << core->getPlayers()[1]->getNextTurn() << endl;
+
+	drawFour[0]->effect(core);
+	cout << core->getPlayers()[1]->getPlayerHand()->getDeck().size() << endl;
+
 
 
 

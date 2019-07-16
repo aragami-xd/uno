@@ -1,4 +1,6 @@
 #include "drawfour.h"
+#include "core.h"
+#include "player.h"
 using namespace std;
 
 //implement the default drawfour constructor
@@ -23,7 +25,11 @@ void Drawfour::setName()
 //implement the drawfour effect function
 void Drawfour::effect(Core* core)
 {
-    //effect
+    int playerXTurn;
+	playerXTurn = core->getPlayerXTurn() + 1*core->getDirection();		//since you skip next player as cycle
+
+	Player* drawPlayer = core->getPlayers()[playerXTurn];	//set player to that playerX
+	drawPlayer->drawCard(4, core->getDraw());
 }
 
 //implement the drawfour destructor

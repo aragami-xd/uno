@@ -26,13 +26,11 @@ void Skip::setName()
 //implement the skip effect function
 void Skip::effect(Core* core)
 {
-	
 	int playerXTurn;
 	playerXTurn = core->getPlayerXTurn() + 1*core->getDirection();		//since you skip next player as cycle
-
-	Player* skippedPlayer = core->getPlayers()[playerXTurn];	//set player to that playerX
-	skippedPlayer->setNextTurn();
 	
+	Player* skippedPlayer = core->getPlayers()[playerXTurn];	//set player to that playerX
+	skippedPlayer->setNextTurn();	
 }
 
 

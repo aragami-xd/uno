@@ -4,13 +4,18 @@ using namespace std;
 //implement the default core constructor
 Core::Core()
 {
+	vector<Player*> playerList;
+	players = playerList;
 	turnDirection = 1;
+	endGame = false;
 }
 
 //implement the core setPlayer function
 void Core::setPlayers(vector<Player*> playerList)
 {
 	players = playerList;
+	turnDirection = 1;
+	endGame = false;
 }
 
 //implement the core getPlayer function
@@ -35,6 +40,9 @@ int Core::getDirection()
 void Core::setPlayerXTurn(int turn)
 {
 	playerXTurn = turn;
+	if (turn < 0) {
+		turn = 3;
+	}
 }
 
 //implement the core getPlayerXTurn function
@@ -42,6 +50,32 @@ int Core::getPlayerXTurn()
 {
 	return playerXTurn;
 }
+
+//implement the core setDraw function
+void Core::setDraw(Draw *drawDeck)
+{
+	draw = drawDeck;
+}
+
+//implement the coire getDraw function
+Draw* Core::getDraw()
+{
+	return draw;
+}
+
+//implement the core setDiscard fucntion
+void Core::setDiscard(Discard *discardDeck)
+{
+	discard = discardDeck;
+}
+
+//implement the core getDiscard function 
+Discard* Core::getDiscard()
+{
+	return discard;
+}
+
+
 
 //implement the core turnCycle function
 void Core::turnCycle()
@@ -65,11 +99,6 @@ void Core::beginGameDraw(Draw* draw)
 			players[m]->drawCard(1, draw);
 			//this_thread::sleep_for(chrono::milliseconds(150));
 		}
-	}
-
-	vector<Card*> pCard = (players[0]->getPlayerHand())->getDeck();
-	for (int m=0; m<pCard.size(); m++) {
-		cout << pCard[m]->getName() << endl;
 	}
 }
 

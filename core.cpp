@@ -78,13 +78,16 @@ Discard* Core::getDiscard()
 
 
 
+
+
+
 //implement the core turnCycle function
 void Core::turnCycle()
 {
-	while (endGame == false) {
+	//while (/*endGame == false*/ 1) {
+		//thread 
 		if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
-			cout << "Player " << playerXTurn << " turn" << endl;
-			cout << "Your hand" << endl;
+			cout << "Player " << playerXTurn << " turn: " << endl;
 			for (int i=0; i<players[playerXTurn]->getPlayerHand()->getDeck().size(); i++) {
 				cout << players[playerXTurn]->getPlayerHand()->getDeck()[i]->getName() << endl;
 			}	
@@ -94,11 +97,13 @@ void Core::turnCycle()
 			players[playerXTurn]->setNextTurn();
 		}
 		//end of a cycle 
-		playerXTurn++;
+		playerXTurn += turnDirection;
 		if (playerXTurn >= players.size()) {			//reset turn to 0
 			playerXTurn = 0;
 		}
-	}
+		::animationDelay(1500);
+		::clearConsole();
+	//}
 }
 
 //implement the core beginGameDraw function
@@ -202,6 +207,28 @@ void Core::choicePlay()
 	} 
 }
 
+//implement the core turnTimer fucntion
+void Core::turnTimer()
+{
+	int turnLength = 8;				//use 8 seconds since if you use 10, it'll lead to the '0' not being deleted when positioned on the same line
+	while (turnLength >= 0) {
+		cout << "\rTimer countdown: " << turnLength << flush;			//place \r ath the front and flush at the end. pretty different from using \n at the end or endl
+		::animationDelay(1000);
+		turnLength--;				//not sure if it's necessary to put this thing after animation delay or not, but the internet do like that, so i'd just go for it
+	}
+}
+
+
+//implement the core runGame function
+void Core::runGame()
+{
+	while (1) {
+		thread first (&Core::turnTimer, this);
+		thread second (&Core::turnCycle, this);
+		first.join();
+		second.join();
+	}
+}
 
 //implement the core destructor
 Core::~Core()

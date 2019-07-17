@@ -56,6 +56,9 @@ public:
 	void forceDraw(bool choicePlayFalse = true);		//if player cannot play any card, then they're forced to draw until they got a compatible card 
 	void choicePlay();		//if player can play, they can either play a card, or draw until they get a match one
 	
+	void turnTimer();
+
+	void runGame();
 	
 	~Core();
 };

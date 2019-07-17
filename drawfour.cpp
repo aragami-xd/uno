@@ -25,6 +25,8 @@ void Drawfour::setName()
 //implement the drawfour effect function
 void Drawfour::effect(Core* core)
 {
+	Wildcard::effect(core);
+	
     int playerXTurn;
 	playerXTurn = core->getPlayerXTurn() + 1*core->getDirection();		//since you skip next player as cycle
 

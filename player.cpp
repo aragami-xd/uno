@@ -25,7 +25,7 @@ void Player::setPlayerHand(Hand* deck)
 }
 
 //implement the player getPlayerDeck function
-Deck* Player::getPlayerHand()
+Hand* Player::getPlayerHand()
 {
 	return playerHand;
 }

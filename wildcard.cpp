@@ -47,6 +47,12 @@ void Wildcard::setColor()
     }
 }
 
+//implement the wildcard effect function
+void Wildcard::effect(Core* core)
+{
+    setColor();
+}
+
 //implement the card destructor
 Wildcard::~Wildcard()
 {

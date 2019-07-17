@@ -25,6 +25,7 @@ void Colorcard::setName()
 void Colorcard::effect(Core* core)
 {
 	//this card doesn't really have any effect 
+	Wildcard::effect(core);
 }
 
 //implement the colorcard destructor

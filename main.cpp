@@ -3,6 +3,7 @@
 #include <vector>
 #include <chrono>
 #include <thread>
+#include <ctime>
 
 //card library 
 #include "drawfour.h"
@@ -108,15 +109,15 @@ int main()
 	core->setPlayers(players);
 	core->setDraw(draw);
 	core->setDiscard(discard);
-	//core->beginGameDraw();
 
 	for (int i=0; i<noOfPlayer; i++) {
 		players[i]->setCore(core);
 	}
+	core->beginGameDraw();
 	
 
 	//test function 
-	Test *test = new Test();
+	//Test *test = new Test();
 	
 	//test->setCard(cardList);
 	//test->setDeck(cardList, 0);
@@ -135,6 +136,27 @@ int main()
 	skip[0]->effect(core);
 	drawFour[0]->effect(core);
 	*/
+	
+	srand(time(0));			//for random
+
+	for (int m=0; m<noOfPlayer; m++) {
+		cout << "Player " << m << endl;
+		for (int i=0; i<players[m]->getPlayerHand()->getDeck().size(); i++) {
+			cout << players[m]->getPlayerHand()->getDeck()[i]->getName() << endl;
+		}
+		cout << endl;
+	}
+
+	players[0]->playCard((rand()%3));
+	core->setPlayerXTurn(1);
+
+	cout << endl;
+	core->forceDraw();
+	cout << endl;
+	for (int i=0; i<players[1]->getPlayerHand()->getDeck().size(); i++) {
+		cout << players[1]->getPlayerHand()->getDeck()[i]->getName() << endl;
+	}
+
 
 
 
@@ -152,7 +174,7 @@ int main()
 		delete number[i];
 	}
 
-	delete test;
+	//delete test;
 	delete draw, discard;
 	for (int i=0; i<noOfPlayer; i++) {
 		delete hand[i], players[i];

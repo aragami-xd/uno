@@ -34,7 +34,7 @@ public:
 
 	//basic functions
 	void setPlayerHand(Hand* deck);
-	Deck* getPlayerHand();
+	Hand* getPlayerHand();
 
 	void setName(std::string pName);
 	void nameEasterEgg(std::string pName);	

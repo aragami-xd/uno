@@ -82,7 +82,13 @@ Discard* Core::getDiscard()
 void Core::turnCycle()
 {
 	while (endGame == false) {
-		if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play		
+		if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
+			cout << "Player " << playerXTurn << " turn" << endl;
+			cout << "Your hand" << endl;
+			for (int i=0; i<players[playerXTurn]->getPlayerHand()->getDeck().size(); i++) {
+				cout << players[playerXTurn]->getPlayerHand()->getDeck()[i]->getName() << endl;
+			}	
+			cout << endl;
 			choicePlay();
 		} else if (players[playerXTurn]->getNextTurn() == -1) {				//if they cannot play, then not play, and reverse that value
 			players[playerXTurn]->setNextTurn();

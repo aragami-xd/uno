@@ -139,6 +139,7 @@ int main()
 	
 	srand(time(0));			//for random
 
+	/*
 	for (int m=0; m<noOfPlayer; m++) {
 		cout << "Player " << m << endl;
 		for (int i=0; i<players[m]->getPlayerHand()->getDeck().size(); i++) {
@@ -146,16 +147,17 @@ int main()
 		}
 		cout << endl;
 	}
+	*/
 
-	players[0]->playCard((rand()%7));
-	core->setPlayerXTurn(1);
+	//players[0]->playCard((rand()%7));
+	//core->setPlayerXTurn(1);
 
 	cout << endl;
-	core->choicePlay();
+	core->turnCycle();
 	cout << endl;
-	for (int i=0; i<players[1]->getPlayerHand()->getDeck().size(); i++) {
-		cout << players[1]->getPlayerHand()->getDeck()[i]->getName() << endl;
-	}
+	//for (int i=0; i<players[1]->getPlayerHand()->getDeck().size(); i++) {
+		//cout << players[1]->getPlayerHand()->getDeck()[i]->getName() << endl;
+	//}
 
 
 

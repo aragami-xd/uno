@@ -112,6 +112,7 @@ void Player::playCard(int cardIndex)
 {
 	Card* playedCard = (playerHand->getDeck()[cardIndex]);
 	cout << "Card " << playerHand->getDeck()[cardIndex]->getName() << " is played" << endl;
+	cout << endl;
 	playedCard->effect(core);
 	playerHand->pushCard(cardIndex, core->getDiscard());
 }

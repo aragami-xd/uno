@@ -147,11 +147,11 @@ int main()
 		cout << endl;
 	}
 
-	players[0]->playCard((rand()%3));
+	players[0]->playCard((rand()%7));
 	core->setPlayerXTurn(1);
 
 	cout << endl;
-	core->forceDraw();
+	core->choicePlay();
 	cout << endl;
 	for (int i=0; i<players[1]->getPlayerHand()->getDeck().size(); i++) {
 		cout << players[1]->getPlayerHand()->getDeck()[i]->getName() << endl;

@@ -50,9 +50,13 @@ public:
 	////action sets 
 	void turnCycle();		//loop between players as turns
 	void beginGameDraw();			//drawing 7 cards at the beginning of the game
+	
+	std::vector<Card*> playable();
 	bool canPlay();			//see if player can play any card in their hand or not
-	void forceDraw();		//if player cannot play any card, then they're forced to draw until they got a compatible card 
-
+	void forceDraw(bool choicePlayFalse = true);		//if player cannot play any card, then they're forced to draw until they got a compatible card 
+	void choicePlay();		//if player can play, they can either play a card, or draw until they get a match one
+	
+	
 	~Core();
 };
 

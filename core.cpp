@@ -1,4 +1,5 @@
 #include "core.h"
+#include <sstream>
 using namespace std;
 
 //implement the default core constructor
@@ -81,69 +82,77 @@ Discard* Core::getDiscard()
 void Core::turnCycle()
 {
 	while (endGame == false) {
-		if (players[playerXTurn]->getNextTurn() == 1) {
-			//call functions
-		} else if (players[playerXTurn]->getNextTurn() == -1) {
+		if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play		
+			choicePlay();
+		} else if (players[playerXTurn]->getNextTurn() == -1) {				//if they cannot play, then not play, and reverse that value
 			players[playerXTurn]->setNextTurn();
 		}
 		//end of a cycle 
 		playerXTurn++;
+		if (playerXTurn >= players.size()) {			//reset turn to 0
+			playerXTurn = 0;
+		}
 	}
 }
 
 //implement the core beginGameDraw function
 void Core::beginGameDraw()
 {
-	//for (int i=0; i<7; i++) {			//each player gets 7 cards at the begin of the game
-		for (int m=0; m<players.size(); m++) {
-			players[m]->drawCard(3);
-			//::animationDelay(400);
-			players[m]->getPlayerHand()->sortHand();
+	//each player gets 7 cards at the begin of the game
+	for (int m=0; m<players.size(); m++) {
+		players[m]->drawCard(7);
+		//::animationDelay(400);
+		players[m]->getPlayerHand()->sortHand();
+	}
+}
+
+//implement the void playable function
+vector<Card*> Core::playable()
+{
+	int currentColor = discard->getLastCardColor();
+	int currentNumber = discard->getLastCardNumber();
+	vector<Card*> playerHand =  players[playerXTurn]->getPlayerHand()->getDeck();
+	vector<Card*> playableDeck;
+	for (int i=0; i<playerHand.size(); i++) {
+		if (playerHand[i]->getColor() == currentColor || playerHand[i]->getColor() == 5) {		//5 is wildcard color, can be played any time
+			playableDeck.push_back(playerHand[i]);
+		} else if (playerHand[i]->getNumber() == currentNumber) {			//no need to check for same wildcard number, it's checked above
+			playableDeck.push_back(playerHand[i]);
 		}
-	//}
+	}
+	return playableDeck;
 }
 
 //implement the core canPlay function
 bool Core::canPlay()
 {
-	int currentColor = discard->getLastCardColor();
-	int currentNumber = discard->getLastCardNumber();
-
-	cout << discard->getLastCardName() << endl;
-
-	vector<Card*> playerHand =  players[playerXTurn]->getPlayerHand()->getDeck();
-	for (int i=0; i<playerHand.size(); i++) {
-		if (playerHand[i]->getColor() == currentColor || playerHand[i]->getColor() == 5) {		//5 is wildcard color, can be played any time
-			return true;
-		} else if (playerHand[i]->getNumber() == currentNumber) {			//no need to check for same wildcard number, it's checked above
-			return true;
-		}
+	if (playable().size() > 0) {		//call playable, if there are cards playable, return true. else, false
+		return true;
+	} else if (playable().size() <= 0) {
+		return false;
 	}
-	return false;			//return false at the end if there is no matching color or number
+		
 }
 
 //implement the core forceDraw function
-void Core::forceDraw()
+void Core::forceDraw(bool choicePlayFalse)
 {
-	if (canPlay() == false) {
+	if (canPlay() == false || choicePlayFalse == false) {
 		bool compatibleCard = false;
 		while (compatibleCard == false) {			//while the card is incompatible, continue to draw 
 			players[playerXTurn]->drawCard(1);
-			vector<Card*> newCard = players[playerXTurn]->getPlayerHand()->getDeck();	
-			Card* lastNewCard = newCard[newCard.size() - 1];
-			//cout << "New card: " << lastNewCard->getName() << endl;
 
 			//if player draws a compatible card
-			if (lastNewCard->getColor() == discard->getLastCardColor() || lastNewCard->getColor() == 5 || lastNewCard->getNumber() == discard->getLastCardNumber()) {		
+			if (canPlay() == true) {		//search the deck again, if there is compatible card, that means you've drawn the right card
 				//i code at 2am and don't want to think anymore. so we only talk wooden pickaxe efficiency i here, no diamond pickaxe efficiency v - unbreaking iv - mending i
 				//i.e. there are repetitive code
-				cout << "Compatible card: " << lastNewCard->getName() << " - Play or keep?" << endl;		//ask if player wants to keep or play the card
-				cout << "1. Play" << endl;
+				cout << "Compatible card: " << playable()[0]->getName() << " - Play or keep?" << endl;		//ask if player wants to keep or play the card. there will be only 1 card in playable
+				cout << "1. Play" << endl;			
 				cout << "2. Keep" << endl;
 				string choice;
 				cin >> choice;
 				if (choice == "1") {
-					players[playerXTurn]->playCard(newCard.size() - 1);		//play the last card
+					players[playerXTurn]->playCard(players[playerXTurn]->getPlayerHand()->getDeck().size() - 1);		//play the last card
 				} else if (choice != "2" && choice != "1") {
 					cout << "Don't mess around. Card will be kept" << endl;		//if player decides to be a dickhead, show them who is a dickhead by keep the card and have 1 more card in the hand (which is not fun)
 				}
@@ -153,6 +162,40 @@ void Core::forceDraw()
 	}
 	players[playerXTurn]->getPlayerHand()->sortHand();
 }
+
+//implement the core choicePlay function
+void Core::choicePlay()
+{
+	if (canPlay() == true) {
+		cout << "You can play these cards in your deck:" << endl;
+		vector<Card*> playableCards = playable();						//list the playable cards
+		for (int i=0; i<playableCards.size(); i++) {
+			cout << i << ". " << playableCards[i]->getName() << endl;
+		}
+
+		cout << "Choose a card to play. If you don't want to play, press 'd'" << endl;
+		string choice;
+		int choiceInt;
+		cin >> choice;
+		if (choice == "d") {				//check the input. if "d", draw new cards. else, play a card
+			forceDraw(false);
+		} else {
+			istringstream iss (choice);
+			iss >> choiceInt;
+			if (choiceInt < 0 || choiceInt >= playableCards.size()) {
+				cout << "Don't mess around. First card will be played" << endl;			//if they f around, play the first card
+				choiceInt = 0;			//change choiceInt to 0
+			}
+			vector<Card*> playerHand = players[playerXTurn]->getPlayerHand()->getDeck();		//find the index of the choiceInt card in the deck
+			for (int i=0; i<playerHand.size(); i++) {
+				if (playerHand[i]->getName() == playableCards[choiceInt]->getName()) {
+					players[playerXTurn]->playCard(i);
+				}
+			}
+		}
+	} 
+}
+
 
 //implement the core destructor
 Core::~Core()

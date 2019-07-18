@@ -13,4 +13,5 @@ void clearConsole()
     cout << flush;
     system("clear");
     cout << "Uno!" << endl;
+    cout << endl;
 }

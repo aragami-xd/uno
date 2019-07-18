@@ -22,7 +22,6 @@ class Core
 {
 private: 
 	std::vector<Player*> players;
-	std::vector<Card*> playersCard;
 	int turnDirection; 	//1 for clockwise, -1 for counter clockwise turn
 	int playerXTurn; 
 	bool endGame;		//F in the chat for iron man
@@ -52,6 +51,7 @@ public:
 	
 	////action sets 
 	void turnCycle();		//loop between players as turns
+	void defaultPrinting();			//cout some basic information at the start of the turn 
 	void beginGameDraw();			//drawing 7 cards at the beginning of the game
 	
 	std::vector<Card*> playable();

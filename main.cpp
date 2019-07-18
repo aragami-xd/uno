@@ -98,9 +98,10 @@ int main()
 
 
 	Draw *draw = new Draw(cardList);
+	draw->setDeck(cardList);
 	draw->shuffle();
 
-	Discard *discard = new Discard(cardList);
+	Discard *discard = new Discard(draw->getDeck());
 	discard->setLastCard();
 
 

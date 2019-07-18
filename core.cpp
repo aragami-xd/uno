@@ -87,30 +87,52 @@ vector<Card*> Core::getPlayersCard()
 void Core::turnCycle()
 {
 	while (endGame == false) {
-		cout << "Current card is: " << discard->getLastCardName() << endl;
-		cout << endl;
+		defaultPrinting();
 
 		if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
-			cout << "Player " << playerXTurn + 1 << " turn: " << endl;
 			for (int i=0; i<getPlayersCard().size(); i++) {
 				cout << i << ". " << getPlayersCard()[i]->getName() << endl;
-			}	
+			}
+
 			cout << endl;
+			::animationDelay(400);
+
 			choicePlay();
+
 		} else if (players[playerXTurn]->getNextTurn() == -1) {				//if they cannot play, then not play, and reverse that value
 			players[playerXTurn]->setNextTurn();
+			cout << "You cannot play this turn" << endl;
 		}
-		//end of a cycle 
+
+		//end of a cycle, move on to the next one
 		playerXTurn += turnDirection;
 		if (playerXTurn >= players.size()) {			//reset turn to 0
 			playerXTurn = 0;
 		} else if (playerXTurn < 0) {
-			playerXTurn = players.size()-1;
+			playerXTurn = players.size()-1;				//reset turn to the last player
 		}
 		
 		::animationDelay(1500);
 		::clearConsole();
 	}
+}
+
+//implement the core defaultPrinting function
+void Core::defaultPrinting()
+{
+	cout << "Turns: ";
+	for (int i=0; i<players.size(); i++) {			//print out the turns and number of cards in the cycle
+		if (i == playerXTurn) {
+			cout << "[Player " << i+1 << " (" << getPlayersCard().size() << ")] -> ";		//put a small bracket at the player who is playing
+		} else {
+			cout << "Player " << i+1 << " (" << players[i]->getPlayerHand()->getDeck().size() << ") -> ";
+		}
+	}
+	cout << endl;
+	cout << endl;
+	
+	cout << "Current card is: " << discard->getLastCardName() << endl;		//print out current card
+	cout << "Player " << playerXTurn + 1 << " turn: " << endl;
 }
 
 
@@ -132,6 +154,7 @@ vector<Card*> Core::playable()
 	int currentNumber = discard->getLastCardNumber();
 	vector<Card*> playerHand =  getPlayersCard();
 	vector<Card*> playableDeck;
+
 	for (int i=0; i<playerHand.size(); i++) {
 		if (playerHand[i]->getColor() == currentColor || playerHand[i]->getColor() == 5) {		//5 is wildcard color, can be played any time
 			playableDeck.push_back(playerHand[i]);
@@ -160,6 +183,7 @@ void Core::forceDraw(bool choicePlayFalse)
 		while (compatibleCard == false) {			//while the card is incompatible, continue to draw 
 			players[playerXTurn]->drawCard(1);
 			cout << "Drawn " << getPlayersCard()[getPlayersCard().size()-1]->getName() << endl;		//print out the last card in the hand, which is the one just drawn
+			::animationDelay(400);
 
 			//if player draws a compatible card
 			if (canPlay() == true) {			//search the deck again, if there is compatible card, that means you've drawn the right card
@@ -196,7 +220,7 @@ void Core::choicePlay()
 		
 		vector<Card*> playableCards = playable();						//list the playable cards
 
-		cout << "Choose a card to play. If you don't want to play, press 'd'" << endl;
+		cout << "Choose a card to play. If you don't want to play, press 'd' to draw extra cards" << endl;
 		string choice;
 		int choiceInt;
 		bool rightChoice = false;

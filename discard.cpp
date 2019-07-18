@@ -4,14 +4,12 @@ using namespace std;
 //implement the default discard constructor
 Discard::Discard() : Deck()
 {
-	deckType = 3;
 }
 
 //may not be important either, since discard starts empty
 //implement the discard (deck) constructor
 Discard::Discard(vector<Card*> deck) : Deck(deck)
 {
-	deckType = 3;
 }
 
 //implement the discard setLastCard function

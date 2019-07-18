@@ -99,7 +99,6 @@ int main()
 
 	Draw *draw = new Draw(cardList);
 	draw->shuffle();
-	//draw->pushCard(2, hand);
 
 	Discard *discard = new Discard(cardList);
 	discard->setLastCard();
@@ -131,14 +130,9 @@ int main()
 	//test->testSkip(skip[0]);
 	//test->testDrawCard(drawFour[0]);
 	
-	/*
-	core->setPlayerXTurn(0);
-	skip[0]->effect(core);
-	drawFour[0]->effect(core);
-	*/
-	
+		
 	srand(time(0));			//for random
-	cout << endl;
+	::clearConsole();
 	core->turnCycle();
 	//core->turnTimer();
 	cout << endl;

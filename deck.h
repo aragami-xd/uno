@@ -10,7 +10,6 @@ class Deck
 {
 protected: 
 	std::vector<Card*> deckList;
-	int deckType;		//which type of deck is that. 1 for hand, 2 for draw (undrawn deck), 3 for discarded
 
 public: 
 	Deck();
@@ -21,8 +20,6 @@ public:
 
 	void setDeck(std::vector<Card*> deck);
 	std::vector<Card*> getDeck();
-
-	int getDeckType();
 
 	~Deck();
 };

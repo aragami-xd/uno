@@ -7,13 +7,11 @@ using namespace std;
 //implement the default draw constructor
 Draw::Draw() : Deck()
 {
-	deckType = 2;
 }
 
 //implement the draw (deck) constructor
 Draw::Draw(vector<Card*> deck) : Deck(deck)
 {
-	deckType = 2;
 }
 
 //implement the draw sortDeck function

@@ -28,12 +28,6 @@ void Deck::pushCard(int transferCardIndex, Deck* transferDeck)
 	deckList.erase(deckList.begin() + transferCardIndex);
 }
 
-//implement the deck getDeckType function
-int Deck::getDeckType()
-{
-	return deckType;
-}
-
 //implememt the deck setDeck function
 void Deck::setDeck(vector<Card*> deck)
 {

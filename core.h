@@ -22,6 +22,7 @@ class Core
 {
 private: 
 	std::vector<Player*> players;
+	std::vector<Card*> playersCard;
 	int turnDirection; 	//1 for clockwise, -1 for counter clockwise turn
 	int playerXTurn; 
 	bool endGame;		//F in the chat for iron man
@@ -46,6 +47,8 @@ public:
 
 	void setDiscard(Discard* discardDeck);
 	Discard* getDiscard();
+
+	std::vector<Card*> getPlayersCard();
 	
 	////action sets 
 	void turnCycle();		//loop between players as turns

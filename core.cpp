@@ -5,8 +5,6 @@ using namespace std;
 //implement the default core constructor
 Core::Core()
 {
-	vector<Player*> playerList;
-	players = playerList;
 	turnDirection = 1;
 	endGame = false;
 }
@@ -15,10 +13,7 @@ Core::Core()
 void Core::setPlayers(vector<Player*> playerList)
 {
 	players = playerList;
-	turnDirection = 1;
-	endGame = false;
 }
-
 //implement the core getPlayer function
 vector<Player*> Core::getPlayers()
 {
@@ -76,6 +71,13 @@ Discard* Core::getDiscard()
 	return discard;
 }
 
+//implement the core getPlayersCard function
+vector<Card*> Core::getPlayersCard()
+{
+	return players[playerXTurn]->getPlayerHand()->getDeck();
+}
+
+
 
 
 
@@ -84,12 +86,14 @@ Discard* Core::getDiscard()
 //implement the core turnCycle function
 void Core::turnCycle()
 {
-	//while (/*endGame == false*/ 1) {
-		//thread 
+	while (endGame == false) {
+		cout << "Current card is: " << discard->getLastCardName() << endl;
+		cout << endl;
+
 		if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
-			cout << "Player " << playerXTurn << " turn: " << endl;
-			for (int i=0; i<players[playerXTurn]->getPlayerHand()->getDeck().size(); i++) {
-				cout << players[playerXTurn]->getPlayerHand()->getDeck()[i]->getName() << endl;
+			cout << "Player " << playerXTurn + 1 << " turn: " << endl;
+			for (int i=0; i<getPlayersCard().size(); i++) {
+				cout << i << ". " << getPlayersCard()[i]->getName() << endl;
 			}	
 			cout << endl;
 			choicePlay();
@@ -100,11 +104,15 @@ void Core::turnCycle()
 		playerXTurn += turnDirection;
 		if (playerXTurn >= players.size()) {			//reset turn to 0
 			playerXTurn = 0;
+		} else if (playerXTurn < 0) {
+			playerXTurn = players.size()-1;
 		}
+		
 		::animationDelay(1500);
 		::clearConsole();
-	//}
+	}
 }
+
 
 //implement the core beginGameDraw function
 void Core::beginGameDraw()
@@ -122,7 +130,7 @@ vector<Card*> Core::playable()
 {
 	int currentColor = discard->getLastCardColor();
 	int currentNumber = discard->getLastCardNumber();
-	vector<Card*> playerHand =  players[playerXTurn]->getPlayerHand()->getDeck();
+	vector<Card*> playerHand =  getPlayersCard();
 	vector<Card*> playableDeck;
 	for (int i=0; i<playerHand.size(); i++) {
 		if (playerHand[i]->getColor() == currentColor || playerHand[i]->getColor() == 5) {		//5 is wildcard color, can be played any time
@@ -141,8 +149,7 @@ bool Core::canPlay()
 		return true;
 	} else if (playable().size() <= 0) {
 		return false;
-	}
-		
+	}		
 }
 
 //implement the core forceDraw function
@@ -152,22 +159,30 @@ void Core::forceDraw(bool choicePlayFalse)
 		bool compatibleCard = false;
 		while (compatibleCard == false) {			//while the card is incompatible, continue to draw 
 			players[playerXTurn]->drawCard(1);
+			cout << "Drawn " << getPlayersCard()[getPlayersCard().size()-1]->getName() << endl;		//print out the last card in the hand, which is the one just drawn
 
 			//if player draws a compatible card
-			if (canPlay() == true) {		//search the deck again, if there is compatible card, that means you've drawn the right card
-				//i code at 2am and don't want to think anymore. so we only talk wooden pickaxe efficiency i here, no diamond pickaxe efficiency v - unbreaking iv - mending i
-				//i.e. there are repetitive code
-				cout << "Compatible card: " << playable()[0]->getName() << " - Play or keep?" << endl;		//ask if player wants to keep or play the card. there will be only 1 card in playable
+			if (canPlay() == true) {			//search the deck again, if there is compatible card, that means you've drawn the right card
+				//i code at 2am and don't want to think anymore, we don't talk efficiency here
+				cout << "Compatible card: " << getPlayersCard()[getPlayersCard().size()-1]->getName() << " - Play or keep?" << endl;		//ask if player wants to keep or play the card
 				cout << "1. Play" << endl;			
 				cout << "2. Keep" << endl;
+
 				string choice;
-				cin >> choice;
-				if (choice == "1") {
-					players[playerXTurn]->playCard(players[playerXTurn]->getPlayerHand()->getDeck().size() - 1);		//play the last card
-				} else if (choice != "2" && choice != "1") {
-					cout << "Don't mess around. Card will be kept" << endl;		//if player decides to be a dickhead, show them who is a dickhead by keep the card and have 1 more card in the hand (which is not fun)
+				bool rightChoice = false;
+				while (rightChoice == false) {
+					cin >> choice;
+					if (choice == "1") {
+						players[playerXTurn]->playCard(getPlayersCard().size() - 1);		//play the last card
+						rightChoice = true;
+					} else if (choice != "2" && choice != "1") {
+						cout << "Invalid choice, choose again" << endl;		//wrong choice
+					} else if (choice == "2") {		//if choose to keep, then do nothing
+						rightChoice = true;
+					}
+					compatibleCard = true;
 				}
-				compatibleCard = true;
+
 			}
 		}
 	}
@@ -178,30 +193,38 @@ void Core::forceDraw(bool choicePlayFalse)
 void Core::choicePlay()
 {
 	if (canPlay() == true) {
-		cout << "You can play these cards in your deck:" << endl;
+		
 		vector<Card*> playableCards = playable();						//list the playable cards
-		for (int i=0; i<playableCards.size(); i++) {
-			cout << i << ". " << playableCards[i]->getName() << endl;
-		}
 
 		cout << "Choose a card to play. If you don't want to play, press 'd'" << endl;
 		string choice;
 		int choiceInt;
+		bool rightChoice = false;
+
+		while (rightChoice == false) {
 		cin >> choice;
-		if (choice == "d") {				//check the input. if "d", draw new cards. else, play a card
-			forceDraw(false);
-		} else {
-			istringstream iss (choice);
-			iss >> choiceInt;
-			if (choiceInt < 0 || choiceInt >= playableCards.size()) {
-				cout << "Don't mess around. First card will be played" << endl;			//if they f around, play the first card
-				choiceInt = 0;			//change choiceInt to 0
-			}
-			vector<Card*> playerHand = players[playerXTurn]->getPlayerHand()->getDeck();		//find the index of the choiceInt card in the deck
-			for (int i=0; i<playerHand.size(); i++) {
-				if (playerHand[i]->getName() == playableCards[choiceInt]->getName()) {
-					players[playerXTurn]->playCard(i);
+			if (choice == "d") {				//check the input. if "d", draw new cards. else, play a card
+				forceDraw(false);
+				rightChoice = true;
+			} else {
+				istringstream iss (choice);			//convert string to int
+				iss >> choiceInt;
+
+				if (choiceInt < 0 || choiceInt > getPlayersCard().size()) {					//pick card out of the list
+					cout << "You can't play this card. Pick again" << endl;
+				} else {
+					for (int i=0; i<playableCards.size(); i++) {				//pick a playable card
+						if (getPlayersCard()[choiceInt]->getName() == playableCards[i]->getName()) {		//test it through for loop
+							players[playerXTurn]->playCard(choiceInt);
+							rightChoice = true;
+							break;
+						}
+					}
+					if (rightChoice == false) {			//by the end of the loop, if the condition is false, player hasn't picked the right card yet
+						cout << "You can't play this card. Pick again" << endl;
+					}
 				}
+
 			}
 		}
 	} 

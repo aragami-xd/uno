@@ -1,0 +1,2 @@
+echo 
+g++ -o UnoOnConsoleButItIsACringeFest interface.h card.h wildcard.h action.h number.h drawfour.h colorcard.h drawtwo.h reverse.h skip.h deck.h hand.h draw.h discard.h core.h player.h test.h interface.cpp core.cpp player.cpp card.cpp wildcard.cpp action.cpp number.cpp drawfour.cpp colorcard.cpp drawtwo.cpp reverse.cpp skip.cpp deck.cpp hand.cpp draw.cpp discard.cpp test.cpp function.cpp main.cpp 

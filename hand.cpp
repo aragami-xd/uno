@@ -6,7 +6,6 @@ using namespace std;
 //implement the default hand constructor
 Hand::Hand() : Deck()
 {
-	deckType = 1;
 }
 
 //may not be important, since vector deck will not be pre-assignned. A series of for loop will assign it later on
@@ -14,7 +13,6 @@ Hand::Hand() : Deck()
 //implement the hand (deck) constructor
 Hand::Hand(vector<Card*> deck) : Deck(deck)
 {
-	deckType = 1;	//1 for hand, 2 for draw, 3 for discarded
 }
 
 

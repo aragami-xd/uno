@@ -91,7 +91,9 @@ void Core::turnCycle()
 
 		if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
 			for (int i=0; i<getPlayersCard().size(); i++) {
-				cout << i << ". " << getPlayersCard()[i]->getName() << endl;
+				cout << i << ". ";
+				::rgb(getPlayersCard()[i]->getColor());
+				cout << getPlayersCard()[i]->getName() << "\e[0m" << endl;
 			}
 
 			cout << endl;
@@ -121,17 +123,29 @@ void Core::turnCycle()
 void Core::defaultPrinting()
 {
 	cout << "Turns: ";
-	for (int i=0; i<players.size(); i++) {			//print out the turns and number of cards in the cycle
-		if (i == playerXTurn) {
-			cout << "[Player " << i+1 << " (" << getPlayersCard().size() << ")] -> ";		//put a small bracket at the player who is playing
-		} else {
-			cout << "Player " << i+1 << " (" << players[i]->getPlayerHand()->getDeck().size() << ") -> ";
+	if (turnDirection == 1) {
+		for (int i=0; i<players.size(); i++) {			//print out the turns and number of cards in the cycle
+			if (i == playerXTurn) {
+				cout << "[Player " << i+1 << " (" << getPlayersCard().size() << ")] -> ";		//put a small bracket at the player who is playing
+			} else {
+				cout << "Player " << i+1 << " (" << players[i]->getPlayerHand()->getDeck().size() << ") -> ";
+			}
+		}
+	} else if (turnDirection == -1) {
+		for (int i=players.size() - 1; i>=0; i--) {			//print out the turns and number of cards in the cycle
+			if (i == playerXTurn) {
+				cout << "[Player " << i+1 << " (" << getPlayersCard().size() << ")] -> ";		//put a small bracket at the player who is playing
+			} else {
+				cout << "Player " << i+1 << " (" << players[i]->getPlayerHand()->getDeck().size() << ") -> ";
+			}
 		}
 	}
 	cout << endl;
 	cout << endl;
 	
-	cout << "Current card is: " << discard->getLastCardName() << endl;		//print out current card
+	cout << "Current card is: ";
+	::rgb(discard->getLastCardColor());
+	cout << discard->getLastCardName() << "\e[0m" << endl;		//print out current card
 	cout << "Player " << playerXTurn + 1 << " turn: " << endl;
 }
 
@@ -269,12 +283,12 @@ void Core::turnTimer()
 //implement the core runGame function
 void Core::runGame()
 {
-	while (1) {
-		thread first (&Core::turnTimer, this);
-		thread second (&Core::turnCycle, this);
-		first.join();
-		second.join();
-	}
+	//while (1) {
+	//	thread first (&Core::turnTimer, this);
+	//	thread second (&Core::turnCycle, this);
+	//	first.join();
+	//	second.join();
+	//}
 }
 
 //implement the core destructor

@@ -111,7 +111,9 @@ void Player::drawCard(int noOfCard)
 void Player::playCard(int cardIndex)
 {
 	Card* playedCard = (playerHand->getDeck()[cardIndex]);
-	cout << "Card " << playerHand->getDeck()[cardIndex]->getName() << " is played" << endl;
+	cout << "Card ";
+	::rgb(playedCard->getColor());
+	cout << playerHand->getDeck()[cardIndex]->getName() << "\e[0m" << " is played" << endl;
 	cout << endl;
 	playedCard->effect(core);
 	playerHand->pushCard(cardIndex, core->getDiscard());

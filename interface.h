@@ -9,5 +9,6 @@
 //user interface functions
 void animationDelay(int length);        
 void clearConsole();
+void rgb(int color);			//linustechtips and the PCMR community will be proud
 
 #endif

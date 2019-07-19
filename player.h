@@ -27,6 +27,7 @@ private:
 	int nextTurn;		//see if player can play the next turn or not, 1 = yes
 	Hand* playerHand;
 	Core* core;
+	int uno;		//uno = 1 -> uno status (1 card remaining) 
 
 public: 
 	Player();
@@ -44,6 +45,11 @@ public:
 	int getNextTurn();
 
 	void setCore(Core* gameCore);
+
+	void setUno();
+	int getUno();
+
+	
 
 	//action set
 	void drawCard(int noOfCard);

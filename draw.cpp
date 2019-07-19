@@ -22,7 +22,7 @@ void Draw::shuffle()
  
     for (int i=0; i<deckList.size() ;i++) 
     { 
-        // Random for remaining positions. 
+        // random for remaining positions. 
         int r = i + (rand() % (deckList.size() -i)); 
   
         swap(deckList[i], deckList[r]); 

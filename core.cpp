@@ -1,5 +1,6 @@
 #include "core.h"
 #include <sstream>
+#include <thread>
 using namespace std;
 
 //implement the default core constructor
@@ -86,7 +87,7 @@ vector<Card*> Core::getPlayersCard()
 //implement the core turnCycle function
 void Core::turnCycle()
 {
-	while (endGame == false) {
+	//while (endGame == false) {
 		defaultPrinting();
 
 		if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
@@ -99,7 +100,9 @@ void Core::turnCycle()
 			cout << endl;
 			::animationDelay(400);
 
-			choicePlay();
+			unoSignal();		//see if player can call uno this round or not
+
+			choicePlay();		//player's action in the turn 
 
 		} else if (players[playerXTurn]->getNextTurn() == -1) {				//if they cannot play, then not play, and reverse that value
 			players[playerXTurn]->setNextTurn();
@@ -116,8 +119,11 @@ void Core::turnCycle()
 		
 		::animationDelay(1500);
 		::clearConsole();
-	}
+	//}
 }
+
+
+
 
 //implement the core defaultPrinting function
 void Core::defaultPrinting()
@@ -125,6 +131,9 @@ void Core::defaultPrinting()
 	cout << "Turns: ";
 	if (turnDirection == 1) {
 		for (int i=0; i<players.size(); i++) {			//print out the turns and number of cards in the cycle
+			if (players[playerXTurn]->getUno() == 1) {
+				cout << "\e[91mUNO! \e[0m";			//put a red capitalized uno at the front 
+			}
 			if (i == playerXTurn) {
 				cout << "[Player " << i+1 << " (" << getPlayersCard().size() << ")] -> ";		//put a small bracket at the player who is playing
 			} else {
@@ -150,6 +159,9 @@ void Core::defaultPrinting()
 }
 
 
+
+
+
 //implement the core beginGameDraw function
 void Core::beginGameDraw()
 {
@@ -160,6 +172,9 @@ void Core::beginGameDraw()
 		players[m]->getPlayerHand()->sortHand();
 	}
 }
+
+
+
 
 //implement the void playable function
 vector<Card*> Core::playable()
@@ -179,6 +194,9 @@ vector<Card*> Core::playable()
 	return playableDeck;
 }
 
+
+
+
 //implement the core canPlay function
 bool Core::canPlay()
 {
@@ -188,6 +206,9 @@ bool Core::canPlay()
 		return false;
 	}		
 }
+
+
+
 
 //implement the core forceDraw function
 void Core::forceDraw(bool choicePlayFalse)
@@ -226,6 +247,10 @@ void Core::forceDraw(bool choicePlayFalse)
 	}
 	players[playerXTurn]->getPlayerHand()->sortHand();
 }
+
+
+
+
 
 //implement the core choicePlay function
 void Core::choicePlay()
@@ -268,14 +293,38 @@ void Core::choicePlay()
 	} 
 }
 
-//implement the core turnTimer fucntion
-void Core::turnTimer()
+
+
+
+
+//implement the core unoSignal function 
+char Core::unoSignal()
 {
-	int turnLength = 8;				//use 8 seconds since if you use 10, it'll lead to the '0' not being deleted when positioned on the same line
-	while (turnLength >= 0) {
-		cout << "\rTimer countdown: " << turnLength << flush;			//place \r ath the front and flush at the end. pretty different from using \n at the end or endl
-		::animationDelay(1000);
-		turnLength--;				//not sure if it's necessary to put this thing after animation delay or not, but the internet do like that, so i'd just go for it
+	srand(time(0));
+	char a_to_z[] = "abcdefghijklmnopqerstuwxyz";
+	int randomChar = rand()%26;
+	if (getPlayersCard().size() == 2 && canPlay() == true) {
+
+		cout << "Ready for Uno? Press " << a_to_z[randomChar] << " to call Uno. You got 1 second to do so after playing the card" << endl;
+	}
+	return a_to_z[randomChar];
+}
+
+
+
+
+//implement the core callUno function 
+void Core::callUno(char unoChar)
+{
+	cout << "Press " << unoChar << " now!" << endl;
+	char charInput;
+	cin >> charInput;
+	if (charInput == unoChar) {
+		cout << "\e[91mUno!\e[0m" << endl;
+		players[playerXTurn]->setUno();
+	} else {
+		cout << "Wrong button!" << endl;
+		players[playerXTurn]->drawCard(1);			//may change to 6 later, so you'll have to draw the entire deck if not call uno
 	}
 }
 
@@ -283,12 +332,6 @@ void Core::turnTimer()
 //implement the core runGame function
 void Core::runGame()
 {
-	//while (1) {
-	//	thread first (&Core::turnTimer, this);
-	//	thread second (&Core::turnCycle, this);
-	//	first.join();
-	//	second.join();
-	//}
 }
 
 //implement the core destructor

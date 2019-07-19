@@ -9,6 +9,7 @@ Player::Player()
 	nextTurn = 1;		//player can play next turn as default
 	Hand* deck;
 	playerHand = deck;
+	uno = -1;
 }
 
 //implement the player (deck) cosntructor
@@ -84,6 +85,20 @@ void Player::setCore(Core* gameCore)
 {
 	core = gameCore;
 }
+
+//implement the player setUno function
+void Player::setUno()
+{
+	uno = uno*(-1);
+}
+
+//implement the player getUno function
+int Player::getUno()
+{
+	return uno;
+}
+
+
 
 //implement the player drawCard function
 void Player::drawCard(int noOfCard) 

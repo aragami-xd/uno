@@ -13,10 +13,13 @@
 
 #include "player.h"
 #include "interface.h"
+#include "thread.h"
 
 #include <vector>
 #include <string>
 #include <iostream>
+
+//class Threadfunction;
 
 class Core
 {
@@ -59,7 +62,8 @@ public:
 	void forceDraw(bool choicePlayFalse = true);		//if player cannot play any card, then they're forced to draw until they got a compatible card 
 	void choicePlay();		//if player can play, they can either play a card, or draw until they get a match one
 	
-	void turnTimer();
+	char unoSignal();
+	void callUno(char unoChar);
 
 	void runGame();
 	

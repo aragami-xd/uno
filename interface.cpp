@@ -17,7 +17,7 @@ void clearConsole()
 }
 
 
-//implement the card rgb function
+//implement the rgb function
 void rgb(int color)
 {
 	if (color == 1) {       //r
@@ -31,4 +31,29 @@ void rgb(int color)
 	} else if (color == 5) {         //light grey for wildcard
         cout << "\e[37m ";
     }
+}
+
+//implement the countdownTimer function
+void countdownTimer(int length)
+{
+	int initialLength = length;
+	while (length >= 0) {
+		if (length >= 1000) {
+			cout << "\rTime left: " << length << flush;
+		} else if (length >= 100) {
+			cout << "\rTime left:  " << length << flush;
+		} else if (length >= 10) {
+			cout << "\rTime left:   " << length << flush;
+		} else if (length > 0) {
+			cout << "\rTime left:    " << length << flush;
+		}
+		if (initialLength < 60) {		//length < 60 means countdown by seconds
+			this_thread::sleep_for(chrono::seconds(1));
+			length--;
+		} else {			//length higher than that means countdown by milliseconds
+			this_thread::sleep_for(chrono::milliseconds(20));		//until we have 1000hz monitor, we'll countdown by 20ms for 50hz. don't want vsync here
+			length -= 20;
+		}
+	}
+	cout << endl;
 }

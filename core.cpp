@@ -114,11 +114,21 @@ void Core::turnCycle()
 
 		//end of a cycle, move on to the next one
 		playerXTurn += turnDirection;
-		if (playerXTurn >= players.size()) {			//reset turn to 0
-			playerXTurn = 0;
-		} else if (playerXTurn < 0) {
-			playerXTurn = players.size()-1;				//reset turn to the last player
+		cout << turnDirection << " " << playerXTurn << endl;
+		if (turnDirection == 1) {
+			if (playerXTurn >= players.size()) {			//reset turn to 0
+				playerXTurn = 0;
+			} else if (playerXTurn < 0) {
+				playerXTurn = players.size()-1;				//reset turn to the last player
+			}
+		} else if (turnDirection == -1) {
+			if (playerXTurn >= players.size()) {			//reset turn to 0
+				playerXTurn = players.size()-1;
+			} else if (playerXTurn < 0) {
+				playerXTurn = 0;				//reset turn to the last player
+			}
 		}
+		cout << playerXTurn << endl;
 		
 		::animationDelay(1500);
 		::clearConsole();
@@ -256,7 +266,7 @@ void Core::forceDraw(bool choicePlayFalse)
 			}
 		}
 	}
-	players[playerXTurn]->getPlayerHand()->sortHand();
+	//players[playerXTurn]->getPlayerHand()->sortHand();
 }
 
 

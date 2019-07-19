@@ -38,13 +38,13 @@ void Wildcard::setColor()
     cout << "Color has been set to ";       //confirm color change
     ::rgb(color);
     if (color == 1) {
-        cout << "red" << endl;
+        cout << "red\e[0m" << endl;
     } else if (color == 2) {
-        cout << "green" << endl;
+        cout << "green\e[0m" << endl;
     } else if (color == 3) {
-        cout << "blue" << endl;
+        cout << "blue\e[0m" << endl;
     } else if (color == 4) {
-        cout << "yellow" << endl;
+        cout << "yellow\e[0m" << endl;
     }
 }
 

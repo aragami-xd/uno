@@ -20,10 +20,10 @@ Wildcard::Wildcard(int cColor) : Card(cColor)
 void Wildcard::setColor()
 {
 	cout << "Choose a wildcard color: " << endl;
-    cout << "1. Red" << endl;
-    cout << "2. Green" << endl;
-    cout << "3. Blue" << endl;
-    cout << "4. Yellow" << endl;
+    cout << "1. \e[91mRed\e[0m" << endl;
+    cout << "2. \e[92mGreen\e[0m" << endl;
+    cout << "3. \e[94mBlue\e[0m" << endl;
+    cout << "4. \e[93mYellow\e[0m" << endl;
 
     string colorChoiceString;           //get the input color. convert string to int for foolproof
     while (color > 4 || color < 0) {
@@ -36,6 +36,7 @@ void Wildcard::setColor()
     }
 
     cout << "Color has been set to ";       //confirm color change
+    ::rgb(color);
     if (color == 1) {
         cout << "red" << endl;
     } else if (color == 2) {

@@ -50,7 +50,7 @@ void Hand::pullCard(Card * transferCard)
 {
 	Deck::pullCard(transferCard);
 	//draw phase ends?
-	sortHand();
+	//sortHand();
 }
 
 //implement the hand destructor

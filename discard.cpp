@@ -10,6 +10,12 @@ Discard::Discard() : Deck()
 //implement the discard (deck) constructor
 Discard::Discard(vector<Card*> deck) : Deck(deck)
 {
+	for (int i=0; i<deckList.size(); i++) {
+		if (deckList[i]->getNumber() < 10) {		//artificially push the first number card to the back so that the first card of the game will be number card
+			deckList.push_back(deckList[i]);
+		}
+		break;
+	}
 }
 
 //implement the discard setLastCard function

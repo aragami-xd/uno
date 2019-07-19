@@ -103,23 +103,12 @@ int Player::getUno()
 //implement the player drawCard function
 void Player::drawCard(int noOfCard) 
 {
-	Draw* draw = core->getDraw();
-	for (int i=0; i<noOfCard; i++) {					//drawing x cards
-		vector<Card*> hand = core->getDraw()->getDeck();			//put deck here since the program has to update the deck constantly 
+	for (int i=0; i<noOfCard; i++) {					//drawing x cards 
 		core->getDraw()->pushCard(0, playerHand);		//draw to last card to playerHand, which then delete that card in the Draw deck 
-		
-		//high cohesion, remember? if it doesn't really belong here, don't put it here
-		//cout << playerHand->getDeck()[playerHand->getDeck().size()-1]->getName() << endl;		//print out the newest card
-		
-		//::animationDelay(400);			//delay the process by 150 milliseconds, mostly for animation 
+		cout << "Card ";
+		::rgb(playerHand->getDeck()[playerHand->getDeck().size() - 1]->getColor());
+		cout << playerHand->getDeck()[playerHand->getDeck().size() - 1]->getName() << "\e[0m is drawn" << endl;
 	}
-	//playerHand->sortHand();				//sort it after have finished drawing cards 
-
-	//::clearConsole();
-
-	//for (int i=0; i<playerHand->getDeck().size(); i++) {		//print out the deck 
-		//cout << playerHand->getDeck()[i]->getName() << endl;
-	//}
 }
 
 //implement the player playCard fuction

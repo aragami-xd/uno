@@ -87,8 +87,9 @@ vector<Card*> Core::getPlayersCard()
 //implement the core turnCycle function
 void Core::turnCycle()
 {
-	//while (endGame == false) {
+	while (endGame == false) {
 		defaultPrinting();
+		players[playerXTurn]->getPlayerHand()->sortHand();		//sort hand before the turn 
 
 		if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
 			for (int i=0; i<getPlayersCard().size(); i++) {
@@ -100,9 +101,11 @@ void Core::turnCycle()
 			cout << endl;
 			::animationDelay(400);
 
-			unoSignal();		//see if player can call uno this round or not
-
+			char inputChar = unoSignal();		//see if player can call uno this round or not
 			choicePlay();		//player's action in the turn 
+			if (getPlayersCard().size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 
+				callUno(inputChar);
+			}
 
 		} else if (players[playerXTurn]->getNextTurn() == -1) {				//if they cannot play, then not play, and reverse that value
 			players[playerXTurn]->setNextTurn();
@@ -119,7 +122,7 @@ void Core::turnCycle()
 		
 		::animationDelay(1500);
 		::clearConsole();
-	//}
+	}
 }
 
 
@@ -131,22 +134,11 @@ void Core::defaultPrinting()
 	cout << "Turns: ";
 	if (turnDirection == 1) {
 		for (int i=0; i<players.size(); i++) {			//print out the turns and number of cards in the cycle
-			if (players[playerXTurn]->getUno() == 1) {
-				cout << "\e[91mUNO! \e[0m";			//put a red capitalized uno at the front 
-			}
-			if (i == playerXTurn) {
-				cout << "[Player " << i+1 << " (" << getPlayersCard().size() << ")] -> ";		//put a small bracket at the player who is playing
-			} else {
-				cout << "Player " << i+1 << " (" << players[i]->getPlayerHand()->getDeck().size() << ") -> ";
-			}
+			turnPrinting(i);
 		}
 	} else if (turnDirection == -1) {
 		for (int i=players.size() - 1; i>=0; i--) {			//print out the turns and number of cards in the cycle
-			if (i == playerXTurn) {
-				cout << "[Player " << i+1 << " (" << getPlayersCard().size() << ")] -> ";		//put a small bracket at the player who is playing
-			} else {
-				cout << "Player " << i+1 << " (" << players[i]->getPlayerHand()->getDeck().size() << ") -> ";
-			}
+			turnPrinting(i);
 		}
 	}
 	cout << endl;
@@ -158,6 +150,18 @@ void Core::defaultPrinting()
 	cout << "Player " << playerXTurn + 1 << " turn: " << endl;
 }
 
+//implement the core turnPrinting function
+void Core::turnPrinting(int turn)
+{
+	if (players[playerXTurn]->getUno() == 1) {
+		cout << "\e[91mUNO! \e[0m";			//put a red capitalized uno at the front 
+	}
+	if (turn == playerXTurn) {
+		cout << "\e[92m[Player " << turn+1 << " (" << getPlayersCard().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
+	} else {
+		cout << "Player " << turn+1 << " (" << players[turn]->getPlayerHand()->getDeck().size() << ") -> ";
+	}
+}
 
 
 
@@ -167,7 +171,7 @@ void Core::beginGameDraw()
 {
 	//each player gets 7 cards at the begin of the game
 	for (int m=0; m<players.size(); m++) {
-		players[m]->drawCard(7);
+		players[m]->drawCard(3);
 		//::animationDelay(400);
 		players[m]->getPlayerHand()->sortHand();
 	}
@@ -217,15 +221,23 @@ void Core::forceDraw(bool choicePlayFalse)
 		bool compatibleCard = false;
 		while (compatibleCard == false) {			//while the card is incompatible, continue to draw 
 			players[playerXTurn]->drawCard(1);
-			cout << "Drawn " << getPlayersCard()[getPlayersCard().size()-1]->getName() << endl;		//print out the last card in the hand, which is the one just drawn
+
+			Card* newCard = getPlayersCard()[getPlayersCard().size()-1];			//check and see if the newly drawn card is compatible or not
+			bool rightCard = false;
+			if (newCard->getColor() == discard->getLastCardColor() || newCard->getColor() == 5 || newCard->getNumber() == discard->getLastCardNumber()) {
+				rightCard = true;
+			}
 			::animationDelay(400);
 
 			//if player draws a compatible card
-			if (canPlay() == true) {			//search the deck again, if there is compatible card, that means you've drawn the right card
+			if (rightCard == true) {			//search the deck again, if there is compatible card, that means you've drawn the right card
 				//i code at 2am and don't want to think anymore, we don't talk efficiency here
-				cout << "Compatible card: " << getPlayersCard()[getPlayersCard().size()-1]->getName() << " - Play or keep?" << endl;		//ask if player wants to keep or play the card
+				cout << endl;
+				cout << "Compatible card: " << newCard->getName() << " - Play or keep?" << endl;		//ask if player wants to keep or play the card
 				cout << "1. Play" << endl;			
 				cout << "2. Keep" << endl;
+
+				compatibleCard = true;
 
 				string choice;
 				bool rightChoice = false;
@@ -239,7 +251,6 @@ void Core::forceDraw(bool choicePlayFalse)
 					} else if (choice == "2") {		//if choose to keep, then do nothing
 						rightChoice = true;
 					}
-					compatibleCard = true;
 				}
 
 			}
@@ -290,7 +301,9 @@ void Core::choicePlay()
 
 			}
 		}
-	} 
+	} else if (canPlay() == false) {
+		forceDraw();
+	}
 }
 
 
@@ -304,8 +317,8 @@ char Core::unoSignal()
 	char a_to_z[] = "abcdefghijklmnopqerstuwxyz";
 	int randomChar = rand()%26;
 	if (getPlayersCard().size() == 2 && canPlay() == true) {
-
 		cout << "Ready for Uno? Press " << a_to_z[randomChar] << " to call Uno. You got 1 second to do so after playing the card" << endl;
+		cout << endl;
 	}
 	return a_to_z[randomChar];
 }

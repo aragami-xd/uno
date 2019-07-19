@@ -55,6 +55,7 @@ public:
 	////action sets 
 	void turnCycle();		//loop between players as turns
 	void defaultPrinting();			//cout some basic information at the start of the turn 
+	void turnPrinting(int turn);
 	void beginGameDraw();			//drawing 7 cards at the beginning of the game
 	
 	std::vector<Card*> playable();

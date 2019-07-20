@@ -78,6 +78,11 @@ vector<Card*> Core::getPlayersCard()
 	return players[playerXTurn]->getPlayerHand()->getDeck();
 }
 
+//implement the core getHandSize function
+int Core::getHandSize(int playerNo)
+{
+	return players[playerNo]->getPlayerHand()->getDeck().size();
+}
 
 
 
@@ -114,7 +119,6 @@ void Core::turnCycle()
 
 		//end of a cycle, move on to the next one
 		playerXTurn += turnDirection;
-		cout << turnDirection << " " << playerXTurn << endl;
 		if (turnDirection == 1) {
 			if (playerXTurn >= players.size()) {			//reset turn to 0
 				playerXTurn = 0;
@@ -122,13 +126,12 @@ void Core::turnCycle()
 				playerXTurn = players.size()-1;				//reset turn to the last player
 			}
 		} else if (turnDirection == -1) {
-			if (playerXTurn >= players.size()) {			//reset turn to 0
+			if (playerXTurn >= players.size()) {			
 				playerXTurn = players.size()-1;
 			} else if (playerXTurn < 0) {
-				playerXTurn = 0;				//reset turn to the last player
+				playerXTurn = 0;				
 			}
 		}
-		cout << playerXTurn << endl;
 		
 		::animationDelay(1500);
 		::clearConsole();
@@ -181,7 +184,7 @@ void Core::beginGameDraw()
 {
 	//each player gets 7 cards at the begin of the game
 	for (int m=0; m<players.size(); m++) {
-		players[m]->drawCard(3);
+		players[m]->drawCard(7);
 		//::animationDelay(400);
 		players[m]->getPlayerHand()->sortHand();
 	}
@@ -266,7 +269,6 @@ void Core::forceDraw(bool choicePlayFalse)
 			}
 		}
 	}
-	//players[playerXTurn]->getPlayerHand()->sortHand();
 }
 
 

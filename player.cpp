@@ -106,8 +106,8 @@ void Player::drawCard(int noOfCard)
 	for (int i=0; i<noOfCard; i++) {					//drawing x cards 
 		core->getDraw()->pushCard(0, playerHand);		//draw to last card to playerHand, which then delete that card in the Draw deck 
 		cout << "Card ";
-		::rgb(playerHand->getDeck()[playerHand->getDeck().size() - 1]->getColor());
-		cout << playerHand->getDeck()[playerHand->getDeck().size() - 1]->getName() << "\e[0m is drawn" << endl;
+		//::rgb(playerHand->getDeck()[playerHand->getDeck().size() - 1]->getColor());
+		//cout << playerHand->getDeck()[playerHand->getDeck().size() - 1]->getName() << "\e[0m is drawn" << endl;
 	}
 }
 

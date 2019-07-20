@@ -51,6 +51,7 @@ public:
 	Discard* getDiscard();
 
 	std::vector<Card*> getPlayersCard();
+	int getHandSize(int playerNo);
 	
 	////action sets 
 	void turnCycle();		//loop between players as turns

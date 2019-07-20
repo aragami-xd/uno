@@ -8,11 +8,11 @@ Discard::Discard() : Deck()
 
 //may not be important either, since discard starts empty
 //implement the discard (deck) constructor
-Discard::Discard(vector<Card*> deck) : Deck(deck)
+Discard::Discard(vector<Card*> deck)
 {
-	for (int i=0; i<deckList.size(); i++) {
-		if (deckList[i]->getNumber() < 10) {		//artificially push the first number card to the back so that the first card of the game will be number card
-			deckList.push_back(deckList[i]);
+	for (int i=0; i<deck.size(); i++) {
+		if (deck[i]->getNumber() < 10) {		//artificially push the first number card to the back so that the first card of the game will be number card
+			deckList.push_back(deck[i]);
 			break;
 		}
 	}

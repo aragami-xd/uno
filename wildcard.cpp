@@ -1,4 +1,5 @@
 #include "wildcard.h"
+#include "core.h"
 #include <iostream>
 #include <sstream>
 
@@ -16,23 +17,35 @@ Wildcard::Wildcard(int cColor) : Card(cColor)
     cardType = 3;
 }
 
-//implement the wildcard setColor function
-void Wildcard::setColor()
+//implement the wildcard effect function
+void Wildcard::effect(Core* core)
 {
-	cout << "Choose a wildcard color: " << endl;
-    cout << "1. \e[91mRed\e[0m" << endl;
-    cout << "2. \e[92mGreen\e[0m" << endl;
-    cout << "3. \e[94mBlue\e[0m" << endl;
-    cout << "4. \e[93mYellow\e[0m" << endl;
+    setColor(core);
+}
 
-    string colorChoiceString;           //get the input color. convert string to int for foolproof
-    while (color > 4 || color < 0) {
-        cin >> colorChoiceString;
-        istringstream iss(colorChoiceString);
-        iss >> color;
-        if (color > 4 || color < 0) {
-            cout << "Don't mess around" << endl;
+//implement the wildcard setColor function
+void Wildcard::setColor(Core* core)
+{
+    int playerXTurn = core->getPlayerXTurn();
+
+    if (playerXTurn == 0) {
+	    cout << "Choose a wildcard color: " << endl;
+        cout << "1. \e[91mRed\e[0m" << endl;
+        cout << "2. \e[92mGreen\e[0m" << endl;
+        cout << "3. \e[94mBlue\e[0m" << endl;
+        cout << "4. \e[93mYellow\e[0m" << endl;
+
+        string colorChoiceString;           //get the input color. convert string to int for foolproof
+        while (color > 4 || color < 0) {
+            cin >> colorChoiceString;
+            istringstream iss(colorChoiceString);
+            iss >> color;
+            if (color > 4 || color < 0) {
+                cout << "Don't mess around" << endl;
+            }
         }
+    } else {
+        color = 0;          //temporarily set like this for the bot
     }
 
     cout << "Color has been set to ";       //confirm color change
@@ -46,12 +59,6 @@ void Wildcard::setColor()
     } else if (color == 4) {
         cout << "yellow\e[0m" << endl;
     }
-}
-
-//implement the wildcard effect function
-void Wildcard::effect(Core* core)
-{
-    setColor();
 }
 
 //implement the card destructor

@@ -9,9 +9,11 @@ class Bot
 {
 private:
     //for those who wondering, 'pp' comes from osu!
-    int handPP, nextPP, oppositePP, previousPP;     //performance points of each player
+    //double handPP, nextPP, oppositePP, previousPP;     //performance points of each player
     int handSize, nextSize, oppositeSize, previousSize;     //hand card size
     int botNumber, nextNumber, oppositeNumber, previousNumber;          //which player bots control
+
+    double totalPP;
 
     Player* botPlayer;          //get player status
     Deck* botHand;      
@@ -38,6 +40,7 @@ private:
 
 
 
+
 public: 
     Bot();
     Bot(Player* bot, Core* gameCore);
@@ -49,8 +52,11 @@ public:
 
     //pp calculators 
     double handColorPPCalculator();        //calculate hand pp 
-    void actionCardCalculator();
+    double handNumberPPCalculator();
+    //void actionCardCalculator();
 
+    void ppCalculator();
+    double adjustPP(int playerNo);
 
     ~Bot();
 };

@@ -121,6 +121,9 @@ void Core::turnCycle()
 		::animationDelay(1500);
 		::clearConsole();
 	}
+	if (endGame == true) {
+		cout << "Alright you can go back to what people call 'real life' now, game over" << endl;
+	}
 }
 
 
@@ -143,6 +146,9 @@ void Core::playerTurn()
 		if (getPlayersCard().size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 
 			callUno(inputChar);
 		}
+		if (getPlayersCard().size() == 0) {
+			endGame = true;
+		}
 
 	} else if (players[playerXTurn]->getNextTurn() == -1) {				//if they cannot play, then not play, and reverse that value
 		players[playerXTurn]->setNextTurn();
@@ -157,17 +163,20 @@ void Core::botTurn()
 {
 	if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
 		cout << "Bot's turn" << endl;
+		::animationDelay(2000);
 
 		choicePlay();		//player's action in the turn 
 		if (getPlayersCard().size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 
 			players[playerXTurn]->setUno();
 			cout << "Bot called Uno" << endl;
 		}
+		if (getPlayersCard().size() == 0) {
+			endGame = true;
+		}
 
 	} else if (players[playerXTurn]->getNextTurn() == -1) {				//if they cannot play, then not play, and reverse that value
 		players[playerXTurn]->setNextTurn();
 	}
-	::animationDelay(10);
 }
 
 
@@ -262,9 +271,11 @@ bool Core::canPlay()
 void Core::forceDraw(bool choicePlayFalse)
 {
 	if (canPlay() == false || choicePlayFalse == false) {
+		int extraCards = 0;
 		bool compatibleCard = false;
 		while (compatibleCard == false) {			//while the card is incompatible, continue to draw 
 			players[playerXTurn]->drawCard(1);
+			extraCards++;
 
 			Card* newCard = getPlayersCard()[getPlayersCard().size()-1];			//check and see if the newly drawn card is compatible or not
 			if (newCard->getColor() == discard->getLastCardColor() || newCard->getColor() == 5 || newCard->getNumber() == discard->getLastCardNumber()) {
@@ -277,7 +288,7 @@ void Core::forceDraw(bool choicePlayFalse)
 				if (playerXTurn == 0) {
 					playerForceDraw(newCard);
 				} else {
-					botForceDraw(newCard);
+					botForceDraw(newCard, extraCards);
 				}
 			}
 			
@@ -289,7 +300,9 @@ void Core::forceDraw(bool choicePlayFalse)
 void Core::playerForceDraw(Card* newCard)
 {
 	cout << endl;
-	cout << "Compatible card: " << newCard->getName() << " - Play or keep?" << endl;		//ask if player wants to keep or play the card
+	cout << "Compatible card: ";
+	::rgb(newCard->getColor());
+	cout << newCard->getName() << "\e[0m - Play or keep?" << endl;		//ask if player wants to keep or play the card
 	cout << "1. Play" << endl;			
 	cout << "2. Keep" << endl;
 
@@ -309,8 +322,9 @@ void Core::playerForceDraw(Card* newCard)
 }
 
 //implement the core botForceDraw function
-void Core::botForceDraw(Card* newCard)				//bot will always play the card
+void Core::botForceDraw(Card* newCard, int extraCards)				//bot will always play the card
 {
+	cout << "Bot has drawn " << extraCards << " cards" << endl;
 	players[playerXTurn]->playCard(getPlayersCard().size() - 1);
 }
 
@@ -375,7 +389,7 @@ void Core::playerChoicePlay(vector<Card*> playableCards)
 void Core::botChoicePlay(vector<Card*> playableCards)				//bot will always play the first card they can play 
 {
 	bool callBreak = false;
-	for (int i=0; i<playableCards.size(); i++) {				//pick a playable card
+	for (int i=0; i<getPlayersCard().size(); i++) {				//pick a playable card
 		for (int m=0; m<playableCards.size(); m++) {
 			if (getPlayersCard()[i]->getName() == playableCards[m]->getName()) {		//test it through for loop
 				players[playerXTurn]->playCard(i);
@@ -416,7 +430,7 @@ void Core::callUno(char unoChar)
 	char charInput;
 	cin >> charInput;
 	if (charInput == unoChar) {
-		cout << "\e[91mUno!\e[0m" << endl;
+		cout << "Uno!" << endl;
 		players[playerXTurn]->setUno();
 	} else {
 		cout << "Wrong button!" << endl;

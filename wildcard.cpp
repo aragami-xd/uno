@@ -36,16 +36,19 @@ void Wildcard::setColor(Core* core)
         cout << "4. \e[93mYellow\e[0m" << endl;
 
         string colorChoiceString;           //get the input color. convert string to int for foolproof
-        while (color > 4 || color < 0) {
+        bool rightColor = false;
+        while (rightColor == false) {
             cin >> colorChoiceString;
             istringstream iss(colorChoiceString);
             iss >> color;
             if (color > 4 || color < 0) {
                 cout << "Don't mess around" << endl;
+            } else {
+                rightColor = true;
             }
         }
     } else {
-        color = 0;          //temporarily set like this for the bot
+        color = 1;          //temporarily set like this for the bot
     }
 
     cout << "Color has been set to ";       //confirm color change

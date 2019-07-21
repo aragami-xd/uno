@@ -95,6 +95,7 @@ int main()
 		hand[i] = new Hand();
 		players[i] = new Player(hand[i]);
 	}
+	players[0]->setBotPlayer();
 
 
 	Draw *draw = new Draw(cardList);
@@ -135,7 +136,6 @@ int main()
 	srand(time(0));			//for random
 	::clearConsole();
 	core->turnCycle();
-	//core->turnTimer();
 	cout << endl;
 
 

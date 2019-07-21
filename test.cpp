@@ -113,16 +113,26 @@ void Test::testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard)
 			transferCardIndex = i;
 		}
 	}
-	
-	deckFrom->pushCard(transferCardIndex, deckTo);
-
 	for (int i=0; i<deckToDeck.size(); i++) {		//check how many transferCard in deckTo
 		if (transferCard->getName() == deckToDeck[i]->getName()) {
 			deckToTotal++;
 		}
 	}
+	
+	deckFrom->pushCard(transferCardIndex, deckTo);
 
-	if (deckFromTotal == 1 && deckToTotal == 1) {
+	for (int i=0; i<deckFromDeck.size(); i++) {		//check how many transferCard in deckFrom
+		if (transferCard->getName() == deckFromDeck[i]->getName()) {
+			deckFromTotal--;
+		}
+	}
+	for (int i=0; i<deckToDeck.size(); i++) {		//check how many transferCard in deckTo
+		if (transferCard->getName() == deckToDeck[i]->getName()) {
+			deckToTotal--;
+		}
+	}
+
+	if (deckFromTotal == 1 && deckToTotal == -1) {
 		cout << "Test card transfer PASSED" << endl;
 	} else {
 		cout << "Test card transfer FAILED " << deckFromTotal << " " << deckToTotal << endl;

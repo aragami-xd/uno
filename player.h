@@ -28,6 +28,8 @@ private:
 	Hand* playerHand;
 	Core* core;
 	int uno;		//uno = 1 -> uno status (1 card remaining) 
+	bool botPlayer = true;			//false if it's real player
+	int cardsToDraw;		//number of cards needed to draw at the start of the turn 
 
 public: 
 	Player();
@@ -48,6 +50,12 @@ public:
 
 	void setUno();
 	int getUno();
+
+	void setBotPlayer();			//if this function is called, then it's not bot player
+	bool getBotPlayer();
+
+	void setCardsToDraw(int noOfCards = 0);
+	int getCardsToDraw();
 
 	
 

@@ -1,16 +1,6 @@
 #ifndef CORE_H
 #define CORE_H
 
-/* 
-//card library 
-#include "drawfour.h"
-#include "colorcard.h"
-#include "drawtwo.h"
-#include "reverse.h"
-#include "skip.h"
-#include "number.h"
-*/
-
 #include "player.h"
 #include "interface.h"
 #include "thread.h"
@@ -53,17 +43,19 @@ public:
 	std::vector<Card*> getPlayersCard();
 	int getHandSize(int playerNo);
 	
+
+
 	////action sets 
 	void turnCycle();		//loop between players as turns
-	void playerTurn();		//print player's turn
+	void playerTurn();
 	void botTurn();
 	
 	void defaultPrinting();			//cout some basic information at the start of the turn 
-	void turnPrinting(int turn);
+	void turnPrinting(int turn);		//print the turn things (Turn: p1->p2->...)
 	
 	void beginGameDraw();			//drawing 7 cards at the beginning of the game
 	
-	std::vector<Card*> playable();
+	std::vector<Card*> playable();			//get the list of cards that player can play 
 	bool canPlay();			//see if player can play any card in their hand or not
 
 	void forceDraw(bool choicePlayFalse = true);		//if player cannot play any card, then they're forced to draw until they got a compatible card 
@@ -74,10 +66,12 @@ public:
 	void playerChoicePlay(std::vector<Card*> playableCards);
 	void botChoicePlay(std::vector<Card*> playableCards);
 	
-	char unoSignal();
-	void callUno(char unoChar);
+	char unoSignal();			//remind user that they can call uno this round
+	void callUno(char unoChar);			//call uno
 
-	void runGame();
+	void stackable();		//ask if player wants to stack draw cards or not
+
+	void runGame();				//incorporate turnCycle and countdown timer
 	
 	~Core();
 };

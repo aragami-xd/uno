@@ -2,6 +2,7 @@
 #include "core.h"
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -23,33 +24,61 @@ void Wildcard::effect(Core* core)
     setColor(core);
 }
 
+
+
 //implement the wildcard setColor function
 void Wildcard::setColor(Core* core)
 {
     int playerXTurn = core->getPlayerXTurn();
 
-    if (playerXTurn == 0) {
-	    cout << "Choose a wildcard color: " << endl;
-        cout << "1. \e[91mRed\e[0m" << endl;
-        cout << "2. \e[92mGreen\e[0m" << endl;
-        cout << "3. \e[94mBlue\e[0m" << endl;
-        cout << "4. \e[93mYellow\e[0m" << endl;
-
-        string colorChoiceString;           //get the input color. convert string to int for foolproof
-        bool rightColor = false;
-        while (rightColor == false) {
-            cin >> colorChoiceString;
-            istringstream iss(colorChoiceString);
-            iss >> color;
-            if (color > 4 || color < 0) {
-                cout << "Don't mess around" << endl;
-            } else {
-                rightColor = true;
-            }
-        }
+    if (core->getPlayers()[playerXTurn]->getBotPlayer() == false) {
+        playerSetColor();
     } else {
-        color = 1;          //temporarily set like this for the bot
+        botSetColor(core, playerXTurn);
     }
+}
+
+//implement the wildcard playerSetColor function
+void Wildcard::playerSetColor()
+{
+    cout << "Choose a wildcard color: " << endl;
+    cout << "1. \e[91mRed\e[0m" << endl;
+    cout << "2. \e[92mGreen\e[0m" << endl;
+    cout << "3. \e[94mBlue\e[0m" << endl;
+    cout << "4. \e[93mYellow\e[0m" << endl;
+
+    string colorChoiceString;           //get the input color. convert string to int for foolproof
+    bool rightColor = false;
+    while (rightColor == false) {
+        cin >> colorChoiceString;
+        istringstream iss(colorChoiceString);
+        iss >> color;
+        if (color > 4 || color < 0) {
+            cout << "Don't mess around" << endl;
+        } else {
+            rightColor = true;
+        }
+    }
+}
+
+//implement the wildcard botSetPlayer function
+void Wildcard::botSetColor(Core* core, int playerXTurn)
+{
+    vector<Card*> botCard = core->getPlayers()[playerXTurn]->getPlayerHand()->getDeck();
+    int colorAmount[4];             //get the deck and see which color appears the most
+    for (int i=0; i<botCard.size(); i++) {
+        if (botCard[i]->getColor() == 1) {
+            colorAmount[0]++; 
+        } else if (botCard[i]->getColor() == 2) {
+            colorAmount[1]++;
+        } else if (botCard[i]->getColor() == 3) {
+            colorAmount[2]++;
+        } else if (botCard[i]->getColor() == 4) {
+            colorAmount[3]++;
+        }
+    }
+    sort(colorAmount, colorAmount+4);           //sort the array by decending, the first element will be the one appears the most         
+    color = colorAmount[0];
 
     cout << "Color has been set to ";       //confirm color change
     ::rgb(color);
@@ -63,6 +92,7 @@ void Wildcard::setColor(Core* core)
         cout << "yellow\e[0m" << endl;
     }
 }
+
 
 //implement the card destructor
 Wildcard::~Wildcard()

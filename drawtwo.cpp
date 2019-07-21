@@ -35,7 +35,8 @@ void Drawtwo::effect(Core* core)
 	}
 
 	Player* drawPlayer = core->getPlayers()[playerXTurn];	//set player to that playerX
-	drawPlayer->drawCard(2);
+	drawPlayer->setCardsToDraw(2);
+	drawPlayer->setNextTurn();
 }
 
 //implement the drawtwo destructor 

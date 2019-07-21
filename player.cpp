@@ -1,5 +1,6 @@
 #include "player.h"
 #include "core.h"
+#include <math.h>
 #include <iostream>
 using namespace std;
 
@@ -7,9 +8,9 @@ using namespace std;
 Player::Player()
 {
 	nextTurn = 1;		//player can play next turn as default
-	Hand* deck;
-	playerHand = deck;
 	uno = -1;
+	botPlayer = true;
+	cardsToDraw = 0;
 }
 
 //implement the player (deck) cosntructor
@@ -17,6 +18,9 @@ Player::Player(Hand *deck)
 {
 	playerHand = deck;
 	nextTurn = 1;
+	uno = -1;
+	botPlayer = true;
+	cardsToDraw = 0;
 }
 
 //implement the player setPlayerDeck function
@@ -98,6 +102,30 @@ int Player::getUno()
 	return uno;
 }
 
+//implement the player setBotPlayer function
+void Player::setBotPlayer()
+{
+	botPlayer = false;
+}
+
+//implement the player getBotPlayer function
+bool Player::getBotPlayer()
+{
+	return botPlayer;
+}
+
+//implement the player setCardsToDraw function
+void Player::setCardsToDraw(int noOfCards)
+{
+	cardsToDraw = noOfCards;
+}
+
+//implement the player getCardsToDraw function
+int Player::getCardsToDraw()
+{
+	return cardsToDraw;
+}
+
 
 
 //implement the player drawCard function
@@ -105,9 +133,12 @@ void Player::drawCard(int noOfCard)
 {
 	for (int i=0; i<noOfCard; i++) {					//drawing x cards 
 		core->getDraw()->pushCard(0, playerHand);		//draw to last card to playerHand, which then delete that card in the Draw deck 
-		//cout << "Card ";
-		//::rgb(playerHand->getDeck()[playerHand->getDeck().size() - 1]->getColor());
-		//cout << playerHand->getDeck()[playerHand->getDeck().size() - 1]->getName() << "\e[0m is drawn" << endl;
+		if (botPlayer == false) {		//only print what card is drawn if it's a player, not bot
+			cout << "Card ";
+			::rgb(playerHand->getDeck()[playerHand->getDeck().size() - 1]->getColor());
+			cout << playerHand->getDeck()[playerHand->getDeck().size() - 1]->getName() << "\e[0m is drawn" << endl;
+		}
+		::animationDelay(floor(1000/noOfCard));
 	}
 }
 

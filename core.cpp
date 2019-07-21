@@ -94,9 +94,11 @@ void Core::turnCycle()
 {
 	while (endGame == false) {
 		defaultPrinting();
+		players[playerXTurn]->drawCard(players[playerXTurn]->getCardsToDraw());			//draw all the cards needed to draw
+		players[playerXTurn]->setCardsToDraw();			//reset the number of cards to draw
 		players[playerXTurn]->getPlayerHand()->sortHand();		//sort hand before the turn 
 		
-		if (playerXTurn == 0) {
+		if (players[playerXTurn]->getBotPlayer() == false) {	
 			playerTurn();
 		} else {
 			botTurn();
@@ -132,19 +134,12 @@ void Core::turnCycle()
 void Core::playerTurn()
 {
 	if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
-		for (int i=0; i<getPlayersCard().size(); i++) {
-			cout << i << ". ";
-			::rgb(getPlayersCard()[i]->getColor());
-			cout << getPlayersCard()[i]->getName() << "\e[0m" << endl;
-		}
-
-		cout << endl;
 		::animationDelay(400);
 
 		char inputChar = unoSignal();		//see if player can call uno this round or not
 		choicePlay();		//player's action in the turn 
 		if (getPlayersCard().size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 
-			callUno(inputChar);
+			callUno(inputChar);	
 		}
 		if (getPlayersCard().size() == 0) {
 			endGame = true;
@@ -163,6 +158,7 @@ void Core::botTurn()
 {
 	if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
 		cout << "Bot's turn" << endl;
+		cout << endl;
 		::animationDelay(2000);
 
 		choicePlay();		//player's action in the turn 
@@ -200,17 +196,28 @@ void Core::defaultPrinting()
 	cout << "Current card is: ";
 	::rgb(discard->getLastCardColor());
 	cout << discard->getLastCardName() << "\e[0m" << endl;		//print out current card
+
+	if (players[0]->getBotPlayer() == false) {			//usually, player 0 is the real player. but if i want i can have 4 bots play w/ each other	
+		cout << "Your hand: " << endl;
+		for (int i=0; i<players[0]->getPlayerHand()->getDeck().size(); i++) {
+			cout << i << ". ";
+			::rgb(players[0]->getPlayerHand()->getDeck()[i]->getColor());
+			cout << players[0]->getPlayerHand()->getDeck()[i]->getName() << "\e[0m" << endl;
+			}
+		cout << endl;
+	}
+
 	cout << "Player " << playerXTurn + 1 << " turn: " << endl;
 }
 
 //implement the core turnPrinting function
 void Core::turnPrinting(int turn)
 {
-	if (players[playerXTurn]->getUno() == 1) {
-		cout << "\e[91mUNO! \e[0m";			//put a red capitalized uno at the front 
+	if (players[turn]->getPlayerHand()->getDeck().size() == 1) {
+		cout << "\e[91mUNO! \e[0m";			//put a red capitalized uno at the front of the player 
 	}
 	if (turn == playerXTurn) {
-		cout << "\e[92m[Player " << turn+1 << " (" << getPlayersCard().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
+		cout << "\e[93m[Player " << turn+1 << " (" << getPlayersCard().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
 	} else {
 		cout << "Player " << turn+1 << " (" << players[turn]->getPlayerHand()->getDeck().size() << ") -> ";
 	}
@@ -285,7 +292,7 @@ void Core::forceDraw(bool choicePlayFalse)
 
 			//if player draws a compatible card
 			if (compatibleCard == true) {			//search the deck again, if there is compatible card, that means you've drawn the right card
-				if (playerXTurn == 0) {
+				if (players[playerXTurn]->getBotPlayer() == false) {
 					playerForceDraw(newCard);
 				} else {
 					botForceDraw(newCard, extraCards);
@@ -337,7 +344,7 @@ void Core::choicePlay()
 		
 		vector<Card*> playableCards = playable();						//list the playable cards
 		
-		if (playerXTurn == 0) {
+		if (players[playerXTurn]->getBotPlayer() == false) {
 			playerChoicePlay(playableCards);
 		} else {
 			botChoicePlay(playableCards);
@@ -437,6 +444,14 @@ void Core::callUno(char unoChar)
 		players[playerXTurn]->drawCard(1);			//may change to 6 later, so you'll have to draw the entire deck if not call uno
 	}
 }
+
+
+//implement the core stackable function
+void Core::stackable()
+{
+	
+}
+
 
 
 //implement the core runGame function

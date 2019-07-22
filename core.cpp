@@ -95,7 +95,8 @@ void Core::turnCycle()
 	int stackSize = 0;				//at the start of the turn, see how many cards have been stacked to be drawn 
 	while (endGame == false) {
 		defaultPrinting();
-		
+		stackSize += players[playerXTurn]->getCardsToDraw();
+
 		if (stackSize > 0) {
 			stackSize = stackable(stackSize, players[playerXTurn]->getCardsToDraw());			//since only drawtwo and drawfour call the setCardsToDraw function (except for resetting), stackable will be called
 		}
@@ -497,7 +498,7 @@ int Core::playerStackable(int stackSize, int stackType, int requiredCard)
 				cin >> choice;
 				if (getPlayersCard()[choice]->getNumber() == requiredCard) {			//if it's the right card
 					players[playerXTurn]->playCard(choice);
-					stackSize += stackType;				//stack size becomes bigger
+					//stackSize += stackType;				//stack size becomes bigger
 					rightInput = true;
 					return stackSize;				//return the stackType
 				} else {
@@ -522,7 +523,7 @@ int Core::botStackable(int stackSize, int stackType, int requiredCard)
 	for (int i=0; i<getPlayersCard().size(); i++) {
 		if (getPlayersCard()[i]->getNumber() == requiredCard) {
 			players[playerXTurn]->playCard(i);				//bot will always stack the first card they can stack 
-			stackSize += stackType;
+			//stackSize += stackType;
 			return stackSize;
 			break;
 		}

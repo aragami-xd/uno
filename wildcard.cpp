@@ -36,6 +36,17 @@ void Wildcard::setColor(Core* core)
     } else {
         botSetColor(core, playerXTurn);
     }
+    cout << "Color has been set to ";       //confirm color change
+    ::rgb(color);
+    if (color == 1) {
+        cout << "red\e[0m" << endl;
+    } else if (color == 2) {
+        cout << "green\e[0m" << endl;
+    } else if (color == 3) {
+        cout << "blue\e[0m" << endl;
+    } else if (color == 4) {
+        cout << "yellow\e[0m" << endl;
+    }
 }
 
 //implement the wildcard playerSetColor function
@@ -79,18 +90,6 @@ void Wildcard::botSetColor(Core* core, int playerXTurn)
     }
     sort(colorAmount, colorAmount+4);           //sort the array by decending, the first element will be the one appears the most         
     color = colorAmount[0];
-
-    cout << "Color has been set to ";       //confirm color change
-    ::rgb(color);
-    if (color == 1) {
-        cout << "red\e[0m" << endl;
-    } else if (color == 2) {
-        cout << "green\e[0m" << endl;
-    } else if (color == 3) {
-        cout << "blue\e[0m" << endl;
-    } else if (color == 4) {
-        cout << "yellow\e[0m" << endl;
-    }
 }
 
 

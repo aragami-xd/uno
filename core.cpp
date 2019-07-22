@@ -97,12 +97,11 @@ void Core::turnCycle()
 		players[playerXTurn]->getPlayerHand()->sortHand();		//for safety reason, just sort it 
 		defaultPrinting();
 		stackSize += players[playerXTurn]->getCardsToDraw();
-		cout << "Stack size " << stackSize << endl;
 		if (stackSize > 0) {
 			stackSize = stackable(stackSize, players[playerXTurn]->getCardsToDraw());			//since only drawtwo and drawfour call the setCardsToDraw function (except for resetting), stackable will be called
 		}
 
-		players[playerXTurn]->setCardsToDraw();			//reset the number of cards to draw
+		players[playerXTurn]->setCardsToDraw(0);			//reset the number of cards to draw
 		players[playerXTurn]->getPlayerHand()->sortHand();		//sort hand before the turn 
 		
 		if (players[playerXTurn]->getBotPlayer() == false) {	

@@ -10,7 +10,6 @@ Player::Player()
 	nextTurn = 1;		//player can play next turn as default
 	uno = -1;
 	botPlayer = true;
-	cardsToDraw = 0;
 }
 
 //implement the player (deck) cosntructor
@@ -20,7 +19,6 @@ Player::Player(Hand *deck)
 	nextTurn = 1;
 	uno = -1;
 	botPlayer = true;
-	cardsToDraw = 0;
 }
 
 //implement the player setPlayerDeck function
@@ -117,7 +115,7 @@ bool Player::getBotPlayer()
 //implement the player setCardsToDraw function
 void Player::setCardsToDraw(int noOfCards)
 {
-	cardsToDraw == noOfCards;
+	cardsToDraw = noOfCards;
 }
 
 //implement the player getCardsToDraw function

@@ -117,7 +117,7 @@ bool Player::getBotPlayer()
 //implement the player setCardsToDraw function
 void Player::setCardsToDraw(int noOfCards)
 {
-	cardsToDraw = noOfCards;
+	cardsToDraw == noOfCards;
 }
 
 //implement the player getCardsToDraw function

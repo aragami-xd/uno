@@ -69,7 +69,9 @@ public:
 	char unoSignal();			//remind user that they can call uno this round
 	void callUno(char unoChar);			//call uno
 
-	void stackable();		//ask if player wants to stack draw cards or not
+	int stackable(int stackSize, int stackType);		//ask if player wants to stack draw cards or not
+	int playerStackable(int stackSize, int stackType, int requiredCard);
+	int botStackable(int stackSize, int stackType, int requiredCard);
 
 	void runGame();				//incorporate turnCycle and countdown timer
 	

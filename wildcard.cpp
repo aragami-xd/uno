@@ -54,7 +54,7 @@ void Wildcard::playerSetColor()
         istringstream iss(colorChoiceString);
         iss >> color;
         if (color > 4 || color < 0) {
-            cout << "Don't mess around" << endl;
+            cout << "Choose again" << endl;
         } else {
             rightColor = true;
         }

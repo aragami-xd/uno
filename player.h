@@ -54,7 +54,7 @@ public:
 	void setBotPlayer();			//if this function is called, then it's not bot player
 	bool getBotPlayer();
 
-	void setCardsToDraw(int noOfCards = 0);
+	void setCardsToDraw(int noOfCards = 0);		//this function determines which type of card player have to stack or draw (+2 / +4)
 	int getCardsToDraw();
 
 	

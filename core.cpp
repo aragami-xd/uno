@@ -92,9 +92,14 @@ int Core::getHandSize(int playerNo)
 //implement the core turnCycle function
 void Core::turnCycle()
 {
+	int stackSize = 0;				//at the start of the turn, see how many cards have been stacked to be drawn 
 	while (endGame == false) {
 		defaultPrinting();
-		players[playerXTurn]->drawCard(players[playerXTurn]->getCardsToDraw());			//draw all the cards needed to draw
+		
+		if (stackSize > 0) {
+			stackSize = stackable(stackSize, players[playerXTurn]->getCardsToDraw());			//since only drawtwo and drawfour call the setCardsToDraw function (except for resetting), stackable will be called
+		}
+
 		players[playerXTurn]->setCardsToDraw();			//reset the number of cards to draw
 		players[playerXTurn]->getPlayerHand()->sortHand();		//sort hand before the turn 
 		
@@ -447,11 +452,82 @@ void Core::callUno(char unoChar)
 
 
 //implement the core stackable function
-void Core::stackable()
+int Core::stackable(int stackSize, int stackType)
 {
-	
+	int requiredCard;			//number of the card required to stack
+	if (stackType == 2) {
+		requiredCard = 12;			//drawtwo	
+	} else if (stackType == 4) {
+		requiredCard = 14;			//drawfour
+	}
+
+	bool haveStackCard = false;
+	for (int i=0; i<getPlayersCard().size(); i++) {							//check if there is a stackable card or not
+		if (getPlayersCard()[i]->getNumber() == requiredCard) {
+			cout << "You can stack card. Want to stack? (y/n)" << endl;
+			haveStackCard = true;
+			break;
+		}
+	}
+
+	if (haveStackCard == true && players[playerXTurn]->getBotPlayer() == false) {			//player has stackable card
+		return playerStackable(stackSize, stackType, requiredCard);
+	} else if (haveStackCard == true && players[playerXTurn]->getBotPlayer() == true) {		//bot has stackable card
+		return botStackable(stackSize, stackType, requiredCard);
+	} else if (haveStackCard == false) {				//draw the full stack if don't have stack card
+		cout << "No stackable card" << endl;
+		players[playerXTurn]->drawCard(stackSize);
+		return 0;				//reset the stackSize, if player don't stack card and draw the sum
+	}					
 }
 
+
+//implement the core playerStackable function
+int Core::playerStackable(int stackSize, int stackType, int requiredCard)
+{
+	bool rightInput = false;
+	while (rightInput == false) {
+		string stackInput;
+		cin >> stackInput;
+		if (stackInput == "y") {			//player choose to stack
+				
+			cout << "Play the stackable card" << endl;
+			while (rightInput == false) {
+				int choice;
+				cin >> choice;
+				if (getPlayersCard()[choice]->getNumber() == requiredCard) {			//if it's the right card
+					players[playerXTurn]->playCard(choice);
+					stackSize += stackType;				//stack size becomes bigger
+					rightInput = true;
+					return stackSize;				//return the stackType
+				} else {
+					cout << "You can't stack that card" << endl;
+				}
+			}
+			rightInput = true;
+
+		} else if (stackInput == "n") {			//player choose not to stack...for some reason
+			rightInput = true;
+			players[playerXTurn]->drawCard(stackSize);					//they'll have to draw the stackSize
+		} else {
+			cout << "Choose again" << endl;			//turn vanoss mode and become an asshole 
+		}
+	}
+	return 0;
+}
+
+//implement the core botStackable function
+int Core::botStackable(int stackSize, int stackType, int requiredCard)
+{
+	for (int i=0; i<getPlayersCard().size(); i++) {
+		if (getPlayersCard()[i]->getNumber() == requiredCard) {
+			players[playerXTurn]->playCard(i);				//bot will always stack the first card they can stack 
+			stackSize += stackType;
+			return stackSize;
+			break;
+		}
+	}
+}
 
 
 //implement the core runGame function

@@ -36,6 +36,7 @@ void Drawtwo::effect(Core* core)
 
 	Player* drawPlayer = core->getPlayers()[playerXTurn];	//set player to that playerX
 	drawPlayer->setCardsToDraw(2);
+	cout << playerXTurn << " " << drawPlayer->getCardsToDraw() << endl;
 	drawPlayer->setNextTurn();
 }
 

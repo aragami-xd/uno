@@ -94,9 +94,10 @@ void Core::turnCycle()
 {
 	int stackSize = 0;				//at the start of the turn, see how many cards have been stacked to be drawn 
 	while (endGame == false) {
+		players[playerXTurn]->getPlayerHand()->sortHand();		//for safety reason, just sort it 
 		defaultPrinting();
 		stackSize += players[playerXTurn]->getCardsToDraw();
-
+		cout << "Stack size " << stackSize << endl;
 		if (stackSize > 0) {
 			stackSize = stackable(stackSize, players[playerXTurn]->getCardsToDraw());			//since only drawtwo and drawfour call the setCardsToDraw function (except for resetting), stackable will be called
 		}
@@ -127,7 +128,7 @@ void Core::turnCycle()
 		}
 		
 		::animationDelay(1500);
-		::clearConsole();
+		//::clearConsole();
 	}
 	if (endGame == true) {
 		cout << "Alright you can go back to what people call 'real life' now, game over" << endl;
@@ -178,6 +179,7 @@ void Core::botTurn()
 
 	} else if (players[playerXTurn]->getNextTurn() == -1) {				//if they cannot play, then not play, and reverse that value
 		players[playerXTurn]->setNextTurn();
+		cout << "Bot cannot play this turn" << endl;
 	}
 }
 
@@ -470,6 +472,7 @@ int Core::stackable(int stackSize, int stackType)
 			break;
 		}
 	}
+	cout << boolalpha << haveStackCard << endl;
 
 	if (haveStackCard == true && players[playerXTurn]->getBotPlayer() == false) {			//player has stackable card
 		return playerStackable(stackSize, stackType, requiredCard);

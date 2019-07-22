@@ -76,20 +76,29 @@ void Wildcard::playerSetColor()
 void Wildcard::botSetColor(Core* core, int playerXTurn)
 {
     vector<Card*> botCard = core->getPlayers()[playerXTurn]->getPlayerHand()->getDeck();
-    int colorAmount[4];             //get the deck and see which color appears the most
+    int red, green, blue, yellow;             //get the deck and see which color appears the most
     for (int i=0; i<botCard.size(); i++) {
         if (botCard[i]->getColor() == 1) {
-            colorAmount[0]++; 
+            red++; 
         } else if (botCard[i]->getColor() == 2) {
-            colorAmount[1]++;
+            green++;
         } else if (botCard[i]->getColor() == 3) {
-            colorAmount[2]++;
+            blue++;
         } else if (botCard[i]->getColor() == 4) {
-            colorAmount[3]++;
+            yellow++;
         }
     }
-    sort(colorAmount, colorAmount+4);           //sort the array by decending, the first element will be the one appears the most         
-    color = colorAmount[0];
+
+    if (red > green && red > blue && red > yellow) {            //see which color apears the most
+        color = 1;
+    } else if (green > red && green > blue && green > yellow) {
+        color = 2;
+    } else if (blue > red && blue > green && blue > yellow) {
+        color = 3;
+    } else {
+        color = 4;
+    }
+
 }
 
 

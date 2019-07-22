@@ -137,8 +137,14 @@ void Player::drawCard(int noOfCard)
 			cout << "Card ";
 			::rgb(playerHand->getDeck()[playerHand->getDeck().size() - 1]->getColor());
 			cout << playerHand->getDeck()[playerHand->getDeck().size() - 1]->getName() << "\e[0m is drawn" << endl;
+		} else {
+			cout << "Bot has drawn a card" << endl;
 		}
-		::animationDelay(floor(1000/noOfCard));
+		if (noOfCard == 1) {
+			::animationDelay(300);
+		} else {
+			::animationDelay(floor(1000/noOfCard));
+		}
 	}
 }
 

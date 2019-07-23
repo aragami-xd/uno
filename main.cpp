@@ -50,55 +50,24 @@ int main()
 
 
 	//create the deck (create card vector and assign cards into it) 
-	vector<Card*> cardList;
+	vector<Card*> cardList(108);
 	int cardQty = 4;		//how many of each card will have 
-	
-	Card *drawFour[cardQty];		//4 of each wildcard
-	Card *colorCard[cardQty];	
-	Card *drawTwo[cardQty * 2];		//8 of each action card 
-	Card *reverse[cardQty * 2];
-	Card *skip[cardQty * 2]; 
-	
-	if (ohSeven == false) {
-		Card *number[cardQty *19];		//0 x 4, 1->9 x 8 == 19 * qty
-	} else if (ohSeven == true) {
-		Card *number[cardQty *16];
-		Card *zero[cardQty];
-		Card *seven[cardQty * 2];
-	}
 
 	for (int i=0; i<cardQty; i++) {
 		//4 cards
-		drawFour[i] = new Drawfour(5);		//draw four card
-		cardList.push_back(drawFour[i]);
-
-		colorCard[i] = new Colorcard(5);		//color change wildcard 
-		cardList.push_back(colorCard[i]);
-
-		number[i*19] = new Number(i+1, 0);			//number 0 card, separeted 18 iterations from each other 
-		cardList.push_back(number[i*19]);
-
+		cardList[i] = new Drawfour(5);		//draw four card
+		cardList[i + cardQty] = new Colorcard(5);		//color change wildcard 
+		cardList[i + cardQty*2] = new Number(i+1, 0);				
 		for (int m=0; m<2; m++) {			//8 cards
-			drawTwo[i + m*cardQty] = new Drawtwo(i+1);	//color starts from 1, not 0
-			cardList.push_back(drawTwo[i + m*cardQty]);
-
-			reverse[i + m*cardQty] = new Reverse(i+1);		//reverse card 
-			cardList.push_back(reverse[i + m*cardQty]);
-
-			skip[i + m*cardQty] = new Skip(i+1);			//skip card
-			cardList.push_back(skip[i + m*cardQty]);
-
-			for (int n=1; n<=9; n++) {			//number 1->9 cards = 72 in total 
-				number[i*19 + n + m*9] = new Number(i+1, n);		//thank god this shit is complicated AF: i loops between 19 iterations (0,1,2...1,2...9,0,1...)
-				cardList.push_back(number[i*19 + n + m*9]);			//m loops through 9 iterations (0,1.....1....0,1.....) and n loop in between m
-			}
+			cardList[i + cardQty*(3+m)] = new Drawtwo(i+1);	        //color starts from 1, not 0
+			cardList[i + cardQty*(5+m)] = new Reverse(i+1);		//reverse card 
+			cardList[i + cardQty*(7+m)] = new Skip(i+1);			//skip card
 		}
-	}	
-	/* Loop analysis
-	loop: red -> green -> blue ->yellow
-	loop content: drawfour, colorcard, 0, drawtwo, reverse, skip, 1, 2....9, drawtwo, reverese, skip, drawfour, 1, 2...
-	-> loop e.g. run this line: test->printCardList();
-	*/ 
+		for (int m=0; m<9; m++) {
+			cardList[i+cardQty*(9+m*2)] = new Number(i+1, m+1);
+			cardList[i+cardQty*(10+m*2)] = new Number(i+1, m+1);
+		}
+	}
 	
 
 
@@ -131,7 +100,6 @@ int main()
 
 	//draw and discard
 	Draw *draw = new Draw(cardList);
-	draw->setDeck(cardList);
 	draw->shuffle();
 
 	Discard *discard = new Discard(draw->getDeck());
@@ -176,17 +144,9 @@ int main()
 
 
 
-
-
-	//delete drawFour, colorCard, drawTwo;
-	for (int i=0; i<cardQty; i++) {
-		delete drawFour[i], colorCard[i];
-	}
-	for (int i=0; i<cardQty * 2; i++) {
-		delete drawTwo[i], reverse[i], skip[i];
-	}
-	for (int i=0; i<76; i++) {
-		delete number[i];
+	//delete cards
+	for (int i=0; i<cardList.size(); i++) {
+		delete cardList[i];
 	}
 
 	//delete test;

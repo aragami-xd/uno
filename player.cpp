@@ -49,7 +49,7 @@ void Player::nameEasterEgg(string pName)			//vanoss crew name in uno
 	} else if (pName == "moo" || pName == "brock") {
 		playerName = "Moo.Snuckel";			//moo snuckel - brock
 	} else if (pName == "nogla") {
-		playerName = "DAITHIDENOGLA";			//daithi de nogla - david (though no one ever calls him by his real name, so i left it out) 
+		playerName = "DAITHIDEN0GLA";			//daithi de nogla - david (though no one ever calls him by his real name, so i left it out) 
 	} else if (pName == "ohm" || pName == "ryan") {
 		playerName = "Ohmwrecker"; 			//ohmwrecker - ryan
 	} else if (pName == "407" || pName == "scotty") {

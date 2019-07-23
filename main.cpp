@@ -12,6 +12,8 @@
 #include "reverse.h"
 #include "skip.h"
 #include "number.h"
+#include "zero.h"
+#include "seven.h"
 
 //deck library 
 #include "hand.h"
@@ -57,15 +59,30 @@ int main()
 		//4 cards
 		cardList[i] = new Drawfour(5);		//draw four card
 		cardList[i + cardQty] = new Colorcard(5);		//color change wildcard 
-		cardList[i + cardQty*2] = new Number(i+1, 0);				
+
 		for (int m=0; m<2; m++) {			//8 cards
 			cardList[i + cardQty*(3+m)] = new Drawtwo(i+1);	        //color starts from 1, not 0
 			cardList[i + cardQty*(5+m)] = new Reverse(i+1);		//reverse card 
 			cardList[i + cardQty*(7+m)] = new Skip(i+1);			//skip card
 		}
-		for (int m=0; m<9; m++) {
-			cardList[i+cardQty*(9+m*2)] = new Number(i+1, m+1);
-			cardList[i+cardQty*(10+m*2)] = new Number(i+1, m+1);
+
+		if (ohSeven == false) {									//oh seven rule = false -> everything is number
+			cardList[i + cardQty*2] = new Number(i+1, 0);				
+			for (int m=0; m<9; m++) {
+				cardList[i+cardQty*(9+m*2)] = new Number(i+1, m+1);
+				cardList[i+cardQty*(10+m*2)] = new Number(i+1, m+1);
+			}
+		} else if (ohSeven == true) {
+			cardList[i + cardQty*2] = new Zero(i+1);	
+			for (int m=0; m<9; m++) {
+				if (m != 6) {				//since m+1 -> m=6 will get card 7
+					cardList[i+cardQty*(9+m*2)] = new Number(i+1, m+1);			//everything else except 0 and 7 are numbers. those 2 are actions
+					cardList[i+cardQty*(10+m*2)] = new Number(i+1, m+1);
+				} else if (m == 6) {
+					cardList[i+cardQty*(9+m*2)] = new Seven(i+1);
+					cardList[i+cardQty*(10+m*2)] = new Seven(i+1);
+				}
+			}
 		}
 	}
 	

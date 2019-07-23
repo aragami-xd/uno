@@ -19,11 +19,7 @@ int main()
 
 
 	//create the deck (create card vector and assign cards into it) 
-	Card* blankCard;
 	vector<Card*> cardList;
-	for (int i=0; i<108; i++) {
-		cardList.push_back(blankCard);
-	}
 	int cardQty = 4;		//how many of each card will have 
 
 	for (int i=0; i<cardQty; i++) {

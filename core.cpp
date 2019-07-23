@@ -366,7 +366,7 @@ void Core::choicePlay()
 //implement the core playerChoicePlay function
 void Core::playerChoicePlay(vector<Card*> playableCards)
 {
-	cout << "Choose a card to play. If you don't want to play, press 'd' to draw extra cards ";
+	cout << "Choose a card to play. If you don't want to play, press 'd' to draw extra cards: ";
 	string choice;
 	int choiceInt;
 	bool rightChoice = false;

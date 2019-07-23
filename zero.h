@@ -12,6 +12,6 @@ public:
     virtual void setName();
     virtual void effect(Core* core);
     ~Zero();
-}
+};
 
 #endif

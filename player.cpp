@@ -34,34 +34,40 @@ Hand* Player::getPlayerHand()
 }
 
 //implement the player easterEgg function
-void Player::nameEasterEgg(string pName)
+void Player::nameEasterEgg(string pName)			//vanoss crew name in uno
 {
-	if (pName == "vanoss") {		//vanoss crew name easter egg
+	if (pName == "vanoss" || pName == "evan") {				//vanoss - evan 
 		playerName = "VanossFC4";
 	} else if (pName == " ") {
-		playerName = "Al Dusty - National treasure";
+		playerName = "Al Dusty - National treasure";			//blank name for al dusty
 	} else if (pName == "al dusty") {
-		playerName = "Al Duty - National disaster";
-	} else if (pName == "terroriser") {
-		playerName = "TehTerroriser";
-	} else if (pName == "panda") {
-		playerName = "BigJiggly";
-	} else if (pName == "moo") {
-		playerName = "Moo.Snuckel";
+		playerName = "Al Duty - National disaster";				//al dusty for al duty (aka vanoss)
+	} else if (pName == "terroriser" || pName == "brian") {
+		playerName = "TehTerroriser";			//terroriser - brian
+	} else if (pName == "panda" || pName == "anthony") {
+		playerName = "BigJiggly";			//big jiggly panda	- anthony 
+	} else if (pName == "moo" || pName == "brock") {
+		playerName = "Moo.Snuckel";			//moo snuckel - brock
 	} else if (pName == "nogla") {
-		playerName = "DAITHIDENOGLA";
-	} else if (pName == "ohm") {
-		playerName = "Ohmwrecker"; 
-	} else if (pName == "407") {
-		playerName = "MLG_fourzer0";
+		playerName = "DAITHIDENOGLA";			//daithi de nogla - david (though no one ever calls him by his real name, so i left it out) 
+	} else if (pName == "ohm" || pName == "ryan") {
+		playerName = "Ohmwrecker"; 			//ohmwrecker - ryan
+	} else if (pName == "407" || pName == "scotty") {
+		playerName = "MLG_fourzer0";			//fourzeroseven - scotty 
+	} else if (pName == "basically" || pName == "marcel") {
+		playerName = "MarcelWrk";			//basicallyidowrk - marcel
+	} else if (pName == "delirious") {
+		playerName = "H2O_Delirious";		//h2o delirious - jonathan? never shown his face despite 10+ mil subs
+	} else if (pName == "pig" || pName == "tyler") {
+		playerName = "W1LDC4T43";			//i am wildcat - tyler
 	}
 }
 
 //implement the player setName function
 void Player::setName(string pName)
 {
-	nameEasterEgg(pName);
 	playerName = pName;
+	nameEasterEgg(pName);
 }
 
 //implement the player getName function

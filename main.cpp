@@ -31,26 +31,41 @@
 using namespace std;
 
 //extern function
-extern int startMenu();
+extern void startMenu();
 
 
 //main program
 int main()
 {
 
-	//int menuOption = startMenu();
+	//startMenu();
+
+	//game modes
+	bool stacking = true;		
+	bool ohSeven = true;			//0-7 rule, pronouce oh-seven
+	bool noBluffing = false;		
+	bool jumpIn = false;		
+
+
+
 
 	//create the deck (create card vector and assign cards into it) 
 	vector<Card*> cardList;
 	int cardQty = 4;		//how many of each card will have 
-
 	
 	Card *drawFour[cardQty];		//4 of each wildcard
 	Card *colorCard[cardQty];	
 	Card *drawTwo[cardQty * 2];		//8 of each action card 
 	Card *reverse[cardQty * 2];
 	Card *skip[cardQty * 2]; 
-	Card *number[cardQty *19];		//0 x 4, 1->9 x 8 == 19 * qty
+	
+	if (ohSeven == false) {
+		Card *number[cardQty *19];		//0 x 4, 1->9 x 8 == 19 * qty
+	} else if (ohSeven == true) {
+		Card *number[cardQty *16];
+		Card *zero[cardQty];
+		Card *seven[cardQty * 2];
+	}
 
 	for (int i=0; i<cardQty; i++) {
 		//4 cards
@@ -87,6 +102,8 @@ int main()
 	
 
 
+
+
 	//hand and players 
 	int noOfPlayer = 4;
 	vector<Hand*> hand(noOfPlayer);
@@ -97,7 +114,22 @@ int main()
 	}
 	players[0]->setBotPlayer();
 
+	players[0]->setName("vanoss");
+	players[1]->setName("terroriser");
+	players[2]->setName("basically");
+	players[3]->setName("moo");
 
+	/*
+	string pName;					//set the player name, i'll only use it in the official release
+	for (int i=0; i<noOfPlayer; i++) {
+		cout << "Player " << i+1 << " name: ";
+		cin >> pName;
+		players[i]->setName(pName);
+	}
+	*/
+
+
+	//draw and discard
 	Draw *draw = new Draw(cardList);
 	draw->setDeck(cardList);
 	draw->shuffle();
@@ -106,6 +138,8 @@ int main()
 	discard->setLastCard();
 
 
+
+	//core 
 	Core *core = new Core();
 	core->setPlayers(players);
 	core->setDraw(draw);
@@ -135,7 +169,7 @@ int main()
 		
 	srand(time(0));			//for random
 	::clearConsole();
-	core->turnCycle();
+	core->turnCycle();		//the game itself 
 	cout << endl;
 
 

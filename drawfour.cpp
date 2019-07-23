@@ -37,7 +37,6 @@ void Drawfour::effect(Core* core)
 	
 	Player* drawPlayer = core->getPlayers()[playerXTurn];	//set player to that playerX
 	drawPlayer->setCardsToDraw(4);
-	cout << playerXTurn << " " << drawPlayer->getCardsToDraw() << endl;
 	drawPlayer->setNextTurn();			//turns out drawfour and draw two gives you a free skip. that changes the bot design entirely 
 }
 

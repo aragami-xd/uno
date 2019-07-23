@@ -127,7 +127,7 @@ void Core::turnCycle()
 		}
 		
 		::animationDelay(1500);
-		//::clearConsole();
+		::clearConsole();
 	}
 	if (endGame == true) {
 		cout << "Alright you can go back to what people call 'real life' now, game over" << endl;
@@ -214,7 +214,7 @@ void Core::defaultPrinting()
 		cout << endl;
 	}
 
-	cout << "Player " << playerXTurn + 1 << " turn: " << endl;
+	cout << players[playerXTurn]->getName() << " turn: " << endl;
 }
 
 //implement the core turnPrinting function
@@ -224,9 +224,9 @@ void Core::turnPrinting(int turn)
 		cout << "\e[91mUNO! \e[0m";			//put a red capitalized uno at the front of the player 
 	}
 	if (turn == playerXTurn) {
-		cout << "\e[93m[Player " << turn+1 << " (" << getPlayersCard().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
+		cout << "\e[93m[" << players[turn]->getName() << " (" << getPlayersCard().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
 	} else {
-		cout << "Player " << turn+1 << " (" << players[turn]->getPlayerHand()->getDeck().size() << ") -> ";
+		cout << players[turn]->getName() << " (" << players[turn]->getPlayerHand()->getDeck().size() << ") -> ";
 	}
 }
 
@@ -366,7 +366,7 @@ void Core::choicePlay()
 //implement the core playerChoicePlay function
 void Core::playerChoicePlay(vector<Card*> playableCards)
 {
-	cout << "Choose a card to play. If you don't want to play, press 'd' to draw extra cards" << endl;
+	cout << "Choose a card to play. If you don't want to play, press 'd' to draw extra cards ";
 	string choice;
 	int choiceInt;
 	bool rightChoice = false;
@@ -448,7 +448,7 @@ void Core::callUno(char unoChar)
 		players[playerXTurn]->setUno();
 	} else {
 		cout << "Wrong button!" << endl;
-		players[playerXTurn]->drawCard(1);			//may change to 6 later, so you'll have to draw the entire deck if not call uno
+		players[playerXTurn]->drawCard(2);
 	}
 }
 
@@ -466,7 +466,7 @@ int Core::stackable(int stackSize, int stackType)
 	bool haveStackCard = false;
 	for (int i=0; i<getPlayersCard().size(); i++) {							//check if there is a stackable card or not
 		if (getPlayersCard()[i]->getNumber() == requiredCard) {
-			cout << "You can stack card. Want to stack? (y/n)" << endl;
+			cout << "You can stack card. Want to stack? (y/n) ";
 			haveStackCard = true;
 			break;
 		}
@@ -494,13 +494,12 @@ int Core::playerStackable(int stackSize, int stackType, int requiredCard)
 		cin >> stackInput;
 		if (stackInput == "y") {			//player choose to stack
 				
-			cout << "Play the stackable card" << endl;
+			cout << "Play the stackable card: ";
 			while (rightInput == false) {
 				int choice;
 				cin >> choice;
 				if (getPlayersCard()[choice]->getNumber() == requiredCard) {			//if it's the right card
 					players[playerXTurn]->playCard(choice);
-					//stackSize += stackType;				//stack size becomes bigger
 					rightInput = true;
 					return stackSize;				//return the stackType
 				} else {
@@ -525,7 +524,6 @@ int Core::botStackable(int stackSize, int stackType, int requiredCard)
 	for (int i=0; i<getPlayersCard().size(); i++) {
 		if (getPlayersCard()[i]->getNumber() == requiredCard) {
 			players[playerXTurn]->playCard(i);				//bot will always stack the first card they can stack 
-			//stackSize += stackType;
 			return stackSize;
 			break;
 		}

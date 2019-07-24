@@ -8,6 +8,7 @@ Core::Core()
 {
 	turnDirection = 1;
 	endGame = false;
+	stackingMode = true;
 }
 
 //implement the core setPlayer function
@@ -84,6 +85,12 @@ int Core::getHandSize(int playerNo)
 	return players[playerNo]->getPlayerHand()->getDeck().size();
 }
 
+//implement the core setStackingMode function
+void Core::setStackingMode()
+{
+	stackingMode = false;
+}
+
 
 
 
@@ -97,7 +104,7 @@ void Core::turnCycle()
 		players[playerXTurn]->getPlayerHand()->sortHand();		//for safety reason, just sort it 
 		defaultPrinting();
 		stackSize += players[playerXTurn]->getCardsToDraw();
-		if (stackSize > 0) {
+		if (stackSize > 0 && stackingMode == true) {			//if stacking is not enabled, this will be false
 			stackSize = stackable(stackSize, players[playerXTurn]->getCardsToDraw());			//since only drawtwo and drawfour call the setCardsToDraw function (except for resetting), stackable will be called
 		}
 
@@ -128,7 +135,7 @@ void Core::turnCycle()
 		}
 		
 		::animationDelay(1500);
-		//::clearConsole();
+		::clearConsole();
 	}
 	if (endGame == true) {
 		cout << "Alright you can go back to what people call 'real life' now, game over" << endl;

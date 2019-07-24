@@ -17,9 +17,13 @@ private:
 	std::vector<Player*> players;
 	int turnDirection; 	//1 for clockwise, -1 for counter clockwise turn
 	int playerXTurn; 
+
 	bool endGame;		//F in the chat for iron man
+
 	Draw *draw;
 	Discard *discard;
+
+	bool stackingMode;
 
 public: 
 	Core();
@@ -43,6 +47,7 @@ public:
 	std::vector<Card*> getPlayersCard();
 	int getHandSize(int playerNo);
 	
+	void setStackingMode();
 
 
 	////action sets 

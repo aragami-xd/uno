@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <chrono>
-#include <thread>
 #include <ctime>
 
 //card library 
@@ -33,22 +31,35 @@
 using namespace std;
 
 //extern function
-extern void startMenu();
+extern vector<string> startMenu();
 
 
 //main program
 int main()
 {
-
-	//startMenu();
+	::clearConsole();
 
 	//game modes
 	bool stacking = true;		
-	bool ohSeven = true;			//0-7 rule, pronouce oh-seven
+	bool ohSeven = false;			//0-7 rule, pronouce oh-seven
 	bool noBluffing = false;		
-	bool jumpIn = false;		
+	bool jumpIn = false;
 
+	vector<string> gameMode = startMenu();
+	for (int i=0; i<gameMode.size(); i++) {
+		if (gameMode[i] == "1") {
+			stacking = false;
+		} else if (gameMode[i] == "2") {
+			ohSeven = true;
+		} else {
+			cout << "Game mode " << gameMode[i] << " unknown" << endl;
+		}
+	}
+	cout << "Game modes are set" << endl;
+	::animationDelay(1000);
+	::clearConsole();
 
+		
 
 
 	//create the deck (create card vector and assign cards into it) 
@@ -98,21 +109,19 @@ int main()
 		hand[i] = new Hand();
 		players[i] = new Player(hand[i]);
 	}
-	//players[0]->setBotPlayer();
+	players[0]->setBotPlayer();
 
-	players[0]->setName("vanoss");
-	players[1]->setName("terroriser");
-	players[2]->setName("basically");
-	players[3]->setName("moo");
+	//players[0]->setName("vanoss");
+	//players[1]->setName("terroriser");
+	//players[2]->setName("basically");
+	//players[3]->setName("moo");
 
-	/*
 	string pName;					//set the player name, i'll only use it in the official release
 	for (int i=0; i<noOfPlayer; i++) {
 		cout << "Player " << i+1 << " name: ";
 		cin >> pName;
 		players[i]->setName(pName);
 	}
-	*/
 
 
 	//draw and discard
@@ -122,6 +131,8 @@ int main()
 	Discard *discard = new Discard(draw->getDeck());
 	discard->setLastCard();
 
+	draw->shuffle();		//shuffle again due to discard setLastCard function
+
 
 
 	//core 
@@ -129,11 +140,21 @@ int main()
 	core->setPlayers(players);
 	core->setDraw(draw);
 	core->setDiscard(discard);
+	if (stacking == false) {
+		core->setStackingMode();
+	}
 
 	for (int i=0; i<noOfPlayer; i++) {
 		players[i]->setCore(core);
 	}
-	//core->beginGameDraw();
+
+	//these parts are completely unecessary, but it makes up for the asthetic of the game
+	::clearConsole();										
+	cout << "Loading..." << endl;
+	::animationDelay(2000);
+	::clearConsole();
+	cout << "Drawing cards..." << endl;
+	core->beginGameDraw();
 	
 
 	//test function 
@@ -154,8 +175,8 @@ int main()
 	//test->testZero(cardList[8]);				//8-11
 		
 	srand(time(0));			//for random
-	//::clearConsole();
-	//core->turnCycle();		//the game itself 
+	::clearConsole();
+	core->turnCycle();		//the game itself 
 	cout << endl;
 
 

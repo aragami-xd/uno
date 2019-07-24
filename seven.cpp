@@ -2,6 +2,7 @@
 #include "player.h"
 #include "core.h"
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 //implement the default seven constructor
@@ -48,7 +49,7 @@ void Seven::effect(Core* core)
     currentPlayer->setPlayerHand(otherHand);            //set current player hand to that player
     otherPlayers[swapPlayer]->setPlayerHand(currentHand);              //set other player hand to current player hand
     //there were some issues with swap, not being able to swap pointers and segmentation fault, so i have to do it manually
-    
+
     cout << "Card has been swapped" << endl;
 }
 
@@ -63,7 +64,7 @@ int Seven::playerEffect(Core* core, vector<Player*> otherPlayers)
     bool rightChoice = false;
     while (rightChoice == false) {
         cin >> choice;
-        if (choice > 0 && choice < 4) {     
+        if (choice >= 0 && choice < 4) {     
             cout << "Swapping card with ";
             ::rgb(4);
             cout << otherPlayers[choice]->getName() << "\e[0m" << endl;
@@ -86,17 +87,12 @@ int Seven::botEffect(Core* core, vector<Player*> otherPlayers)
     for (int i=0; i<otherPlayers.size(); i++) {
         deckSize.push_back(otherPlayers[i]->getPlayerHand()->getDeck().size());
     }
-    cout << "deckSize created" << endl;
-    if (deckSize[0] < deckSize[1] && deckSize[0] < deckSize[2]) {               //bot will always swap hand with the person with least cards
-        cout << "Swapping card with " << otherPlayers[0]->getName() << endl;
-        return 1;
-    } else if (deckSize[1] < deckSize[0] && deckSize[1] < deckSize[2]) {
-        cout << "Swapping card with " << otherPlayers[1]->getName() << endl;
-        return 2;
-    } else if (deckSize[2] < deckSize[1] && deckSize[2] < deckSize[0]) {
-        cout << "Swapping card with " << otherPlayers[2]->getName() << endl;
-        return 3;
-    } 
+    
+    int minElementIndex = min_element(deckSize.begin(), deckSize.end()) - deckSize.begin();
+    cout << "Swapping card with " << minElementIndex << endl;
+    return minElementIndex;
+
+    //what about having the same size?
 }
 
 //implement the seven destructor

@@ -48,6 +48,12 @@ public:
 	//test drawTwo or drawFour card
 	void testDrawCard(Card* drawFour);
 
+	//test seven card
+	void testSeven(Card* seven);
+
+	//test zero card
+	void testZero(Card* zero);
+
 	~Test();
 };
 

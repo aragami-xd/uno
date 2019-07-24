@@ -6,6 +6,8 @@
 #include "reverse.h"
 #include "skip.h"
 #include "number.h"
+#include "seven.h"
+#include "zero.h"
 
 using namespace std;
 
@@ -187,6 +189,71 @@ void Test::testDrawCard(Card* drawFour)
 		cout << "Draw card test PASSED" << endl;
 	} else if (diff != 4) {
 		cout << "Draw card test FAILED " << diff << endl;
+	}
+}
+
+//implement the test testSeven function
+void Test::testSeven(Card* seven)
+{
+	Hand *largerHand, *smallerHand;
+	vector<Card*> largerCard, smallerCard;
+	for (int i=0; i<8; i++) {
+		largerCard.push_back(core->getDraw()->getDeck()[i]);			//set the deck to 8 cards	
+	}
+	for (int i=0; i< 4; i++) {
+		smallerCard.push_back(core->getDraw()->getDeck()[i]);			//set the deck to 4 cards
+	}
+	largerHand->setDeck(largerCard);
+	smallerHand->setDeck(smallerCard);
+
+	core->getPlayers()[0]->setPlayerHand(largerHand);			//set the hand to players
+	core->getPlayers()[1]->setPlayerHand(smallerHand);
+	core->getPlayers()[2]->setPlayerHand(largerHand);			//ensure no core dumped fault 
+	core->getPlayers()[3]->setPlayerHand(largerHand);
+	
+	core->setPlayerXTurn(0);		//set turn to first player
+	seven->effect(core);		//call the function
+
+	largerHand = core->getPlayers()[1]->getPlayerHand();		//get the hand of the players, but now revesed
+	smallerHand = core->getPlayers()[0]->getPlayerHand();
+	
+	if (largerHand->getDeck().size() == 8 && smallerHand->getDeck().size() == 4) {
+		cout << "Seven test PASSED" << endl;
+	} else {
+		cout << "Seven test FAILED" << endl;
+		cout << largerHand->getDeck().size() << " " << smallerHand->getDeck().size() << endl;
+	}
+}
+
+//implement the test testZero function
+void Test::testZero(Card* zero)
+{
+	vector<int> deckSize;
+	for (int i=0; i<core->getPlayers().size(); i++) {
+		deckSize.push_back(core->getPlayers()[i]->getPlayerHand()->getDeck().size());
+	}
+	zero->effect(core);
+	bool swapped = true;
+	if (core->getPlayers()[0]->getPlayerHand()->getDeck().size() != deckSize[3]) {		//this is testing, play it manual
+		swapped = false;
+		cout << "Player 0 swap failed" << endl;																//also i'm too lazy to write the if statement for first and last player
+	}
+	if (core->getPlayers()[1]->getPlayerHand()->getDeck().size() != deckSize[0]) {
+		swapped = false;
+		cout << "Player 1 swap failed" << endl;		
+	}
+	if (core->getPlayers()[2]->getPlayerHand()->getDeck().size() != deckSize[1]) {
+		swapped = false;
+		cout << "Player 2 swap failed" << endl;		
+	}
+	if (core->getPlayers()[3]->getPlayerHand()->getDeck().size() != deckSize[2]) {
+		swapped = false;
+		cout << "Player 3 swap failed" << endl;		
+	}
+	if (swapped == false) {
+		cout << "Zero test FAILED" << endl;
+	} else {
+		cout << "Zero test PASSED" << endl;
 	}
 }
 

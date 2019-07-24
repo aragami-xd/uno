@@ -98,7 +98,7 @@ int main()
 		hand[i] = new Hand();
 		players[i] = new Player(hand[i]);
 	}
-	players[0]->setBotPlayer();
+	//players[0]->setBotPlayer();
 
 	players[0]->setName("vanoss");
 	players[1]->setName("terroriser");
@@ -133,7 +133,7 @@ int main()
 	for (int i=0; i<noOfPlayer; i++) {
 		players[i]->setCore(core);
 	}
-	core->beginGameDraw();
+	//core->beginGameDraw();
 	
 
 	//test function 
@@ -150,11 +150,12 @@ int main()
 	//test->testReverse(reverse[0]);
 	//test->testSkip(skip[0]);
 	//test->testDrawCard(drawFour[0]);
-	
+	//test->testSeven(cardList[85]);			//84 - 91
+	//test->testZero(cardList[8]);				//8-11
 		
 	srand(time(0));			//for random
-	::clearConsole();
-	core->turnCycle();		//the game itself 
+	//::clearConsole();
+	//core->turnCycle();		//the game itself 
 	cout << endl;
 
 

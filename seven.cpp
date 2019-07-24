@@ -41,11 +41,14 @@ void Seven::effect(Core* core)
         swapPlayer = botEffect(core, otherPlayers);
     }
     ::animationDelay(500);
+    cout << "ready to swap" << endl;
 
-    Hand* hand = currentPlayer->getPlayerHand();         //store the pointer of player's hand
-    currentPlayer->setPlayerHand(otherPlayers[swapPlayer]->getPlayerHand());            //set current player hand to that player
-    otherPlayers[swapPlayer]->setPlayerHand(hand);              //set other player hand to current player hand
+    Hand* currentHand = currentPlayer->getPlayerHand();         //store the pointer of player's hand
+    Hand* otherHand = otherPlayers[swapPlayer]->getPlayerHand();
+    currentPlayer->setPlayerHand(otherHand);            //set current player hand to that player
+    otherPlayers[swapPlayer]->setPlayerHand(currentHand);              //set other player hand to current player hand
     //there were some issues with swap, not being able to swap pointers and segmentation fault, so i have to do it manually
+    
     cout << "Card has been swapped" << endl;
 }
 
@@ -60,8 +63,10 @@ int Seven::playerEffect(Core* core, vector<Player*> otherPlayers)
     bool rightChoice = false;
     while (rightChoice == false) {
         cin >> choice;
-        if (choice >= 1 && choice <= 3) {
-            cout << "Swapping card with " << otherPlayers[choice]->getName() << endl;
+        if (choice > 0 && choice < 4) {     
+            cout << "Swapping card with ";
+            ::rgb(4);
+            cout << otherPlayers[choice]->getName() << "\e[0m" << endl;
             rightChoice = true;
         } else {
             cout << "This is a 4 player game" << endl;
@@ -74,6 +79,7 @@ int Seven::playerEffect(Core* core, vector<Player*> otherPlayers)
 int Seven::botEffect(Core* core, vector<Player*> otherPlayers)
 {
     cout << "Bot will swap its hand with another player" << endl;
+    cout << endl;
     ::animationDelay(500);
 
     vector<int> deckSize;
@@ -87,7 +93,7 @@ int Seven::botEffect(Core* core, vector<Player*> otherPlayers)
     } else if (deckSize[1] < deckSize[0] && deckSize[1] < deckSize[2]) {
         cout << "Swapping card with " << otherPlayers[1]->getName() << endl;
         return 2;
-    } else if (deckSize[2] < deckSize[1] && deckSize[2] < deckSize[1]) {
+    } else if (deckSize[2] < deckSize[1] && deckSize[2] < deckSize[0]) {
         cout << "Swapping card with " << otherPlayers[2]->getName() << endl;
         return 3;
     } 

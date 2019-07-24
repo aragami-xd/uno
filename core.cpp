@@ -109,6 +109,7 @@ void Core::turnCycle()
 		} else {
 			botTurn();
 		}
+		cout << "Player now have " << getPlayersCard().size() << " cards" << endl;
 
 		//end of a cycle, move on to the next one
 		playerXTurn += turnDirection;
@@ -127,7 +128,7 @@ void Core::turnCycle()
 		}
 		
 		::animationDelay(1500);
-		::clearConsole();
+		//::clearConsole();
 	}
 	if (endGame == true) {
 		cout << "Alright you can go back to what people call 'real life' now, game over" << endl;

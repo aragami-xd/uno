@@ -22,8 +22,10 @@ private:
 
 	Draw *draw;
 	Discard *discard;
+	std::vector<Card*> cardList;
 
 	bool stackingMode;
+
 
 public: 
 	Core();

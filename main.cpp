@@ -49,8 +49,10 @@ int main()
 	for (int i=0; i<gameMode.size(); i++) {
 		if (gameMode[i] == "1") {
 			stacking = false;
+			cout << "Stacking mode disabled" << endl;
 		} else if (gameMode[i] == "2") {
 			ohSeven = true;
+			cout << "0-7 rule enabled" << endl;
 		} else {
 			cout << "Game mode " << gameMode[i] << " unknown" << endl;
 		}
@@ -109,7 +111,7 @@ int main()
 		hand[i] = new Hand();
 		players[i] = new Player(hand[i]);
 	}
-	players[0]->setBotPlayer();
+	//players[0]->setBotPlayer();
 
 	//players[0]->setName("vanoss");
 	//players[1]->setName("terroriser");

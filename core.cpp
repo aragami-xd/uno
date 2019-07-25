@@ -104,8 +104,13 @@ void Core::turnCycle()
 		players[playerXTurn]->getPlayerHand()->sortHand();		//for safety reason, just sort it 
 		defaultPrinting();
 		stackSize += players[playerXTurn]->getCardsToDraw();
-		if (stackSize > 0 && stackingMode == true) {			//if stacking is not enabled, this will be false
-			stackSize = stackable(stackSize, players[playerXTurn]->getCardsToDraw());			//since only drawtwo and drawfour call the setCardsToDraw function (except for resetting), stackable will be called
+		if (stackSize > 0) {		
+			if (stackingMode == true) {
+				stackSize = stackable(stackSize, players[playerXTurn]->getCardsToDraw());			//since only drawtwo and drawfour call the setCardsToDraw function (except for resetting), stackable will be called
+			} else if (stackingMode == false) {
+				players[playerXTurn]->drawCard(stackSize);		//if stack mode is false, go straight to draw cards
+				stackSize = 0;
+			}
 		}
 
 		players[playerXTurn]->setCardsToDraw(0);			//reset the number of cards to draw
@@ -132,6 +137,14 @@ void Core::turnCycle()
 			} else if (playerXTurn < 0) {
 				playerXTurn = 0;				
 			}
+		}
+
+		if (draw->getDeck().size() < 10) {
+			cout << "Deck is almost out of card. All card from discard is pushed back into the deck" << endl;
+			::animationDelay(1000);
+			cardList = discard->getDeck();
+			draw->setDeck(cardList);				//get the cards and shuffle
+			draw->shuffle();
 		}
 		
 		::animationDelay(1500);
@@ -247,7 +260,7 @@ void Core::beginGameDraw()
 	//each player gets 7 cards at the begin of the game
 	for (int m=0; m<players.size(); m++) {
 		players[m]->drawCard(7);
-		//::animationDelay(400);
+		::animationDelay(400);
 		players[m]->getPlayerHand()->sortHand();
 	}
 }

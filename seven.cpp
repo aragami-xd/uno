@@ -42,14 +42,14 @@ void Seven::effect(Core* core)
         swapPlayer = botEffect(core, otherPlayers);
     }
     ::animationDelay(500);
-    cout << "ready to swap" << endl;
 
-    Hand* currentHand = currentPlayer->getPlayerHand();         //store the pointer of player's hand
-    Hand* otherHand = otherPlayers[swapPlayer]->getPlayerHand();
+    Hand *currentHand = currentPlayer->getPlayerHand();         //store the pointer of player's hand
+    Hand *otherHand = otherPlayers[swapPlayer]->getPlayerHand();
     currentPlayer->setPlayerHand(otherHand);            //set current player hand to that player
     otherPlayers[swapPlayer]->setPlayerHand(currentHand);              //set other player hand to current player hand
     //there were some issues with swap, not being able to swap pointers and segmentation fault, so i have to do it manually
-
+    
+    ::animationDelay(500);
     cout << "Card has been swapped" << endl;
 }
 
@@ -89,10 +89,10 @@ int Seven::botEffect(Core* core, vector<Player*> otherPlayers)
     }
     
     int minElementIndex = min_element(deckSize.begin(), deckSize.end()) - deckSize.begin();
-    cout << "Swapping card with " << minElementIndex << endl;
+    cout << "Swapping card with ";
+    ::rgb(4);
+    cout << otherPlayers[minElementIndex]->getName() << "\e[0m" << endl;
     return minElementIndex;
-
-    //what about having the same size?
 }
 
 //implement the seven destructor

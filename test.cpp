@@ -152,25 +152,30 @@ void Test::setCore(Core* gameCore)
 void Test::testReverse(Card* reverse)
 {
 	int direction = core->getDirection();			//get the direction, call the function and get the direction again
+	cout << "Card name: " << reverse->getName() << endl;
 	reverse->effect(core);
 	if (direction*(-1) == core->getDirection()) {
 		cout << "Reverse card test PASSED" << endl;
 	} else {
 		cout << "Reverse card test FAILED " << direction << endl;
 	}
+	cout << endl;
 }
 
 //implement the test testSkip function
 void Test::testSkip(Card* skip)
 {	
 	//set turn to player 1, call function and get the player 2 status
+	cout << "Card name: " << skip->getName() << endl;
 	core->setPlayerXTurn(0);
+	core->setDirection();
 	skip->effect(core);
-	if (core->getPlayers()[1]->getNextTurn() == -1) {
+	if (core->getPlayers()[3]->getNextTurn() == -1) {
 		cout << "Skip card test PASSED" << endl;
 	} else {
-		cout << "Skip card test FAILED" << core->getPlayers()[1]->getNextTurn() << endl;
+		cout << "Skip card test FAILED " << core->getPlayers()[1]->getNextTurn() << endl;
 	}
+	cout << endl;
 }
 
 //implement the test testDrawCard function
@@ -178,11 +183,16 @@ void Test::testDrawCard(Card* drawFour)
 {
 	//test drawfour card only this time, since drawtwo is EXACTLY the same, just less cards
 	//set turn to player 1, call function then see how many cards player 2 has after the function is called
+	core->setDirection();
+	cout << "Card name: " << drawFour->getName() << endl;
 	core->setPlayerXTurn(0);
 	Player* player = core->getPlayers()[1];
 	Deck* p1Hand = player->getPlayerHand();
-	int handSize = p1Hand->getDeck().size();
+	int handSize = p1Hand->getDeck().size();			//get the player and deck, call the function and check the amount of cards afterwards
+	
 	drawFour->effect(core);
+	player->drawCard(player->getCardsToDraw());
+
 	int diff = p1Hand->getDeck().size() - handSize;
 
 	if (diff == 4) {
@@ -190,44 +200,58 @@ void Test::testDrawCard(Card* drawFour)
 	} else if (diff != 4) {
 		cout << "Draw card test FAILED " << diff << endl;
 	}
+	cout << endl;
 }
 
 //implement the test testSeven function
 void Test::testSeven(Card* seven)
 {
-	Hand *largerHand, *smallerHand;
-	vector<Card*> largerCard, smallerCard;
+	core->setDirection();
+	cout << "Card name: " << seven->getName() << endl;
+	Hand largerHand, smallerHand, otherHand;
+	vector<Card*> largerCard, smallerCard, otherCard;
 	for (int i=0; i<8; i++) {
-		largerCard.push_back(core->getDraw()->getDeck()[i]);			//set the deck to 8 cards	
+		largerCard.push_back(core->getDraw()->getDeck()[i]);			//set the large deck to 8 cards	
 	}
-	for (int i=0; i< 4; i++) {
-		smallerCard.push_back(core->getDraw()->getDeck()[i]);			//set the deck to 4 cards
+	for (int i=0; i<4; i++) {
+		smallerCard.push_back(core->getDraw()->getDeck()[i]);			//set the small deck to 4 cards
 	}
-	largerHand->setDeck(largerCard);
-	smallerHand->setDeck(smallerCard);
+	for (int i=0; i<5; i++) {
+		otherCard.push_back(core->getDraw()->getDeck()[i]);
+	}
+	largerHand.setDeck(largerCard);
+	smallerHand.setDeck(smallerCard);
+	otherHand.setDeck(otherCard);
+	cout << "small and big hands created" << endl;
 
-	core->getPlayers()[0]->setPlayerHand(largerHand);			//set the hand to players
-	core->getPlayers()[1]->setPlayerHand(smallerHand);
-	core->getPlayers()[2]->setPlayerHand(largerHand);			//ensure no core dumped fault 
-	core->getPlayers()[3]->setPlayerHand(largerHand);
-	
+	core->getPlayers()[0]->setPlayerHand(&largerHand);			//set the hand to players
+	core->getPlayers()[1]->setPlayerHand(&smallerHand);
+	core->getPlayers()[2]->setPlayerHand(&otherHand);			//ensure no core dumped fault 
+	core->getPlayers()[3]->setPlayerHand(&otherHand);
+	cout << "hands assigned" << endl;
+
 	core->setPlayerXTurn(0);		//set turn to first player
 	seven->effect(core);		//call the function
+	cout << "effect called" << endl;
 
-	largerHand = core->getPlayers()[1]->getPlayerHand();		//get the hand of the players, but now revesed
-	smallerHand = core->getPlayers()[0]->getPlayerHand();
+	largerHand = *(core->getPlayers()[1]->getPlayerHand());		//get the hand of the players, but now revesed
+	smallerHand = *(core->getPlayers()[0]->getPlayerHand());
+	cout << "hand swaping result collected" << endl;
 	
-	if (largerHand->getDeck().size() == 8 && smallerHand->getDeck().size() == 4) {
+	if (largerHand.getDeck().size() == 8 && smallerHand.getDeck().size() == 4) {
 		cout << "Seven test PASSED" << endl;
 	} else {
 		cout << "Seven test FAILED" << endl;
-		cout << largerHand->getDeck().size() << " " << smallerHand->getDeck().size() << endl;
+		cout << largerHand.getDeck().size() << " " << smallerHand.getDeck().size() << endl;
 	}
+	cout << endl;
 }
 
 //implement the test testZero function
 void Test::testZero(Card* zero)
 {
+	core->setDirection();
+	cout << "Card name: " << zero->getName() << endl;
 	vector<int> deckSize;
 	for (int i=0; i<core->getPlayers().size(); i++) {
 		deckSize.push_back(core->getPlayers()[i]->getPlayerHand()->getDeck().size());
@@ -255,6 +279,7 @@ void Test::testZero(Card* zero)
 	} else {
 		cout << "Zero test PASSED" << endl;
 	}
+	cout << endl;
 }
 
 //implement the test destructor

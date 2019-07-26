@@ -28,10 +28,18 @@ void Skip::effect(Core* core)
 {
 	int playerXTurn;
 	playerXTurn = core->getPlayerXTurn() + 1*core->getDirection();		//since you skip next player as cycle
-	if (playerXTurn >= core->getPlayers().size()) {			//reset turn to 0
-		playerXTurn = 0;
-	} else if (playerXTurn < 0) {
-		playerXTurn = core->getPlayers().size()-1;				//reset turn to the last player
+	if (core->getDirection() == 1) {
+		if (playerXTurn >= core->getPlayers().size()) {			//reset turn to 0
+			playerXTurn = 0;
+		} else if (playerXTurn < 0) {
+			playerXTurn = core->getPlayers().size()-1;				//reset turn to the last player
+		}
+	} else if (core->getDirection() == -1) {			//for some reason, these thing behaves differently depends on which direction it is
+		if (playerXTurn >= core->getPlayers().size()) {			
+			playerXTurn = core->getPlayers().size()-1;
+		} else if (playerXTurn < 0) {
+			playerXTurn = 0;				
+		}
 	}
 	
 	Player* skippedPlayer = core->getPlayers()[playerXTurn];	//set player to that playerX

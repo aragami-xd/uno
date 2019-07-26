@@ -103,12 +103,13 @@ void Core::turnCycle()
 	while (endGame == false) {
 		players[playerXTurn]->getPlayerHand()->sortHand();		//for safety reason, just sort it 
 		defaultPrinting();
+		
 		stackSize += players[playerXTurn]->getCardsToDraw();
 		if (stackSize > 0) {		
 			if (stackingMode == true) {
 				stackSize = stackable(stackSize, players[playerXTurn]->getCardsToDraw());			//since only drawtwo and drawfour call the setCardsToDraw function (except for resetting), stackable will be called
 			} else if (stackingMode == false) {
-				players[playerXTurn]->drawCard(stackSize);		//if stack mode is false, go straight to draw cards
+				players[playerXTurn]->drawCard(players[playerXTurn]->getCardsToDraw());		//if stack mode is false, go straight to draw cards
 				stackSize = 0;
 			}
 		}
@@ -139,7 +140,7 @@ void Core::turnCycle()
 			}
 		}
 
-		if (draw->getDeck().size() < 10) {
+		if (draw->getDeck().size() < 10) {			//if the deck is almost out of card, shuffle all the cards in the discarded deck back into the draw deck
 			cout << "Deck is almost out of card. All card from discard is pushed back into the deck" << endl;
 			::animationDelay(1000);
 			cardList = discard->getDeck();
@@ -148,7 +149,7 @@ void Core::turnCycle()
 		}
 		
 		::animationDelay(1500);
-		::clearConsole();
+		//::clearConsole();
 	}
 	if (endGame == true) {
 		cout << "Alright you can go back to what people call 'real life' now, game over" << endl;
@@ -201,6 +202,7 @@ void Core::botTurn()
 		players[playerXTurn]->setNextTurn();
 		cout << "Bot cannot play this turn" << endl;
 	}
+	::animationDelay(1000);			//bot turn will have extra 1000ms of delay so you can have an idea of wtf they are doing
 }
 
 
@@ -492,7 +494,7 @@ int Core::stackable(int stackSize, int stackType)
 			break;
 		}
 	}
-	cout << boolalpha << haveStackCard << endl;
+
 
 	if (haveStackCard == true && players[playerXTurn]->getBotPlayer() == false) {			//player has stackable card
 		return playerStackable(stackSize, stackType, requiredCard);

@@ -41,10 +41,11 @@ int main()
 
 	//game modes
 	bool stacking = true;		
-	bool ohSeven = false;			//0-7 rule, pronouce oh-seven
+	bool ohSeven = true;			//0-7 rule, pronouce oh-seven
 	bool noBluffing = false;		
 	bool jumpIn = false;
 
+	/*
 	vector<string> gameMode = startMenu();
 	for (int i=0; i<gameMode.size(); i++) {
 		if (gameMode[i] == "1") {
@@ -60,6 +61,7 @@ int main()
 	cout << "Game modes are set" << endl;
 	::animationDelay(1000);
 	::clearConsole();
+	*/
 
 		
 
@@ -98,6 +100,15 @@ int main()
 			}
 		}
 	}
+	/*
+	0-3: drawfour; 4-7: wildcard
+	8-11: zero
+	12-19 drawtwo
+	20-27: reverse
+	28-35: skip
+	the rest: number
+	84-91: seven
+	*/
 	
 
 
@@ -113,17 +124,18 @@ int main()
 	}
 	//players[0]->setBotPlayer();
 
-	//players[0]->setName("vanoss");
-	//players[1]->setName("terroriser");
-	//players[2]->setName("basically");
-	//players[3]->setName("moo");
-
+	players[0]->setName("vanoss");
+	players[1]->setName("terroriser");
+	players[2]->setName("basically");
+	players[3]->setName("moo");
+	/*
 	string pName;					//set the player name, i'll only use it in the official release
 	for (int i=0; i<noOfPlayer; i++) {
 		cout << "Player " << i+1 << " name: ";
 		cin >> pName;
 		players[i]->setName(pName);
 	}
+	*/
 
 
 	//draw and discard
@@ -153,6 +165,23 @@ int main()
 	//these parts are completely unecessary, but it makes up for the asthetic of the game
 	::clearConsole();										
 	cout << "Loading..." << endl;
+	cout << endl;
+	cout << "No the game is not actually loading, i just want to waste your time xD" << endl;
+	cout << "Though i've wasted mine more than you, waiting for this animation to get over, which lasts 2 seconds (i set it to 2 seconds in the code)" << endl;
+	cout << "But since you're here, checkout Vanossgaming and Pewdiepie" << endl;
+	cout << "Then go back and thank me later" << endl;
+	cout << "WHAT?" << endl;
+	//you've never played Tuber Simulator?
+	//pssssst
+	//you know it's fun, right?
+	//i'm not supposed to give my opinion
+	//but give it a try
+	//then you can tell me if it's good or not
+	//not convinced yet?
+	//okay, i'll cut you a deal
+	//this game is available for free
+	//and that's a great price!
+	//(dadada dada da dadada) - tuber simulator outro play. imaigne it
 	::animationDelay(2000);
 	::clearConsole();
 	cout << "Drawing cards..." << endl;
@@ -160,21 +189,21 @@ int main()
 	
 
 	//test function 
-	//Test *test = new Test();
+	Test *test = new Test();
 	
-	//test->setCard(cardList);
+	test->setCard(cardList);
 	//test->setDeck(cardList, 0);
-	//test->setCore(core);
+	test->setCore(core);
 	//test->printCardList();
 	//test->printDeckList();
 	//test->testCardName();
 	//test->testCardColor();
-	//test->testDeckTransfer(draw, hand, cardList[26]);
-	//test->testReverse(reverse[0]);
-	//test->testSkip(skip[0]);
-	//test->testDrawCard(drawFour[0]);
-	//test->testSeven(cardList[85]);			//84 - 91
-	//test->testZero(cardList[8]);				//8-11
+	//test->testDeckTransfer(draw, hand[0], cardList[26]);
+	//test->testReverse(cardList[22]);
+	//test->testSkip(cardList[30]);
+	//test->testDrawCard(cardList[1]);			
+	//test->testSeven(cardList[85]);			
+	//test->testZero(cardList[9]);				
 		
 	srand(time(0));			//for random
 	::clearConsole();
@@ -190,7 +219,7 @@ int main()
 		delete cardList[i];
 	}
 
-	//delete test;
+	delete test;
 	delete draw, discard;
 	for (int i=0; i<noOfPlayer; i++) {
 		delete hand[i], players[i];

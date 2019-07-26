@@ -250,7 +250,7 @@ void Core::turnPrinting(int turn)
 		cout << "\e[91mUNO! \e[0m";			//put a red capitalized uno at the front of the player 
 	}
 	if (turn == playerXTurn) {
-		cout << "\e[93m[" << players[turn]->getName() << " (" << getPlayersCard().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
+		cout << "\e[93m[" << players[turn]->getName() << " (" << players[turn]->getPlayerHand()->getDeck().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
 	} else {
 		cout << players[turn]->getName() << " (" << players[turn]->getPlayerHand()->getDeck().size() << ") -> ";
 	}

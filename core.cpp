@@ -150,6 +150,9 @@ void Core::turnCycle()
 		
 		::animationDelay(1500);
 		//::clearConsole();
+		cout << endl;
+		cout << endl;
+		cout << endl;
 	}
 	if (endGame == true) {
 		cout << "Alright you can go back to what people call 'real life' now, game over" << endl;

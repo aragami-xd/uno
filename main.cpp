@@ -166,6 +166,7 @@ int main()
 	::clearConsole();										
 	cout << "Loading..." << endl;
 	cout << endl;
+	cout << endl;
 	cout << "No the game is not actually loading, i just want to waste your time xD" << endl;
 	cout << "Though i've wasted mine more than you, waiting for this animation to get over, which lasts 2 seconds (i set it to 2 seconds in the code)" << endl;
 	cout << "But since you're here, checkout Vanossgaming and Pewdiepie" << endl;

@@ -217,26 +217,26 @@ void Test::testSeven(Card* seven)
 		smallerCard.push_back(core->getDraw()->getDeck()[i]);			//set the small deck to 4 cards
 	}
 	for (int i=0; i<5; i++) {
-		otherCard.push_back(core->getDraw()->getDeck()[i]);
+		otherCard.push_back(core->getDraw()->getDeck()[i]);			//set the 'medium' deck to ensure that it won't be swapped with 
 	}
 	largerHand.setDeck(largerCard);
 	smallerHand.setDeck(smallerCard);
 	otherHand.setDeck(otherCard);
-	cout << "small and big hands created" << endl;
+	//cout << "small and big hands created" << endl;
 
 	core->getPlayers()[0]->setPlayerHand(&largerHand);			//set the hand to players
 	core->getPlayers()[1]->setPlayerHand(&smallerHand);
 	core->getPlayers()[2]->setPlayerHand(&otherHand);			//ensure no core dumped fault 
 	core->getPlayers()[3]->setPlayerHand(&otherHand);
-	cout << "hands assigned" << endl;
+	//cout << "hands assigned" << endl;
 
-	core->setPlayerXTurn(0);		//set turn to first player
+	core->setPlayerXTurn(3);		//set turn to first player
 	seven->effect(core);		//call the function
-	cout << "effect called" << endl;
+	//cout << "effect called" << endl;
 
 	largerHand = *(core->getPlayers()[1]->getPlayerHand());		//get the hand of the players, but now revesed
 	smallerHand = *(core->getPlayers()[0]->getPlayerHand());
-	cout << "hand swaping result collected" << endl;
+	//cout << "hand swaping result collected" << endl;
 	
 	if (largerHand.getDeck().size() == 8 && smallerHand.getDeck().size() == 4) {
 		cout << "Seven test PASSED" << endl;

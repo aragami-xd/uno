@@ -116,7 +116,7 @@ void Core::turnCycle()
 
 		players[playerXTurn]->setCardsToDraw(0);			//reset the number of cards to draw
 		players[playerXTurn]->getPlayerHand()->sortHand();		//sort hand before the turn 
-		
+
 		if (players[playerXTurn]->getBotPlayer() == false) {	
 			playerTurn();
 		} else {
@@ -124,6 +124,11 @@ void Core::turnCycle()
 		}
 		cout << "Player now have " << getPlayersCard().size() << " cards" << endl;
 
+		cout << "Player hand size" << endl;
+		for (int i=0; i<getPlayersCard().size(); i++) {
+			cout << getPlayersCard()[i]->getName() << endl;
+		}
+		
 		//end of a cycle, move on to the next one
 		playerXTurn += turnDirection;
 		if (turnDirection == 1) {

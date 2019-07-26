@@ -1,0 +1,217 @@
+[3J[H[2JUno!
+
+[3J[H[2JUno!
+
+Loading...
+
+
+No the game is not actually loading, i just want to waste your time xD
+Though i've wasted mine more than you, waiting for this animation to get over, which lasts 2 seconds (i set it to 2 seconds in the code)
+But since you're here, checkout Vanossgaming and Pewdiepie
+Then go back and thank me later
+WHAT?
+[3J[H[2JUno!
+
+Drawing cards...
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+[3J[H[2JUno!
+
+Turns: [93m[VanossFC4 (7)][0m -> TehTerroriser (7) -> MarcelWrk (7) -> Moo.Snuckel (7) -> 
+
+Current card is: [92mGreen 8[0m
+VanossFC4 turn: 
+Bot's turn
+
+Card [92mGreen 1[0m is played
+
+Player now have 6 cards
+
+
+
+Turns: VanossFC4 (6) -> [93m[TehTerroriser (7)][0m -> MarcelWrk (7) -> Moo.Snuckel (7) -> 
+
+Current card is: [92mGreen 1[0m
+TehTerroriser turn: 
+Bot's turn
+
+Card [92mGreen 1[0m is played
+
+Player now have 6 cards
+
+
+
+Turns: VanossFC4 (6) -> TehTerroriser (6) -> [93m[MarcelWrk (7)][0m -> Moo.Snuckel (7) -> 
+
+Current card is: [92mGreen 1[0m
+MarcelWrk turn: 
+Bot's turn
+
+Card [92mGreen 5[0m is played
+
+Player now have 6 cards
+
+
+
+Turns: VanossFC4 (6) -> TehTerroriser (6) -> MarcelWrk (6) -> [93m[Moo.Snuckel (7)][0m -> 
+
+Current card is: [92mGreen 5[0m
+Moo.Snuckel turn: 
+Bot's turn
+
+Card [92mGreen 3[0m is played
+
+Player now have 6 cards
+
+
+
+Turns: [93m[VanossFC4 (6)][0m -> TehTerroriser (6) -> MarcelWrk (6) -> Moo.Snuckel (6) -> 
+
+Current card is: [92mGreen 3[0m
+VanossFC4 turn: 
+Bot's turn
+
+Card [92mGreen Reverse[0m is played
+
+Player now have 5 cards
+
+
+
+Turns: [93m[Moo.Snuckel (6)][0m -> MarcelWrk (6) -> TehTerroriser (6) -> VanossFC4 (5) -> 
+
+Current card is: [92mGreen Reverse[0m
+Moo.Snuckel turn: 
+Bot's turn
+
+Card [91mRed Reverse[0m is played
+
+Player now have 5 cards
+
+
+
+Turns: [93m[VanossFC4 (5)][0m -> TehTerroriser (6) -> MarcelWrk (6) -> Moo.Snuckel (5) -> 
+
+Current card is: [91mRed Reverse[0m
+VanossFC4 turn: 
+Bot's turn
+
+Card [91mRed 9[0m is played
+
+Player now have 4 cards
+
+
+
+Turns: VanossFC4 (4) -> [93m[TehTerroriser (6)][0m -> MarcelWrk (6) -> Moo.Snuckel (5) -> 
+
+Current card is: [91mRed 9[0m
+TehTerroriser turn: 
+Bot's turn
+
+Card [91mRed 5[0m is played
+
+Player now have 5 cards
+
+
+
+Turns: VanossFC4 (4) -> TehTerroriser (5) -> [93m[MarcelWrk (6)][0m -> Moo.Snuckel (5) -> 
+
+Current card is: [91mRed 5[0m
+MarcelWrk turn: 
+Bot's turn
+
+Card [91mRed 7[0m is played
+
+Bot will swap its hand with another player
+
+Swapping card with [93mVanossFC4[0m
+Current hand:
+0. Red 7
+1. Green 6
+2. Green 6
+3. Blue 1
+4. Blue 5
+5. Blue 9
+
+Other hand:
+0. Blue 3
+1. Blue Reverse
+2. Yellow 4
+3. Draw 4 Wildcard
+
+Current hand after clear:
+0. Red 7
+1. Green 6
+2. Green 6
+3. Blue 1
+4. Blue 5
+5. Blue 9
+
+Other hand after clear:
+0. Blue 3
+1. Blue Reverse
+2. Yellow 4
+3. Draw 4 Wildcard
+
+Current hand after swap:
+0. Blue 3
+1. Blue Reverse
+2. Yellow 4
+3. Draw 4 Wildcard
+
+Other hand after swap:
+0. Red 7
+1. Green 6
+2. Green 6
+3. Blue 1
+4. Blue 5
+5. Blue 9
+
+Card has been swapped
+Player now have 3 cards
+
+
+
+Turns: VanossFC4 (6) -> TehTerroriser (5) -> MarcelWrk (3) -> [93m[Moo.Snuckel (5)][0m -> 
+
+Current card is: [94mBlue 3[0m
+Moo.Snuckel turn: 
+Bot's turn
+
+Card [94mBlue Skip[0m is played
+
+Player now have 4 cards
+
+
+
+Turns: [93m[VanossFC4 (6)][0m -> TehTerroriser (5) -> MarcelWrk (3) -> Moo.Snuckel (4) -> 
+
+Current card is: [94mBlue Skip[0m
+VanossFC4 turn: 
+Bot cannot play this turn
+Player now have 6 cards

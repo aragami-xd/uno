@@ -145,14 +145,14 @@ void Core::turnCycle()
 
 		if (draw->getDeck().size() < 10) {			//if the deck is almost out of card, shuffle all the cards in the discarded deck back into the draw deck
 			cout << "Deck is almost out of card. All card from discard is pushed back into the deck" << endl;
-			::animationDelay(1000);
+			//::animationDelay(1000);
 			cardList = discard->getDeck();
 			draw->setDeck(cardList);				//get the cards and shuffle
 			draw->shuffle();
 		}
 		
-		::animationDelay(1500);
-		//::clearConsole();
+		//::animationDelay(1500);
+		::clearConsole();
 		cout << endl;
 		cout << endl;
 		cout << endl;
@@ -168,7 +168,7 @@ void Core::turnCycle()
 void Core::playerTurn()
 {
 	if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
-		::animationDelay(400);
+		//::animationDelay(400);
 
 		char inputChar = unoSignal();		//see if player can call uno this round or not
 		choicePlay();		//player's action in the turn 
@@ -190,7 +190,7 @@ void Core::botTurn()
 	if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
 		cout << "Bot's turn" << endl;
 		cout << endl;
-		::animationDelay(2000);
+		//::animationDelay(2000);
 
 		choicePlay();		//player's action in the turn 
 		if (getPlayersCard().size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 
@@ -203,7 +203,7 @@ void Core::botTurn()
 		players[playerXTurn]->setNextTurn();
 		cout << "Bot cannot play this turn" << endl;
 	}
-	::animationDelay(1000);			//bot turn will have extra 1000ms of delay so you can have an idea of wtf they are doing
+	//::animationDelay(1000);			//bot turn will have extra 1000ms of delay so you can have an idea of wtf they are doing
 }
 
 
@@ -263,7 +263,7 @@ void Core::beginGameDraw()
 	//each player gets 7 cards at the begin of the game
 	for (int m=0; m<players.size(); m++) {
 		players[m]->drawCard(7);
-		::animationDelay(400);
+		//::animationDelay(400);
 		players[m]->getPlayerHand()->sortHand();
 	}
 }
@@ -319,7 +319,7 @@ void Core::forceDraw(bool choicePlayFalse)
 			if (newCard->getColor() == discard->getLastCardColor() || newCard->getColor() == 5 || newCard->getNumber() == discard->getLastCardNumber()) {
 				compatibleCard = true;
 			}
-			::animationDelay(400);
+			//::animationDelay(400);
 
 			//if player draws a compatible card
 			if (compatibleCard == true) {			//search the deck again, if there is compatible card, that means you've drawn the right card

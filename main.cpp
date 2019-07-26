@@ -41,11 +41,10 @@ int main()
 
 	//game modes
 	bool stacking = true;		
-	bool ohSeven = true;			//0-7 rule, pronouce oh-seven
+	bool ohSeven = false;			//0-7 rule, pronouce oh-seven
 	bool noBluffing = false;		
 	bool jumpIn = false;
 
-	/*
 	vector<string> gameMode = startMenu();
 	for (int i=0; i<gameMode.size(); i++) {
 		if (gameMode[i] == "1") {
@@ -59,9 +58,8 @@ int main()
 		}
 	}
 	cout << "Game modes are set" << endl;
-	::animationDelay(1000);
+	//::animationDelay(1000);
 	::clearConsole();
-	*/
 
 		
 
@@ -124,18 +122,17 @@ int main()
 	}
 	//players[0]->setBotPlayer();
 
-	players[0]->setName("vanoss");
-	players[1]->setName("terroriser");
-	players[2]->setName("basically");
-	players[3]->setName("moo");
-	/*
+	//players[0]->setName("vanoss");
+	//players[1]->setName("terroriser");
+	//players[2]->setName("basically");
+	//players[3]->setName("moo");
+	
 	string pName;					//set the player name, i'll only use it in the official release
 	for (int i=0; i<noOfPlayer; i++) {
 		cout << "Player " << i+1 << " name: ";
 		cin >> pName;
 		players[i]->setName(pName);
 	}
-	*/
 
 
 	//draw and discard
@@ -183,14 +180,14 @@ int main()
 	//this game is available for free
 	//and that's a great price!
 	//(dadada dada da dadada) - tuber simulator outro play. imaigne it
-	::animationDelay(2000);
+	//::animationDelay(2000);
 	::clearConsole();
 	cout << "Drawing cards..." << endl;
 	core->beginGameDraw();
 	
 
 	//test function 
-	Test *test = new Test();
+	//Test *test = new Test();
 	
 	//test->setCard(cardList);
 	//test->setDeck(cardList, 0);
@@ -220,7 +217,7 @@ int main()
 		delete cardList[i];
 	}
 
-	delete test;
+	//delete test;
 	delete draw, discard;
 	for (int i=0; i<noOfPlayer; i++) {
 		delete hand[i], players[i];

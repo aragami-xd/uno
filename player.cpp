@@ -145,9 +145,9 @@ void Player::drawCard(int noOfCard)
 			cout << "Bot has drawn a card" << endl;
 		}
 		if (noOfCard == 1) {
-			::animationDelay(300);
+			//::animationDelay(300);
 		} else {
-			::animationDelay(floor(1000/noOfCard));
+			//::animationDelay(floor(1000/noOfCard));
 		}
 	}
 }

@@ -8,12 +8,14 @@ using namespace std;
 //implement the default seven constructor
 Seven::Seven()
 {
+    cardNumber = 7;
 }
 
 //implement the seven cColor constructor
 Seven::Seven(int cColor) : Action(cColor)
 {
     name += "7";
+    cardNumber = 7;
 }
 
 //implement the seven setName function
@@ -49,7 +51,7 @@ void Seven::effect(Core* core)
     //remember to also fix the one in zero class, since it's the same as seven
     vector<Card*> currentHand = currentPlayer->getPlayerHand()->getDeck();          //get the cards from players hand
     vector<Card*> otherHand = otherPlayers[swapPlayer]->getPlayerHand()->getDeck();
-
+    /*
     cout << "Current hand:" << endl;
     for (int i=0; i<currentHand.size(); i++) {
         cout << i << ". " << currentHand[i]->getName() << endl;
@@ -60,35 +62,39 @@ void Seven::effect(Core* core)
         cout << i << ". " << otherHand[i]->getName() << endl;
     }
     cout << endl;
+    */
 
     currentPlayer->getPlayerHand()->getDeck().clear();
     otherPlayers[swapPlayer]->getPlayerHand()->getDeck().clear();       //empty the players hand
 
-    cout << "Current hand after clear:" << endl;
+    /*
+    cout << "Current hand:" << endl;
     for (int i=0; i<currentHand.size(); i++) {
         cout << i << ". " << currentHand[i]->getName() << endl;
     }
     cout << endl;
-    cout << "Other hand after clear:" << endl;
+    cout << "Other hand:" << endl;
     for (int i=0; i<otherHand.size(); i++) {
         cout << i << ". " << otherHand[i]->getName() << endl;
     }
     cout << endl;
+    */
 
     currentPlayer->getPlayerHand()->setDeck(otherHand);             //set the hand of the player to the cards above
     otherPlayers[swapPlayer]->getPlayerHand()->setDeck(currentHand);
 
-    cout << "Current hand after swap:" << endl;
-    for (int i=0; i<currentPlayer->getPlayerHand()->getDeck().size(); i++) {
-        cout << i << ". " << currentPlayer->getPlayerHand()->getDeck()[i]->getName() << endl;
+    /*
+    cout << "Current hand:" << endl;
+    for (int i=0; i<currentHand.size(); i++) {
+        cout << i << ". " << currentHand[i]->getName() << endl;
     }
     cout << endl;
-    cout << "Other hand after swap:" << endl;
-    for (int i=0; i<otherPlayers[swapPlayer]->getPlayerHand()->getDeck().size(); i++) {
-        cout << i << ". " << otherPlayers[swapPlayer]->getPlayerHand()->getDeck()[i]->getName() << endl;
+    cout << "Other hand:" << endl;
+    for (int i=0; i<otherHand.size(); i++) {
+        cout << i << ". " << otherHand[i]->getName() << endl;
     }
     cout << endl;
-
+    */
 
     //currentPlayer->setPlayerHand(otherHand);            //set current player hand to that player
     //otherPlayers[swapPlayer]->setPlayerHand(currentHand);              //set other player hand to current player hand

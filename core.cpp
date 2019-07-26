@@ -122,13 +122,11 @@ void Core::turnCycle()
 		} else {
 			botTurn();
 		}
+		if (getPlayersCard().size() == 0) {				//player out of card 
+			endGame = true;
+		}
 		cout << "Player now have " << getPlayersCard().size() << " cards" << endl;
 
-		cout << "Player hand size" << endl;
-		for (int i=0; i<getPlayersCard().size(); i++) {
-			cout << getPlayersCard()[i]->getName() << endl;
-		}
-		
 		//end of a cycle, move on to the next one
 		playerXTurn += turnDirection;
 		if (turnDirection == 1) {
@@ -177,9 +175,6 @@ void Core::playerTurn()
 		if (getPlayersCard().size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 
 			callUno(inputChar);	
 		}
-		if (getPlayersCard().size() == 0) {
-			endGame = true;
-		}
 
 	} else if (players[playerXTurn]->getNextTurn() == -1) {				//if they cannot play, then not play, and reverse that value
 		players[playerXTurn]->setNextTurn();
@@ -202,9 +197,7 @@ void Core::botTurn()
 			players[playerXTurn]->setUno();
 			cout << "Bot called Uno" << endl;
 		}
-		if (getPlayersCard().size() == 0) {
-			endGame = true;
-		}
+
 
 	} else if (players[playerXTurn]->getNextTurn() == -1) {				//if they cannot play, then not play, and reverse that value
 		players[playerXTurn]->setNextTurn();
@@ -434,14 +427,11 @@ void Core::playerChoicePlay(vector<Card*> playableCards)
 void Core::botChoicePlay(vector<Card*> playableCards)				//bot will always play the first card they can play 
 {
 	bool callBreak = false;
-	for (int i=0; i<getPlayersCard().size(); i++) {				//pick a playable card
+	for (int i=0; i<getPlayersCard().size() && callBreak == false; i++) {				//pick a playable card
 		for (int m=0; m<playableCards.size(); m++) {
 			if (getPlayersCard()[i]->getName() == playableCards[m]->getName()) {		//test it through for loop
 				players[playerXTurn]->playCard(i);
 				callBreak = true;
-				break;
-			}
-			if (callBreak == true) {
 				break;
 			}
 		}

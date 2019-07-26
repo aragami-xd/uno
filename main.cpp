@@ -192,9 +192,9 @@ int main()
 	//test function 
 	Test *test = new Test();
 	
-	test->setCard(cardList);
+	//test->setCard(cardList);
 	//test->setDeck(cardList, 0);
-	test->setCore(core);
+	//test->setCore(core);
 	//test->printCardList();
 	//test->printDeckList();
 	//test->testCardName();

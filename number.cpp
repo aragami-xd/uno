@@ -1,5 +1,5 @@
 #include "number.h"
-#include "sstream"
+#include <sstream>
 using namespace std;
 
 //implement the default number constructor

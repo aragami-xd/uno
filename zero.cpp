@@ -5,12 +5,14 @@ using namespace std;
 //implement the default zero constructor
 Zero::Zero()
 {
+    cardNumber = 0;
 }
 
 //implement the zero (cColor) constructor
 Zero::Zero(int cColor) : Action(cColor) 
 {
     name += "0";
+    cardNumber = 0;
 }
 
 //implement the zero setName function
@@ -44,6 +46,7 @@ void Zero::effect(Core* core)
     }
     ::animationDelay(500);
     cout << "All hands have been swapped" << endl;
+    
 }
 
 //implement the zero destructor

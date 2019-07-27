@@ -19,12 +19,10 @@ void Draw::shuffle()
 {	
 	//random_shuffle(deckList.begin(), deckList.end()); 
     srand(time(0)); 
- 
     for (int i=0; i<deckList.size() ;i++) 
     { 
         // random for remaining positions. 
-        int r = i + (rand() % (deckList.size() -i)); 
-  
+        int r = i + (rand() % (deckList.size() -i));   
         swap(deckList[i], deckList[r]); 
     } 
 }

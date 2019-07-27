@@ -142,7 +142,7 @@ void Player::drawCard(int noOfCard)
 			::rgb(playerHand->getDeck()[playerHand->getDeck().size() - 1]->getColor());
 			cout << playerHand->getDeck()[playerHand->getDeck().size() - 1]->getName() << "\e[0m is drawn" << endl;
 		} else {
-			cout << "Bot has drawn a card" << endl;
+			cout << "Bot has drawn " << playerHand->getDeck()[playerHand->getDeck().size() - 1]->getName() << endl;
 		}
 		if (noOfCard == 1) {
 			//::animationDelay(300);
@@ -160,8 +160,8 @@ void Player::playCard(int cardIndex)
 	::rgb(playedCard->getColor());
 	cout << playerHand->getDeck()[cardIndex]->getName() << "\e[0m" << " is played" << endl;
 	cout << endl;
-	playedCard->effect(core);
-	playerHand->pushCard(cardIndex, core->getDiscard());	
+	playerHand->pushCard(cardIndex, core->getDiscard());
+	playedCard->effect(core);	
 }
 
 //implement the player destructor

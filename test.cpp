@@ -186,7 +186,7 @@ void Test::testDrawCard(Card* drawFour)
 	core->setDirection();
 	cout << "Card name: " << drawFour->getName() << endl;
 	core->setPlayerXTurn(0);
-	Player* player = core->getPlayers()[1];
+	Player* player = core->getPlayers()[3];
 	Deck* p1Hand = player->getPlayerHand();
 	int handSize = p1Hand->getDeck().size();			//get the player and deck, call the function and check the amount of cards afterwards
 	

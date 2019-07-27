@@ -160,8 +160,8 @@ void Player::playCard(int cardIndex)
 	::rgb(playedCard->getColor());
 	cout << playerHand->getDeck()[cardIndex]->getName() << "\e[0m" << " is played" << endl;
 	cout << endl;
-	playerHand->pushCard(cardIndex, core->getDiscard());
 	playedCard->effect(core);
+	playerHand->pushCard(cardIndex, core->getDiscard());	
 }
 
 //implement the player destructor

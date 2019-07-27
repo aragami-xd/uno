@@ -62,6 +62,7 @@ public:
 	//action set
 	void drawCard(int noOfCard);
 	void playCard(int cardIndex);
+	void outOfCards();
 
 	~Player();
 };

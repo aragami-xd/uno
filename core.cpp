@@ -142,14 +142,6 @@ void Core::turnCycle()
 				playerXTurn = 0;				
 			}
 		}
-
-		if (draw->getDeck().size() < 10) {			//if the deck is almost out of card, shuffle all the cards in the discarded deck back into the draw deck
-			cout << "Deck is almost out of card. All card from discard is pushed back into the deck" << endl;
-			//::animationDelay(1000);
-			cardList = discard->getDeck();
-			draw->setDeck(cardList);				//get the cards and shuffle
-			draw->shuffle();
-		}
 		
 		//::animationDelay(1500);
 		::clearConsole();

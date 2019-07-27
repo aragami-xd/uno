@@ -149,6 +149,7 @@ void Player::drawCard(int noOfCard)
 		} else {
 			//::animationDelay(floor(1000/noOfCard));
 		}
+		outOfCards();		//check if there are any cards left. if none, shuffle the discard deck back into the main deck
 	}
 }
 
@@ -160,8 +161,25 @@ void Player::playCard(int cardIndex)
 	::rgb(playedCard->getColor());
 	cout << playerHand->getDeck()[cardIndex]->getName() << "\e[0m" << " is played" << endl;
 	cout << endl;
-	playerHand->pushCard(cardIndex, core->getDiscard());
-	playedCard->effect(core);	
+	if (playerHand->getDeck()[cardIndex]->getNumber() == 7 || playerHand->getDeck()[cardIndex]->getNumber() == 0) {	
+		playerHand->pushCard(cardIndex, core->getDiscard());			//zero and seven cards require push card first, since after effect is called
+		playedCard->effect(core);										//the card is no longer there to be pushed -> break the card 
+	} else {
+		playedCard->effect(core);										//this apply mostly to wildcards: they search the hand of player
+		playerHand->pushCard(cardIndex, core->getDiscard());			//so if it's pushed first, it cannot find players' hand anymore -> break the bot setColor
+	}
+}
+
+//implement the player outOfCard function
+void Player::outOfCards()
+{	
+	if (core->getDraw()->getDeck().size() < 1) {			//if the deck is almost out of card, shuffle all the cards in the discarded deck back into the draw deck
+		cout << "Deck is almost out of card. All card from discard is pushed back into the deck" << endl;
+		//::animationDelay(1000);
+		vector<Card*> cardList = core->getDiscard()->getDeck();
+		core->getDraw()->setDeck(cardList);				//get the cards and shuffle
+		core->getDraw()->shuffle();
+	}
 }
 
 //implement the player destructor

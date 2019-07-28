@@ -282,6 +282,43 @@ void Test::testZero(Card* zero)
 	cout << endl;
 }
 
+//implement the test testNoBluffing function
+void Test::testNoBluffing()
+{	
+	core->setPlayerXTurn(0);
+	Player* player = core->getPlayers()[core->getPlayerXTurn()];		//get the player
+	player->drawCard(80);		//draw 80 cards to be safe. chances are, there will be at least 1 wildcard there
+	
+	Draw* draw = core->getDraw();
+	int numberIndex = 0;			//to be honest, i don't really care about efficiency here
+	for (int i=0; draw->getDeck().size(); i++) {			//get a number card and push it to discard
+		if (draw->getDeck()[i]->getNumber() < 10) {
+			numberIndex = i;
+			break;
+		}
+	}
+	draw->pushCard(numberIndex, core->getDiscard());					
+	vector<Card*> playableCards = core->playable();			//get the playable cards
+
+	bool passed = true;
+	for (int i=0; i<player->getPlayerHand()->getDeck().size(); i++) {
+		if (player->getPlayerHand()->getDeck()[i]->getNumber() == 5) {			//if a wildcard is spotted, test failed
+			passed = false;					//with that said, there is always a super tiny chance of false negative: there is no wildcard in the hand
+			break;
+		}									//though, drawing 80/108 cards, i can say that it's safe enough to return the right result most of the time
+	}
+
+	if (passed == true) {
+		cout << "No bluffing test PASSED" << endl;
+	} else if (passed == false) {
+		cout << "No bluffing test FAILED" << endl;		//for some reason, the check passed isn't working correctly -> always failed for some reason
+		for (int i=0; i<playableCards.size(); i++) {
+			cout << playableCards[i]->getName() << endl;
+		}
+	}
+}
+
+
 //implement the test destructor
 Test::~Test()
 {

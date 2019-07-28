@@ -91,6 +91,12 @@ void Core::setStackingMode()
 	stackingMode = false;
 }
 
+//implement the core setNoBluffingMode function
+void Core::setNoBluffingMode()
+{
+	noBluffingMode = true;
+}
+
 
 
 
@@ -144,10 +150,10 @@ void Core::turnCycle()
 		}
 		
 		//::animationDelay(1500);
+		cout << endl;
+		cout << endl;
+		cout << endl;
 		::clearConsole();
-		cout << endl;
-		cout << endl;
-		cout << endl;
 	}
 	if (endGame == true) {
 		cout << "Alright you can go back to what people call 'real life' now, game over" << endl;
@@ -240,7 +246,7 @@ void Core::turnPrinting(int turn)
 		cout << "\e[91mUNO! \e[0m";			//put a red capitalized uno at the front of the player 
 	}
 	if (turn == playerXTurn) {
-		cout << "\e[93m[" << players[turn]->getName() << " (" << players[turn]->getPlayerHand()->getDeck().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
+		cout << "\e[94m[" << players[turn]->getName() << " (" << players[turn]->getPlayerHand()->getDeck().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
 	} else {
 		cout << players[turn]->getName() << " (" << players[turn]->getPlayerHand()->getDeck().size() << ") -> ";
 	}
@@ -271,13 +277,18 @@ vector<Card*> Core::playable()
 	vector<Card*> playerHand =  getPlayersCard();
 	vector<Card*> playableDeck;
 
+	bool noWildcard = false;
 	for (int i=0; i<playerHand.size(); i++) {
-		if (playerHand[i]->getColor() == currentColor || playerHand[i]->getColor() == 5) {		//5 is wildcard color, can be played any time
+		if (playerHand[i]->getColor() == currentColor) {		//same color. wildcard color is checked below
 			playableDeck.push_back(playerHand[i]);
+			noWildcard = true;			//if a card matches color, noWildcard = true (tho it's useless if noBluffingMode is false)
 		} else if (playerHand[i]->getNumber() == currentNumber) {			//no need to check for same wildcard number, it's checked above
 			playableDeck.push_back(playerHand[i]);
-		}
-	}
+			noWildcard = true;
+		} else if (playerHand[i]->getColor() == 5 && ((noWildcard = false && noBluffingMode == true) || (noBluffingMode == false))) {
+			playableDeck.push_back(playerHand[i]);			//since wildcards are the last cards to be checked, i don't have to worry about wildcards
+		}													//being pushed into the deck before other playable cards have been pushed 
+	}									//wildcard if condition analysis: color = 5 and [(noBuffling = true & noWildcard = false) or (noBluffing = false)] 
 	return playableDeck;
 }
 

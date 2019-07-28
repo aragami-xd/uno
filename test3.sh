@@ -1,5 +1,5 @@
 #!/bin/bash
-echo test3
+echo test3: everything default
 for i in $(seq 1 20)
 do
     echo "$i"

@@ -1,0 +1,531 @@
+[3J[H[2JUno!
+
+[94mWelcome to Uno on Console![0m
+New game?
+Yes - y
+No - n
+Okay, new game
+
+[3J[H[2JUno!
+
+Choose game rules: 
+
+[91m1. No Stacking[0m
+Now you won't get 'no U-ed' by stacking 4 draw 4s anymore
+
+[92m2. The 7-0 Rule[0m
+7 to swap hand with someone else, 0 to force everyone swap directionwise
+
+[93m3. Jump-in[0m
+You can jump in whenever you want if you got the exact same card as on the discarded deck (not yet available)
+
+[94m4. No bluffing[0m
+If you can play a non-wildcard card, you cannot play wildcards anymore
+
+Choose all the game mode you want to play, then enter them here, separated by a whitespace. Leave empty for no mod
+Game modes are set
+[3J[H[2JUno!
+
+Enter players' name here. the first player by default will player, and the other 3 will be bots
+Player 0 name: Player 1 name: Player 2 name: Player 3 name: [3J[H[2JUno!
+
+Loading...
+
+
+No the game is not actually loading, i just want to waste your time xD
+Though i've wasted mine more than you, waiting for this animation to get over, which lasts 2 seconds (i set it to 2 seconds in the code)
+But since you're here, checkout Vanossgaming and Pewdiepie
+Then go back and thank me later
+WHAT?
+[3J[H[2JUno!
+
+Drawing cards...
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+[3J[H[2JUno!
+
+Turns: [94m[1 (7)][0m -> 4 (7) -> al (7) -> dusty (7) -> 
+
+Current card is: [91mRed 2[0m
+1 turn: 
+Bot's turn
+
+Card [91mRed 2[0m is played
+
+Player now have 6 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: 1 (6) -> [94m[4 (7)][0m -> al (7) -> dusty (7) -> 
+
+Current card is: [91mRed 2[0m
+4 turn: 
+Bot's turn
+
+Card [91mRed Skip[0m is played
+
+Player now have 6 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: 1 (6) -> 4 (6) -> [94m[al (7)][0m -> dusty (7) -> 
+
+Current card is: [91mRed Skip[0m
+al turn: 
+Bot cannot play this turn
+Player now have 7 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: 1 (6) -> 4 (6) -> al (7) -> [94m[dusty (7)][0m -> 
+
+Current card is: [91mRed Skip[0m
+dusty turn: 
+Bot's turn
+
+Card [91mRed 1[0m is played
+
+Player now have 6 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: [94m[1 (6)][0m -> 4 (6) -> al (7) -> dusty (6) -> 
+
+Current card is: [91mRed 1[0m
+1 turn: 
+Bot's turn
+
+Card [91mRed Reverse[0m is played
+
+Player now have 5 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: [94m[dusty (6)][0m -> al (7) -> 4 (6) -> 1 (5) -> 
+
+Current card is: [91mRed Reverse[0m
+dusty turn: 
+Bot's turn
+
+Card [91mRed 2[0m is played
+
+Player now have 5 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (5) -> [94m[al (7)][0m -> 4 (6) -> 1 (5) -> 
+
+Current card is: [91mRed 2[0m
+al turn: 
+Bot's turn
+
+Card [91mRed 6[0m is played
+
+Player now have 6 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (5) -> al (6) -> [94m[4 (6)][0m -> 1 (5) -> 
+
+Current card is: [91mRed 6[0m
+4 turn: 
+Bot's turn
+
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn 4 cards
+Card [37mWildcard[0m is played
+
+Color has been set to [93myellow[0m
+Player now have 9 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (5) -> al (6) -> 4 (9) -> [94m[1 (5)][0m -> 
+
+Current card is: [93mWildcard[0m
+1 turn: 
+Bot's turn
+
+Card [93mYellow 9[0m is played
+
+Player now have 4 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: [94m[dusty (5)][0m -> al (6) -> 4 (9) -> 1 (4) -> 
+
+Current card is: [93mYellow 9[0m
+dusty turn: 
+Bot's turn
+
+Card [37mDraw 4 Wildcard[0m is played
+
+Color has been set to [93myellow[0m
+Player now have 4 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (4) -> [94m[al (6)][0m -> 4 (9) -> 1 (4) -> 
+
+Current card is: [93mDraw 4 Wildcard[0m
+al turn: 
+No stackable card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot cannot play this turn
+Player now have 10 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (4) -> al (10) -> [94m[4 (9)][0m -> 1 (4) -> 
+
+Current card is: [93mDraw 4 Wildcard[0m
+4 turn: 
+Bot's turn
+
+Card [93mYellow 1[0m is played
+
+Player now have 8 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (4) -> al (10) -> 4 (8) -> [94m[1 (4)][0m -> 
+
+Current card is: [93mYellow 1[0m
+1 turn: 
+Bot's turn
+
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn a card
+Bot has drawn 3 cards
+Card [93mYellow 1[0m is played
+
+Player now have 6 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: [94m[dusty (4)][0m -> al (10) -> 4 (8) -> 1 (6) -> 
+
+Current card is: [93mYellow 1[0m
+dusty turn: 
+Bot's turn
+
+Bot has drawn a card
+Bot has drawn 1 cards
+Card [93mYellow Skip[0m is played
+
+Player now have 4 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (4) -> [94m[al (10)][0m -> 4 (8) -> 1 (6) -> 
+
+Current card is: [93mYellow Skip[0m
+al turn: 
+Bot cannot play this turn
+Player now have 10 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (4) -> al (10) -> [94m[4 (8)][0m -> 1 (6) -> 
+
+Current card is: [93mYellow Skip[0m
+4 turn: 
+Bot's turn
+
+Card [94mBlue Skip[0m is played
+
+Player now have 7 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (4) -> al (10) -> 4 (7) -> [94m[1 (6)][0m -> 
+
+Current card is: [94mBlue Skip[0m
+1 turn: 
+Bot cannot play this turn
+Player now have 6 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: [94m[dusty (4)][0m -> al (10) -> 4 (7) -> 1 (6) -> 
+
+Current card is: [94mBlue Skip[0m
+dusty turn: 
+Bot's turn
+
+Card [94mBlue 6[0m is played
+
+Player now have 3 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (3) -> [94m[al (10)][0m -> 4 (7) -> 1 (6) -> 
+
+Current card is: [94mBlue 6[0m
+al turn: 
+Bot's turn
+
+Card [94mBlue 1[0m is played
+
+Player now have 9 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (3) -> al (9) -> [94m[4 (7)][0m -> 1 (6) -> 
+
+Current card is: [94mBlue 1[0m
+4 turn: 
+Bot's turn
+
+Card [92mGreen 1[0m is played
+
+Player now have 6 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (3) -> al (9) -> 4 (6) -> [94m[1 (6)][0m -> 
+
+Current card is: [92mGreen 1[0m
+1 turn: 
+Bot's turn
+
+Card [92mGreen 3[0m is played
+
+Player now have 5 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: [94m[dusty (3)][0m -> al (9) -> 4 (6) -> 1 (5) -> 
+
+Current card is: [92mGreen 3[0m
+dusty turn: 
+Bot's turn
+
+Card [91mRed 3[0m is played
+
+Player now have 2 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (2) -> [94m[al (9)][0m -> 4 (6) -> 1 (5) -> 
+
+Current card is: [91mRed 3[0m
+al turn: 
+Bot's turn
+
+Card [91mRed 9[0m is played
+
+Player now have 8 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (2) -> al (8) -> [94m[4 (6)][0m -> 1 (5) -> 
+
+Current card is: [91mRed 9[0m
+4 turn: 
+Bot's turn
+
+Card [92mGreen 9[0m is played
+
+Player now have 5 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: dusty (2) -> al (8) -> 4 (5) -> [94m[1 (5)][0m -> 
+
+Current card is: [92mGreen 9[0m
+1 turn: 
+Bot's turn
+
+Card [92mGreen 6[0m is played
+
+Player now have 4 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: [94m[dusty (2)][0m -> al (8) -> 4 (5) -> 1 (4) -> 
+
+Current card is: [92mGreen 6[0m
+dusty turn: 
+Bot's turn
+
+Card [92mGreen 2[0m is played
+
+Bot called Uno
+Player now have 1 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: [91mUNO! [0mdusty (1) -> [94m[al (8)][0m -> 4 (5) -> 1 (4) -> 
+
+Current card is: [92mGreen 2[0m
+al turn: 
+Bot's turn
+
+Card [92mGreen 4[0m is played
+
+Player now have 7 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: [91mUNO! [0mdusty (1) -> al (7) -> [94m[4 (5)][0m -> 1 (4) -> 
+
+Current card is: [92mGreen 4[0m
+4 turn: 
+Bot's turn
+
+Card [92mGreen 8[0m is played
+
+Player now have 4 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: [91mUNO! [0mdusty (1) -> al (7) -> 4 (4) -> [94m[1 (4)][0m -> 
+
+Current card is: [92mGreen 8[0m
+1 turn: 
+Bot's turn
+
+Card [92mGreen Reverse[0m is played
+
+Player now have 3 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: 1 (3) -> [94m[4 (4)][0m -> al (7) -> [91mUNO! [0mdusty (1) -> 
+
+Current card is: [92mGreen Reverse[0m
+4 turn: 
+Bot's turn
+
+Bot has drawn a card
+Bot has drawn 1 cards
+Card [92mGreen 5[0m is played
+
+Player now have 4 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: 1 (3) -> 4 (4) -> [94m[al (7)][0m -> [91mUNO! [0mdusty (1) -> 
+
+Current card is: [92mGreen 5[0m
+al turn: 
+Bot's turn
+
+Card [92mGreen 4[0m is played
+
+Player now have 6 cards
+
+
+
+[3J[H[2JUno!
+
+Turns: 1 (3) -> 4 (4) -> al (6) -> [91mUNO! [0m[94m[dusty (1)][0m -> 
+
+Current card is: [92mGreen 4[0m
+dusty turn: 
+Bot's turn
+
+Card [92mGreen 7[0m is played
+
+Player now have 0 cards
+
+
+
+[3J[H[2JUno!
+
+Alright you can go back to what people call 'real life' now, game over
+

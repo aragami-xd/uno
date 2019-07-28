@@ -1,5 +1,5 @@
 #!/bin/bash
-echo test1
+echo test1: 0-7 mode, stack default, no bluffing default
 for i in $(seq 1 20)
 do
     echo "$i"

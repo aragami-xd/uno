@@ -46,7 +46,7 @@ vector<string> startMenu()
 	cout << endl;
 
 	cout << "\e[94m4. No bluffing\e[0m" << endl;
-	cout << "If you have a card with the same color or number as the discarded pile, you cannot play wildcards anymore (not yet available)" << endl;
+	cout << "If you can play a non-wildcard card, you cannot play wildcards anymore" << endl;
 	cout << endl;
 
 	cout << "Choose all the game mode you want to play, then enter them here, separated by a whitespace. Leave empty for no mod" << endl;

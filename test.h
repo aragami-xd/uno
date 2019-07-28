@@ -38,6 +38,7 @@ public:
 	//test specific decks
 	void printDeckList();		//print out that deck 
 	void testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard);		//push a specific card to other deck and test to see if it's there or not
+	//testDeckTransfer is not working, so don't bother trying it
 
 	//test reverse card
 	void testReverse(Card* reverse);
@@ -54,6 +55,8 @@ public:
 	//test zero card
 	void testZero(Card* zero);
 
+	//test bluffing
+	void testNoBluffing();
 	~Test();
 };
 

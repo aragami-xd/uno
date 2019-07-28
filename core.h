@@ -14,17 +14,22 @@
 class Core
 {
 private: 
+	//players
 	std::vector<Player*> players;
 	int turnDirection; 	//1 for clockwise, -1 for counter clockwise turn
 	int playerXTurn; 
 
-	bool endGame;		//F in the chat for iron man
-
+	//cards
 	Draw *draw;
 	Discard *discard;
 	std::vector<Card*> cardList;
 
+	//game mode
 	bool stackingMode;
+	bool noBluffingMode;
+
+	//mics
+	bool endGame;		//F in the chat for iron man, i've never watched the movie bc i didn't watch ifinity war
 
 
 public: 
@@ -50,6 +55,7 @@ public:
 	int getHandSize(int playerNo);
 	
 	void setStackingMode();
+	void setNoBluffingMode();
 
 
 	////action sets 
@@ -76,7 +82,7 @@ public:
 	char unoSignal();			//remind user that they can call uno this round
 	void callUno(char unoChar);			//call uno
 
-	int stackable(int stackSize, int stackType);		//ask if player wants to stack draw cards or not
+	int stackable(int stackSize, int stackType);		//ask if player can and want to stack draw cards or not
 	int playerStackable(int stackSize, int stackType, int requiredCard);
 	int botStackable(int stackSize, int stackType, int requiredCard);
 

@@ -53,6 +53,9 @@ int main()
 		} else if (gameMode[i] == "2") {
 			ohSeven = true;
 			cout << "0-7 rule enabled" << endl;
+		} else if (gameMode[i] == "4") {
+			noBluffing = true;
+			cout << "No bluffing mode enabled" << endl;
 		} else {
 			cout << "Game mode " << gameMode[i] << " unknown" << endl;
 		}
@@ -127,9 +130,10 @@ int main()
 	//players[2]->setName("basically");
 	//players[3]->setName("moo");
 	
+	cout << "Enter players' name here. the first player by default will player, and the other 3 will be bots" << endl;
 	string pName;					//set the player name, i'll only use it in the official release
 	for (int i=0; i<noOfPlayer; i++) {
-		cout << "Player " << i+1 << " name: ";
+		cout << "Player " << i << " name: ";
 		cin >> pName;
 		players[i]->setName(pName);
 	}
@@ -154,6 +158,9 @@ int main()
 	if (stacking == false) {
 		core->setStackingMode();
 	}
+	if (noBluffing == true) {
+		core->setNoBluffingMode();
+	}
 
 	for (int i=0; i<noOfPlayer; i++) {
 		players[i]->setCore(core);
@@ -170,7 +177,7 @@ int main()
 	cout << "Then go back and thank me later" << endl;
 	cout << "WHAT?" << endl;
 	//you've never played Tuber Simulator?
-	//pssssst
+	//pssssst!
 	//you know it's fun, right?
 	//i'm not supposed to give my opinion
 	//but give it a try
@@ -202,7 +209,9 @@ int main()
 	//test->testDrawCard(cardList[1]);			
 	//test->testSeven(cardList[85]);			
 	//test->testZero(cardList[9]);				
-		
+	//test->testNoBluffing();
+
+
 	srand(time(0));			//for random
 	::clearConsole();
 	core->turnCycle();		//the game itself 

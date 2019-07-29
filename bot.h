@@ -1,62 +1,38 @@
 #ifndef BOT_H
 #define BOT_H
 
-#include <vector>
-#include <string>
 #include "core.h"
+#include "player.h"
+
+#include <string>
+#include <iostream>
+#include <algorithm>
+#include <vector>
 
 class Bot
 {
 private:
-    //for those who wondering, 'pp' comes from osu!
-    //double handPP, nextPP, oppositePP, previousPP;     //performance points of each player
-    int handSize, nextSize, oppositeSize, previousSize;     //hand card size
-    int botNumber, nextNumber, oppositeNumber, previousNumber;          //which player bots control
-
-    double totalPP;
-
-    Player* botPlayer;          //get player status
-    Deck* botHand;      
+    Player* player;
+    Core* core;
+    Hand* botHand;
     std::vector<Card*> botCard;
 
-    Core* core;
+    int strongestColor;
 
-
-
-    /*consider gameplay layout:
-
-    (Deck)       ----------> (Opposite player) -------------
-                |                                           \
-                |                                           v
-            (Next player)         (Discard)           (Previous player)
-                 ^                                          |
-                 \                                          |
-                  ------------- (Bot player)  <-------------
-    
-    Youtube comment text emoji and art pays off
-
-    If someone reads my code in the future, please don't edit this. leave it like that
-    */
-
-
-
-
-public: 
+public:
     Bot();
-    Bot(Player* bot, Core* gameCore);
+    
+    //basic function
+    void setCore(Core* gameCore);
+    void setPlayer(Player* botPlayer);
 
-    //set and get stuff
-    void setBotNumber(int number);
-    void update();      //update different variables 
 
+    //action sets
+    void setStrongestColor();           //color that you have the most amount will be the strongest; if same amount, color with most action is the strongest
+    int getStrongestColor();
 
-    //pp calculators 
-    double handColorPPCalculator();        //calculate hand pp 
-    double handNumberPPCalculator();
-    //void actionCardCalculator();
+    int botChoicePlay(std::vector<Card*> playableCards);
 
-    void ppCalculator();
-    double adjustPP(int playerNo);
 
     ~Bot();
 };

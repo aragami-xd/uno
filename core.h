@@ -3,7 +3,6 @@
 
 #include "player.h"
 #include "interface.h"
-#include "thread.h"
 
 #include <vector>
 #include <string>

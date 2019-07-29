@@ -43,7 +43,7 @@ void Seven::effect(Core* core)
     } else if (currentPlayer->getBotPlayer() == true) {
         swapPlayer = botEffect(core, otherPlayers);
     }
-    //::animationDelay(500);
+    ::animationDelay(500);
 
     //these 4 lines down here don't seem to work at all. same goes with the zero card: it doesn't swap shit. i suspect something 
     //is wrong with swapping the pointer (it doesn't swap correctly. values might have either been overlapped, or it doesnt' swap shit at all. can't really tell
@@ -100,7 +100,7 @@ void Seven::effect(Core* core)
     //otherPlayers[swapPlayer]->setPlayerHand(currentHand);              //set other player hand to current player hand
     //there were some issues with swap, not being able to swap pointers and segmentation fault, so i have to do it manually
     
-    //::animationDelay(500);
+    ::animationDelay(500);
     cout << "Card has been swapped" << endl;
 }
 
@@ -132,7 +132,7 @@ int Seven::botEffect(Core* core, vector<Player*> otherPlayers)
 {
     cout << "Bot will swap its hand with another player" << endl;
     cout << endl;
-    //::animationDelay(500);
+    ::animationDelay(500);
 
     vector<int> deckSize;
     for (int i=0; i<otherPlayers.size(); i++) {

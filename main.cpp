@@ -61,7 +61,7 @@ int main()
 		}
 	}
 	cout << "Game modes are set" << endl;
-	//::animationDelay(1000);
+	::animationDelay(1000);
 	::clearConsole();
 
 		
@@ -123,7 +123,7 @@ int main()
 		hand[i] = new Hand();
 		players[i] = new Player(hand[i]);
 	}
-	//players[0]->setBotPlayer();
+	players[0]->setBotPlayer();
 
 	//players[0]->setName("vanoss");
 	//players[1]->setName("terroriser");
@@ -187,7 +187,7 @@ int main()
 	//this game is available for free
 	//and that's a great price!
 	//(dadada dada da dadada) - tuber simulator outro play. imaigne it
-	//::animationDelay(2000);
+	::animationDelay(2000);
 	::clearConsole();
 	cout << "Drawing cards..." << endl;
 	core->beginGameDraw();

@@ -76,29 +76,36 @@ void Wildcard::playerSetColor()
 void Wildcard::botSetColor(Core* core, int playerXTurn)
 {
     vector<Card*> botCard = core->getPlayers()[playerXTurn]->getPlayerHand()->getDeck();
-    int red, green, blue, yellow;             //get the deck and see which color appears the most
+    vector<int> colorAmount(4);             //get the deck and see which color appears the most
     for (int i=0; i<botCard.size(); i++) {
-        if (botCard[i]->getColor() == 1) {
-            red++; 
-        } else if (botCard[i]->getColor() == 2) {
-            green++;
-        } else if (botCard[i]->getColor() == 3) {
-            blue++;
-        } else if (botCard[i]->getColor() == 4) {
-            yellow++;
+        if (botCard[i]->getColor() != 5) {
+            colorAmount[botCard[i]->getColor() - 1]++;            //wildcard doesn't count here
         }
     }
-
-    if (red > green && red > blue && red > yellow) {            //see which color apears the most
-        color = 1;
-    } else if (green > red && green > blue && green > yellow) {
-        color = 2;
-    } else if (blue > red && blue > green && blue > yellow) {
-        color = 3;
-    } else {
-        color = 4;
+    int mostColor = *max_element(colorAmount.begin(), colorAmount.end());      //amount of card of the color with the most card
+    
+    vector<int> colorStrength(4);
+    for (int i=0; i<botCard.size(); i++) {
+        if (botCard[i]->getNumber() <= 9) {             //if it's a number card, add 1 point
+            colorAmount[botCard[i]->getColor() - 1]++;           
+        } else if (botCard[i]->getNumber == 10 && botCard[i]->getNumber == 11) {    //if it's skip or reverse
+            colorAmount[botCard[i]->getColor() - 1] += 2;
+        } else if (botCard[i]->getNumber == 12) {               //if it's a drawtwo card
+            colorAmount[botCard[i]->getColor() - 1] += 3;
+        }
     }
-
+    
+    //the nature of uno is you want to be able to play for as long as possible
+    //therefore, color that appears the most and have the most powerful card will be considered as the prefered color
+    vector<int> totalPoint(4);                  //take the multiplication for the strongest color
+    for (int i=0; i<colorAmount.size(); i++) {
+        if (colorAmount[i] == mostColor) {              //if it has the max color amount, multiply with colorStrength to get the prefered color
+            totalPoint[i] = colorAmount[i] * colorStrength[i];
+        } else {
+            totalPoint[i] = 0;              //if it's not, set to 0
+        }
+    }
+    color = max_element(totalPoint.begin(), totalPoint.end()) - totalPoint.begin();
 }
 
 

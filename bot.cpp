@@ -1,166 +1,83 @@
 #include "bot.h"
 using namespace std;
 
-//implmenet the default bot constructor
+//implement the default bot constructor
 Bot::Bot()
 {
 }
 
-//implement the bot (bot) constructor
-Bot::Bot(Player* bot, Core* gameCore)
+//implement the bot setCore function
+void Bot::setCore(Core* gameCore)
 {
-    botPlayer = bot;
-    botHand = botPlayer->getPlayerHand();
-    botCard = botHand->getDeck();
     core = gameCore;
 }
 
-
-
-
-//implement the bot setBotNumber function
-void Bot::setBotNumber(int number)
+//implement the bot setPlayer function
+void Bot::setPlayer(Player* botPlayer)
 {
-    botNumber = number;
-    nextNumber = number++;
-    if (nextNumber >= 4) {
-        nextNumber -= 4;
-    }
-    previousNumber = number--;
-    if (previousNumber < 0) {
-        nextNumber += 4;
-    }
-    oppositeNumber = number + 2;
-    if (nextNumber >= 4) {
-        nextNumber -= 4;
-    }
+    player = botPlayer;
+    botHand = player->getPlayerHand();
+    botCard = botHand->getDeck();
 }
 
 
-//implement the bot update function
-void Bot::update()
+
+
+
+
+
+//implement the bot setStrongestColor function
+void Bot::setStrongestColor()
 {
-    handSize = core->getHandSize(botNumber);
-    nextSize = core->getHandSize(nextNumber);
-    previousSize = core->getHandSize(previousNumber);
-    oppositeSize = core->getHandSize(oppositeNumber);
-}
-
-
-//implement the bot handColorPPCalculator function
-/*
-double Bot::handColorPPCalculator()
-{   
-    int maxColorPP = 200;
-    double sameColorPP = 2, wildcardPP = 3, normalColor = 1;                        //color score multipliers 
-    double ppColorMultiplier = sameColorPP + wildcardPP + normalColor*3;
-
-    double handPP;
-    int currentColor = core->getDiscard()->getLastCardColor();
-    double ppPerCard = maxColorPP/(botCard.size()/ppColorMultiplier);
-    /* ppPerCard explanation:
-    - The more cards you have with either 5th color (wildcard) or same color as the current color, the better. they worth double/triple the pp
-    - 8 = 2 + 3 + 3 (current color x2 + wildcard x3 + 3 other colors)       (may be adjusted in the future)
-    - Hypothetically, if you have your hand full of wildcard and cards with same color as the current card, you're having the absolute powerful hand, ready to 
-    fuck everyone up. Until the current color changes and they fuck you up
-    - pp will be constanly recalculated in the background, so if you have 5/5 yellow cards and current color is yellow, you have 200pp. Next turn it's red and you'll get 0pp
-
+    vector<int> colorAmount(4);             //get the deck and see which color appears the most
     for (int i=0; i<botCard.size(); i++) {
-        if (botCard[i]->getColor() == 5) {
-            handPP += ppPerCard * wildcardPP;          //worth double the pp (should have been 1.26 HDDTHR)
-        } else if (botCard[i]->getColor() == currentColor) {
-            handPP += ppPerCard * sameColorPP;
-        } else {
-            handPP == ppPerCard * normalColor;
+        if (botCard[i]->getColor() != 5) {
+            colorAmount[botCard[i]->getColor() - 1]++;            //wildcard doesn't count here. -1 since color starts from 1
         }
     }
-    return handPP;
-}
-*/
-
-//implement the bot handColorPPCalculator
-double Bot::handColorPPCalculator()
-{
-    //int maxColorPP = 200;
-    double sameColorPP = 2, normalColor = 1;                        //color score multipliers, no wildcards since they are calculated using number
-
-    double handColorPP;
-    int currentColor = core->getDiscard()->getLastCardColor();
-
-    /*
-    compare to the draft version above 
-    - This one doesn't use maxPP and ppPerCard system, but using adjusted pp system instead
-    - Kinda like osu!mania vs osu!standard scoring system: one based on combo, one based on percentage to maximum score 
-    - calculate total pp like normal, then compare it with other players' pp if they got the same hand size (just multiply it)
-    */
-
-    for (int i=0; i<botCard.size(); i++) {        //worth double the pp (should have been 1.26 HDDTHR)
-        if (botCard[i]->getColor() == currentColor) {
-            handColorPP += sameColorPP;
-        } else {
-            handColorPP == normalColor;
-        }
-    }
-    return handColorPP;
-}
-
-
-
-//implement the bot handColorPPCalculator (temporary version only)
-double Bot::handColorPPCalculator()
-{
-    //int maxNumberPP = 200;        //higher or lower than color?
-    double numberPP = 1, drawTwoPP = 2.5, reversePP = 2.25, skipPP = 2, colorCardPP = 3, drawFourPP = 3.5;
+    int mostColor = *max_element(colorAmount.begin(), colorAmount.end());      //amount of card of the color with the most card
     
-    //double ppNumberMultiplier = (colorCardPP + drawFourPP)/2 + (drawTwoPP + reversePP + skipPP)*2/3 + numberPP * 4;     
-    //ppMultiplier considers a deck has 7 cards, with 1 wildcard, 2 action cards and 4 normal number cards  
-
-    double handNumberPP;
-    int currentNumber = core->getDiscard()->getLastCardNumber();
-
-
-
-    for (int i=0; i<botCard.size(); i++) {              //same number -> double the value 
-        int sameNumberMultiplier = 1;
-        if (botCard[i]->getNumber() == currentNumber) {
-            sameNumberMultiplier = 2;
+    vector<int> colorStrength(4);
+    for (int i=0; i<botCard.size(); i++) {
+        if (botCard[i]->getNumber() <= 9) {             //if it's a number card, add 1 point
+            colorAmount[botCard[i]->getColor() - 1]++;           
+        } else if (botCard[i]->getNumber == 10 && botCard[i]->getNumber == 11) {    //if it's skip or reverse
+            colorAmount[botCard[i]->getColor() - 1] += 2;
+        } else if (botCard[i]->getNumber == 12) {               //if it's a drawtwo card
+            colorAmount[botCard[i]->getColor() - 1] += 3;
         }
-        if (botCard[i]->getNumber >= 0 && botCard[i]->getNumber <= 9) {     //different numbers 
-            handNumberPP += numberPP * sameNumberMultiplier;
-        } else if (botCard[i]->getNumber == 10) {
-            handNumberPP += reversePP * sameNumberMultiplier;
-        } else if (botCard[i]->getNumber == 11) {
-            handNumberPP += skipPP * sameNumberMultiplier;
-        } else if (botCard[i]->getNumber == 12) {
-            handNumberPP += drawTwoPP * sameNumberMultiplier;
-        } else if (botCard[i]->getNumber == 13) {
-            handNumberPP += colorCardPP * sameNumberMultiplier;
-        } else if (botCard[i]->getNumber == 14) {
-            handNumberPP += drawFourPP * sameNumberMultiplier;
-        } 
     }
-    return handNumberPP;
+    
+    //the nature of uno is you want to be able to play for as long as possible
+    //therefore, color that appears the most and have the most powerful card will be considered as the prefered color
+    vector<int> totalPoint(4);                  //take the multiplication for the strongest color
+    for (int i=0; i<colorAmount.size(); i++) {
+        if (colorAmount[i] == mostColor) {              //if it has the max color amount, multiply with colorStrength to get the prefered color
+            totalPoint[i] = colorAmount[i] * colorStrength[i];
+        } else {
+            totalPoint[i] = 0;              //if it's not, set to 0
+        }
+    }
+    strongestColor = max_element(totalPoint.begin(), totalPoint.end()) - totalPoint.begin();
+
+    //should i set the weakest color here too?
 }
 
 
-
-//implement the bot ppCalculator
-void Bot::ppCalculator()
+//implement the bot getStrongestColor function
+int Bot::getStrongestColor()
 {
-    totalPP = handColorPPCalculator() + handNumberPPCalculator();
-    //just keep it like that for now, it may change later
+    return strongestColor;
 }
 
-//implement the bot adjustPP function
-double Bot::adjustPP(int playerNo)
+
+//implement the bot botChoicePlay function
+int Bot::botChoicePlay(vector<Card*> playableCards)
 {
-    return totalPP * (handSize/core->getHandSize(playerNo));
+    
 }
-
 
 //implement the bot destructor
 Bot::~Bot()
 {
 }
-
-

@@ -145,9 +145,9 @@ void Player::drawCard(int noOfCard)
 			cout << "Bot has drawn a card" << endl;
 		}
 		if (noOfCard == 1) {
-			//::animationDelay(300);
+			::animationDelay(300);
 		} else {
-			//::animationDelay(floor(1000/noOfCard));
+			::animationDelay(floor(1000/noOfCard));
 		}
 		outOfCards();		//check if there are any cards left. if none, shuffle the discard deck back into the main deck
 	}
@@ -175,7 +175,7 @@ void Player::outOfCards()
 {	
 	if (core->getDraw()->getDeck().size() < 1) {			//if the deck is almost out of card, shuffle all the cards in the discarded deck back into the draw deck
 		cout << "Deck is almost out of card. All card from discard is pushed back into the deck" << endl;
-		//::animationDelay(1000);
+		::animationDelay(1000);
 		vector<Card*> cardList = core->getDiscard()->getDeck();
 		core->getDraw()->setDeck(cardList);				//get the cards and shuffle
 		core->getDraw()->shuffle();

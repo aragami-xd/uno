@@ -149,7 +149,7 @@ void Core::turnCycle()
 			}
 		}
 		
-		//::animationDelay(1500);
+		::animationDelay(1500);
 		cout << endl;
 		cout << endl;
 		cout << endl;
@@ -166,7 +166,7 @@ void Core::turnCycle()
 void Core::playerTurn()
 {
 	if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
-		//::animationDelay(400);
+		::animationDelay(400);
 
 		char inputChar = unoSignal();		//see if player can call uno this round or not
 		choicePlay();		//player's action in the turn 
@@ -188,7 +188,7 @@ void Core::botTurn()
 	if (players[playerXTurn]->getNextTurn() == 1) {			//if they can play, then play	
 		cout << "Bot's turn" << endl;
 		cout << endl;
-		//::animationDelay(2000);
+		::animationDelay(2000);
 
 		choicePlay();		//player's action in the turn 
 		if (getPlayersCard().size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 
@@ -201,7 +201,7 @@ void Core::botTurn()
 		players[playerXTurn]->setNextTurn();
 		cout << "Bot cannot play this turn" << endl;
 	}
-	//::animationDelay(1000);			//bot turn will have extra 1000ms of delay so you can have an idea of wtf they are doing
+	::animationDelay(1000);			//bot turn will have extra 1000ms of delay so you can have an idea of wtf they are doing
 }
 
 
@@ -261,7 +261,7 @@ void Core::beginGameDraw()
 	//each player gets 7 cards at the begin of the game
 	for (int m=0; m<players.size(); m++) {
 		players[m]->drawCard(7);
-		//::animationDelay(400);
+		::animationDelay(400);
 		players[m]->getPlayerHand()->sortHand();
 	}
 }
@@ -322,7 +322,7 @@ void Core::forceDraw(bool choicePlayFalse)
 			if (newCard->getColor() == discard->getLastCardColor() || newCard->getColor() == 5 || newCard->getNumber() == discard->getLastCardNumber()) {
 				compatibleCard = true;
 			}
-			//::animationDelay(400);
+			::animationDelay(400);
 
 			//if player draws a compatible card
 			if (compatibleCard == true) {			//search the deck again, if there is compatible card, that means you've drawn the right card
@@ -452,7 +452,7 @@ char Core::unoSignal()
 	char a_to_z[] = "abcdefghijklmnopqerstuwxyz";
 	int randomChar = rand()%26;
 	if (getPlayersCard().size() == 2 && canPlay() == true) {
-		cout << "Ready for Uno? Press " << a_to_z[randomChar] << " to call Uno. You got 1 second to do so after playing the card" << endl;
+		cout << "Ready for Uno? Press " << a_to_z[randomChar] << " to call Uno after playing the card" << endl;
 		cout << endl;
 	}
 	return a_to_z[randomChar];

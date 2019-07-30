@@ -82,7 +82,7 @@ vector<Card*> Core::getPlayersCard()
 //implement the core getHandSize function
 int Core::getHandSize(int playerNo)
 {
-	return players[playerNo]->getPlayerHand()->getDeck().size();
+	return players[playerNo]->getPlayerCard().size();
 }
 
 //implement the core setStackingMode function
@@ -161,19 +161,19 @@ int Core::getOppositePlayerTurn()
 //implement the core getNextHandSize function
 int Core::getNextHandSize()
 {
-	return players[getNextPlayerTurn()]->getPlayerHand()->getDeck().size();
+	return players[getNextPlayerTurn()]->getPlayerCard().size();
 }
 
 //implement the core getLastHandSize function
 int Core::getLastHandSize()
 {
-	return players[getLastPlayerTurn()]->getPlayerHand()->getDeck().size();
+	return players[getLastPlayerTurn()]->getPlayerCard().size();
 }
 
 //implement the core getOppositeHandSize function
 int Core::getOppositeHandSize()
 {
-	return players[getOppositePlayerTurn()]->getPlayerHand()->getDeck().size();
+	return players[getOppositePlayerTurn()]->getPlayerCard().size();
 }
 
 
@@ -307,10 +307,10 @@ void Core::defaultPrinting()
 
 	if (players[0]->getBotPlayer() == false) {			//usually, player 0 is the real player. but if i want i can have 4 bots play w/ each other	
 		cout << "Your hand: " << endl;
-		for (int i=0; i<players[0]->getPlayerHand()->getDeck().size(); i++) {
+		for (int i=0; i<players[0]->getPlayerCard().size(); i++) {
 			cout << i << ". ";
-			::rgb(players[0]->getPlayerHand()->getDeck()[i]->getColor());
-			cout << players[0]->getPlayerHand()->getDeck()[i]->getName() << "\e[0m" << endl;
+			::rgb(players[0]->getPlayerCard()[i]->getColor());
+			cout << players[0]->getPlayerCard()[i]->getName() << "\e[0m" << endl;
 			}
 		cout << endl;
 	}
@@ -321,13 +321,13 @@ void Core::defaultPrinting()
 //implement the core turnPrinting function
 void Core::turnPrinting(int turn)
 {
-	if (players[turn]->getPlayerHand()->getDeck().size() == 1) {
+	if (players[turn]->getPlayerCard().size() == 1) {
 		cout << "\e[91mUNO! \e[0m";			//put a red capitalized uno at the front of the player 
 	}
 	if (turn == playerXTurn) {
-		cout << "\e[94m[" << players[turn]->getName() << " (" << players[turn]->getPlayerHand()->getDeck().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
+		cout << "\e[94m[" << players[turn]->getName() << " (" << players[turn]->getPlayerCard().size() << ")]\e[0m -> ";		//put a small bracket at the player who is playing
 	} else {
-		cout << players[turn]->getName() << " (" << players[turn]->getPlayerHand()->getDeck().size() << ") -> ";
+		cout << players[turn]->getName() << " (" << players[turn]->getPlayerCard().size() << ") -> ";
 	}
 }
 

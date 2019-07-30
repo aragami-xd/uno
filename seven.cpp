@@ -58,7 +58,7 @@ int Seven::playerEffect(Core* core, vector<Player*> otherPlayers)
 {
     cout << "Which player you want to swap with?" << endl;
     for (int i=0; i<otherPlayers.size(); i++) {
-        cout << i << ". " << otherPlayers[i] ->getName() << " [" << otherPlayers[i]->getPlayerHand()->getDeck().size() << "]" << endl;
+        cout << i << ". " << otherPlayers[i] ->getName() << " [" << otherPlayers[i]->getPlayerCard().size() << "]" << endl;
     }
     int choice;                     //choosing the hand to swap with 
     bool rightChoice = false;
@@ -85,7 +85,7 @@ int Seven::botEffect(Core* core, vector<Player*> otherPlayers)
 
     vector<int> deckSize;
     for (int i=0; i<otherPlayers.size(); i++) {
-        deckSize.push_back(otherPlayers[i]->getPlayerHand()->getDeck().size());
+        deckSize.push_back(otherPlayers[i]->getPlayerCard().size());
     }
     
     int minElementIndex = min_element(deckSize.begin(), deckSize.end()) - deckSize.begin();

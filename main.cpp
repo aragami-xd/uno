@@ -30,6 +30,7 @@
 
 //bot
 #include "bot.h"
+#include "human.h"
 
 using namespace std;
 
@@ -124,11 +125,16 @@ int main()
 	int noOfPlayer = 4;
 	vector<Hand*> hand(noOfPlayer);
 	vector<Player*> players(noOfPlayer);
+
 	for (int i=0; i<noOfPlayer; i++) {
 		hand[i] = new Hand();
-		players[i] = new Player(hand[i]);
+		if (i == 0) {
+			players[i] = new Human(hand[i]);
+		} else {
+			players[i] = new Bot(hand[i]);
+		}
 	}
-	//players[0]->setBotPlayer();
+	
 
 	players[0]->setName("vanoss");
 	players[1]->setName("terroriser");
@@ -173,6 +179,7 @@ int main()
 		players[i]->setCore(core);
 	}
 
+
 	//these parts are completely unecessary, but it makes up for the asthetic of the game
 	::clearConsole();										
 	cout << "Loading..." << endl;
@@ -196,16 +203,19 @@ int main()
 	//(dadada dada da dadada) - tuber simulator outro play. imaigne it
 	::animationDelay(2000);
 	::clearConsole();
+
 	cout << "Drawing cards..." << endl;
-	//core->beginGameDraw();
+	core->beginGameDraw();
 	
 
+
+
 	//test function 
-	Test *test = new Test();
+	//Test *test = new Test();
 	
-	test->setCard(cardList);
+	//test->setCard(cardList);
 	//test->setDeck(cardList, 0);
-	test->setCore(core);
+	//test->setCore(core);
 	//test->printCardList();
 	//test->printDeckList();
 	//test->testCardName();
@@ -214,14 +224,14 @@ int main()
 	//test->testReverse(cardList[22]);
 	//test->testSkip(cardList[30]);
 	//test->testDrawCard(cardList[1]);			
-	test->testSeven(cardList[85]);			
+	//test->testSeven(cardList[85]);			
 	//test->testZero(cardList[9]);				
 	//test->testNoBluffing();
 
 
 	srand(time(0));			//for random
-	//::clearConsole();
-	//core->turnCycle();		//the game itself 
+	::clearConsole();
+	core->turnCycle();		//the game itself 
 	cout << endl;
 
 
@@ -233,7 +243,7 @@ int main()
 		delete cardList[i];
 	}
 
-	delete test;
+	//delete test;
 	delete draw, discard;
 	for (int i=0; i<noOfPlayer; i++) {
 		delete hand[i], players[i];

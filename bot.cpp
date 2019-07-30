@@ -1,4 +1,5 @@
 #include "bot.h"
+#include "core.h"
 using namespace std;
 
 //implement the default bot constructor
@@ -6,25 +7,10 @@ Bot::Bot()
 {
 }
 
-//implement the bot setCore function
-void Bot::setCore(Core* gameCore)
+//implement the bot (botHand) constructor
+Bot::Bot(Hand* botHand) : Player(botHand)
 {
-    core = gameCore;
 }
-
-//implement the bot setPlayer function
-void Bot::setPlayer(Player* botPlayer, int playerXTurn)
-{
-    player = botPlayer;
-    botHand = player->getPlayerHand();
-    botCard = botHand->getDeck();
-
-    botTurn = playerXTurn;
-}
-
-
-
-
 
 
 
@@ -32,21 +18,21 @@ void Bot::setPlayer(Player* botPlayer, int playerXTurn)
 void Bot::setStrongestColor()
 {
     vector<int> colorAmount(4);             //get the deck and see which color appears the most
-    for (int i=0; i<botCard.size(); i++) {
-        if (botCard[i]->getColor() != 5) {
-            colorAmount[botCard[i]->getColor() - 1]++;            //wildcard doesn't count here. -1 since color starts from 1
+    for (int i=0; i<playerCard.size(); i++) {
+        if (playerCard[i]->getColor() != 5) {
+            colorAmount[playerCard[i]->getColor() - 1]++;            //wildcard doesn't count here. -1 since color starts from 1
         }
     }
     int mostColor = *max_element(colorAmount.begin(), colorAmount.end());      //amount of card of the color with the most card
     
     vector<int> colorStrength(4);
-    for (int i=0; i<botCard.size(); i++) {
-        if (botCard[i]->getNumber() <= 9) {             //if it's a number card, add 1 point
-            colorAmount[botCard[i]->getColor() - 1]++;           
-        } else if (botCard[i]->getNumber == 10 && botCard[i]->getNumber == 11) {    //if it's skip or reverse
-            colorAmount[botCard[i]->getColor() - 1] += 2;
-        } else if (botCard[i]->getNumber == 12) {               //if it's a drawtwo card
-            colorAmount[botCard[i]->getColor() - 1] += 3;
+    for (int i=0; i<playerCard.size(); i++) {
+        if (playerCard[i]->getNumber() <= 9) {             //if it's a number card, add 1 point
+            colorAmount[playerCard[i]->getColor() - 1]++;           
+        } else if (playerCard[i]->getNumber == 10 && playerCard[i]->getNumber == 11) {    //if it's skip or reverse
+            colorAmount[playerCard[i]->getColor() - 1] += 2;
+        } else if (playerCard[i]->getNumber == 12) {               //if it's a drawtwo card
+            colorAmount[playerCard[i]->getColor() - 1] += 3;
         }
     }
     
@@ -69,6 +55,7 @@ void Bot::setStrongestColor()
 //implement the bot getStrongestColor function
 int Bot::getStrongestColor()
 {
+    setStrongestColor();            //setStrongestColor will always be called before returning it
     return strongestColor;
 }
 
@@ -77,26 +64,27 @@ int Bot::getStrongestColor()
 int Bot::botPlayCard(vector<Card*> playableCards)
 {
     int choice;
-    if (core->getNextHandSize() < botCard.size()) {        //compare size with next player
+    if (core->getNextHandSize() < playerCard.size()) {        //compare size with next player
         //if next player has less card, play aggressive -> play the strongest card first
-        for (int i=botCard.size() - 1; i>=0; i--) {             //find the last playable card
+        for (int i=playerCard.size() - 1; i>=0; i--) {             //find the last playable card
             for (int m=0; m<playableCards.size(); m++) {
-                if (botCard[i]->getName() == playableCards[m]->getName()) {
+                if (playerCard[i]->getName() == playableCards[m]->getName()) {
                     return i;
                 }
             }
         }
     } else {             
         //if next player has more card, play defensively and conserve good cards
-        for (int i=0; i<botCard.size(); i++) {
-            for (int m=0; m<playableCards.size(); m++) {
-                if (botCard[i]->getName() == playableCards[m]->getName()) {
+        for (int i=0; i<playerCard.size(); i++) {
+            for (int m=0; m<playableCards.size(); m++) {            //find the first playable card
+                if (playerCard[i]->getName() == playableCards[m]->getName()) {
                     return i;
                 }
             }
         }
     }
 }
+
 
 //implement the bot destructor
 Bot::~Bot()

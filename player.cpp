@@ -25,12 +25,19 @@ Player::Player(Hand *deck)
 void Player::setPlayerHand(Hand* deck)
 {
 	playerHand = deck;
+	playerCard = playerHand->getDeck();
 }
 
 //implement the player getPlayerDeck function
 Hand* Player::getPlayerHand()
 {
 	return playerHand;
+}
+
+//implement the player getPlayerCard function
+vector<Card*> Player::getPlayerCard()
+{
+	return playerCard;
 }
 
 //implement the player easterEgg function
@@ -106,6 +113,7 @@ int Player::getUno()
 	return uno;
 }
 
+/*
 //implement the player setBotPlayer function
 void Player::setBotPlayer()
 {
@@ -117,6 +125,7 @@ bool Player::getBotPlayer()
 {
 	return botPlayer;
 }
+*/
 
 //implement the player setCardsToDraw function
 void Player::setCardsToDraw(int noOfCards)
@@ -139,8 +148,8 @@ void Player::drawCard(int noOfCard)
 		core->getDraw()->pushCard(0, playerHand);		//draw to last card to playerHand, which then delete that card in the Draw deck 
 		if (botPlayer == false) {		//only print what card is drawn if it's a player, not bot
 			cout << "Card ";
-			::rgb(playerHand->getDeck()[playerHand->getDeck().size() - 1]->getColor());
-			cout << playerHand->getDeck()[playerHand->getDeck().size() - 1]->getName() << "\e[0m is drawn" << endl;
+			::rgb(playerCard[playerCard.size() - 1]->getColor());
+			cout << playerCard[playerCard.size() - 1]->getName() << "\e[0m is drawn" << endl;
 		} else {
 			cout << "Bot has drawn a card" << endl;
 		}
@@ -156,12 +165,12 @@ void Player::drawCard(int noOfCard)
 //implement the player playCard fuction
 void Player::playCard(int cardIndex)
 {
-	Card* playedCard = (playerHand->getDeck()[cardIndex]);
+	Card* playedCard = (playerCard[cardIndex]);
 	cout << "Card ";
 	::rgb(playedCard->getColor());
-	cout << playerHand->getDeck()[cardIndex]->getName() << "\e[0m" << " is played" << endl;
+	cout << playerCard[cardIndex]->getName() << "\e[0m" << " is played" << endl;
 	cout << endl;
-	if (playerHand->getDeck()[cardIndex]->getNumber() == 7 || playerHand->getDeck()[cardIndex]->getNumber() == 0) {	
+	if (playerCard[cardIndex]->getNumber() == 7 || playerCard[cardIndex]->getNumber() == 0) {	
 		playerHand->pushCard(cardIndex, core->getDiscard());			//zero and seven cards require push card first, since after effect is called
 		playedCard->effect(core);										//the card is no longer there to be pushed -> break the card 
 	} else {

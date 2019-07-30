@@ -1,7 +1,6 @@
 #ifndef BOT_H
 #define BOT_H
 
-#include "core.h"
 #include "player.h"
 
 #include <string>
@@ -9,24 +8,14 @@
 #include <algorithm>
 #include <vector>
 
-class Bot
+class Bot : public Player
 {
 private:
-    Player* player;
-    Core* core;
-    Hand* botHand;
-    std::vector<Card*> botCard;
-
-    int botTurn;
     int strongestColor;
 
 public:
     Bot();
-    
-    //basic function
-    void setCore(Core* gameCore);
-    void setPlayer(Player* botPlayer, int playerXTurn);
-
+    Bot(Hand* botHand);
 
     //action sets
     void setStrongestColor();           //color that you have the most amount will be the strongest; if same amount, color with most action is the strongest

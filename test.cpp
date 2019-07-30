@@ -255,23 +255,23 @@ void Test::testZero(Card* zero)
 	cout << "Card name: " << zero->getName() << endl;
 	vector<int> deckSize;
 	for (int i=0; i<core->getPlayers().size(); i++) {
-		deckSize.push_back(core->getPlayers()[i]->getPlayerHand()->getDeck().size());
+		deckSize.push_back(core->getPlayers()[i]->getPlayerCard().size());
 	}
 	zero->effect(core);
 	bool swapped = true;
-	if (core->getPlayers()[0]->getPlayerHand()->getDeck().size() != deckSize[3]) {		//this is testing, play it manual
+	if (core->getPlayers()[0]->getPlayerCard().size() != deckSize[3]) {		//this is testing, play it manual
 		swapped = false;
 		cout << "Player 0 swap failed" << endl;																//also i'm too lazy to write the if statement for first and last player
 	}
-	if (core->getPlayers()[1]->getPlayerHand()->getDeck().size() != deckSize[0]) {
+	if (core->getPlayers()[1]->getPlayerCard().size() != deckSize[0]) {
 		swapped = false;
 		cout << "Player 1 swap failed" << endl;		
 	}
-	if (core->getPlayers()[2]->getPlayerHand()->getDeck().size() != deckSize[1]) {
+	if (core->getPlayers()[2]->getPlayerCard().size() != deckSize[1]) {
 		swapped = false;
 		cout << "Player 2 swap failed" << endl;		
 	}
-	if (core->getPlayers()[3]->getPlayerHand()->getDeck().size() != deckSize[2]) {
+	if (core->getPlayers()[3]->getPlayerCard().size() != deckSize[2]) {
 		swapped = false;
 		cout << "Player 3 swap failed" << endl;		
 	}
@@ -302,8 +302,8 @@ void Test::testNoBluffing()
 	vector<Card*> playableCards = core->playable();			//get the playable cards
 
 	bool passed = true;
-	for (int i=0; i<player->getPlayerHand()->getDeck().size(); i++) {
-		if (player->getPlayerHand()->getDeck()[i]->getNumber() == 5) {			//if a wildcard is spotted, test failed
+	for (int i=0; i<player->getPlayerCard().size(); i++) {
+		if (player->getPlayerCard()[i]->getNumber() == 5) {			//if a wildcard is spotted, test failed
 			passed = false;					//with that said, there is always a super tiny chance of false negative: there is no wildcard in the hand
 			break;
 		}									//though, drawing 80/108 cards, i can say that it's safe enough to return the right result most of the time

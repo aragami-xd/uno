@@ -75,7 +75,7 @@ void Wildcard::playerSetColor()
 //implement the wildcard botSetPlayer function
 void Wildcard::botSetColor(Core* core, int playerXTurn)
 {
-    vector<Card*> botCard = core->getPlayers()[playerXTurn]->getPlayerHand()->getDeck();
+    vector<Card*> botCard = core->getPlayers()[playerXTurn]->getPlayerCard();
     vector<int> colorAmount(4);             //get the deck and see which color appears the most
     for (int i=0; i<botCard.size(); i++) {
         if (botCard[i]->getColor() != 5) {

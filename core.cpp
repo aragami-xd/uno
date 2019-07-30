@@ -97,6 +97,85 @@ void Core::setNoBluffingMode()
 	noBluffingMode = true;
 }
 
+//implement the core getNextPlayerTurn function
+int Core::getNextPlayerTurn()
+{
+	int nextTurn = playerXTurn + turnDirection;
+	if (turnDirection == 1) {
+		if (nextTurn >= players.size()) {			//reset turn to 0
+			nextTurn = 0;
+		} else if (nextTurn < 0) {
+			nextTurn = players.size()-1;				//reset turn to the last player
+		}
+	} else if (turnDirection == -1) {
+		if (nextTurn >= players.size()) {			
+			nextTurn = players.size()-1;
+		} else if (nextTurn < 0) {
+			nextTurn = 0;				
+		}
+	}
+	return nextTurn;
+}
+
+//implement the core getLastPlayerTurn function
+int Core::getLastPlayerTurn()
+{
+	int lastPlayer = playerXTurn - turnDirection;
+	if (turnDirection == 1) {
+		if (lastPlayer >= players.size()) {			//reset turn to 0
+			lastPlayer = 0;
+		} else if (lastPlayer < 0) {
+			lastPlayer = players.size()-1;				//reset turn to the last player
+		}
+	} else if (turnDirection == -1) {
+		if (lastPlayer >= players.size()) {			
+			lastPlayer = players.size()-1;
+		} else if (lastPlayer < 0) {
+			lastPlayer = 0;				
+		}
+	}
+	return lastPlayer;
+}
+
+//implement the core getOppositePlayerTurn function
+int Core::getOppositePlayerTurn()
+{
+	int oppositePlayer = playerXTurn - turnDirection * 2;
+	if (turnDirection == 1) {
+		if (oppositePlayer >= players.size()) {			//reset turn to 0
+			oppositePlayer = 0;
+		} else if (oppositePlayer < 0) {
+			oppositePlayer = players.size()-1;				//reset turn to the last player
+		}
+	} else if (turnDirection == -1) {
+		if (oppositePlayer >= players.size()) {			
+			oppositePlayer = players.size()-1;
+		} else if (oppositePlayer < 0) {
+			oppositePlayer = 0;				
+		}
+	}
+	return oppositePlayer;
+}
+
+
+//implement the core getNextHandSize function
+int Core::getNextHandSize()
+{
+	return players[getNextPlayerTurn()]->getPlayerHand()->getDeck().size();
+}
+
+//implement the core getLastHandSize function
+int Core::getLastHandSize()
+{
+	return players[getLastPlayerTurn()]->getPlayerHand()->getDeck().size();
+}
+
+//implement the core getOppositeHandSize function
+int Core::getOppositeHandSize()
+{
+	return players[getOppositePlayerTurn()]->getPlayerHand()->getDeck().size();
+}
+
 
 
 

@@ -44,62 +44,11 @@ void Seven::effect(Core* core)
         swapPlayer = botEffect(core, otherPlayers);
     }
     ::animationDelay(500);
+   
+    Hand* otherHand = otherPlayers[swapPlayer]->getPlayerHand();
+    otherPlayers[swapPlayer]->setPlayerHand(currentPlayer->getPlayerHand());              //set other player hand to current player hand
+    currentPlayer->setPlayerHand(otherHand);            //set current player hand to that player
 
-    //these 4 lines down here don't seem to work at all. same goes with the zero card: it doesn't swap shit. i suspect something 
-    //is wrong with swapping the pointer (it doesn't swap correctly. values might have either been overlapped, or it doesnt' swap shit at all. can't really tell
-    //delete these 3 lines of comment once the issues are fixed, for now keep it there
-    //remember to also fix the one in zero class, since it's the same as seven
-    vector<Card*> currentHand = currentPlayer->getPlayerHand()->getDeck();          //get the cards from players hand
-    vector<Card*> otherHand = otherPlayers[swapPlayer]->getPlayerHand()->getDeck();
-    /*
-    cout << "Current hand:" << endl;
-    for (int i=0; i<currentHand.size(); i++) {
-        cout << i << ". " << currentHand[i]->getName() << endl;
-    }
-    cout << endl;
-    cout << "Other hand:" << endl;
-    for (int i=0; i<otherHand.size(); i++) {
-        cout << i << ". " << otherHand[i]->getName() << endl;
-    }
-    cout << endl;
-    */
-
-    currentPlayer->getPlayerHand()->getDeck().clear();
-    otherPlayers[swapPlayer]->getPlayerHand()->getDeck().clear();       //empty the players hand
-
-    /*
-    cout << "Current hand:" << endl;
-    for (int i=0; i<currentHand.size(); i++) {
-        cout << i << ". " << currentHand[i]->getName() << endl;
-    }
-    cout << endl;
-    cout << "Other hand:" << endl;
-    for (int i=0; i<otherHand.size(); i++) {
-        cout << i << ". " << otherHand[i]->getName() << endl;
-    }
-    cout << endl;
-    */
-
-    currentPlayer->getPlayerHand()->setDeck(otherHand);             //set the hand of the player to the cards above
-    otherPlayers[swapPlayer]->getPlayerHand()->setDeck(currentHand);
-
-    /*
-    cout << "Current hand:" << endl;
-    for (int i=0; i<currentHand.size(); i++) {
-        cout << i << ". " << currentHand[i]->getName() << endl;
-    }
-    cout << endl;
-    cout << "Other hand:" << endl;
-    for (int i=0; i<otherHand.size(); i++) {
-        cout << i << ". " << otherHand[i]->getName() << endl;
-    }
-    cout << endl;
-    */
-
-    //currentPlayer->setPlayerHand(otherHand);            //set current player hand to that player
-    //otherPlayers[swapPlayer]->setPlayerHand(currentHand);              //set other player hand to current player hand
-    //there were some issues with swap, not being able to swap pointers and segmentation fault, so i have to do it manually
-    
     ::animationDelay(500);
     cout << "Card has been swapped" << endl;
 }

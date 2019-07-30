@@ -17,6 +17,7 @@ private:
     Hand* botHand;
     std::vector<Card*> botCard;
 
+    int botTurn;
     int strongestColor;
 
 public:
@@ -24,14 +25,16 @@ public:
     
     //basic function
     void setCore(Core* gameCore);
-    void setPlayer(Player* botPlayer);
+    void setPlayer(Player* botPlayer, int playerXTurn);
 
 
     //action sets
     void setStrongestColor();           //color that you have the most amount will be the strongest; if same amount, color with most action is the strongest
     int getStrongestColor();
 
-    int botChoicePlay(std::vector<Card*> playableCards);
+    int botPlayCard(std::vector<Card*> playableCards);
+
+    //void nextPlayerWeakestColor();
 
 
     ~Bot();

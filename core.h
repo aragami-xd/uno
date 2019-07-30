@@ -56,6 +56,14 @@ public:
 	void setStackingMode();
 	void setNoBluffingMode();
 
+	int getNextPlayerTurn();
+	int getLastPlayerTurn();
+	int getOppositePlayerTurn();
+
+	int getNextHandSize();
+	int getLastHandSize();
+	int getOppositeHandSize();
+
 
 	////action sets 
 	void turnCycle();		//loop between players as turns

@@ -82,30 +82,7 @@ void Wildcard::botSetColor(Core* core, int playerXTurn)
             colorAmount[botCard[i]->getColor() - 1]++;            //wildcard doesn't count here
         }
     }
-    int mostColor = *max_element(colorAmount.begin(), colorAmount.end());      //amount of card of the color with the most card
-    
-    vector<int> colorStrength(4);
-    for (int i=0; i<botCard.size(); i++) {
-        if (botCard[i]->getNumber() <= 9) {             //if it's a number card, add 1 point
-            colorAmount[botCard[i]->getColor() - 1]++;           
-        } else if (botCard[i]->getNumber == 10 && botCard[i]->getNumber == 11) {    //if it's skip or reverse
-            colorAmount[botCard[i]->getColor() - 1] += 2;
-        } else if (botCard[i]->getNumber == 12) {               //if it's a drawtwo card
-            colorAmount[botCard[i]->getColor() - 1] += 3;
-        }
-    }
-    
-    //the nature of uno is you want to be able to play for as long as possible
-    //therefore, color that appears the most and have the most powerful card will be considered as the prefered color
-    vector<int> totalPoint(4);                  //take the multiplication for the strongest color
-    for (int i=0; i<colorAmount.size(); i++) {
-        if (colorAmount[i] == mostColor) {              //if it has the max color amount, multiply with colorStrength to get the prefered color
-            totalPoint[i] = colorAmount[i] * colorStrength[i];
-        } else {
-            totalPoint[i] = 0;              //if it's not, set to 0
-        }
-    }
-    color = max_element(totalPoint.begin(), totalPoint.end()) - totalPoint.begin();
+    color = max_element(colorAmount.begin(), colorAmount.end()) - colorAmount.begin();      //amount of card of the color with the most card
 }
 
 

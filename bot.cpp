@@ -13,11 +13,13 @@ void Bot::setCore(Core* gameCore)
 }
 
 //implement the bot setPlayer function
-void Bot::setPlayer(Player* botPlayer)
+void Bot::setPlayer(Player* botPlayer, int playerXTurn)
 {
     player = botPlayer;
     botHand = player->getPlayerHand();
     botCard = botHand->getDeck();
+
+    botTurn = playerXTurn;
 }
 
 
@@ -72,9 +74,28 @@ int Bot::getStrongestColor()
 
 
 //implement the bot botChoicePlay function
-int Bot::botChoicePlay(vector<Card*> playableCards)
+int Bot::botPlayCard(vector<Card*> playableCards)
 {
-    
+    int choice;
+    if (core->getNextHandSize() < botCard.size()) {        //compare size with next player
+        //if next player has less card, play aggressive -> play the strongest card first
+        for (int i=botCard.size() - 1; i>=0; i--) {             //find the last playable card
+            for (int m=0; m<playableCards.size(); m++) {
+                if (botCard[i]->getName() == playableCards[m]->getName()) {
+                    return i;
+                }
+            }
+        }
+    } else {             
+        //if next player has more card, play defensively and conserve good cards
+        for (int i=0; i<botCard.size(); i++) {
+            for (int m=0; m<playableCards.size(); m++) {
+                if (botCard[i]->getName() == playableCards[m]->getName()) {
+                    return i;
+                }
+            }
+        }
+    }
 }
 
 //implement the bot destructor

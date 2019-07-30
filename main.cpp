@@ -28,6 +28,9 @@
 //UI
 #include "interface.h"
 
+//bot
+#include "bot.h"
+
 using namespace std;
 
 //extern function
@@ -41,10 +44,11 @@ int main()
 
 	//game modes
 	bool stacking = true;		
-	bool ohSeven = false;			//0-7 rule, pronouce oh-seven
+	bool ohSeven = true;			//0-7 rule, pronouce oh-seven
 	bool noBluffing = false;		
 	bool jumpIn = false;
 
+	/*
 	vector<string> gameMode = startMenu();
 	for (int i=0; i<gameMode.size(); i++) {
 		if (gameMode[i] == "1") {
@@ -63,6 +67,7 @@ int main()
 	cout << "Game modes are set" << endl;
 	::animationDelay(1000);
 	::clearConsole();
+	*/
 
 		
 
@@ -123,13 +128,14 @@ int main()
 		hand[i] = new Hand();
 		players[i] = new Player(hand[i]);
 	}
-	players[0]->setBotPlayer();
+	//players[0]->setBotPlayer();
 
-	//players[0]->setName("vanoss");
-	//players[1]->setName("terroriser");
-	//players[2]->setName("basically");
-	//players[3]->setName("moo");
+	players[0]->setName("vanoss");
+	players[1]->setName("terroriser");
+	players[2]->setName("basically");
+	players[3]->setName("moo");
 	
+	/*
 	cout << "Enter players' name here. the first player by default will player, and the other 3 will be bots" << endl;
 	string pName;					//set the player name, i'll only use it in the official release
 	for (int i=0; i<noOfPlayer; i++) {
@@ -137,6 +143,7 @@ int main()
 		cin >> pName;
 		players[i]->setName(pName);
 	}
+	*/
 
 
 	//draw and discard
@@ -190,15 +197,15 @@ int main()
 	::animationDelay(2000);
 	::clearConsole();
 	cout << "Drawing cards..." << endl;
-	core->beginGameDraw();
+	//core->beginGameDraw();
 	
 
 	//test function 
-	//Test *test = new Test();
+	Test *test = new Test();
 	
-	//test->setCard(cardList);
+	test->setCard(cardList);
 	//test->setDeck(cardList, 0);
-	//test->setCore(core);
+	test->setCore(core);
 	//test->printCardList();
 	//test->printDeckList();
 	//test->testCardName();
@@ -207,14 +214,14 @@ int main()
 	//test->testReverse(cardList[22]);
 	//test->testSkip(cardList[30]);
 	//test->testDrawCard(cardList[1]);			
-	//test->testSeven(cardList[85]);			
+	test->testSeven(cardList[85]);			
 	//test->testZero(cardList[9]);				
 	//test->testNoBluffing();
 
 
 	srand(time(0));			//for random
-	::clearConsole();
-	core->turnCycle();		//the game itself 
+	//::clearConsole();
+	//core->turnCycle();		//the game itself 
 	cout << endl;
 
 
@@ -226,7 +233,7 @@ int main()
 		delete cardList[i];
 	}
 
-	//delete test;
+	delete test;
 	delete draw, discard;
 	for (int i=0; i<noOfPlayer; i++) {
 		delete hand[i], players[i];

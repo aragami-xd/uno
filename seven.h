@@ -14,8 +14,6 @@ public:
 
     virtual void setName();
     virtual void effect(Core* core);
-    int playerEffect(Core* core, std::vector<Player*> otherPlayers);
-	int botEffect(Core* core, std::vector<Player*> otherPlayers);
 
     ~Seven();
 };

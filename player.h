@@ -15,14 +15,13 @@ class Player
 protected: 
 	std::string playerName;
 	int nextTurn;		//see if player can play the next turn or not, 1 = yes
-	int playerTurn;
+	int playerXTurn;
 
 	Hand* playerHand;
 	std::vector<Card*> playerCard;
 	Core* core;
 
 	int uno;		//uno = 1 -> uno status (1 card remaining) 
-	bool botPlayer = true;			//false if it's real player
 	int cardsToDraw;		//number of cards needed to draw at the start of the turn 
 
 public: 
@@ -46,8 +45,6 @@ public:
 	void setUno();
 	int getUno();
 
-	//void setBotPlayer();			//if this function is called, then it's not bot player
-	//bool getBotPlayer();
 
 	void setCardsToDraw(int noOfCards);		//this function determines which type of card player have to stack or draw (+2 / +4)
 	int getCardsToDraw();
@@ -55,12 +52,17 @@ public:
 	
 
 	//action set
-	void drawCard(int noOfCard);
-	void playCard(int cardIndex);
-	void outOfCards();
+	virtual void drawCard(int noOfCard);		//draw a number of cards
+	void playCard(int cardIndex);			//play the card and call its effect
+	void outOfCards();			//check if there is any cards left in the deck after each card drawn
 
 	//polymorphic set
-	virtual int choicePlayColor() =0;
+	virtual void playerChoicePlay(std::vector<Card*> playableCards) =0;
+	virtual void playerTurn() =0;
+	virtual void playerForceDraw(Card* newCard) =0;
+	virtual int playerStackable(int stackSize, int stackType, int requiredCard) =0;
+	virtual int playerSetColor() =0;
+	virtual int playerChooseSwap(std::vector<Player*> otherPlayers) =0;
 
 	~Player();
 };

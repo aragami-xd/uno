@@ -50,7 +50,7 @@ public:
 	void setDiscard(Discard* discardDeck);
 	Discard* getDiscard();
 
-	std::vector<Card*> getPlayersCard();
+	//std::vector<Card*> getPlayersCard();
 	int getHandSize(int playerNo);
 	
 	void setStackingMode();
@@ -60,15 +60,10 @@ public:
 	int getLastPlayerTurn();
 	int getOppositePlayerTurn();
 
-	int getNextHandSize();
-	int getLastHandSize();
-	int getOppositeHandSize();
 
 
 	////action sets 
 	void turnCycle();		//loop between players as turns
-	void playerTurn();
-	void botTurn();
 	
 	void defaultPrinting();			//cout some basic information at the start of the turn 
 	void turnPrinting(int turn);		//print the turn things (Turn: p1->p2->...)
@@ -79,19 +74,10 @@ public:
 	bool canPlay();			//see if player can play any card in their hand or not
 
 	void forceDraw(bool choicePlayFalse = true);		//if player cannot play any card, then they're forced to draw until they got a compatible card 
-	void playerForceDraw(Card* newCard);
-	void botForceDraw(Card* newCard, int extraCards);
 
 	void choicePlay();		//if player can play, they can either play a card, or draw until they get a match one
-	void playerChoicePlay(std::vector<Card*> playableCards);
-	void botChoicePlay(std::vector<Card*> playableCards);
-	
-	char unoSignal();			//remind user that they can call uno this round
-	void callUno(char unoChar);			//call uno
 
 	int stackable(int stackSize, int stackType);		//ask if player can and want to stack draw cards or not
-	int playerStackable(int stackSize, int stackType, int requiredCard);
-	int botStackable(int stackSize, int stackType, int requiredCard);
 
 	void runGame();				//incorporate turnCycle and countdown timer
 	

@@ -37,12 +37,7 @@ void Seven::effect(Core* core)
         }
     }
 
-    int swapPlayer; 
-    if (currentPlayer->getBotPlayer() == false) {               //asking which hand the player wants to swap with
-        swapPlayer = playerEffect(core, otherPlayers);
-    } else if (currentPlayer->getBotPlayer() == true) {
-        swapPlayer = botEffect(core, otherPlayers);
-    }
+    int swapPlayer = currentPlayer->playerChooseSwap(otherPlayers);
     ::animationDelay(500);
    
     Hand* otherHand = otherPlayers[swapPlayer]->getPlayerHand();
@@ -51,48 +46,6 @@ void Seven::effect(Core* core)
 
     ::animationDelay(500);
     cout << "Card has been swapped" << endl;
-}
-
-//implement the seven playerEffect function
-int Seven::playerEffect(Core* core, vector<Player*> otherPlayers)
-{
-    cout << "Which player you want to swap with?" << endl;
-    for (int i=0; i<otherPlayers.size(); i++) {
-        cout << i << ". " << otherPlayers[i] ->getName() << " [" << otherPlayers[i]->getPlayerCard().size() << "]" << endl;
-    }
-    int choice;                     //choosing the hand to swap with 
-    bool rightChoice = false;
-    while (rightChoice == false) {
-        cin >> choice;
-        if (choice >= 0 && choice < 4) {     
-            cout << "Swapping card with ";
-            ::rgb(4);
-            cout << otherPlayers[choice]->getName() << "\e[0m" << endl;
-            rightChoice = true;
-        } else {
-            cout << "This is a 4 player game" << endl;
-        }
-    }
-    return choice;
-}
-
-//implement the seven botEffect function
-int Seven::botEffect(Core* core, vector<Player*> otherPlayers)
-{
-    cout << "Bot will swap its hand with another player" << endl;
-    cout << endl;
-    ::animationDelay(500);
-
-    vector<int> deckSize;
-    for (int i=0; i<otherPlayers.size(); i++) {
-        deckSize.push_back(otherPlayers[i]->getPlayerCard().size());
-    }
-    
-    int minElementIndex = min_element(deckSize.begin(), deckSize.end()) - deckSize.begin();
-    cout << "Swapping card with ";
-    ::rgb(4);
-    cout << otherPlayers[minElementIndex]->getName() << "\e[0m" << endl;
-    return minElementIndex;
 }
 
 //implement the seven destructor

@@ -9,16 +9,15 @@ Player::Player()
 {
 	nextTurn = 1;		//player can play next turn as default
 	uno = -1;
-	botPlayer = true;
 }
 
 //implement the player (deck) cosntructor
 Player::Player(Hand *deck)
 {
 	playerHand = deck;
+	playerCard = playerHand->getDeck();
 	nextTurn = 1;
 	uno = -1;
-	botPlayer = true;
 }
 
 //implement the player setPlayerDeck function
@@ -37,6 +36,7 @@ Hand* Player::getPlayerHand()
 //implement the player getPlayerCard function
 vector<Card*> Player::getPlayerCard()
 {
+	playerCard = playerHand->getDeck();
 	return playerCard;
 }
 
@@ -113,19 +113,6 @@ int Player::getUno()
 	return uno;
 }
 
-/*
-//implement the player setBotPlayer function
-void Player::setBotPlayer()
-{
-	botPlayer = false;
-}
-
-//implement the player getBotPlayer function
-bool Player::getBotPlayer()
-{
-	return botPlayer;
-}
-*/
 
 //implement the player setCardsToDraw function
 void Player::setCardsToDraw(int noOfCards)
@@ -144,23 +131,16 @@ int Player::getCardsToDraw()
 //implement the player drawCard function
 void Player::drawCard(int noOfCard) 
 {
-	for (int i=0; i<noOfCard; i++) {					//drawing x cards 
-		core->getDraw()->pushCard(0, playerHand);		//draw to last card to playerHand, which then delete that card in the Draw deck 
-		if (botPlayer == false) {		//only print what card is drawn if it's a player, not bot
-			cout << "Card ";
-			::rgb(playerCard[playerCard.size() - 1]->getColor());
-			cout << playerCard[playerCard.size() - 1]->getName() << "\e[0m is drawn" << endl;
-		} else {
-			cout << "Bot has drawn a card" << endl;
-		}
-		if (noOfCard == 1) {
-			::animationDelay(300);
-		} else {
-			::animationDelay(floor(1000/noOfCard));
-		}
-		outOfCards();		//check if there are any cards left. if none, shuffle the discard deck back into the main deck
+
+	if (noOfCard == 1) {			//this is just a part of shared code between human and bot drawCard function
+		::animationDelay(300);
+	} else {
+		::animationDelay(floor(1000/noOfCard));
 	}
+	cout << " Last function called: " << __func__ << endl;
+	outOfCards();		//check if there are any cards left. if none, shuffle the discard deck back into the main deck
 }
+
 
 //implement the player playCard fuction
 void Player::playCard(int cardIndex)
@@ -177,7 +157,10 @@ void Player::playCard(int cardIndex)
 		playedCard->effect(core);										//this apply mostly to wildcards: they search the hand of player
 		playerHand->pushCard(cardIndex, core->getDiscard());			//so if it's pushed first, it cannot find players' hand anymore -> break the bot setColor
 	}
+	cout << " Last function called: " << __func__ << endl;
 }
+
+
 
 //implement the player outOfCard function
 void Player::outOfCards()
@@ -189,6 +172,7 @@ void Player::outOfCards()
 		core->getDraw()->setDeck(cardList);				//get the cards and shuffle
 		core->getDraw()->shuffle();
 	}
+	cout << " Last function called: " << __func__ << endl;
 }
 
 //implement the player destructor

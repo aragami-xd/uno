@@ -24,7 +24,6 @@ void Human::drawCard(int noOfCard)
 		cout << playerHand->getDeck()[playerHand->getDeck().size() - 1]->getName() << "\e[0m" << endl;
         Player::drawCard(noOfCard);
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -39,7 +38,6 @@ char Human::unoSignal()
 		cout << "Ready for Uno? Press " << a_to_z[randomChar] << " to call Uno after playing the card" << endl;
 		cout << endl;
 	}
-	cout << " Last function called: " << __func__ << endl;
 	return a_to_z[randomChar];
 }
 
@@ -57,7 +55,6 @@ void Human::callUno(char unoChar)
 		cout << "Wrong button! Draw 2 cards" << endl;
 		drawCard(2);
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -96,7 +93,6 @@ void Human::playerChoicePlay(vector<Card*> playableCards)
 
 		}
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -117,7 +113,6 @@ void Human::playerTurn()
 		nextTurn = 1;
 		cout << "You cannot play this turn" << endl;
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -144,7 +139,6 @@ void Human::playerForceDraw(Card* newCard)
 			rightChoice = true;
 		}
 	}	
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -179,7 +173,6 @@ int Human::playerStackable(int stackSize, int stackType, int requiredCard)
 			cout << "Choose again" << endl;			//turn vanoss mode and become an asshole 
 		}
 	}
-	cout << " Last function called: " << __func__ << endl;
 	return 0;
 }
 
@@ -208,7 +201,6 @@ int Human::playerSetColor()
             return color;
         }
     }
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -232,7 +224,6 @@ int Human::playerChooseSwap(vector<Player*> otherPlayers)
             cout << "This is a 4 player game" << endl;
         }
     }
-	cout << " Last function called: " << __func__ << endl;
     return choice;
 }
 

@@ -49,7 +49,7 @@ int main()
 	bool noBluffing = false;		
 	bool jumpIn = false;
 
-	/*
+	
 	vector<string> gameMode = startMenu();
 	for (int i=0; i<gameMode.size(); i++) {
 		if (gameMode[i] == "1") {
@@ -68,7 +68,7 @@ int main()
 	cout << "Game modes are set" << endl;
 	::animationDelay(1000);
 	::clearConsole();
-	*/
+	
 
 		
 
@@ -137,12 +137,11 @@ int main()
 	}
 	
 
-	players[0]->setName("vanoss");
-	players[1]->setName("terroriser");
-	players[2]->setName("basically");
-	players[3]->setName("moo");
+	// players[0]->setName("vanoss");
+	// players[1]->setName("terroriser");
+	// players[2]->setName("basically");
+	// players[3]->setName("moo");
 	
-	/*
 	cout << "Enter players' name here. the first player by default will player, and the other 3 will be bots" << endl;
 	string pName;					//set the player name, i'll only use it in the official release
 	for (int i=0; i<noOfPlayer; i++) {
@@ -150,7 +149,6 @@ int main()
 		cin >> pName;
 		players[i]->setName(pName);
 	}
-	*/
 
 
 	//draw and discard

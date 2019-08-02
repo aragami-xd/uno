@@ -91,7 +91,6 @@ void Bot::drawCard(int noOfCard)
         Player::drawCard(noOfCard);
 	}
     //cout << "Bot " << playerName << " has drawn " << noOfCard << " cards in total" << endl;
-    cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -118,7 +117,6 @@ void Bot::playerTurn()
 		cout << "Bot cannot play this turn" << endl;
 	}
 	::animationDelay(1000);			//bot turn will have extra 1000ms of delay so you can have an idea of wtf they are doing
-    cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -149,7 +147,6 @@ void Bot::playerChoicePlay(vector<Card*> playableCards)
             }
         }
     }
-    cout << " Last function called: " << __func__ << endl;
 
 }
 
@@ -165,7 +162,6 @@ void Bot::playerForceDraw(Card* newCard)
     } else {
         cout << "Bot chooses to keep the card" << endl;
     }
-    cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -182,7 +178,6 @@ int Bot::playerStackable(int stackSize, int stackType, int requiredCard)
 			break;              //returning is not so necessary here, since they will always stack
 		}                       //therefore, they never have to draw and reset the stackSize
 	}
-    cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -210,7 +205,6 @@ int Bot::playerChooseSwap(vector<Player*> otherPlayers)
     ::rgb(4);
     cout << otherPlayers[minElementIndex]->getName() << "\e[0m" << endl;
     return minElementIndex;
-    cout << " Last function called: " << __func__ << endl;
 }
 
 

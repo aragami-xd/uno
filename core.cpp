@@ -86,21 +86,18 @@ vector<Card*> Core::getPlayersCard()
 int Core::getHandSize(int playerNo)
 {
 	return players[playerNo]->getPlayerHand()->getDeck().size();
-	cout << " Last function called: " << __func__ << endl;
 }
 
 //implement the core setStackingMode function
 void Core::setStackingMode()
 {
 	stackingMode = false;
-	cout << " Last function called: " << __func__ << endl;
 }
 
 //implement the core setNoBluffingMode function
 void Core::setNoBluffingMode()
 {
 	noBluffingMode = true;
-	cout << " Last function called: " << __func__ << endl;
 }
 
 //implement the core getNextPlayerTurn function
@@ -120,7 +117,6 @@ int Core::getNextPlayerTurn()
 			nextTurn = 0;				
 		}
 	}
-	cout << " Last function called: " << __func__ << endl;
 	return nextTurn;
 }
 
@@ -141,7 +137,6 @@ int Core::getLastPlayerTurn()
 			lastPlayer = 0;				
 		}
 	}
-	cout << " Last function called: " << __func__ << endl;
 	return lastPlayer;
 }
 
@@ -162,7 +157,6 @@ int Core::getOppositePlayerTurn()
 			oppositePlayer = 0;				
 		}
 	}
-	cout << " Last function called: " << __func__ << endl;
 	return oppositePlayer;
 }
 
@@ -176,16 +170,9 @@ void Core::turnCycle()
 	int stackSize = 0;				//at the start of the turn, see how many cards have been stacked to be drawn 
 	while (endGame == false) {
 		players[playerXTurn]->getPlayerHand()->sortHand();		//for safety reason, just sort it 
-		cout << "hand has been sorted before the turn" << endl;
 		defaultPrinting();
-		for (int i=0; i<getHandSize(0); i++) {
-			cout << getHandSize(0) << endl;
-			cout << i << ". " << players[0]->getPlayerCard()[i] << endl;
-			cout << "print cards for player" << endl;
-		}
 		
 		stackSize += players[playerXTurn]->getCardsToDraw();
-		cout << "stack size has been added" << endl;
 		if (stackSize > 0) {		
 			if (stackingMode == true) {
 				stackSize = stackable(stackSize, players[playerXTurn]->getCardsToDraw());			//since only drawtwo and drawfour call the setCardsToDraw function (except for resetting), stackable will be called
@@ -194,15 +181,10 @@ void Core::turnCycle()
 				stackSize = 0;
 			}
 		}
-		cout << "stack has been called" << endl;
 
 		players[playerXTurn]->setCardsToDraw(0);			//reset the number of cards to draw
-		cout << "stack has been reset" << endl;
 		players[playerXTurn]->getPlayerHand()->sortHand();		//sort hand before the turn 
-		cout << "hand has been sorted" << endl;
 		players[playerXTurn]->playerTurn();
-		cout << "playerTurn finished" << endl;
-		cout << "Player now have " << getHandSize(playerXTurn) << " cards" << endl;
 		if (getHandSize(playerXTurn) == 0) {				//player out of card 
 			endGame = true;
 		}
@@ -223,18 +205,16 @@ void Core::turnCycle()
 				playerXTurn = 0;				
 			}
 		}
-		cout << "next turn has been set" << endl;
 		
 		::animationDelay(1500);
 		cout << endl;
 		cout << endl;
 		cout << endl;
-		//::clearConsole();
+		::clearConsole();
 	}
 	if (endGame == true) {
 		cout << "Alright you can go back to what people call 'real life' now, game over" << endl;
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -260,19 +240,16 @@ void Core::defaultPrinting()
 	cout << discard->getLastCardName() << "\e[0m" << endl;		//print out current card
 
 	//if (typeid(players[0]).name() == "P6Player") {			//usually, player 0 is the real player. but if i want i can have 4 bots play w/ each other	
-	cout << "Your hand: " << endl;
-	cout << "card size: " << players[0]->getPlayerCard().size() << endl;					
+	cout << "Your hand: " << endl;				
 	for (int i=0; i<players[0]->getPlayerCard().size(); i++) {
 		cout << i << ". ";
 		::rgb(players[0]->getPlayerCard()[i]->getColor());
 		cout << players[0]->getPlayerCard()[i]->getName() << "\e[0m" << endl;
-		cout << "causing segmentation fault" << endl;
 	}
 	cout << endl;
 	//}
 
 	cout << players[playerXTurn]->getName() << " turn: " << endl;
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -287,7 +264,6 @@ void Core::turnPrinting(int turn)
 	} else {
 		cout << players[turn]->getName() << " (" << getHandSize(turn) << ") -> ";
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -302,7 +278,6 @@ void Core::beginGameDraw()
 		::animationDelay(400);
 		players[m]->getPlayerHand()->sortHand();
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -328,7 +303,6 @@ vector<Card*> Core::playable()
 			playableDeck.push_back(playerHand[i]);			//since wildcards are the last cards to be checked, i don't have to worry about wildcards
 		}													//being pushed into the deck before other playable cards have been pushed 
 	}									//wildcard if condition analysis: color = 5 and [(noBuffling = true & noWildcard = false) or (noBluffing = false)] 
-	cout << " Last function called: " << __func__ << endl;
 	return playableDeck;
 }
 
@@ -343,7 +317,6 @@ bool Core::canPlay()
 	} else if (playable().size() <= 0) {
 		return false;
 	}	
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -372,7 +345,6 @@ void Core::forceDraw(bool choicePlayFalse)
 			
 		}
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -386,7 +358,6 @@ void Core::choicePlay()
 	} else if (canPlay() == false) {
 		forceDraw();
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -417,8 +388,7 @@ int Core::stackable(int stackSize, int stackType)
 		cout << "No stackable card" << endl;
 		players[playerXTurn]->drawCard(stackSize);
 		return 0;				//reset the stackSize, if player don't stack card and draw the sum
-	}	
-	cout << " Last function called: " << __func__ << endl;				
+	}				
 }
 
 

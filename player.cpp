@@ -137,7 +137,6 @@ void Player::drawCard(int noOfCard)
 	} else {
 		::animationDelay(floor(1000/noOfCard));
 	}
-	cout << " Last function called: " << __func__ << endl;
 	outOfCards();		//check if there are any cards left. if none, shuffle the discard deck back into the main deck
 }
 
@@ -157,7 +156,6 @@ void Player::playCard(int cardIndex)
 		playedCard->effect(core);										//this apply mostly to wildcards: they search the hand of player
 		playerHand->pushCard(cardIndex, core->getDiscard());			//so if it's pushed first, it cannot find players' hand anymore -> break the bot setColor
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 
@@ -172,7 +170,6 @@ void Player::outOfCards()
 		core->getDraw()->setDeck(cardList);				//get the cards and shuffle
 		core->getDraw()->shuffle();
 	}
-	cout << " Last function called: " << __func__ << endl;
 }
 
 //implement the player destructor

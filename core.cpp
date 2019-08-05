@@ -100,6 +100,22 @@ void Core::setNoBluffingMode()
 	noBluffingMode = true;
 }
 
+
+//implement the core setOhSeven function
+void Core::setOhSeven()
+{
+	ohSevenMode = true;
+}
+
+//implement the core getOhSeven function
+bool Core::getOhSeven()
+{
+	return ohSevenMode;
+}
+
+
+//i really want to call these 3 together in a function, but you have to check it individually
+
 //implement the core getNextPlayerTurn function
 int Core::getNextPlayerTurn()
 {
@@ -164,6 +180,10 @@ int Core::getOppositePlayerTurn()
 
 
 
+
+
+
+
 //implement the core turnCycle function
 void Core::turnCycle()
 {
@@ -182,8 +202,8 @@ void Core::turnCycle()
 			}
 		}
 
-		players[playerXTurn]->setCardsToDraw(0);			//reset the number of cards to draw
-		players[playerXTurn]->getPlayerHand()->sortHand();		//sort hand before the turn 
+		players[playerXTurn]->setCardsToDraw(0);			//reset the number of cards that player has to draw
+		players[playerXTurn]->getPlayerHand()->sortHand();		//sort hand before the turn, just for safe measure
 		players[playerXTurn]->playerTurn();
 		if (getHandSize(playerXTurn) == 0) {				//player out of card 
 			endGame = true;

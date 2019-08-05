@@ -5,11 +5,13 @@
 
 class Action : public Card 
 {
+private: 
+	virtual void setName() =0;
+	
 public: 
 	Action();
 	Action(int cColor);
-
-	virtual void setName() =0;
+	
 	virtual void effect(Core* core) =0;
 
 	~Action();

@@ -5,11 +5,13 @@
 
 class Number : public Card
 {
+private:
+	virtual void setName();
 public: 
 	Number();
 	Number(int cColor, int cNumber);
 
-	virtual void setName();
+	
 	virtual void effect(Core* core);
 
 	~Number();

@@ -9,6 +9,8 @@
 #include "seven.h"
 #include "zero.h"
 
+#include <algorithm>
+
 using namespace std;
 
 //implement the default test constructor
@@ -80,23 +82,19 @@ void Test::printCardList()
 
 //test the decks
 //implement the void getDeck function
-void Test::setDeck(vector<Card*> deckList, int deckNumber)
+void Test::setDeck(vector<Card*> deckList)
 {
-	deck[deckNumber] = deckList;
+	deck = deckList;
 }
 
 //implement the void printDeckList function
 void Test::printDeckList()
 {
 	cout << "Print deck list: " << endl;
-	for (int i=0; i<3; i++) {
-		cout << "Deck number " << i << endl;
-		for (int m=0; m<deck[i].size(); m++) {
-			cout << m <<". " << deck[i][m]->getName() << endl;
-		}
-		cout << endl;
+	for (int i=0; i<deck.size(); i++) {
+		cout << i <<". " << deck[i]->getName() << endl;
 	}
-	cout << "3 Decks printed" << endl;
+	cout << endl;
 	cout << endl;
 }
 
@@ -319,6 +317,19 @@ void Test::testNoBluffing()
 	}
 }
 
+
+
+//implement the test referenceGameplay function
+//this fucntion will force 4 bots to play the game with a deck that has been purposely shuffled in the way i want and see if the cards they play is right or not
+void Test::referenceGameplay(Draw* draw)
+{
+	card = draw->getDeck();
+	
+	
+	for (int i=0; i<card.size(); i++) {
+		cout << card[i]->getName() << endl;
+	}
+}
 
 //implement the test destructor
 Test::~Test()

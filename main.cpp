@@ -45,29 +45,30 @@ int main()
 
 	//game modes
 	bool stacking = true;		
-	bool ohSeven = true;			//0-7 rule, pronouce oh-seven
-	bool noBluffing = false;		
+	bool ohSeven = true;			//0-7 rule, pronouce oh-seven. default is false, but i set here is true for testing and debugging purposes
+	bool noBluffing = false;		//it'll be set to false couple lines below
 	bool jumpIn = false;
 
 	
-	vector<string> gameMode = startMenu();
-	for (int i=0; i<gameMode.size(); i++) {
-		if (gameMode[i] == "1") {
-			stacking = false;
-			cout << "Stacking mode disabled" << endl;
-		} else if (gameMode[i] == "2") {
-			ohSeven = true;
-			cout << "0-7 rule enabled" << endl;
-		} else if (gameMode[i] == "4") {
-			noBluffing = true;
-			cout << "No bluffing mode enabled" << endl;
-		} else {
-			cout << "Game mode " << gameMode[i] << " unknown" << endl;
-		}
-	}
-	cout << "Game modes are set" << endl;
-	::animationDelay(1000);
-	::clearConsole();
+	// vector<string> gameMode = startMenu();
+	// ohSeven = false;
+	// for (int i=0; i<gameMode.size(); i++) {
+	// 	if (gameMode[i] == "1") {
+	// 		stacking = false;
+	// 		cout << "Stacking mode disabled" << endl;
+	// 	} else if (gameMode[i] == "2") {
+	// 		ohSeven = true;
+	// 		cout << "0-7 rule enabled" << endl;
+	// 	} else if (gameMode[i] == "4") {
+	// 		noBluffing = true;
+	// 		cout << "No bluffing mode enabled" << endl;
+	// 	} else {
+	// 		cout << "Game mode " << gameMode[i] << " unknown" << endl;
+	// 	}
+	// }
+	// cout << "Game modes are set" << endl;
+	// ::animationDelay(1000);
+	// ::clearConsole();
 	
 
 		
@@ -137,23 +138,23 @@ int main()
 	}
 	
 
-	// players[0]->setName("vanoss");
-	// players[1]->setName("terroriser");
-	// players[2]->setName("basically");
-	// players[3]->setName("moo");
+	players[0]->setName("vanoss");
+	players[1]->setName("terroriser");
+	players[2]->setName("basically");
+	players[3]->setName("moo");
 	
-	cout << "Enter players' name here. the first player by default will player, and the other 3 will be bots" << endl;
-	string pName;					//set the player name, i'll only use it in the official release
-	for (int i=0; i<noOfPlayer; i++) {
-		cout << "Player " << i << " name: ";
-		cin >> pName;
-		players[i]->setName(pName);
-	}
+	// cout << "Enter players' name here. the first player by default will player, and the other 3 will be bots" << endl;
+	// string pName;					//set the player name, i'll only use it in the official release
+	// for (int i=0; i<noOfPlayer; i++) {
+	// 	cout << "Player " << i << " name: ";
+	// 	cin >> pName;
+	// 	players[i]->setName(pName);
+	// }
 
 
 	//draw and discard
 	Draw *draw = new Draw(cardList);
-	draw->shuffle();
+	//draw->shuffle();
 
 	Discard *discard = new Discard(draw->getDeck());
 	discard->setLastCard();
@@ -172,6 +173,9 @@ int main()
 	}
 	if (noBluffing == true) {
 		core->setNoBluffingMode();
+	}
+	if (ohSeven == true) {
+		core->setOhSeven();
 	}
 
 	for (int i=0; i<noOfPlayer; i++) {
@@ -206,7 +210,7 @@ int main()
 	*/
 
 	cout << "Drawing cards..." << endl;
-	core->beginGameDraw();
+	//core->beginGameDraw();
 	
 
 
@@ -215,8 +219,8 @@ int main()
 	//Test *test = new Test();
 	
 	//test->setCard(cardList);
-	//test->setDeck(players[0]->getPlayerHand()->getDeck(), 0);
-	//est->setCore(core);
+	//test->setDeck(players[0]->getPlayerHand()->getDeck());
+	//test->setCore(core);
 	//test->printCardList();
 	//test->printDeckList();
 	//test->testCardName();
@@ -228,6 +232,7 @@ int main()
 	//test->testSeven(cardList[85]);			
 	//test->testZero(cardList[9]);				
 	//test->testNoBluffing();
+	//test->referenceGameplay(draw);
 	//delete test;
 
 	srand(time(0));			//for random

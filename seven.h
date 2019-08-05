@@ -8,11 +8,13 @@ class Player;
 
 class Seven : public Action
 {
+private:
+    virtual void setName();
 public: 
     Seven();
     Seven(int cColor);
 
-    virtual void setName();
+    
     virtual void effect(Core* core);
 
     ~Seven();

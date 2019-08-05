@@ -6,15 +6,15 @@
 class Human : public Player
 {
 private:
+    virtual void drawCard(int noOfCard);
+    char unoSignal();               //let the player knows that they can call uno next this round
+    void callUno(char unoChar);     //pressing uno
+
 public:
     Human();
     Human(Hand* humanHand);
 
     //action set
-    virtual void drawCard(int noOfCard);
-    char unoSignal();               //let the player knows that they can call uno next this round
-    void callUno(char unoChar);     //pressing uno
-
 
     //pure virtual implmentations 
     virtual void playerChoicePlay(std::vector<Card*> playableCards);

@@ -5,11 +5,13 @@
 
 class Colorcard : public Wildcard
 {
+private:
+	virtual void setName();
 public: 
 	Colorcard();
 	Colorcard(int cColor);
 
-	virtual void setName();
+	
 	void effect(Core* core);
 
 	~Colorcard();

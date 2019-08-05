@@ -19,7 +19,7 @@ class Test
 {
 private: 
 	std::vector<Card*> card;
-	std::vector<Card*> deck[3];			//3 decks: hand(0), draw(1) and discard(2)
+	std::vector<Card*> deck;			//3 decks: hand(0), draw(1) and discard(2)
 	Core* core;
 
 public: 
@@ -27,7 +27,7 @@ public:
 
 	//setup the test class
 	void setCard(std::vector<Card*> CardList);		//get the cards
-	void setDeck(std::vector<Card*> deckList, int deckNumber);		//get a deck 
+	void setDeck(std::vector<Card*> deckList);		//get a deck 
 	void setCore(Core* gameCore);
 	
 	//test the card list
@@ -57,6 +57,10 @@ public:
 
 	//test bluffing
 	void testNoBluffing();
+
+	//system testing, ensuring the gameplay is right
+	void referenceGameplay(Draw* draw);
+
 	~Test();
 };
 

@@ -5,11 +5,14 @@
 
 class Zero : public Action
 {
+private:
+    virtual void setName();
+
 public:
     Zero();
     Zero(int cColor);
     
-    virtual void setName();
+    
     virtual void effect(Core* core);
     ~Zero();
 };

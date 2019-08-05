@@ -14,21 +14,18 @@ protected:
 	int cardType;		//card type. 1 for normal, 2 for action, 3 for wildcard
 	int cardNumber;		//0-9, 10=reverse, 11=skip, 12=drawtwo, 13=colorchange, 14=drawfour
 
+	void setNumber(int cNumber);
+	virtual void setName() =0;
+
 public:
 	Card();
 	Card(int cColor);
+
+	int getColor();			//only wildcards can setColor
+	std::string getName();	
+	int getNumber();
 	
 	virtual void effect(Core* core) =0;		//card effect, used for action and wildcards
-
-	void setColor(int cColor);
-	int getColor();			//only wildcards can setColor
-
-	virtual void setName() =0;
-	std::string getName();
-
-	void setNumber(int cNumber);
-	int getNumber();
-
 	~Card();
 };
 

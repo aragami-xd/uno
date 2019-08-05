@@ -14,19 +14,23 @@ private:
     int strongestColor;
     int weakestColor;
 
+
+    //private action sets
+    int aggressivePlay(std::vector<Card*> playableCard, bool ohSeven);
+    void setStrongestWeakestColor();           //color that you have the most amount will be the strongest; if same amount, color with most action is the strongest
+
 public:
     Bot();
     Bot(Hand* botHand);
 
     //action sets
-    void setStrongestWeakestColor();           //color that you have the most amount will be the strongest; if same amount, color with most action is the strongest
     int getStrongestColor();                   //color that you have the least will be the weakest, the one with least action card will be the weakest if equal amount
     int getWeakestColor();
 
     virtual void drawCard(int noOfCard);
 
-    //void nextPlayerWeakestColor();
-
+    //aggressivePlay and passivePlay will be called inside of playerChoicePlay
+    
 
     //pure virtual implementations
     virtual void playerTurn();

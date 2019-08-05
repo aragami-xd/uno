@@ -13,12 +13,6 @@ Card::Card(int cColor)
 	color = cColor;
 }
 
-//implement the card setColor function
-void Card::setColor(int cColor)
-{
-	color = cColor;
-}
-
 //implement the card getColor funciton
 int Card::getColor()
 {

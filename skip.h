@@ -5,11 +5,14 @@
 
 class Skip : public Action 
 {
+private:
+	virtual void setName();
+	
 public:
 	Skip();
 	Skip(int cColor);
 
-	virtual void setName();
+	
 	virtual void effect(Core* core);
 
 	~Skip();

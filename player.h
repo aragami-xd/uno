@@ -24,6 +24,10 @@ protected:
 	int uno;		//uno = 1 -> uno status (1 card remaining) 
 	int cardsToDraw;		//number of cards needed to draw at the start of the turn 
 
+
+	void nameEasterEgg(std::string pName);
+
+
 public: 
 	Player();
 	Player(Hand* deck);
@@ -34,7 +38,7 @@ public:
 	std::vector<Card*> getPlayerCard();
 
 	void setName(std::string pName);
-	void nameEasterEgg(std::string pName);	
+		
 	std::string getName();
 
 	void setNextTurn();

@@ -5,11 +5,13 @@
 
 class Reverse : public Action
 {
+private:
+	virtual void setName();
 public: 
 	Reverse();
 	Reverse(int cColor);
 
-	virtual void setName();
+	
 	virtual void effect(Core* core);	
 
 	~Reverse();

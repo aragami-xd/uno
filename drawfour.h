@@ -5,11 +5,12 @@
 
 class Drawfour : public Wildcard
 {
+private:
+    virtual void setName();
 public: 
     Drawfour();
     Drawfour(int cColor);
-
-    virtual void setName();
+  
     void effect(Core* core);
 
     ~Drawfour();

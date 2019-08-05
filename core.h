@@ -37,8 +37,6 @@ private:
 	//private action sets
 	void defaultPrinting();			//cout some basic information at the start of the turn 
 	void turnPrinting(int turn);		//print the turn things (Turn: p1->p2->...)
-	
-	void beginGameDraw();			//drawing 7 cards at the beginning of the game
 		
 	int stackable(int stackSize, int stackType);		//ask if player can and want to stack draw cards or not
 
@@ -79,8 +77,10 @@ public:
 
 
 	//public action sets 
-	void turnCycle();		//loop between players as turns
+	void beginGameDraw();			//drawing 7 cards at the beginning of the game
 
+	void turnCycle();		//loop between players as turns
+	
 	bool canPlay();			//see if player can play any card in their hand or not
 	std::vector<Card*> playable();			//get the list of cards that player can play 
 	//while it's better for playable to remain private, for the sake of easily access the list of cards that can be played during unit testing, i have to 

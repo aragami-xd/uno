@@ -129,11 +129,12 @@ int main()
 
 	for (int i=0; i<noOfPlayer; i++) {
 		hand[i] = new Hand();
-		if (i == 5) {
-			players[i] = new Human();
-		} else {
-			players[i] = new Bot();
-		}
+		// if (i == 5) {
+		// 	players[i] = new Human();
+		// } else {
+		// 	players[i] = new Bot();
+		// }
+		players[i] = new Bot();
 		players[i]->setPlayerHand(hand[i]);
 	}
 	
@@ -154,7 +155,7 @@ int main()
 
 	//draw and discard
 	Draw *draw = new Draw(cardList);
-	//draw->shuffle();
+	draw->shuffle();
 
 	Discard *discard = new Discard(draw->getDeck());
 	discard->setLastCard();
@@ -210,8 +211,17 @@ int main()
 	*/
 
 	cout << "Drawing cards..." << endl;
-	//core->beginGameDraw();
+	core->beginGameDraw();
+
+
+	srand(time(0));			//for random
+	::clearConsole();
+	core->turnCycle();		//the game itself 
+	cout << endl;
 	
+
+
+
 
 
 
@@ -235,10 +245,7 @@ int main()
 	//test->referenceGameplay(draw);
 	//delete test;
 
-	srand(time(0));			//for random
-	::clearConsole();
-	core->turnCycle();		//the game itself 
-	cout << endl;
+
 
 
 

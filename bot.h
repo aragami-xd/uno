@@ -14,14 +14,22 @@ private:
     int strongestColor;
     int weakestColor;
 
+    std::vector<int> otherHandSize;       //hold the hand size of all other player. for visual representation, 0 will hold the next player, 1 is opposite, 2 is last  
+    int strongestOpponent;
 
     //private action sets
-    int aggressivePlay(std::vector<Card*> playableCard, bool ohSeven);
     void setStrongestWeakestColor();           //color that you have the most amount will be the strongest; if same amount, color with most action is the strongest
+    void setOtherHandSize();
+    void update();              //this thing will basically update the variables regarding to the stats of the game on that turn
+
+
+    //aggressive tactics
+    int aggressivePlay(std::vector<Card*> playableCard, bool ohSeven);
 
 public:
     Bot();
     Bot(Hand* botHand);
+    
 
     //action sets
     int getStrongestColor();                   //color that you have the least will be the weakest, the one with least action card will be the weakest if equal amount

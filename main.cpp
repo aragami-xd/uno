@@ -41,7 +41,7 @@ extern vector<string> startMenu();
 //main program
 int main()
 {
-	::clearConsole();
+	//::clearConsole();
 
 	//game modes
 	bool stacking = true;		
@@ -129,12 +129,12 @@ int main()
 
 	for (int i=0; i<noOfPlayer; i++) {
 		hand[i] = new Hand();
-		// if (i == 5) {
-		// 	players[i] = new Human();
-		// } else {
-		// 	players[i] = new Bot();
-		// }
-		players[i] = new Bot();
+		if (i == 5) {			//remember to change this thing the next time you play otherwise you'll ended up staring 4 bots playing with each other
+			players[i] = new Human();
+		} else {
+			players[i] = new Bot();
+		}
+		// players[i] = new Bot();
 		players[i]->setPlayerHand(hand[i]);
 	}
 	
@@ -186,7 +186,7 @@ int main()
 
 	//these parts are completely unecessary, but it makes up for the asthetic of the game
 	/*
-	::clearConsole();										
+	//::clearConsole();										
 	cout << "Loading..." << endl;
 	cout << endl;
 	cout << endl;
@@ -207,7 +207,7 @@ int main()
 	//and that's a great price!
 	//(dadada dada da dadada) - tuber simulator outro play. imaigne it
 	::animationDelay(2000);
-	::clearConsole();
+	//::clearConsole();
 	*/
 
 	cout << "Drawing cards..." << endl;
@@ -215,7 +215,7 @@ int main()
 
 
 	srand(time(0));			//for random
-	::clearConsole();
+	//::clearConsole();
 	core->turnCycle();		//the game itself 
 	cout << endl;
 	

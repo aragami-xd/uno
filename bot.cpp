@@ -27,18 +27,24 @@ void Bot::setStrongestWeakestColor()
     }
     int mostColor = *max_element(colorAmount.begin(), colorAmount.end());      //amount of card of the color with the most card
     int leastColor = *min_element(colorAmount.begin(), colorAmount.end());          //with least color
+    // cout << "most and least color " << mostColor << " " << leastColor << endl;
 
 
     vector<int> colorStrength(4);
     for (int i=0; i<playerCard.size(); i++) {
         if (playerCard[i]->getNumber() <= 9) {             //if it's a number card, add 1 point
-            colorAmount[playerCard[i]->getColor() - 1]++;           
-        } else if (playerCard[i]->getNumber() == 10 && playerCard[i]->getNumber() == 11) {    //if it's skip or reverse
-            colorAmount[playerCard[i]->getColor() - 1] += 2;
+            colorStrength[playerCard[i]->getColor() - 1]++;          
+        } else if (playerCard[i]->getNumber() == 10 || playerCard[i]->getNumber() == 11) {    //if it's skip or reverse
+            colorStrength[playerCard[i]->getColor() - 1] += 2;
         } else if (playerCard[i]->getNumber() == 12) {               //if it's a drawtwo card
-            colorAmount[playerCard[i]->getColor() - 1] += 3;
+            colorStrength[playerCard[i]->getColor() - 1] += 3;
         }
     }
+    // cout << "total score per color" << endl;
+    // for (int i=0; i<colorStrength.size(); i++) {
+    //     cout << colorStrength[i] << endl;
+    // }
+    
 
     
     //the nature of uno is you want to be able to play for as long as possible
@@ -54,6 +60,7 @@ void Bot::setStrongestWeakestColor()
         }
     }
     strongestColor = max_element(totalPoint.begin(), totalPoint.end()) - totalPoint.begin();
+    // cout << strongestColor << endl;
 
     //find weakest color
     for (int i=0; i<colorAmount.size(); i++) {
@@ -64,6 +71,7 @@ void Bot::setStrongestWeakestColor()
         }
     }
     weakestColor = min_element(totalPoint.begin(), totalPoint.end()) - totalPoint.begin();
+    // cout << weakestColor << endl;
 }
 
 
@@ -109,6 +117,7 @@ void Bot::setOtherHandSize()
 void Bot::update()
 {
     setStrongestWeakestColor();
+    cout << strongestColor << " " << weakestColor << endl;
     setOtherHandSize();
 }
 
@@ -120,6 +129,7 @@ void Bot::update()
 void Bot::playerTurn()
 {
     update();           //update the hand, no matter what
+    cout << strongestColor << endl;
     if (nextTurn == 1) {			//if they can play, then play	
 		cout << "Bot's turn" << endl;
 		cout << endl;
@@ -144,44 +154,40 @@ void Bot::playerTurn()
 //implement the bot botChoicePlay function
 void Bot::playerChoicePlay(vector<Card*> playableCards)
 {
-    /*
-    bool ohSeven = core->getOhSeven();
-
     bool callBreak = false;
-    for (int m=0; m<playableCards.size() && callBreak == false; m++) {            //find the first playable card
+    for (int i=0; i<playableCards.size() && callBreak == false; i++) {            //find the first playable card
         if (core->getHandSize(core->getNextPlayerTurn()) <= 3 ) {        //if the next player is low on card
         //play the strongest cards first. don't let them win
-            for (int i=playerCard.size() - 1; i>=0; i--) {             //find the last playable card
-                if (playerCard[i]->getName() == playableCards[m]->getName()) {
-                    playCard(i);
+            for (int m=playerCard.size() - 1; m>=0; m--) {             //find the last playable card
+                if (playerCard[m]->getName() == playableCards[i]->getName()) {
+                    playCard(m);
                     callBreak = true;
                     break;
                 }
             }
         } else {
         //if next player has more cards, play defensively -> play the weakest card first
-            for (int i=0; i<playerCard.size(); i++) {           //find the first playable card
-                if (playerCard[i]->getName() == playableCards[m]->getName()) {
-                    cout << "Bot has found the right card and is about to play it" << endl;
-                    playCard(i);
+            for (int m=0; m<playerCard.size(); m++) {           //find the first playable card
+                if (playerCard[m]->getName() == playableCards[i]->getName()) {
+                    playCard(m);
                     callBreak = true;
                     break;
                 }
             }
         }
     }
-    */
+    
 
-    int cardToPlayIndex = aggressivePlay(playableCards, core->getOhSeven());
-    if (cardToPlayIndex >= 0) {
-        for (int i=0; i<playableCards.size(); i++) {
-            if (playableCards[i]->getName() == playerCard[cardToPlayIndex]->getName()) {
-                playCard(i);
-            }
-        }
-    } else {            //if it's set to -1
-        core->forceDraw(false);
-    }
+    // int cardToPlayIndex = aggressivePlay(playableCards, core->getOhSeven());
+    // if (cardToPlayIndex >= 0) {
+    //     for (int i=0; i<playableCards.size(); i++) {
+    //         if (playableCards[i]->getName() == playerCard[cardToPlayIndex]->getName()) {
+    //             playCard(i);
+    //         }
+    //     }
+    // } else {            //if it's set to -1
+    //     core->forceDraw(false);
+    // }
 
 }
 

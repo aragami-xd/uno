@@ -230,7 +230,7 @@ void Core::turnCycle()
 		cout << endl;
 		cout << endl;
 		cout << endl;
-		::clearConsole();
+		//::clearConsole();
 	}
 	if (endGame == true) {
 		cout << "Alright you can go back to what people call 'real life' now, game over" << endl;

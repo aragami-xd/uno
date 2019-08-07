@@ -26,7 +26,7 @@ vector<string> startMenu()
 	}
 	cout << endl;
 	::animationDelay(1000);
-	::clearConsole();
+	//::clearConsole();
 
 	//the real startMenu program, containing gameplay options
 	//game mode and descriptions

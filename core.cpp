@@ -395,7 +395,6 @@ int Core::stackable(int stackSize, int stackType)
 	bool haveStackCard = false;
 	for (int i=0; i<getHandSize(playerXTurn); i++) {							//check if there is a stackable card or not
 		if (players[playerXTurn]->getPlayerCard()[i]->getNumber() == requiredCard) {
-			cout << "You can stack card. Want to stack? (y/n) ";
 			haveStackCard = true;
 			break;
 		}

@@ -117,7 +117,7 @@ void Bot::setOtherHandSize()
 void Bot::update()
 {
     setStrongestWeakestColor();
-    cout << strongestColor << " " << weakestColor << endl;
+    // cout << strongestColor << " " << weakestColor << endl;
     setOtherHandSize();
 }
 
@@ -154,40 +154,41 @@ void Bot::playerTurn()
 //implement the bot botChoicePlay function
 void Bot::playerChoicePlay(vector<Card*> playableCards)
 {
-    bool callBreak = false;
-    for (int i=0; i<playableCards.size() && callBreak == false; i++) {            //find the first playable card
-        if (core->getHandSize(core->getNextPlayerTurn()) <= 3 ) {        //if the next player is low on card
-        //play the strongest cards first. don't let them win
-            for (int m=playerCard.size() - 1; m>=0; m--) {             //find the last playable card
-                if (playerCard[m]->getName() == playableCards[i]->getName()) {
-                    playCard(m);
-                    callBreak = true;
-                    break;
-                }
-            }
-        } else {
-        //if next player has more cards, play defensively -> play the weakest card first
-            for (int m=0; m<playerCard.size(); m++) {           //find the first playable card
-                if (playerCard[m]->getName() == playableCards[i]->getName()) {
-                    playCard(m);
-                    callBreak = true;
-                    break;
-                }
-            }
-        }
-    }
-    
-
-    // int cardToPlayIndex = aggressivePlay(playableCards, core->getOhSeven());
-    // if (cardToPlayIndex >= 0) {
-    //     for (int i=0; i<playableCards.size(); i++) {
-    //         if (playableCards[i]->getName() == playerCard[cardToPlayIndex]->getName()) {
-    //             playCard(i);
+    // bool callBreak = false;
+    // for (int i=0; i<playableCards.size() && callBreak == false; i++) {            //find the first playable card
+    //     if (core->getHandSize(core->getNextPlayerTurn()) <= 3 ) {        //if the next player is low on card
+    //     //play the strongest cards first. don't let them win
+    //         for (int m=playerCard.size() - 1; m>=0; m--) {             //find the last playable card
+    //             if (playerCard[m]->getName() == playableCards[i]->getName()) {
+    //                 playCard(m);
+    //                 callBreak = true;
+    //                 break;
+    //             }
+    //         }
+    //     } else {
+    //     //if next player has more cards, play defensively -> play the weakest card first
+    //         for (int m=0; m<playerCard.size(); m++) {           //find the first playable card
+    //             if (playerCard[m]->getName() == playableCards[i]->getName()) {
+    //                 playCard(m);
+    //                 callBreak = true;
+    //                 break;
+    //             }
     //         }
     //     }
-    // } else {            //if it's set to -1
-    //     core->forceDraw(false);
     // }
+    
+
+    int cardToPlayIndex = aggressivePlay(playableCards, core->getOhSeven());
+    if (cardToPlayIndex >= 0) {
+        for (int i=0; i<playerCard.size(); i++) {
+            if (playableCards[cardToPlayIndex]->getName() == playerCard[i]->getName()) {
+                playCard(i);
+                break;
+            }
+        }
+    } else {            //if it's set to -1
+        core->forceDraw(false);
+    }
 
 }
 
@@ -212,6 +213,7 @@ void Bot::playerForceDraw(Card* newCard)
 //implement the bot playerStackalble function
 int Bot::playerStackable(int stackSize, int stackType, int requiredCard)
 {
+    cout << "Bot can stack the card" << endl;
     for (int i=0; i<playerCard.size(); i++) {
 		if (playerCard[i]->getNumber() == requiredCard) {
 			playCard(i);				//bot will always stack the first card they can stack 

@@ -146,6 +146,7 @@ void Human::playerForceDraw(Card* newCard)
 //implement the human playerStackable function
 int Human::playerStackable(int stackSize, int stackType, int requiredCard)
 {
+	cout << "You can stack card. Want to stack? (y/n) ";
     bool rightInput = false;
 	while (rightInput == false) {
 		string stackInput;

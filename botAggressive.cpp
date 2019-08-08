@@ -13,35 +13,36 @@ int Bot::aggressivePlay(vector<Card*> playableCard, bool ohSeven)
     //number will also hold here under the number of 1-4. no need to worry about them being number since number cards can be played at anytime
     //we'd just assumed that you cannot predict which card number other players are holding, otherwise would become an np-hard problem real quick
     
-    setBotBlacklist(blackList);
+    blackList = setBotBlacklist(blackList);
     //blacklist will skip the right element in the loop so that bot won't play that card
     //but if there is no other choice (i.e. all playableCards are blacklisted), the bot will either have to draw or play that card
 
     int cardToPlayIndex = -1;           //set to -1 default for if loop condition
+    // cout << playerCard.size() << " " << playableCard.size() << " " << blackList.size() << endl;
 
     if (playerCard.size() == playableCard.size() && playableCard.size() == 1) {
         //if you have only 1 card left and you can play it, just play it already, what are you waiting for honestly?
         cardToPlayIndex = 0;
     } else {
-        for (int i = playableCard.size() - 1; i >= 0 && cardToPlayIndex == -1; i++) {
+        for (int i = playableCard.size() - 1; i >= 0 && cardToPlayIndex == -1; i--) {
             for (int m=0; m<blackList.size(); m++) {   
-                cout << "blacklist: " << blackList[m] << endl;        
+                // cout << "blacklist: " << blackList[m] << endl;        
                 if (playableCard[i]->getColor() == 5) {
-                    cout << "wildcard" << endl;
+                    // cout << playableCard[i]->getName() << endl;
                     cardToPlayIndex = i;        //if it's a wildcard
                     break;
                 } else if (blackList[m] >= 1 && blackList[m] <= 4 && playableCard[i]->getColor() != blackList[m]) {    //check color blacklisting
-                    cout << "color is " << playableCard[i]->getColor() << " and blacklist is " << blackList[m] << endl;
+                    // cout << playableCard[i]->getName() << endl;
                     cardToPlayIndex = i;        //if the card is not in the blacklist
                     break; 
                 } else if ((blackList[m] == 0 || blackList[m] > 4) && playableCard[i]->getNumber() != blackList[m]) {        //check number blacklisting
-                    cout << "number is " << playableCard[i]->getNumber() << " and blacklist is " << blackList[m] << endl;
+                    // cout << playableCard[i]->getName() << endl;
                     cardToPlayIndex = i;        //if the card is not in the blacklist
                     break;
                 }
             }
         }
-        cout << cardToPlayIndex << endl;
+        // cout << cardToPlayIndex << endl;
 
         //if cardToPlayIndex is = -1, that means you haven't been able to play any cards yet
         if (cardToPlayIndex != -1) {
@@ -73,14 +74,16 @@ int Bot::aggressivePlay(vector<Card*> playableCard, bool ohSeven)
 
 
 //impleemnt the bot - aggressive setBotBlacklsit function
-void Bot::setBotBlacklist(vector<int> blackList)
+vector<int> Bot::setBotBlacklist(vector<int> blackList)
 {
-    if (strongestOpponent == 1) {        //with the strongest opponent is the 
+    if (strongestOpponent == 0) {        //with the strongest opponent is the 
         blackList.push_back(getWeakestColor());          //use the weakest color as the place holder for now, change later
-    } else if (strongestOpponent == 2) {
+    } else if (strongestOpponent == 1) {
         blackList.push_back(11);         //if the opposite player is the strongest player, don't even think about touching the skip card
         //i won't be putting the drawtwo and drawfour card here "yet" since they might be able to be stacked, and i want to see how well skip behaves first
-    } else if (strongestOpponent == 3) {
+    } else if (strongestOpponent == 2) {
         blackList.push_back(12);         //blacklist the reverse
     }
+    // cout << "blacklist set" << endl;
+    return blackList;
 }

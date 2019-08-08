@@ -27,7 +27,7 @@ private:
 
     //aggressive tactics
     int aggressivePlay(std::vector<Card*> playableCard, bool ohSeven);
-    void setBotBlacklist(std::vector<int> blacklist);
+    std::vector<int> setBotBlacklist(std::vector<int> blacklist);
 
 public:
     Bot();

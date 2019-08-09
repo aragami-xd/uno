@@ -94,8 +94,10 @@ int Bot::getWeakestColor()
 void Bot::drawCard(int noOfCard)
 {
     for (int i=0; i<noOfCard; i++) {					//drawing x cards 
+    	cout << "Bot " << playerName << " has drawn a card" << " ";
+        ::rgb(core->getDraw()->getDeck()[0]->getColor());
+        cout << core->getDraw()->getDeck()[0]->getName() << "\e[0m" << endl;
         core->getDraw()->pushCard(0, playerHand);       //get the first card
-		cout << "Bot " << playerName << " has drawn a card" << endl;
         Player::drawCard(noOfCard);
 	}
     //cout << "Bot " << playerName << " has drawn " << noOfCard << " cards in total" << endl;
@@ -132,7 +134,7 @@ void Bot::update()
 void Bot::playerTurn()
 {
     update();           //update the hand, no matter what
-    cout << strongestColor << endl;
+    // cout << strongestColor << endl;
     if (nextTurn == 1) {			//if they can play, then play	
 		cout << "Bot's turn" << endl;
 		cout << endl;

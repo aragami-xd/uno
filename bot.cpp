@@ -59,7 +59,7 @@ void Bot::setStrongestWeakestColor()
             totalPoint[i] = 0;              //if it's not, set to 0
         }
     }
-    strongestColor = max_element(totalPoint.begin(), totalPoint.end()) - totalPoint.begin();
+    strongestColor = max_element(totalPoint.begin(), totalPoint.end()) - totalPoint.begin() + 1;
     // cout << strongestColor << endl;
 
     //find weakest color
@@ -70,7 +70,7 @@ void Bot::setStrongestWeakestColor()
             totalPoint[i] = 0;              //if it's not, set to 0
         }
     }
-    weakestColor = min_element(totalPoint.begin(), totalPoint.end()) - totalPoint.begin();
+    weakestColor = min_element(totalPoint.begin(), totalPoint.end()) - totalPoint.begin() + 1;
     // cout << weakestColor << endl;
 }
 
@@ -118,6 +118,9 @@ void Bot::update()
 {
     setStrongestWeakestColor();
     // cout << strongestColor << " " << weakestColor << endl;
+    if (strongestColor == 5 || weakestColor == 5) {
+        cout << "\e[45m BUG ALERT! BRUH ALERT! color has not been set. setStrongestWeakestColor function is not working properly \e[0m" << endl;
+    }
     setOtherHandSize();
 }
 
@@ -133,7 +136,7 @@ void Bot::playerTurn()
     if (nextTurn == 1) {			//if they can play, then play	
 		cout << "Bot's turn" << endl;
 		cout << endl;
-		//::animationDelay(2000);
+		////::animationDelay(2000);
 
 		core->choicePlay();		//player's action in the turn 
 		if (playerCard.size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 
@@ -143,10 +146,10 @@ void Bot::playerTurn()
 
 
 	} else if (nextTurn == -1) {				//if they cannot play, then not play, and reverse that value
-		nextTurn == 1;
+		nextTurn = 1;
 		cout << "Bot cannot play this turn" << endl;
 	}
-	::animationDelay(1000);			//bot turn will have extra 1000ms of delay so you can have an idea of wtf they are doing
+	//::animationDelay(1000);			//bot turn will have extra 1000ms of delay so you can have an idea of wtf they are doing
 }
 
 
@@ -236,7 +239,7 @@ int Bot::playerChooseSwap(vector<Player*> otherPlayers)
 {
     cout << "Bot will swap its hand with another player" << endl;
     cout << endl;
-    ::animationDelay(500);
+    //::animationDelay(500);
 
     vector<int> deckSize;
     for (int i=0; i<otherPlayers.size(); i++) {

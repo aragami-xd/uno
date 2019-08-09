@@ -38,13 +38,13 @@ void Seven::effect(Core* core)
     }
 
     int swapPlayer = currentPlayer->playerChooseSwap(otherPlayers);
-    ::animationDelay(500);
+    //::animationDelay(500);
    
     Hand* otherHand = otherPlayers[swapPlayer]->getPlayerHand();
     otherPlayers[swapPlayer]->setPlayerHand(currentPlayer->getPlayerHand());              //set other player hand to current player hand
     currentPlayer->setPlayerHand(otherHand);            //set current player hand to that player
 
-    ::animationDelay(500);
+    //::animationDelay(500);
     cout << "Card has been swapped" << endl;
 }
 

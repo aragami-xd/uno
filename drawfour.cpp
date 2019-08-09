@@ -26,6 +26,7 @@ void Drawfour::setName()
 void Drawfour::effect(Core* core)
 {
 	Wildcard::effect(core);
+	cout << "drawfour color will be" << color << endl;
 	
     int playerXTurn;
 	playerXTurn = core->getNextPlayerTurn();

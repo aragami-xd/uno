@@ -25,7 +25,7 @@ vector<string> startMenu()
 		cout << "Errr, waht? Yes? Okay, new game it is" << endl;
 	}
 	cout << endl;
-	::animationDelay(1000);
+	//::animationDelay(1000);
 	//::clearConsole();
 
 	//the real startMenu program, containing gameplay options

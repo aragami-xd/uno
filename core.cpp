@@ -185,13 +185,6 @@ void Core::resetDeck()
 	for (int i=0; i<discard->getDeck().size() - 1; i++) {		//left one top card in discard
 		discard->pushCard(i, draw);			//push the card to core to reset the deck
 	}
-
-	for (int i=0; i<draw->getDeck().size(); i++) {
-		cout << "draw deck: " << draw->getDeck()[i]->getName() << endl;
-	}
-	for (int i=0; i<discard->getDeck().size(); i++) {
-		cout << "discard deck: " << discard->getDeck()[i]->getName() << endl;
-	}
 }
 
 
@@ -244,7 +237,7 @@ void Core::turnCycle()
 			}
 		}
 		
-		::animationDelay(1500);
+		//::animationDelay(1500);
 		cout << endl;
 		cout << endl;
 		cout << endl;
@@ -313,7 +306,7 @@ void Core::beginGameDraw()
 	//each player gets 7 cards at the begin of the game
 	for (int m=0; m<players.size(); m++) {
 		players[m]->drawCard(7);
-		::animationDelay(400);
+		//::animationDelay(400);
 		players[m]->getPlayerHand()->sortHand();
 	}
 }
@@ -337,10 +330,10 @@ vector<Card*> Core::playable()
 		} else if (playerHand[i]->getNumber() == currentNumber) {			//no need to check for same wildcard number, it's checked above
 			playableDeck.push_back(playerHand[i]);
 			noWildcard = true;
-		} else if (playerHand[i]->getColor() == 5 && ((noWildcard = false && noBluffingMode == true) || (noBluffingMode == false))) {
+		} else if ((playerHand[i]->getNumber() == 13 || (playerHand[i]->getNumber() == 14)) && ((noWildcard = false && noBluffingMode == true) || (noBluffingMode == false)) ) {
 			playableDeck.push_back(playerHand[i]);			//since wildcards are the last cards to be checked, i don't have to worry about wildcards
 		}													//being pushed into the deck before other playable cards have been pushed 
-	}									//wildcard if condition analysis: color = 5 and [(noBuffling = true & noWildcard = false) or (noBluffing = false)] 
+	}									//wildcard if condition analysis: number = wildcard and [(noBuffling = true & noWildcard = false) or (noBluffing = false)] 
 	return playableDeck;
 }
 
@@ -374,7 +367,7 @@ void Core::forceDraw(bool choicePlayFalse)
 			if (newCard->getColor() == discard->getLastCardColor() || newCard->getColor() == 5 || newCard->getNumber() == discard->getLastCardNumber()) {
 				compatibleCard = true;
 			}
-			::animationDelay(400);
+			//::animationDelay(400);
 
 			//if player draws a compatible card
 			if (compatibleCard == true) {			//search the deck again, if there is compatible card, that means you've drawn the right card

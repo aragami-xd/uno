@@ -44,7 +44,7 @@ void Zero::effect(Core* core)
             }
         }
     }
-    ::animationDelay(500);
+    //::animationDelay(500);
     cout << "All hands have been swapped" << endl;
     
 }

@@ -64,3 +64,7 @@ Eventually I've found the root cause of the problem and fix it. All of these err
 
 10. No bluffing
 To be honest, there isn't much to this at all. It just a matter of adding one if condition, checking if the game mode is on or not. That's it
+
+11. Advanced bot
+Yeah... not sure what to say about this one though. Quite a lot of fun but frustrating stuff in this iteration of the game. Thanks to Cheryl (adds lecturer), the process of debugging and upgrading the program has become quite a bit better and faster. Though with that said, i'm still under a lot of problem
+Cheryl's recommendation is to using some stuff about 'alpha beta pruning' and 'depth first search' as a method to generate moves. While they seem pretty fascinating, i don't have a deep enough understanding in those things to build that model in the game, let alone implementing it

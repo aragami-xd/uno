@@ -1,462 +1,818 @@
-[3J[H[2JUno!
-
-[94mWelcome to Uno on Console![0m
-New game?
-Yes - y
-No - n
-Errr, waht? Yes? Okay, new game it is
-
-[3J[H[2JUno!
-
-Choose game rules: 
-
-[91m1. No Stacking[0m
-Now you won't get 'no U-ed' by stacking 4 draw 4s anymore
-
-[92m2. The 7-0 Rule[0m
-7 to swap hand with someone else, 0 to force everyone swap directionwise
-
-[93m3. Jump-in[0m
-You can jump in whenever you want if you got the exact same card as on the discarded deck (not yet available)
-
-[94m4. No bluffing[0m
-If you can play a non-wildcard card, you cannot play wildcards anymore
-
-Choose all the game mode you want to play, then enter them here, separated by a whitespace. Leave empty for no mod
-Game modes are set
-[3J[H[2JUno!
-
-Enter players' name here. the first player by default will player, and the other 3 will be bots
-Player 0 name: Player 1 name: Player 2 name: Player 3 name: [3J[H[2JUno!
-
-Loading...
-
-
-No the game is not actually loading, i just want to waste your time xD
-Though i've wasted mine more than you, waiting for this animation to get over, which lasts 2 seconds (i set it to 2 seconds in the code)
-But since you're here, checkout Vanossgaming and Pewdiepie
-Then go back and thank me later
-WHAT?
-[3J[H[2JUno!
-
 Drawing cards...
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot TehTerroriser has drawn a card
+Bot TehTerroriser has drawn a card
+Bot TehTerroriser has drawn a card
+Bot TehTerroriser has drawn a card
+Bot TehTerroriser has drawn a card
+Bot TehTerroriser has drawn a card
+Bot TehTerroriser has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
 [3J[H[2JUno!
 
-Turns: [94m[1 (7)][0m -> VanossFC4 (7) -> MarcelWrk (7) -> TehTerroriser (7) -> 
+Turns: [94m[VanossFC4 (7)][0m -> TehTerroriser (7) -> MarcelWrk (7) -> Moo.Snuckel (7) -> 
 
-Current card is: [92mGreen 9[0m
-1 turn: 
-Bot's turn
+Current card is: [93mYellow 9[0m
+Your hand: 
+0. [91mRed 1[0m
+1. [92mGreen 3[0m
+2. [94mBlue 3[0m
+3. [94mBlue 5[0m
+4. [93mYellow 8[0m
+5. [93mYellow Draw Two[0m
+6. [93mYellow Draw Two[0m
 
-Card [92mGreen 4[0m is played
-
-Player now have 6 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (6) -> [94m[VanossFC4 (7)][0m -> MarcelWrk (7) -> TehTerroriser (7) -> 
-
-Current card is: [92mGreen 4[0m
 VanossFC4 turn: 
+3
 Bot's turn
 
-Card [92mGreen 0[0m is played
-
-Player now have 6 cards
+Card [93mYellow Draw Two[0m is played
 
 
 
-[3J[H[2JUno!
 
-Turns: 1 (6) -> VanossFC4 (6) -> [94m[MarcelWrk (7)][0m -> TehTerroriser (7) -> 
+Turns: VanossFC4 (6) -> [94m[TehTerroriser (7)][0m -> MarcelWrk (7) -> Moo.Snuckel (7) -> 
 
-Current card is: [92mGreen 0[0m
-MarcelWrk turn: 
-Bot's turn
+Current card is: [93mYellow Draw Two[0m
+Your hand: 
+0. [91mRed 1[0m
+1. [92mGreen 3[0m
+2. [94mBlue 3[0m
+3. [94mBlue 5[0m
+4. [93mYellow 8[0m
+5. [93mYellow Draw Two[0m
 
-Card [37mWildcard[0m is played
-
-Color has been set to [93myellow[0m
-Player now have 6 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (6) -> VanossFC4 (6) -> MarcelWrk (6) -> [94m[TehTerroriser (7)][0m -> 
-
-Current card is: [93mWildcard[0m
 TehTerroriser turn: 
+No stackable card
+Bot TehTerroriser has drawn a card
+Bot TehTerroriser has drawn a card
+0
+Bot cannot play this turn
+
+
+
+Turns: VanossFC4 (6) -> TehTerroriser (9) -> [94m[MarcelWrk (7)][0m -> Moo.Snuckel (7) -> 
+
+Current card is: [93mYellow Draw Two[0m
+Your hand: 
+0. [91mRed 1[0m
+1. [92mGreen 3[0m
+2. [94mBlue 3[0m
+3. [94mBlue 5[0m
+4. [93mYellow 8[0m
+5. [93mYellow Draw Two[0m
+
+MarcelWrk turn: 
+0
 Bot's turn
 
 Card [93mYellow 8[0m is played
 
-Player now have 6 cards
 
 
 
-[3J[H[2JUno!
-
-Turns: [94m[1 (6)][0m -> VanossFC4 (6) -> MarcelWrk (6) -> TehTerroriser (6) -> 
+Turns: VanossFC4 (6) -> TehTerroriser (9) -> MarcelWrk (6) -> [94m[Moo.Snuckel (7)][0m -> 
 
 Current card is: [93mYellow 8[0m
-1 turn: 
+Your hand: 
+0. [91mRed 1[0m
+1. [92mGreen 3[0m
+2. [94mBlue 3[0m
+3. [94mBlue 5[0m
+4. [93mYellow 8[0m
+5. [93mYellow Draw Two[0m
+
+Moo.Snuckel turn: 
+0
+Bot's turn
+
+Card [93mYellow 7[0m is played
+
+Bot will swap its hand with another player
+
+Swapping card with [93mVanossFC4[0m
+Card has been swapped
+
+
+
+Turns: [94m[VanossFC4 (6)][0m -> TehTerroriser (9) -> MarcelWrk (6) -> Moo.Snuckel (6) -> 
+
+Current card is: [93mYellow 7[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 9[0m
+3. [91mRed Draw Two[0m
+4. [92mGreen Reverse[0m
+5. [94mBlue 8[0m
+
+VanossFC4 turn: 
+0
+Bot's turn
+
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot chooses to play the card
+Card [93mYellow 3[0m is played
+
+
+
+
+Turns: VanossFC4 (10) -> [94m[TehTerroriser (9)][0m -> MarcelWrk (6) -> Moo.Snuckel (6) -> 
+
+Current card is: [93mYellow 3[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 9[0m
+3. [91mRed Draw Two[0m
+4. [92mGreen Reverse[0m
+5. [94mBlue 8[0m
+6. [92mGreen Draw Two[0m
+7. [94mBlue 4[0m
+8. [94mBlue 9[0m
+9. [92mGreen 6[0m
+
+TehTerroriser turn: 
+0
+Bot's turn
+
+Card [37mWildcard[0m is played
+
+Color has been set to 
+
+
+Turns: VanossFC4 (10) -> TehTerroriser (8) -> [94m[MarcelWrk (6)][0m -> Moo.Snuckel (6) -> 
+
+Current card is: Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 9[0m
+3. [91mRed Draw Two[0m
+4. [92mGreen Reverse[0m
+5. [94mBlue 8[0m
+6. [92mGreen Draw Two[0m
+7. [94mBlue 4[0m
+8. [94mBlue 9[0m
+9. [92mGreen 6[0m
+
+MarcelWrk turn: 
+0
+Bot's turn
+
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot chooses to keep the card
+
+
+
+Turns: VanossFC4 (10) -> TehTerroriser (8) -> MarcelWrk (8) -> [94m[Moo.Snuckel (6)][0m -> 
+
+Current card is: Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 9[0m
+3. [91mRed Draw Two[0m
+4. [92mGreen Reverse[0m
+5. [94mBlue 8[0m
+6. [92mGreen Draw Two[0m
+7. [94mBlue 4[0m
+8. [94mBlue 9[0m
+9. [92mGreen 6[0m
+
+Moo.Snuckel turn: 
+3
+Bot's turn
+
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot chooses to keep the card
+
+
+
+Turns: [94m[VanossFC4 (10)][0m -> TehTerroriser (8) -> MarcelWrk (8) -> Moo.Snuckel (9) -> 
+
+Current card is: Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 9[0m
+3. [91mRed Draw Two[0m
+4. [92mGreen 6[0m
+5. [92mGreen Reverse[0m
+6. [92mGreen Draw Two[0m
+7. [94mBlue 4[0m
+8. [94mBlue 8[0m
+9. [94mBlue 9[0m
+
+VanossFC4 turn: 
+0
+Bot's turn
+
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot chooses to keep the card
+
+
+
+Turns: VanossFC4 (37) -> [94m[TehTerroriser (8)][0m -> MarcelWrk (8) -> Moo.Snuckel (9) -> 
+
+Current card is: Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 9[0m
+3. [91mRed Draw Two[0m
+4. [92mGreen 6[0m
+5. [92mGreen Reverse[0m
+6. [92mGreen Draw Two[0m
+7. [94mBlue 4[0m
+8. [94mBlue 8[0m
+9. [94mBlue 9[0m
+10. [93mYellow Skip[0m
+11. [93mYellow 4[0m
+12. [94mBlue 2[0m
+13. [91mRed 7[0m
+14. [92mGreen 4[0m
+15. [92mGreen 1[0m
+16. [91mRed 6[0m
+17. [92mGreen Reverse[0m
+18. [92mGreen 8[0m
+19. [91mRed Skip[0m
+20. [92mGreen Draw Two[0m
+21. [91mRed 5[0m
+22. [91mRed 3[0m
+23. [92mGreen 7[0m
+24. [94mBlue 7[0m
+25. [93mYellow 7[0m
+26. [93mYellow Reverse[0m
+27. [93mYellow 0[0m
+28. [91mRed 7[0m
+29. [93mYellow 9[0m
+30. [92mGreen 9[0m
+31. [91mRed Reverse[0m
+32. [93mYellow 1[0m
+33. [94mBlue 2[0m
+34. [93mYellow 6[0m
+35. [92mGreen 5[0m
+36. [37mWildcard[0m
+
+TehTerroriser turn: 
+0
+Bot's turn
+
+Bot TehTerroriser has drawn a card
+Bot TehTerroriser has drawn a card
+Bot chooses to keep the card
+
+
+
+Turns: VanossFC4 (37) -> TehTerroriser (10) -> [94m[MarcelWrk (8)][0m -> Moo.Snuckel (9) -> 
+
+Current card is: Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 9[0m
+3. [91mRed Draw Two[0m
+4. [92mGreen 6[0m
+5. [92mGreen Reverse[0m
+6. [92mGreen Draw Two[0m
+7. [94mBlue 4[0m
+8. [94mBlue 8[0m
+9. [94mBlue 9[0m
+10. [93mYellow Skip[0m
+11. [93mYellow 4[0m
+12. [94mBlue 2[0m
+13. [91mRed 7[0m
+14. [92mGreen 4[0m
+15. [92mGreen 1[0m
+16. [91mRed 6[0m
+17. [92mGreen Reverse[0m
+18. [92mGreen 8[0m
+19. [91mRed Skip[0m
+20. [92mGreen Draw Two[0m
+21. [91mRed 5[0m
+22. [91mRed 3[0m
+23. [92mGreen 7[0m
+24. [94mBlue 7[0m
+25. [93mYellow 7[0m
+26. [93mYellow Reverse[0m
+27. [93mYellow 0[0m
+28. [91mRed 7[0m
+29. [93mYellow 9[0m
+30. [92mGreen 9[0m
+31. [91mRed Reverse[0m
+32. [93mYellow 1[0m
+33. [94mBlue 2[0m
+34. [93mYellow 6[0m
+35. [92mGreen 5[0m
+36. [37mWildcard[0m
+
+MarcelWrk turn: 
+2
 Bot's turn
 
 Card [37mDraw 4 Wildcard[0m is played
 
-Color has been set to [93myellow[0m
-Player now have 5 cards
+Color has been set to [92mgreen[0m
 
 
 
-[3J[H[2JUno!
+Turns: VanossFC4 (37) -> TehTerroriser (10) -> MarcelWrk (7) -> [94m[Moo.Snuckel (9)][0m -> 
 
-Turns: 1 (5) -> [94m[VanossFC4 (6)][0m -> MarcelWrk (6) -> TehTerroriser (6) -> 
+Current card is: [92mDraw 4 Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 9[0m
+3. [91mRed Draw Two[0m
+4. [92mGreen 6[0m
+5. [92mGreen Reverse[0m
+6. [92mGreen Draw Two[0m
+7. [94mBlue 4[0m
+8. [94mBlue 8[0m
+9. [94mBlue 9[0m
+10. [93mYellow Skip[0m
+11. [93mYellow 4[0m
+12. [94mBlue 2[0m
+13. [91mRed 7[0m
+14. [92mGreen 4[0m
+15. [92mGreen 1[0m
+16. [91mRed 6[0m
+17. [92mGreen Reverse[0m
+18. [92mGreen 8[0m
+19. [91mRed Skip[0m
+20. [92mGreen Draw Two[0m
+21. [91mRed 5[0m
+22. [91mRed 3[0m
+23. [92mGreen 7[0m
+24. [94mBlue 7[0m
+25. [93mYellow 7[0m
+26. [93mYellow Reverse[0m
+27. [93mYellow 0[0m
+28. [91mRed 7[0m
+29. [93mYellow 9[0m
+30. [92mGreen 9[0m
+31. [91mRed Reverse[0m
+32. [93mYellow 1[0m
+33. [94mBlue 2[0m
+34. [93mYellow 6[0m
+35. [92mGreen 5[0m
+36. [37mWildcard[0m
 
-Current card is: [93mDraw 4 Wildcard[0m
+Moo.Snuckel turn: 
+Bot can stack the card
+Card [37mDraw 4 Wildcard[0m is played
+
+Color has been set to [94mblue[0m
+2
+Bot cannot play this turn
+
+
+
+Turns: [94m[VanossFC4 (37)][0m -> TehTerroriser (10) -> MarcelWrk (7) -> Moo.Snuckel (8) -> 
+
+Current card is: [94mDraw 4 Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 3[0m
+3. [91mRed 5[0m
+4. [91mRed 6[0m
+5. [91mRed 7[0m
+6. [91mRed 7[0m
+7. [91mRed 9[0m
+8. [91mRed Reverse[0m
+9. [91mRed Skip[0m
+10. [91mRed Draw Two[0m
+11. [92mGreen 1[0m
+12. [92mGreen 4[0m
+13. [92mGreen 5[0m
+14. [92mGreen 6[0m
+15. [92mGreen 7[0m
+16. [92mGreen 8[0m
+17. [92mGreen 9[0m
+18. [92mGreen Reverse[0m
+19. [92mGreen Reverse[0m
+20. [92mGreen Draw Two[0m
+21. [92mGreen Draw Two[0m
+22. [94mBlue 2[0m
+23. [94mBlue 2[0m
+24. [94mBlue 4[0m
+25. [94mBlue 7[0m
+26. [94mBlue 8[0m
+27. [94mBlue 9[0m
+28. [93mYellow 0[0m
+29. [93mYellow 1[0m
+30. [93mYellow 4[0m
+31. [93mYellow 6[0m
+32. [93mYellow 7[0m
+33. [93mYellow 9[0m
+34. [93mYellow Reverse[0m
+35. [93mYellow Skip[0m
+36. [37mWildcard[0m
+
 VanossFC4 turn: 
 No stackable card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+Bot VanossFC4 has drawn a card
+1
 Bot cannot play this turn
-Player now have 10 cards
 
 
 
-[3J[H[2JUno!
+Turns: VanossFC4 (45) -> [94m[TehTerroriser (10)][0m -> MarcelWrk (7) -> Moo.Snuckel (8) -> 
 
-Turns: 1 (5) -> VanossFC4 (10) -> [94m[MarcelWrk (6)][0m -> TehTerroriser (6) -> 
+Current card is: [94mDraw 4 Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 3[0m
+3. [91mRed 5[0m
+4. [91mRed 6[0m
+5. [91mRed 7[0m
+6. [91mRed 7[0m
+7. [91mRed 9[0m
+8. [91mRed Reverse[0m
+9. [91mRed Skip[0m
+10. [91mRed Skip[0m
+11. [91mRed Draw Two[0m
+12. [92mGreen 1[0m
+13. [92mGreen 4[0m
+14. [92mGreen 4[0m
+15. [92mGreen 5[0m
+16. [92mGreen 6[0m
+17. [92mGreen 6[0m
+18. [92mGreen 7[0m
+19. [92mGreen 8[0m
+20. [92mGreen 9[0m
+21. [92mGreen Reverse[0m
+22. [92mGreen Reverse[0m
+23. [92mGreen Draw Two[0m
+24. [92mGreen Draw Two[0m
+25. [94mBlue 1[0m
+26. [94mBlue 2[0m
+27. [94mBlue 2[0m
+28. [94mBlue 4[0m
+29. [94mBlue 7[0m
+30. [94mBlue 8[0m
+31. [94mBlue 9[0m
+32. [93mYellow 0[0m
+33. [93mYellow 1[0m
+34. [93mYellow 2[0m
+35. [93mYellow 4[0m
+36. [93mYellow 6[0m
+37. [93mYellow 7[0m
+38. [93mYellow 9[0m
+39. [93mYellow Reverse[0m
+40. [93mYellow Reverse[0m
+41. [93mYellow Skip[0m
+42. [37mWildcard[0m
+43. [37mWildcard[0m
+44. [37mDraw 4 Wildcard[0m
 
-Current card is: [93mDraw 4 Wildcard[0m
-MarcelWrk turn: 
-Bot's turn
-
-Card [93mYellow 5[0m is played
-
-Player now have 5 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (5) -> VanossFC4 (10) -> MarcelWrk (5) -> [94m[TehTerroriser (6)][0m -> 
-
-Current card is: [93mYellow 5[0m
 TehTerroriser turn: 
+0
 Bot's turn
 
-Card [92mGreen 5[0m is played
-
-Player now have 5 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: [94m[1 (5)][0m -> VanossFC4 (10) -> MarcelWrk (5) -> TehTerroriser (5) -> 
-
-Current card is: [92mGreen 5[0m
-1 turn: 
-Bot's turn
-
-Card [92mGreen 4[0m is played
-
-Player now have 4 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (4) -> [94m[VanossFC4 (10)][0m -> MarcelWrk (5) -> TehTerroriser (5) -> 
-
-Current card is: [92mGreen 4[0m
-VanossFC4 turn: 
-Bot's turn
-
-Card [91mRed 4[0m is played
-
-Player now have 9 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (4) -> VanossFC4 (9) -> [94m[MarcelWrk (5)][0m -> TehTerroriser (5) -> 
-
-Current card is: [91mRed 4[0m
-MarcelWrk turn: 
-Bot's turn
-
-Card [91mRed 6[0m is played
-
-Player now have 4 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (4) -> VanossFC4 (9) -> MarcelWrk (4) -> [94m[TehTerroriser (5)][0m -> 
-
-Current card is: [91mRed 6[0m
-TehTerroriser turn: 
-Bot's turn
-
-Card [91mRed 6[0m is played
-
-Player now have 4 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: [94m[1 (4)][0m -> VanossFC4 (9) -> MarcelWrk (4) -> TehTerroriser (4) -> 
-
-Current card is: [91mRed 6[0m
-1 turn: 
-Bot's turn
-
-Bot has drawn a card
-Bot has drawn 1 cards
-Card [93mYellow 6[0m is played
-
-Player now have 4 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (4) -> [94m[VanossFC4 (9)][0m -> MarcelWrk (4) -> TehTerroriser (4) -> 
-
-Current card is: [93mYellow 6[0m
-VanossFC4 turn: 
-Bot's turn
-
-Card [93mYellow 0[0m is played
-
-Player now have 8 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (4) -> VanossFC4 (8) -> [94m[MarcelWrk (4)][0m -> TehTerroriser (4) -> 
-
-Current card is: [93mYellow 0[0m
-MarcelWrk turn: 
-Bot's turn
-
-Card [93mYellow 9[0m is played
-
-Player now have 3 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (4) -> VanossFC4 (8) -> MarcelWrk (3) -> [94m[TehTerroriser (4)][0m -> 
-
-Current card is: [93mYellow 9[0m
-TehTerroriser turn: 
-Bot's turn
-
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn 2 cards
-Card [94mBlue 9[0m is played
-
-Player now have 5 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: [94m[1 (4)][0m -> VanossFC4 (8) -> MarcelWrk (3) -> TehTerroriser (5) -> 
-
-Current card is: [94mBlue 9[0m
-1 turn: 
-Bot's turn
-
-Card [94mBlue 1[0m is played
-
-Player now have 3 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (3) -> [94m[VanossFC4 (8)][0m -> MarcelWrk (3) -> TehTerroriser (5) -> 
-
-Current card is: [94mBlue 1[0m
-VanossFC4 turn: 
-Bot's turn
-
-Card [94mBlue 3[0m is played
-
-Player now have 7 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (3) -> VanossFC4 (7) -> [94m[MarcelWrk (3)][0m -> TehTerroriser (5) -> 
-
-Current card is: [94mBlue 3[0m
-MarcelWrk turn: 
-Bot's turn
-
-Card [94mBlue 5[0m is played
-
-Player now have 2 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (3) -> VanossFC4 (7) -> MarcelWrk (2) -> [94m[TehTerroriser (5)][0m -> 
-
-Current card is: [94mBlue 5[0m
-TehTerroriser turn: 
-Bot's turn
-
-Card [94mBlue 2[0m is played
-
-Player now have 4 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: [94m[1 (3)][0m -> VanossFC4 (7) -> MarcelWrk (2) -> TehTerroriser (4) -> 
-
-Current card is: [94mBlue 2[0m
-1 turn: 
-Bot's turn
-
-Card [94mBlue 4[0m is played
-
-Player now have 2 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (2) -> [94m[VanossFC4 (7)][0m -> MarcelWrk (2) -> TehTerroriser (4) -> 
-
-Current card is: [94mBlue 4[0m
-VanossFC4 turn: 
-Bot's turn
-
-Bot has drawn a card
-Bot has drawn a card
-Bot has drawn 2 cards
 Card [37mWildcard[0m is played
 
-Color has been set to [93myellow[0m
-Player now have 8 cards
+Color has been set to 
 
 
+Turns: VanossFC4 (45) -> TehTerroriser (9) -> [94m[MarcelWrk (7)][0m -> Moo.Snuckel (8) -> 
 
-[3J[H[2JUno!
+Current card is: Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 3[0m
+3. [91mRed 5[0m
+4. [91mRed 6[0m
+5. [91mRed 7[0m
+6. [91mRed 7[0m
+7. [91mRed 9[0m
+8. [91mRed Reverse[0m
+9. [91mRed Skip[0m
+10. [91mRed Skip[0m
+11. [91mRed Draw Two[0m
+12. [92mGreen 1[0m
+13. [92mGreen 4[0m
+14. [92mGreen 4[0m
+15. [92mGreen 5[0m
+16. [92mGreen 6[0m
+17. [92mGreen 6[0m
+18. [92mGreen 7[0m
+19. [92mGreen 8[0m
+20. [92mGreen 9[0m
+21. [92mGreen Reverse[0m
+22. [92mGreen Reverse[0m
+23. [92mGreen Draw Two[0m
+24. [92mGreen Draw Two[0m
+25. [94mBlue 1[0m
+26. [94mBlue 2[0m
+27. [94mBlue 2[0m
+28. [94mBlue 4[0m
+29. [94mBlue 7[0m
+30. [94mBlue 8[0m
+31. [94mBlue 9[0m
+32. [93mYellow 0[0m
+33. [93mYellow 1[0m
+34. [93mYellow 2[0m
+35. [93mYellow 4[0m
+36. [93mYellow 6[0m
+37. [93mYellow 7[0m
+38. [93mYellow 9[0m
+39. [93mYellow Reverse[0m
+40. [93mYellow Reverse[0m
+41. [93mYellow Skip[0m
+42. [37mWildcard[0m
+43. [37mWildcard[0m
+44. [37mDraw 4 Wildcard[0m
 
-Turns: 1 (2) -> VanossFC4 (8) -> [94m[MarcelWrk (2)][0m -> TehTerroriser (4) -> 
-
-Current card is: [93mWildcard[0m
 MarcelWrk turn: 
+2
 Bot's turn
 
-Card [93mYellow Skip[0m is played
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot MarcelWrk has drawn a card
+Bot chooses to keep the card
 
-Bot called Uno
-Player now have 1 cards
 
 
+Turns: VanossFC4 (45) -> TehTerroriser (9) -> MarcelWrk (26) -> [94m[Moo.Snuckel (8)][0m -> 
 
-[3J[H[2JUno!
+Current card is: Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 3[0m
+3. [91mRed 5[0m
+4. [91mRed 6[0m
+5. [91mRed 7[0m
+6. [91mRed 7[0m
+7. [91mRed 9[0m
+8. [91mRed Reverse[0m
+9. [91mRed Skip[0m
+10. [91mRed Skip[0m
+11. [91mRed Draw Two[0m
+12. [92mGreen 1[0m
+13. [92mGreen 4[0m
+14. [92mGreen 4[0m
+15. [92mGreen 5[0m
+16. [92mGreen 6[0m
+17. [92mGreen 6[0m
+18. [92mGreen 7[0m
+19. [92mGreen 8[0m
+20. [92mGreen 9[0m
+21. [92mGreen Reverse[0m
+22. [92mGreen Reverse[0m
+23. [92mGreen Draw Two[0m
+24. [92mGreen Draw Two[0m
+25. [94mBlue 1[0m
+26. [94mBlue 2[0m
+27. [94mBlue 2[0m
+28. [94mBlue 4[0m
+29. [94mBlue 7[0m
+30. [94mBlue 8[0m
+31. [94mBlue 9[0m
+32. [93mYellow 0[0m
+33. [93mYellow 1[0m
+34. [93mYellow 2[0m
+35. [93mYellow 4[0m
+36. [93mYellow 6[0m
+37. [93mYellow 7[0m
+38. [93mYellow 9[0m
+39. [93mYellow Reverse[0m
+40. [93mYellow Reverse[0m
+41. [93mYellow Skip[0m
+42. [37mWildcard[0m
+43. [37mWildcard[0m
+44. [37mDraw 4 Wildcard[0m
 
-Turns: 1 (2) -> VanossFC4 (8) -> [91mUNO! [0mMarcelWrk (1) -> [94m[TehTerroriser (4)][0m -> 
-
-Current card is: [93mYellow Skip[0m
-TehTerroriser turn: 
-Bot cannot play this turn
-Player now have 4 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: [94m[1 (2)][0m -> VanossFC4 (8) -> [91mUNO! [0mMarcelWrk (1) -> TehTerroriser (4) -> 
-
-Current card is: [93mYellow Skip[0m
-1 turn: 
+Moo.Snuckel turn: 
+3
 Bot's turn
 
-Bot has drawn a card
-Bot has drawn 1 cards
-Card [94mBlue Skip[0m is played
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Deck is almost out of card. All card from discard is pushed back into the deck
+9
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Deck is almost out of card. All card from discard is pushed back into the deck
+5
+Bot Moo.Snuckel has drawn a card
+Bot Moo.Snuckel has drawn a card
+Deck is almost out of card. All card from discard is pushed back into the deck
+3
+Bot chooses to keep the card
 
-Player now have 2 cards
 
 
+Turns: [94m[VanossFC4 (45)][0m -> TehTerroriser (9) -> MarcelWrk (26) -> Moo.Snuckel (26) -> 
 
-[3J[H[2JUno!
+Current card is: Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 3[0m
+3. [91mRed 5[0m
+4. [91mRed 6[0m
+5. [91mRed 7[0m
+6. [91mRed 7[0m
+7. [91mRed 9[0m
+8. [91mRed Reverse[0m
+9. [91mRed Skip[0m
+10. [91mRed Skip[0m
+11. [91mRed Draw Two[0m
+12. [92mGreen 1[0m
+13. [92mGreen 4[0m
+14. [92mGreen 4[0m
+15. [92mGreen 5[0m
+16. [92mGreen 6[0m
+17. [92mGreen 6[0m
+18. [92mGreen 7[0m
+19. [92mGreen 8[0m
+20. [92mGreen 9[0m
+21. [92mGreen Reverse[0m
+22. [92mGreen Reverse[0m
+23. [92mGreen Draw Two[0m
+24. [92mGreen Draw Two[0m
+25. [94mBlue 1[0m
+26. [94mBlue 2[0m
+27. [94mBlue 2[0m
+28. [94mBlue 4[0m
+29. [94mBlue 7[0m
+30. [94mBlue 8[0m
+31. [94mBlue 9[0m
+32. [93mYellow 0[0m
+33. [93mYellow 1[0m
+34. [93mYellow 2[0m
+35. [93mYellow 4[0m
+36. [93mYellow 6[0m
+37. [93mYellow 7[0m
+38. [93mYellow 9[0m
+39. [93mYellow Reverse[0m
+40. [93mYellow Reverse[0m
+41. [93mYellow Skip[0m
+42. [37mWildcard[0m
+43. [37mWildcard[0m
+44. [37mDraw 4 Wildcard[0m
 
-Turns: 1 (2) -> [94m[VanossFC4 (8)][0m -> [91mUNO! [0mMarcelWrk (1) -> TehTerroriser (4) -> 
-
-Current card is: [94mBlue Skip[0m
 VanossFC4 turn: 
-Bot cannot play this turn
-Player now have 8 cards
-
-
-
-[3J[H[2JUno!
-
-Turns: 1 (2) -> VanossFC4 (8) -> [91mUNO! [0m[94m[MarcelWrk (1)][0m -> TehTerroriser (4) -> 
-
-Current card is: [94mBlue Skip[0m
-MarcelWrk turn: 
+1
 Bot's turn
 
-Card [94mBlue 8[0m is played
+Card [37mDraw 4 Wildcard[0m is played
 
-Player now have 0 cards
+Color has been set to [91mred[0m
 
 
 
-[3J[H[2JUno!
+Turns: VanossFC4 (44) -> [94m[TehTerroriser (9)][0m -> MarcelWrk (26) -> Moo.Snuckel (26) -> 
 
-Alright you can go back to what people call 'real life' now, game over
+Current card is: [91mDraw 4 Wildcard[0m
+Your hand: 
+0. [91mRed 0[0m
+1. [91mRed 2[0m
+2. [91mRed 3[0m
+3. [91mRed 5[0m
+4. [91mRed 6[0m
+5. [91mRed 7[0m
+6. [91mRed 7[0m
+7. [91mRed 9[0m
+8. [91mRed Reverse[0m
+9. [91mRed Skip[0m
+10. [91mRed Skip[0m
+11. [91mRed Draw Two[0m
+12. [92mGreen 1[0m
+13. [92mGreen 4[0m
+14. [92mGreen 4[0m
+15. [92mGreen 5[0m
+16. [92mGreen 6[0m
+17. [92mGreen 6[0m
+18. [92mGreen 7[0m
+19. [92mGreen 8[0m
+20. [92mGreen 9[0m
+21. [92mGreen Reverse[0m
+22. [92mGreen Reverse[0m
+23. [92mGreen Draw Two[0m
+24. [92mGreen Draw Two[0m
+25. [94mBlue 1[0m
+26. [94mBlue 2[0m
+27. [94mBlue 2[0m
+28. [94mBlue 4[0m
+29. [94mBlue 7[0m
+30. [94mBlue 8[0m
+31. [94mBlue 9[0m
+32. [93mYellow 0[0m
+33. [93mYellow 1[0m
+34. [93mYellow 2[0m
+35. [93mYellow 4[0m
+36. [93mYellow 6[0m
+37. [93mYellow 7[0m
+38. [93mYellow 9[0m
+39. [93mYellow Reverse[0m
+40. [93mYellow Reverse[0m
+41. [93mYellow Skip[0m
+42. [37mWildcard[0m
+43. [37mWildcard[0m
 
+TehTerroriser turn: 
+No stackable card
+Bot TehTerroriser has drawn a card
+Deck is almost out of card. All card from discard is pushed back into the deck
+3
+Bot TehTerroriser has drawn a card
+Deck is almost out of card. All card from discard is pushed back into the deck
+2
+Bot TehTerroriser has drawn a card
+Deck is almost out of card. All card from discard is pushed back into the deck
+1

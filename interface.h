@@ -11,6 +11,5 @@ void animationDelay(int length);
 void clearConsole();
 void rgb(int color);			//linustechtips and the PCMR community will be proud
 void countdownTimer(int length);
-void stackTrace();
 
 #endif

@@ -59,9 +59,3 @@ void countdownTimer(int length)
 }
 
 
-
-//implement the interface stacktrace function
-void stackTrace()
-{
-	cout << "Last function called: " << __func__ << endl;
-}

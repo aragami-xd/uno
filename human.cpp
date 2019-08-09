@@ -28,24 +28,15 @@ void Human::drawCard(int noOfCard)
 
 
 
-//implement the human unoSignal function
-char Human::unoSignal()
+//implement the human callUno function 
+void Human::callUno()
 {
 	srand(time(0));
-	char a_to_z[] = "abcdefghijklmnopqerstuwxyz";
+	char a_to_z[] = "abcdefghijklmnopqerstuwxyz";			//choose a random key to call uno
 	int randomChar = rand()%26;
-	if (playerCard.size() == 2 && core->canPlay() == true) {
-		cout << "Ready for Uno? Press " << a_to_z[randomChar] << " to call Uno after playing the card" << endl;
-		cout << endl;
-	}
-	return a_to_z[randomChar];
-}
+	char unoChar = a_to_z[randomChar];
 
-
-//implement the human callUno function 
-void Human::callUno(char unoChar)
-{
-	cout << "Press " << unoChar << " now!" << endl;
+	cout << "Press " << unoChar << " to call Uno! now!" << endl;		//prompting the user to call uno
 	char charInput;
 	cin >> charInput;
 	if (charInput == unoChar) {
@@ -103,10 +94,9 @@ void Human::playerTurn()
     if (nextTurn == 1) {			//if they can play, then play	
 		::animationDelay(400);
 
-		char inputChar = unoSignal();		//see if player can call uno this round or not
 		core->choicePlay();		//player's action in the turn 
 		if (playerCard.size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 
-			callUno(inputChar);	
+			callUno();	
 		}
 
 	} else if (nextTurn == -1) {				//if they cannot play, then not play, and reverse that value

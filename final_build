@@ -1,0 +1,2 @@
+#combining with pre_build.sh, final_build will build the rest of the program 
+g++ action.o card.o draw.o deck.o discard.o drawtwo.o hand.o interface.o number.o reverse.o skip.o zero.o bot.h colorcard.h drawfour.h core.h human.h player.h seven.h test.h wildcard.h bot.cpp botAggressive.cpp colorcard.cpp drawfour.cpp core.cpp human.cpp player.cpp seven.cpp test.cpp wildcard.cpp function.cpp main.cpp

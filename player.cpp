@@ -166,9 +166,9 @@ void Player::outOfCards()
 	if (core->getDraw()->getDeck().size() < 1) {			//if the deck is almost out of card, shuffle all the cards in the discarded deck back into the draw deck
 		cout << "Deck is almost out of card. All card from discard is pushed back into the deck" << endl;
 		::animationDelay(1000);
-		vector<Card*> cardList = core->getDiscard()->getDeck();
-		core->getDraw()->setDeck(cardList);				//get the cards and shuffle
-		core->getDraw()->shuffle();
+		// vector<Card*> cardList = core->getDiscard()->getDeck();
+		// core->getDraw()->setDeck(cardList);				//get the cards and shuffle
+		core->resetDeck();
 	}
 }
 

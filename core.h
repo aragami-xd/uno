@@ -40,6 +40,9 @@ private:
 		
 	int stackable(int stackSize, int stackType);		//ask if player can and want to stack draw cards or not
 
+	bool canPlay();			//see if player can play any card in their hand or not
+	std::vector<Card*> playable();			//get the list of cards that player can play 
+
 
 
 public: 
@@ -52,7 +55,7 @@ public:
 	void setPlayers(std::vector<Player*> playerList);
 	std::vector<Player*> getPlayers();
 
-	void setPlayerXTurn(int turn);
+	void setPlayerXTurn(int turn);			//for now, it's here for testing purposes, but i may ended up never need this thing at all
 	int getPlayerXTurn();
 
 	void setDraw(Draw* drawDeck);
@@ -61,7 +64,8 @@ public:
 	void setDiscard(Discard* discardDeck);
 	Discard* getDiscard();
 
-	int getHandSize(int playerNo);
+	int getHandSize(int playerNo);			//this one only serve the purpose of the code looks better when i'm trying to get the card size of each player
+	//which is used way more often than you might think
 	
 	void setStackingMode();
 	void setNoBluffingMode();
@@ -72,7 +76,7 @@ public:
 	int getLastPlayerTurn();
 	int getOppositePlayerTurn();
 
-
+	void resetDeck();		//reset the draw deck when it's low on card
 
 
 
@@ -80,11 +84,6 @@ public:
 	void beginGameDraw();			//drawing 7 cards at the beginning of the game
 
 	void turnCycle();		//loop between players as turns
-	
-	bool canPlay();			//see if player can play any card in their hand or not
-	std::vector<Card*> playable();			//get the list of cards that player can play 
-	//while it's better for playable to remain private, for the sake of easily access the list of cards that can be played during unit testing, i have to 
-	//set it to public
 
 	void choicePlay();		//if player can play, they can either play a card, or draw until they get a match one
 	void forceDraw(bool choicePlayFalse = true);		//if player cannot play any card, then they're forced to draw until they got a compatible card 

@@ -25,7 +25,7 @@ public:
 
 	void setLastCard();
 	
-	//no pushCard here, since you cannot push card from the discarded deck 
+	//no special pushCard here, since you cannot push card from the discarded deck (or at least officially)
 	virtual void pullCard(Card* transferCard);
 
 	~Discard();

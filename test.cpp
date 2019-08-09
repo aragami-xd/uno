@@ -80,12 +80,18 @@ void Test::printCardList()
 
 
 
+
+
+
 //test the decks
 //implement the void getDeck function
 void Test::setDeck(vector<Card*> deckList)
 {
 	deck = deckList;
 }
+
+
+
 
 //implement the void printDeckList function
 void Test::printDeckList()
@@ -98,7 +104,11 @@ void Test::printDeckList()
 	cout << endl;
 }
 
-/* */
+
+
+
+
+//just ignore this one, it doesn't work at all for some reason
 //implement the test testDeckTransfer function
 void Test::testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard)
 {
@@ -140,11 +150,18 @@ void Test::testDeckTransfer(Deck* deckFrom, Deck* deckTo, Card* transferCard)
 
 }
 
+
+
+
 //implement the test setCore function
 void Test::setCore(Core* gameCore)
 {
 	core = gameCore;
 }
+
+
+
+
 
 //implement the test testReverse function
 void Test::testReverse(Card* reverse)
@@ -159,6 +176,9 @@ void Test::testReverse(Card* reverse)
 	}
 	cout << endl;
 }
+
+
+
 
 //implement the test testSkip function
 void Test::testSkip(Card* skip)
@@ -176,6 +196,10 @@ void Test::testSkip(Card* skip)
 	cout << endl;
 }
 
+
+
+
+
 //implement the test testDrawCard function
 void Test::testDrawCard(Card* drawFour)
 {
@@ -192,14 +216,20 @@ void Test::testDrawCard(Card* drawFour)
 	player->drawCard(player->getCardsToDraw());
 
 	int diff = p1Hand->getDeck().size() - handSize;
+	int currentColor = core->getDiscard()->getLastCardColor();
 
-	if (diff == 4) {
+	if (diff == 4 && currentColor != 5) {
 		cout << "Draw card test PASSED" << endl;
-	} else if (diff != 4) {
+	} else {
 		cout << "Draw card test FAILED " << diff << endl;
 	}
 	cout << endl;
 }
+
+
+
+
+
 
 //implement the test testSeven function
 void Test::testSeven(Card* seven)
@@ -246,6 +276,10 @@ void Test::testSeven(Card* seven)
 	cout << endl;
 }
 
+
+
+
+
 //implement the test testZero function
 void Test::testZero(Card* zero)
 {
@@ -281,6 +315,12 @@ void Test::testZero(Card* zero)
 	cout << endl;
 }
 
+
+
+
+//the test below no longer work since i've hidden the core->playable() function from public access
+//it might have to change in the future, but for now, it's working correctly and i don't really touch the core of the game anymore
+//so i should probably be fine
 //implement the test testNoBluffing function
 void Test::testNoBluffing()
 {	
@@ -297,7 +337,7 @@ void Test::testNoBluffing()
 		}
 	}
 	draw->pushCard(numberIndex, core->getDiscard());					
-	vector<Card*> playableCards = core->playable();			//get the playable cards
+	//vector<Card*> playableCards = core->playable();			//get the playable cards
 
 	bool passed = true;
 	for (int i=0; i<player->getPlayerCard().size(); i++) {
@@ -310,26 +350,29 @@ void Test::testNoBluffing()
 	if (passed == true) {
 		cout << "No bluffing test PASSED" << endl;
 	} else if (passed == false) {
-		cout << "No bluffing test FAILED" << endl;		//for some reason, the check passed isn't working correctly -> always failed for some reason
-		for (int i=0; i<playableCards.size(); i++) {
-			cout << playableCards[i]->getName() << endl;
-		}
+		cout << "No bluffing test FAILED" << endl;		//for some reason, the check passed isn't working correctly -> always failed for some reason, even though it's the right card
 	}
 }
+
 
 
 
 //implement the test referenceGameplay function
-//this fucntion will force 4 bots to play the game with a deck that has been purposely shuffled in the way i want and see if the cards they play is right or not
+//this fucntion will force 4 bots to play the game 
+//this function can only ensure that the core of the game behaves correctly, i.e. the suitable cards are being played
+//it doesn't ensure that the bots are playing the cards they're supposed to play, so keep that in mind
+//system testing this game is extremely hard, and with the bot having constant update to it's behavior, it's quite impossible for me to test 
+//those behavior's functionality
 void Test::referenceGameplay(Draw* draw)
 {
-	card = draw->getDeck();
-	
-	
+	card = draw->getDeck();			
 	for (int i=0; i<card.size(); i++) {
 		cout << card[i]->getName() << endl;
 	}
 }
+
+
+
 
 //implement the test destructor
 Test::~Test()

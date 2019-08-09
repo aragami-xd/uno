@@ -178,6 +178,16 @@ int Core::getOppositePlayerTurn()
 
 
 
+//implement the core resetDeck function
+void Core::resetDeck()
+{
+	for (int i=0; i<discard->getDeck().size() - 1; i++) {		//left one top card in discard
+		discard->pushCard(i, draw);			//push the card to core to reset the deck
+	}
+}
+
+
+
 
 
 

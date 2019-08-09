@@ -7,8 +7,7 @@ class Human : public Player
 {
 private:
     virtual void drawCard(int noOfCard);
-    char unoSignal();               //let the player knows that they can call uno next this round
-    void callUno(char unoChar);     //pressing uno
+    void callUno();     //pressing uno
 
 public:
     Human();

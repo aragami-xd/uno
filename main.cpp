@@ -216,7 +216,7 @@ int main()
 
 	srand(time(0));			//for random
 	//::clearConsole();
-	core->turnCycle();		//the game itself 
+	// core->turnCycle();		//the game itself 
 	cout << endl;
 	
 
@@ -226,11 +226,11 @@ int main()
 
 
 	//test function 
-	//Test *test = new Test();
+	Test *test = new Test();
 	
-	//test->setCard(cardList);
+	test->setCard(cardList);
 	//test->setDeck(players[0]->getPlayerHand()->getDeck());
-	//test->setCore(core);
+	test->setCore(core);
 	//test->printCardList();
 	//test->printDeckList();
 	//test->testCardName();
@@ -238,7 +238,9 @@ int main()
 	//test->testDeckTransfer(draw, hand[0], cardList[26]);
 	//test->testReverse(cardList[22]);
 	//test->testSkip(cardList[30]);
-	//test->testDrawCard(cardList[1]);			
+	for (int i=0; i<50; i++) {
+		test->testDrawCard(cardList[1]);
+	}			
 	//test->testSeven(cardList[85]);			
 	//test->testZero(cardList[9]);				
 	//test->testNoBluffing();

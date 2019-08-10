@@ -138,7 +138,7 @@ void Bot::playerTurn()
     if (nextTurn == 1) {			//if they can play, then play	
 		cout << "Bot's turn" << endl;
 		cout << endl;
-		////::animationDelay(2000);
+		//::animationDelay(2000);
 
 		core->choicePlay();		//player's action in the turn 
 		if (playerCard.size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 
@@ -151,7 +151,7 @@ void Bot::playerTurn()
 		nextTurn = 1;
 		cout << "Bot cannot play this turn" << endl;
 	}
-	//::animationDelay(1000);			//bot turn will have extra 1000ms of delay so you can have an idea of wtf they are doing
+	::animationDelay(1000);			//bot turn will have extra 1000ms of delay so you can have an idea of wtf they are doing
 }
 
 
@@ -182,8 +182,20 @@ void Bot::playerChoicePlay(vector<Card*> playableCards)
     //     }
     // }
     
+    bool danger = false;            //danger is triggered when a player has less than 4 cards
+    for (int i=0; i<otherHandSize.size(); i++) {
+        if (otherHandSize[i] < 4) {
+            danger = true;
+        }
+    }
 
-    int cardToPlayIndex = aggressivePlay(playableCards, core->getOhSeven());
+    int cardToPlayIndex;
+    if (danger == true) {           //if danger, play aggressive
+        cardToPlayIndex = aggressivePlay(playableCards, core->getOhSeven());
+    } else {
+        cardToPlayIndex = passivePlay(playableCards, core->getOhSeven());
+    }
+
     if (cardToPlayIndex >= 0) {
         for (int i=0; i<playerCard.size(); i++) {
             if (playableCards[cardToPlayIndex]->getName() == playerCard[i]->getName()) {
@@ -241,7 +253,7 @@ int Bot::playerChooseSwap(vector<Player*> otherPlayers)
 {
     cout << "Bot will swap its hand with another player" << endl;
     cout << endl;
-    //::animationDelay(500);
+    ::animationDelay(500);
 
     vector<int> deckSize;
     for (int i=0; i<otherPlayers.size(); i++) {

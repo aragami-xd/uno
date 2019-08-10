@@ -5,7 +5,7 @@
 
 class Action : public Card 
 {
-private: 
+protected: 
 	virtual void setName() =0;
 	
 public: 

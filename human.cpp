@@ -92,7 +92,7 @@ void Human::playerChoicePlay(vector<Card*> playableCards)
 void Human::playerTurn()
 {
     if (nextTurn == 1) {			//if they can play, then play	
-		//::animationDelay(400);
+		::animationDelay(400);
 
 		core->choicePlay();		//player's action in the turn 
 		if (playerCard.size() == 1) {		//at the end of the turn, if there is only 1 card left, call the function 

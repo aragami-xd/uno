@@ -23,11 +23,16 @@ private:
     void update();              //this thing will basically update the variables regarding to the stats of the game on that turn
 
 
-
-
     //aggressive tactics
     int aggressivePlay(std::vector<Card*> playableCard, bool ohSeven);
     std::vector<int> setBotBlacklist(std::vector<int> blacklist);
+    int checkBlacklist(std::vector<int> blacklist, std::vector<Card*> playableCard);
+
+
+    //passive bot
+    int passivePlay(std::vector<Card*> playableCard, bool ohSeven);
+    
+
 
 public:
     Bot();
@@ -40,7 +45,6 @@ public:
 
     virtual void drawCard(int noOfCard);
 
-    //aggressivePlay and passivePlay will be called inside of playerChoicePlay
     
 
     //pure virtual implementations

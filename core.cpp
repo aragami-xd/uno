@@ -237,7 +237,7 @@ void Core::turnCycle()
 			}
 		}
 		
-		//::animationDelay(1500);
+		::animationDelay(1500);
 		cout << endl;
 		cout << endl;
 		cout << endl;
@@ -306,7 +306,7 @@ void Core::beginGameDraw()
 	//each player gets 7 cards at the begin of the game
 	for (int m=0; m<players.size(); m++) {
 		players[m]->drawCard(7);
-		//::animationDelay(400);
+		::animationDelay(400);
 		players[m]->getPlayerHand()->sortHand();
 	}
 }
@@ -367,7 +367,7 @@ void Core::forceDraw(bool choicePlayFalse)
 			if (newCard->getColor() == discard->getLastCardColor() || newCard->getColor() == 5 || newCard->getNumber() == discard->getLastCardNumber()) {
 				compatibleCard = true;
 			}
-			//::animationDelay(400);
+			::animationDelay(400);
 
 			//if player draws a compatible card
 			if (compatibleCard == true) {			//search the deck again, if there is compatible card, that means you've drawn the right card

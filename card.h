@@ -11,10 +11,8 @@ class Card
 protected:
 	int color;		//card color. 1 = red, 2 = green, 3 = blue, 4 = yellow, 5 = wildcard, which will be set later using function
 	std::string name;
-	int cardType;		//card type. 1 for normal, 2 for action, 3 for wildcard
 	int cardNumber;		//0-9, 10=reverse, 11=skip, 12=drawtwo, 13=colorchange, 14=drawfour
 
-	void setNumber(int cNumber);
 	virtual void setName() =0;
 
 public:

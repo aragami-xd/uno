@@ -9,13 +9,11 @@ using namespace std;
 //implement the default wildcard constructor
 Wildcard::Wildcard() 
 {
-    cardType = 3;
 }
 
 //implment the wildcard color constructor
 Wildcard::Wildcard(int cColor) : Card(cColor)
 {
-    cardType = 3;
 }
 
 //implement the wildcard effect function

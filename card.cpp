@@ -25,12 +25,6 @@ string Card::getName()
 	return name;
 }
 
-//implement the card setNumber function
-void Card::setNumber(int cNumber)
-{
-	cardNumber = cNumber;
-}
-
 //implement the card getNumber function
 int Card::getNumber()
 {

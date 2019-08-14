@@ -158,36 +158,17 @@ void Bot::playerTurn()
 
 //implement the bot botChoicePlay function
 void Bot::playerChoicePlay(vector<Card*> playableCards)
-{
-    // bool callBreak = false;
-    // for (int i=0; i<playableCards.size() && callBreak == false; i++) {            //find the first playable card
-    //     if (core->getHandSize(core->getNextPlayerTurn()) <= 3 ) {        //if the next player is low on card
-    //     //play the strongest cards first. don't let them win
-    //         for (int m=playerCard.size() - 1; m>=0; m--) {             //find the last playable card
-    //             if (playerCard[m]->getName() == playableCards[i]->getName()) {
-    //                 playCard(m);
-    //                 callBreak = true;
-    //                 break;
-    //             }
-    //         }
-    //     } else {
-    //     //if next player has more cards, play defensively -> play the weakest card first
-    //         for (int m=0; m<playerCard.size(); m++) {           //find the first playable card
-    //             if (playerCard[m]->getName() == playableCards[i]->getName()) {
-    //                 playCard(m);
-    //                 callBreak = true;
-    //                 break;
-    //             }
-    //         }
-    //     }
-    // }
-    
+{  
     bool danger = false;            //danger is triggered when a player has less than 4 cards
     for (int i=0; i<otherHandSize.size(); i++) {
         if (otherHandSize[i] < 4) {
             danger = true;
         }
     }
+    if (playerCard.size() < 4) {
+        danger = true;
+    }
+
 
     int cardToPlayIndex;
     if (danger == true) {           //if danger, play aggressive
@@ -215,7 +196,7 @@ void Bot::playerChoicePlay(vector<Card*> playableCards)
 //implement the bot playerForceDraw function
 void Bot::playerForceDraw(Card* newCard)
 {
-	if (newCard->getNumber() < 13) {            //keep the wildcard. the rest, play
+	if (newCard->getNumber() < 13 || newCard->getColor() == getWeakestColor()) {            //keep the wildcard. the rest, play
         cout << "Bot chooses to play the card" << endl;
         playCard(playerCard.size() - 1);          
     } else {
@@ -265,6 +246,18 @@ int Bot::playerChooseSwap(vector<Player*> otherPlayers)
     ::rgb(4);
     cout << otherPlayers[minElementIndex]->getName() << "\e[0m" << endl;
     return minElementIndex;
+}
+
+
+//implement the bot avoidSwitch function
+bool Bot::avoidSwitch()
+{
+    int strongestPlayerHandSize = otherHandSize[strongestOpponent];
+    if (playerCard.size() <= strongestPlayerHandSize) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 

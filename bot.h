@@ -22,10 +22,11 @@ private:
     void setOtherHandSize();
     void update();              //this thing will basically update the variables regarding to the stats of the game on that turn
 
+    bool avoidSwitch();         //this function will test and see if it's suitable for the bot to switch card with other player or not
 
     //aggressive tactics
     int aggressivePlay(std::vector<Card*> playableCard, bool ohSeven);
-    std::vector<int> setBotBlacklist(std::vector<int> blacklist);
+    std::vector<int> setBotBlacklist(std::vector<int> blacklist, bool ohSeven);
     int checkBlacklist(std::vector<int> blacklist, std::vector<Card*> playableCard);
 
 

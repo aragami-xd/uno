@@ -1,3 +1,36 @@
+To the person who is opening this file: Please close it now. This is some area 51 private s***. It's not 20th Sep yet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+If you still decide to read it, BRUH ALERT: CRINGE CONTENT AHEAD. PROCEED WITH CAUTION. LONG TERM EXPOSURE TO CRINGE CAN CAUSE BRAIN DAMAGE AND BEING UNFUNNY
+
+
+
+
+
+
+
+
+
+
+Alright, to the logbook
+
 So this file will contain some logs about the project
 Since the log has been made after the oh-seven expansion has been made, there isn't much details about things far before thatb ut nevertheless: these are some key moments during the development of the game, and what i've learnt from it
 Which is actually quite a lot
@@ -30,7 +63,7 @@ In this release, you're essentially controlling all 4 players at once. You finis
 some basic knowledge of how the game is like
 
 5. Bots
-My initial plan is to create 3 advanced bots, predicting players' card and strategy, assenssing it's own hand's strength to choose the best playstyle
+My initial plan is to create 3 advanced bots, predicting players' card and strategy, assessing it's own hand's strength to choose the best playstyle
 However, the plan was too ambitious to be true, at least for now. Mostly it's about time constraints, if I've had more time (i.e. summer break), I might have 
 created a bot like that. Though again, it's way too ambitious, technical side. I'm no Redstone or Google engineer. I'm only me. I'd probably have to take a course in artificial intelligent or algorithm design first (the latter one is what i'm taking this sem. Wish me luck bois)
 So that's why i'm ended up settle for a stupid bot: it always play the first card it can play, try to stack whenever it can, and so on. Yeah, not much. I may change the bot in the future and make it play the first card that force the color of the current card to be it's strongest color
@@ -65,6 +98,11 @@ Eventually I've found the root cause of the problem and fix it. All of these err
 10. No bluffing
 To be honest, there isn't much to this at all. It just a matter of adding one if condition, checking if the game mode is on or not. That's it
 
-11. Advanced bot
+11. Advanced bot (aka Al Duty - national disaster)
 Yeah... not sure what to say about this one though. Quite a lot of fun but frustrating stuff in this iteration of the game. Thanks to Cheryl (adds lecturer), the process of debugging and upgrading the program has become quite a bit better and faster. Though with that said, i'm still under a lot of problem
 Cheryl's recommendation is to using some stuff about 'alpha beta pruning' and 'depth first search' as a method to generate moves. While they seem pretty fascinating, i don't have a deep enough understanding in those things to build that model in the game, let alone implementing it
+
+12. Coupling
+The more i look into the design the program, the worse i think it is. Minimal documents (2 pages of notes) and not much design evaluation, of course it's gonna give me a lot of problem. So the problem here is: Cards shouldn't be calling stuff from core. It should be core that is calling stuff from card... Right?So it would have been better for me to just put the card's effect inside the core, right?
+Looking back at the program, to be honest, specialize the cards might not have served any purposes at all. I mean the card effect rely nothing on the cards at all, and all it rely on is the core. So it's kinda like... the effect is just there at the cards, but it's not a part of the class at all!
+Not sure if i should redesign it though, since at this point, i kinda just want to move on from it and work on the bot, which i still have no idea what to do next

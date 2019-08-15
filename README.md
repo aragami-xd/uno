@@ -9,3 +9,6 @@ Disclaimer:
 - Copyrighted, low-effort memes
 - Dumb jokes stolen from VanossGaming and his crew
 
+
+For stable release, check commit #70 on 28th Jul. To run it, either run `bash compile` to compile the entire program and run the `a.out` file
+

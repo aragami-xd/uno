@@ -1,5 +1,8 @@
 #include "bot.h"
 #include "core.h"
+
+#include "botAggressive.cpp"
+#include "botPassive.cpp"
 using namespace std;
 
 //implement the default bot constructor

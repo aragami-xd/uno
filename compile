@@ -1,5 +1,0 @@
-#this is for the full build of the program, fresh from the ground up. if you want to save time, you can prebuild the game by running 'bash pre_build" once then 'bash final_build" every time you want to build a newer version
-#trust me, that saves a lot of time. a full rebuild on my laptop, plugged in and high performance mode takes 30s, compare to barely over 10s for the pre build
-#that number would become bigger if i don't plug in my laptop
-echo 
-g++ interface.h card.h wildcard.h action.h number.h drawfour.h colorcard.h drawtwo.h reverse.h skip.h zero.h seven.h deck.h hand.h draw.h discard.h core.h player.h bot.h human.h test.h interface.cpp core.cpp player.cpp bot.cpp botAggressive.cpp botPassive.cpp human.cpp card.cpp wildcard.cpp action.cpp number.cpp drawfour.cpp colorcard.cpp drawtwo.cpp reverse.cpp skip.cpp zero.cpp seven.cpp deck.cpp hand.cpp draw.cpp discard.cpp test.cpp function.cpp main.cpp

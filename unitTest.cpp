@@ -41,34 +41,14 @@ extern vector<string> startMenu();
 //main program
 int main()
 {
-	::clearConsole();
+	//::clearConsole();
 
 	//game modes
 	bool stacking = true;		
-	bool ohSeven = false;			//0-7 rule, pronouce oh-seven. default is false, but i set here is true for testing and debugging purposes
+	bool ohSeven = true;			//0-7 rule, pronouce oh-seven. default is false, but i set here is true for testing and debugging purposes
 	bool noBluffing = false;		//it'll be set to false couple lines below
 	bool jumpIn = false;
 
-	
-	vector<string> gameMode = startMenu();
-	for (int i=0; i<gameMode.size(); i++) {
-		if (gameMode[i] == "1") {
-			stacking = false;
-			cout << "Stacking mode disabled" << endl;
-		} else if (gameMode[i] == "2") {
-			ohSeven = true;
-			cout << "0-7 rule enabled" << endl;
-		} else if (gameMode[i] == "4") {
-			noBluffing = true;
-			cout << "No bluffing mode enabled" << endl;
-		} else {
-			cout << "Game mode " << gameMode[i] << " unknown" << endl;
-		}
-	}
-	cout << "Game modes are set" << endl;
-	::animationDelay(1000);
-	::clearConsole();
-	
 
 		
 
@@ -137,14 +117,11 @@ int main()
 		players[i]->setPlayerHand(hand[i]);
 	}
 	
-	
-	cout << "Enter players' name here. the first player by default will player, and the other 3 will be bots" << endl;
-	string pName;					//set the player name, i'll only use it in the official release
-	for (int i=0; i<noOfPlayer; i++) {
-		cout << "Player " << i << " name: ";
-		cin >> pName;
-		players[i]->setName(pName);
-	}
+
+	players[0]->setName("vanoss");
+	players[1]->setName("terroriser");
+	players[2]->setName("basically");
+	players[3]->setName("moo");
 
 
 	//draw and discard
@@ -177,30 +154,58 @@ int main()
 		players[i]->setCore(core);
 	}
 
+	//WHAAATTT?
+	//you've never played Tuber Simulator?
+	//pssssst!
+	//you know it's fun, right?
+	//i'm not supposed to give my opinion
+	//but give it a try
+	//then you can tell me if it's good or not
+	//not convinced yet?
+	//okay, i'll cut you a deal
+	//this game is available for free
+	//and that's a great price!
+	//(dadada dada da dadada) - tuber simulator outro play. imaigne it
 
-	//these parts are completely unecessary, but it makes up for the asthetic of the game
-
-	::clearConsole();										
-	cout << "Loading..." << endl;
-	cout << endl;
-	cout << endl;
-	cout << "No the game is not actually loading, i just want to waste your time xD" << endl;
-	cout << "Though i've wasted mine more than you, waiting for this animation to get over, which lasts 2 seconds (i set it to 2 seconds in the code)" << endl;
-	cout << "But since you're here, checkout Vanossgaming and Pewdiepie" << endl;
-	cout << "Then go back and thank me later" << endl;
-
-	::animationDelay(2000);
-	::clearConsole();
 
 	cout << "Drawing cards..." << endl;
-	core->beginGameDraw();
+	// core->beginGameDraw();				//draw all the cards
 
 
 	srand(time(0));			//for random
 	::clearConsole();
-	core->turnCycle();		//the game itself 
+	//core->turnCycle();		//the game itself 
 	cout << endl;
 	
+
+
+
+
+
+
+	//test function 
+	Test *test = new Test();
+	
+	//test->setCard(cardList);
+	//test->setDeck(players[0]->getPlayerHand()->getDeck());
+	//test->setCore(core);
+	//test->printCardList();
+	//test->printDeckList();
+	//test->testCardName();
+	//test->testCardColor();
+	//test->testDeckTransfer(draw, hand[0], cardList[26]);
+	//test->testReverse(cardList[22]);
+	//test->testSkip(cardList[30]);
+	//test->testDrawCard(cardList[1]);	
+	//test->testSeven(cardList[85]);			
+	//test->testZero(cardList[9]);				
+	//test->testNoBluffing();
+	test->referenceGameplay(draw);
+	delete test;
+
+
+
+
 
 
 

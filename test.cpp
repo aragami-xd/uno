@@ -365,10 +365,20 @@ void Test::testNoBluffing()
 //those behavior's functionality
 void Test::referenceGameplay(Draw* draw)
 {
-	card = draw->getDeck();			
+	card = draw->getDeck();		
 	for (int i=0; i<card.size(); i++) {
-		cout << card[i]->getName() << endl;
+		if (i%3==0) {
+			iter_swap(card.begin() + i, card.end() - 1 - i/3 );
+		} else if (i%3==0) {
+			iter_swap(card.begin() + i, card.end() - 1 - i/2);
+		} else if (i%3==2) {
+			iter_swap(card.begin() + i, card.end() - 1 - i);
+		}
 	}
+
+	core->beginGameDraw();
+	::clearConsole();
+	core->turnCycle();
 }
 
 

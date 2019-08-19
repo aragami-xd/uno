@@ -1,8 +1,20 @@
-all : interface.o card.o wildcard.o action.o number.o drawfour.o colorcard.o drawtwo.o reverse.o skip.o zero.o seven.o deck.o hand.o draw.o discard.o core.o player.o bot.o human.o test.o function.cpp main.cpp
-	g++ interface.o card.o wildcard.o action.o number.o drawfour.o colorcard.o drawtwo.o reverse.o skip.o zero.o seven.o deck.o hand.o draw.o discard.o core.o player.o bot.o human.o test.o function.cpp main.cpp && rm *.h.gch
+all : interface.o card.o wildcard.o action.o number.o drawfour.o colorcard.o drawtwo.o reverse.o skip.o zero.o seven.o deck.o hand.o draw.o discard.o core.o player.o bot.o human.o function.cpp main.cpp
+	g++ interface.o card.o wildcard.o action.o number.o drawfour.o colorcard.o drawtwo.o reverse.o skip.o zero.o seven.o deck.o hand.o draw.o discard.o core.o player.o bot.o human.o function.cpp main.cpp
+
+test: interface.o card.o wildcard.o action.o number.o drawfour.o colorcard.o drawtwo.o reverse.o skip.o zero.o seven.o deck.o hand.o draw.o discard.o core.o player.o bot.o human.o test.o function.cpp unitTest.cpp
+	g++ interface.o card.o wildcard.o action.o number.o drawfour.o colorcard.o drawtwo.o reverse.o skip.o zero.o seven.o deck.o hand.o draw.o discard.o core.o player.o bot.o human.o test.o function.cpp unitTest.cpp && ./a.out | tee output.txt
+
+debug: interface.o card.o wildcard.o action.o number.o drawfour.o colorcard.o drawtwo.o reverse.o skip.o zero.o seven.o deck.o hand.o draw.o discard.o core.o player.o bot.o human.o function.cpp debug.cpp
+	g++ interface.o card.o wildcard.o action.o number.o drawfour.o colorcard.o drawtwo.o reverse.o skip.o zero.o seven.o deck.o hand.o draw.o discard.o core.o player.o bot.o human.o function.cpp debug.cpp && ./a.out | tee output.txt
 
 clean :
-	rm *.o a.out
+	rm *.o a.out *.h.gch
+
+stresstest :
+	./test.sh
+
+
+
 
 interface.o : interface.h interface.cpp
 	g++ -c interface.h interface.cpp
@@ -66,6 +78,3 @@ human.o : human.h human.cpp
 	
 test.o : test.h test.cpp
 	g++ -c test.h test.cpp
-
-test :
-	./test.sh

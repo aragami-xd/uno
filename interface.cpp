@@ -4,8 +4,9 @@ using namespace std;
 //implement the animationDelay function
 void animationDelay(int length)
 {
-    this_thread::sleep_for(chrono::milliseconds(length));
+    this_thread::sleep_for(chrono::milliseconds(1));
 }
+
 
 //implement the clearConsole function
 void clearConsole()
@@ -32,6 +33,7 @@ void rgb(int color)
         cout << "\e[37m";
     }
 }
+
 
 //implement the countdownTimer function
 void countdownTimer(int length)

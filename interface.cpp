@@ -4,7 +4,7 @@ using namespace std;
 //implement the animationDelay function
 void animationDelay(int length)
 {
-    this_thread::sleep_for(chrono::milliseconds(1));
+    this_thread::sleep_for(chrono::milliseconds(length));
 }
 
 

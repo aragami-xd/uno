@@ -128,7 +128,7 @@ int main()
 
 	for (int i=0; i<noOfPlayer; i++) {
 		hand[i] = new Hand();
-		if (i == 5) {			//remember to change this thing the next time you play otherwise you'll ended up staring 4 bots playing with each other
+		if (i == 0) {			//remember to change this thing the next time you play otherwise you'll ended up staring 4 bots playing with each other
 			players[i] = new Human();
 		} else {
 			players[i] = new Bot();

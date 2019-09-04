@@ -41,7 +41,7 @@ extern vector<string> startMenu();
 //main program
 int main()
 {
-	//::clearConsole();
+	::clearConsole();
 
 	//game modes
 	bool stacking = true;		

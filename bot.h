@@ -17,10 +17,17 @@ private:
     std::vector<int> otherHandSize;       //hold the hand size of all other player. for visual representation, 0 will hold the next player, 1 is opposite, 2 is last  
     int strongestOpponent;
 
+    int danger;
+
+
+
     //private action sets
+
+    //setting up some basic data for strategies
     void setStrongestWeakestColor();           //color that you have the most amount will be the strongest; if same amount, color with most action is the strongest
     void setOtherHandSize();
     void update();              //this thing will basically update the variables regarding to the stats of the game on that turn
+
 
     bool avoidSwitch();         //this function will test and see if it's suitable for the bot to switch card with other player or not
 
@@ -46,7 +53,7 @@ public:
 
     virtual void drawCard(int noOfCard);
 
-    
+
 
     //pure virtual implementations
     virtual void playerTurn();

@@ -34,24 +34,26 @@ int Bot::aggressivePlay(vector<Card*> playableCard, bool ohSeven)
 			//though, the second one doesn't guarantee that you'll be better off either
 			//for now, i'll have some fun and go for random. toss the coin, head for play, tail for draw
 			
-			// srand(0);
-			// int randomValue = rand() % 2;
-			// if (randomValue == 0) {
-			// 	return -1;                  //for now, we'll set the output to -1 for draw
-			// } else {
-			// 	return playableCard.size() - 1;         //return the last card
-			// }
+			srand(0);
+			int randomValue = rand() % 2;
+			if (randomValue == 0) {
+				return -1;                  //for now, we'll set the output to -1 for draw
+			} else {
+				return playableCard.size() - 1;         //return the last card
+			}
 
 
 
 			// or maybe we can do it like this?
-			if (ohSeven == true) {          //it's ohSeven, someone will swap with you anyways, what's the point of keeping low number of cards?
-				return -1;
-			} else {
-				return playableCard.size() - 1;
-			}
-		}     
+			// if (ohSeven == true) {          //it's ohSeven, someone will swap with you anyways, what's the point of keeping low number of cards?
+			// 	return -1;
+			// } else {
+			// 	return playableCard.size() - 1;
+			// }
+		}   
+		  
 	}
+	cout << "found a card to play" << endl;
 	return cardToPlayIndex;   
 }
 
@@ -68,11 +70,13 @@ vector<int> Bot::setBotBlacklist(vector<int> blackList, bool ohSeven)
 	} else if (strongestOpponent == 2) {
 		blackList.push_back(12);         //blacklist the reverse
 	}
+	cout << "found the opponent" << endl;
 
 	if (avoidSwitch() == true && ohSeven == true) {			//if you're the strongest player in the game then don't switch card
 		blackList.push_back(0);
 		blackList.push_back(7);
 	}
+	cout << "set the blacklist" << endl;
 	return blackList;
 }
 
@@ -96,6 +100,7 @@ int Bot::checkBlacklist(vector<int> blackList, vector<Card*> playableCard) {
 			}
 		}
 	}
+	cout << "check the blacklist" << endl;
 	return -1;
 
 	// cout << cardToPlayIndex << endl;

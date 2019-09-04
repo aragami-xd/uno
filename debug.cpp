@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <ctime>
 
 //card library 
 #include "drawfour.h"
@@ -41,7 +40,7 @@ extern vector<string> startMenu();
 //main program
 int main()
 {
-	//::clearConsole();
+	::clearConsole();
 
 	//game modes
 	bool stacking = true;		
@@ -171,7 +170,6 @@ int main()
 	core->beginGameDraw();				//draw all the cards
 
 
-	srand(time(0));			//for random
 	::clearConsole();
 	core->turnCycle();		//the game itself 
 	cout << endl;

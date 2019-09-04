@@ -9,13 +9,18 @@ using namespace std;
 Bot::Bot()
 {
     otherHandSize.reserve(3);
+    srand(time(0));
+    danger = rand() % 4;
 }
 
 //implement the bot (botHand) constructor
 Bot::Bot(Hand* botHand) : Player(botHand)
 {
     otherHandSize.reserve(3);
+    srand(time(0));
+    danger = rand() % 4;
 }
+
 
 
 
@@ -84,12 +89,12 @@ int Bot::getStrongestColor()
     return strongestColor;
 }
 
+
 //implement the bot getWeakestColor function
 int Bot::getWeakestColor()
 {
     return weakestColor;
 }
-
 
 
 
@@ -118,6 +123,8 @@ void Bot::setOtherHandSize()
 }
 
 
+
+
 //implement the bot update function
 void Bot::update()
 {
@@ -128,6 +135,7 @@ void Bot::update()
     }
     setOtherHandSize();
 }
+
 
 
 
@@ -159,26 +167,27 @@ void Bot::playerTurn()
 
 
 
+
+
 //implement the bot botChoicePlay function
 void Bot::playerChoicePlay(vector<Card*> playableCards)
 {  
-    bool danger = false;            //danger is triggered when a player has less than 4 cards
+    bool dangerZone = false;            //danger is triggered when a player has less than 4 cards
     for (int i=0; i<otherHandSize.size(); i++) {
-        if (otherHandSize[i] < 4) {
-            danger = true;
+        if (otherHandSize[i] < danger) {
+            dangerZone = true;
         }
     }
-    if (playerCard.size() < 4) {
-        danger = true;
-    }
 
+    //cout << "danger zone checked, returning: " << dangerZone << endl;
 
     int cardToPlayIndex;
-    if (danger == true) {           //if danger, play aggressive
+    if (dangerZone == true) {           //if danger, play aggressive
         cardToPlayIndex = aggressivePlay(playableCards, core->getOhSeven());
     } else {
         cardToPlayIndex = passivePlay(playableCards, core->getOhSeven());
     }
+    //cout << "return result: " << cardToPlayIndex << endl;
 
     if (cardToPlayIndex >= 0) {
         for (int i=0; i<playerCard.size(); i++) {

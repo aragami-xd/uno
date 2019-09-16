@@ -102,9 +102,9 @@ int Bot::getWeakestColor()
 void Bot::drawCard(int noOfCard)
 {
     for (int i=0; i<noOfCard; i++) {					//drawing x cards 
-    	cout << "Bot " << playerName << " has drawn a card" << " ";
-        ::rgb(core->getDraw()->getDeck()[0]->getColor());
-        cout << core->getDraw()->getDeck()[0]->getName() << "\e[0m" << endl;
+    	cout << "Bot " << playerName << " has drawn a card" << endl;
+        // ::rgb(core->getDraw()->getDeck()[0]->getColor());
+        // cout << core->getDraw()->getDeck()[0]->getName() << "\e[0m" << endl;
         core->getDraw()->pushCard(0, playerHand);       //get the first card
         Player::drawCard(noOfCard);
 	}
